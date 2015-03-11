@@ -1,0 +1,159 @@
+body {
+		background-image: url(../img/login.jpg);
+		background-image: url(../img/loginNormal.jpg);
+		transition: 0.5s;
+		background-size: 100%;
+}
+
+.caixaLogin {
+	transition: 0.5s;
+    width:400px;
+    height:350px;
+    background-color:#fff;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-left: -200px; /* metade da largura */
+    margin-top: -175px; /* metade da altura */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity:0.65;
+
+}
+
+#usuario {
+
+    background-image: url("../img/user.png");
+    background-size: 25px;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    text-align: center;
+
+}
+
+#usuario:focus {
+
+    background-position: 15px center;
+    background-size: 40px;
+    opacity: 1
+
+}
+
+#senha {
+
+    background-image: url("../img/favicon-login.png");
+    background-size: 25px;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    text-align: center;
+
+}
+
+#senha:focus {
+
+    background-position: 10px center;
+    background-size: 40px;
+    opacity: 1
+}
+
+.navegador {
+
+	position:absolute;
+	float:left;
+	bottom:0;
+	color: white;
+
+}
+
+.caixaLogin:hover {
+	opacity:0.95;
+	transition: 0.5s;
+
+	box-shadow: 0px 0px 20px #00BFFF;
+}
+
+body:hover {
+
+	background-image: url(../img/login.jpg);
+	background-repeat: no-repeat;
+	transition: 0.5s;
+	background-size: 100%;
+
+}
+
+.nome, .versao {
+	margin: 0;
+	padding-top:0;
+	font-style: italic;
+	color: #fff;
+}
+
+.versao {
+	text-align: right;
+}
+
+#img {
+	
+	position:relative;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	margin-left: 37.5%;
+	margin-right: 35%;
+}
+
+.login {
+	position: relative;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	font-size: 30px;
+}
+
+.aviso {
+	position: relative;
+	text-align: center;
+	padding: 0px;
+	margin-bottom: 0px;
+	margin-top: -10px;
+	font-size: 15px;
+	color: red;
+}
+
+input {
+	transition: 0.5s;
+	border-width: 0px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	margin-bottom: 15px;
+	margin-left: 30px;
+	font-size: 20px;
+	width: 325px;
+	height: 20px;
+	padding: 3px;
+}
+
+input:hover {
+	transition: 0.5s;
+	border-bottom-color: #00BFFF;
+}
+
+#button {
+	transition: 0.5s;
+	background-color: #00BFFF;
+	color: #fff;
+	font-size: 15px;
+	text-shadow: 0px 0px 4px #000;
+	width: 130px;
+	height: 30px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-left: 125px;
+	box-shadow: 1px 1px 3px #eee;
+}
+
+#button:hover {
+	transition: 0.5s;
+	box-shadow: 1px 1px 3px #000;
+}
