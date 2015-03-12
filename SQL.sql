@@ -1,16 +1,225 @@
-/*INICIO DO SQL*/
-/*create database NOME DO BANCO; (pode ser que n„o aceite, melhor criar pela interface)
-use databasedbteste; (se criado por interface, n„o se aplica)*/
+/*Inicio SQL SMV*/
+
+Create table tbl_estadosolicitacao(
+
+id_estadosolicitacao serial not null,
+estadosolicitacao varchar(10),
+
+CONSTRAINT pk_estadosolicitacao primary key (id_estadosolicitacao)
+
+);
+
+Create table tbl_estadoveiculo(
+
+id_estadoveiculo serial not null,
+estadoveiculo varchar(15),
+
+CONSTRAINT pk_estadoveiculo primary key (id_estadoveiculo)
+
+);
+
+Create table tbl_combustivel(
+
+id_combustivel serial not null,
+combustivel varchar(30),
+
+CONSTRAINT pk_combustivel primary key (id_combustivel)
+
+);
+
+Create table tbl_estadoitem(
+
+id_estadoitem serial not null,
+estadoitem varchar(7),
+
+CONSTRAINT pk_estadoitem primary key (id_estadoitem)
+
+);
+
+Create table tbl_unidademedida(
+
+id_unidademedida serial not null,
+unidademedida varchar(3),
+      
+CONSTRAINT pk_unidademedida primary key (id_unidademedida)
+
+);
+
+Create table tbl_marcaitens(
+
+id_marcaitens serial not null,
+marcaitens varchar(3),
+
+CONSTRAINT pk_marcaitens primary key (id_marcaitens)
+
+);
+
+Create table tbl_grupoitens(
+
+id_grupoitens serial not null,
+grupoitens varchar(3),
+
+
+CONSTRAINT pk_grupoitens primary key (id_grupoitens)
+
+);
+
+Create table tbl_montadora(
+
+id_montadora serial not null,
+montadora varchar(3),
+
+CONSTRAINT pk_montadora primary key (id_montadora)
+
+);
+
+Create table tbl_secao(
+
+id_secao serial not null,
+secao varchar(50),
+
+CONSTRAINT pk_secao primary key (id_secao)
+
+);
+
+Create table tbl_tiposervico(
+
+id_tiposervico serial not null,
+tiposervico varchar(20),
+
+CONSTRAINT pk_tiposervico primary key (id_tiposervico)
+
+);
+
+Create table tbl_estadoordemservico(
+
+id_estadoordemservico serial not null,
+estadoordemservico varchar(10),
+
+CONSTRAINT pk_estadoordemservico primary key (id_estadoordemservico)
+
+);
+
+Create table tbl_divisao(
+
+id_divisao serial not null,
+divisao varchar(50),
+
+CONSTRAINT pk_divisao primary key (id_divisao)
+
+);
+
+Create table tbl_depto(
+
+id_depto serial not null,
+depto varchar(50),
+
+CONSTRAINT pk_depto primary key (id_depto)
+
+);
+
+Create table tbl_objeto(
+
+id_objeto serial not null,
+objetotitulo varchar(100),
+objetotexto varchar(700),
+
+CONSTRAINT pk_objeto primary key (id_objeto)
+
+);
+
+Create table tbl_modalidadedelicitacao(
+
+id_modalidadedelicitacao serial not null,
+modalidadedelicitacao varchar(40),
+
+CONSTRAINT pk_modalidadedelicitacao primary key (id_modalidadedelicitacao)
+
+);
+
+Create table tbl_segmento(
+
+id_segmento serial not null,
+segmento varchar(30),
+
+CONSTRAINT pk_segmento primary key (id_segmento)
+
+);
+
+Create table tbl_tipodotacao(
+
+id_tipodotacao serial not null,
+tipodotacao varchar(7),
+
+CONSTRAINT pk_tipodotacao primary key (id_tipodotacao)
+
+);
+
+/*Fim SQL SMV*/
+
+/*Inserts SMV Inicio*/
+
+/*Tabela tbl_estadosolicitacao dados retirados da PG 28*/
+Insert into tbl_estadosolicitacao (id_estadosolicitacao, estadosolicitacao) values (1,'Pendente');
+Insert into tbl_estadosolicitacao (id_estadosolicitacao, estadosolicitacao) values (2,'Atribu√≠da');
+Insert into tbl_estadosolicitacao (id_estadosolicitacao, estadosolicitacao) values (3,'Cancelada');
+
+/*Tabela tbl_estadoveiculo dados retirados da PG 19*/
+Insert into tbl_estadoveiculo (id_estadoveiculo, estadoveiculo) values (1,'Ativo');
+Insert into tbl_estadoveiculo (id_estadoveiculo, estadoveiculo) values (2,'Transferido');
+Insert into tbl_estadoveiculo (id_estadoveiculo, estadoveiculo) values (3,'Outros');
+
+/*Tabela tbl_combustivel dados */
+Insert into tbl_combustivel (id_combustivel, combustivel) values (1,'√Ålcool');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (2,'Gasolina');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (3,'Diesel');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (4,'Gasogenio');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (5,'G√°s Metano');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (6,'El Ft Interna');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (7,'El Ft Externa');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (8,'Gasolina/GNC');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (9,'Alcool/GNC');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (10,'Diesel/GNC');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (11,'Gasolina/GNV');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (12,'Alcool/GNV');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (13,'Diesel/GNV');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (14,'GNV');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (15,'Gasolina/Alcool');
+Insert into tbl_combustivel (id_combustivel, combustivel) values (16,'Gasolina/Eletrico');
+  
+/*Tabela tbl_unidademedida dados */
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (1,'mg');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (2,'g');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (3,'kg');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (4,'ml');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (5,'L');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (6,'P√á');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (7,'cm');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (8,'M');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (9,'km');
+
+/*Tabela tbl_estadoordemservico dados retirados da PG 33*/
+Insert into tbl_estadoordemservico (id_estadoordemservico, estadoordemservico) values (1,'Em Aberto');
+Insert into tbl_estadoordemservico (id_estadoordemservico, estadoordemservico) values (2,'Fechada');
+
+
+/*Inserts SMV Fim*/
+
+/*-----------*/
+
+/*INICIO DO SQL de seguran√ßa ‚úî*/
+/*create database NOME DO BANCO; (pode ser que n√£o aceite, melhor criar pela interface)
+use databasedbteste; (se criado por interface, n√£o se aplica)*/
 
 CREATE TABLE usuarios (   
 
 id_usuario serial NOT NULL,
 usuario character varying(15) NOT NULL,
 email character varying(40),
-  senha character varying(32) NOT NULL,
-  telefone character varying(11),
-  cpf bigint,
-  fk_unidade_utilizadora smallint,
+senha character varying(32) NOT NULL,
+telefone character varying(11),
+cpf bigint,
+fk_unidade_utilizadora smallint,
 nome character varying(40),
 ativo boolean,
   CONSTRAINT primary_usuarios_key PRIMARY KEY (id_usuario),
@@ -72,20 +281,20 @@ fk_usuario smallint,
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 /*=========================================*/
-/*Para inserir um usu·rio use: (Esta senha È 123 em padr„o MD5).*/
+/*Para inserir um usu√°rio use: (Esta senha √© 123 em padr√£o MD5).*/
 Insert into usuarios (usuario,email,senha,nome,telefone,ativo)values ('Administrador','email@admin.com','202cb962ac59075b964b07152d234b70','Usuario administrativo','11962782329',TRUE);
 /*Criando Grupo Administrador:*/
 Insert into grupos (nome_grupo,descricao_grupo) values ('Administrador', 'Acesso Total');
 
-/*Inserindo as aplicaÁıes iniciais:*/
+/*Inserindo as aplica√ß√µes iniciais:*/
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('alterar_Senha', 'Alterar senha.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('grupos', 'Exibir grupos existentes.');
-Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Usuario', 'Criar novo usu·rio.');
-Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('usuarios', 'Exibir usu·rios existentes.');
-Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Usuario', 'Alterar dados dos usu·rios e atribuir grupos.');
-Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Grupo', 'Alterar dados dos grupos e atribuir aplicaÁıes a eles.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Usuario', 'Criar novo usu√°rio.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('usuarios', 'Exibir usu√°rios existentes.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Usuario', 'Alterar dados dos usu√°rios e atribuir grupos.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Grupo', 'Alterar dados dos grupos e atribuir aplica√ß√µes a eles.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Grupo', 'Criar novo grupo.');
-/*Dando permiss„o de acesso ao grupo Administrador:*/
+/*Dando permiss√£o de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,2);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,3);
@@ -93,6 +302,6 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,4);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,5);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,6);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,7);
-/*Adicionando o usu·rio ao grupo:*/
+/*Adicionando o usu√°rio ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);
-/*FIM DOS SQL*/
+/*FIM DOS SQL de seguran√ßa*/

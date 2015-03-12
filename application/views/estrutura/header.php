@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+<head>
+
+  <meta charset="utf-8"/>
+  <title><?php echo $titulo ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="<?php echo $titulo ?>"/>
+  <meta name="author" content="Eduardo"/>
   
-  <head>
+  <!--Importa o CSS, Jquery e JS que o Bootstrap precisa-->  
+  <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/bootstrap.css"/>
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/bootstrap.min.js"></script>
+  <!--Importa o CSS, Jquery e JS que o Bootstrap precisa FIM--> 
 
-    <meta charset="utf-8"/>
-    <title><?php echo $titulo ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="<?php echo $titulo ?>"/>
-    <meta name="author" content="Eduardo"/>
-    
-    <!--Importa o CSS, Jquery e JS que o Bootstrap precisa-->  
-    <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/bootstrap.css"/>
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/bootstrap.min.js"></script>
-    <!--Importa o CSS, Jquery e JS que o Bootstrap precisa FIM--> 
-
-    <!--Importa os Jquery's necessários para formatação de tabelas INCIO-->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>style/tabelas/css/jquery.dataTables.css"/><!--Formatação do layout da tabela-->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>style/tabelas/extensions/TableTools/css/dataTables.tableTools.css"/><!--CSS dos botões de exportar e imprimir-->
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/tabelas.js"></script><!--Funções que atribui a tabela e traduções-->
-    
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/maskedinput.js"></script><!--JavaScript para mascara de campo-->
-    
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/js/jquery.dataTables.js"></script><!--Funcionalidades de busca e páginação-->
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/extensions/TableTools/js/dataTables.tableTools.js"></script> <!--Botões de exportar e imprimir-->
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/extensions/Responsive/js/dataTables.responsive.js"></script><!--Funcionalidades de responsividade-->
-    <!--Importa os Jquery's necessários para formatação de tabelas FIM-->
-    
-    <!--Indicação do css e JS estilizado e imagem do favicon-->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/estilo.css" class="stylesheet">
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>style/img/favicon.png" type="image/x-icon">
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/formularios.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>style/js/validarcampo.js"></script>
-    <!--Indicação do css e JS estilizado e imagem do favicon FIM-->
-    
-  </head>
+  <!--Importa os Jquery's necessários para formatação de tabelas INCIO-->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>style/tabelas/css/jquery.dataTables.css"/><!--Formatação do layout da tabela-->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>style/tabelas/extensions/TableTools/css/dataTables.tableTools.css"/><!--CSS dos botões de exportar e imprimir-->
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/tabelas.js"></script><!--Funções que atribui a tabela e traduções-->
+  
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/maskedinput.js"></script><!--JavaScript para mascara de campo-->
+  
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/js/jquery.dataTables.js"></script><!--Funcionalidades de busca e páginação-->
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/extensions/TableTools/js/dataTables.tableTools.js"></script> <!--Botões de exportar e imprimir-->
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/tabelas/extensions/Responsive/js/dataTables.responsive.js"></script><!--Funcionalidades de responsividade-->
+  <!--Importa os Jquery's necessários para formatação de tabelas FIM-->
+  
+  <!--Indicação do css e JS estilizado e imagem do favicon-->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/estilo.css" class="stylesheet">
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>style/img/favicon.png" type="image/x-icon">
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/formularios.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/validarcampo.js"></script>
+  <!--Indicação do css e JS estilizado e imagem do favicon FIM-->
+  
+</head>
 
  <body data-spy="scroll" data-target=".sidebar">
 
@@ -173,6 +173,26 @@
 
             </li>
             <!--GUIA Autorização de fornecimento FIM-->
+
+            <!--GUIA CADASTROS INICIO-->
+            <li> 
+
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Interno
+                <span class="caret"></span> 
+              </a>  
+              
+              <ul class="dropdown-menu">
+              <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
+                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/', 'Solicitar')?></li>
+
+                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/', 'Consultar')?></li>
+
+              </ul>
+
+            </li>
+            <!--GUIA CADASTROS FIM-->
            
           </ul>
           <!--Parte do menu fixo a esquerda FIM-->
