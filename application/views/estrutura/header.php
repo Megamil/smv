@@ -177,17 +177,26 @@
             <!--GUIA CADASTROS INICIO-->
             <li> 
 
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Interno
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Adicionar
                 <span class="caret"></span> 
               </a>  
               
               <ul class="dropdown-menu">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Solicitar')?></li>
+                <li <?php if($ativo == 'adicionar-montadora') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-montadora', 'Montadora')?></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Consultar')?></li>
+                <li <?php if($ativo == 'adicionar-secao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-secao', 'Seção')?></li>
+
+                <li <?php if($ativo == 'adicionar-divisao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-divisao', 'Divisão')?></li>
+
+                <li <?php if($ativo == 'adicionar-departamento') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-departamento', 'Departamento')?></li>
+
+                <li <?php if($ativo == 'adicionar-modalidade_Licitacao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-modalidade_Licitacao', 'Modalidade de Licitacao')?></li>
 
               </ul>
 

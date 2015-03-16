@@ -67,7 +67,7 @@ CONSTRAINT pk_grupoitens primary key (id_grupoitens)
 Create table tbl_montadora(
 
 id_montadora serial not null,
-montadora varchar(3),
+montadora varchar(30),
 
 CONSTRAINT pk_montadora primary key (id_montadora)
 
@@ -294,6 +294,27 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('usuarios', 
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Usuario', 'Alterar dados dos usuários e atribuir grupos.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Grupo', 'Alterar dados dos grupos e atribuir aplicações a eles.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Grupo', 'Criar novo grupo.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('montadora', 'Criar nova montadora.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Montadora', 'Criar nova montadora.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Montadora', 'Criar nova montadora.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('secao', 'Criar nova Seção.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Secao', 'Criar nova Seção.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Secao', 'Criar nova Seção.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('divisao', 'Criar nova Divisão.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Divisao', 'Criar nova Divisão.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Divisao', 'Criar nova Divisão.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('departamento', 'Criar nova Departamento.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Departamento', 'Criar nova Departamento.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Departamento', 'Criar nova Departamento.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
+
 /*Dando permissão de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,2);
@@ -302,6 +323,24 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,4);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,5);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,6);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,7);
+
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,8);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,9);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,10);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,11);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,12);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,13);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,14);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,15);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,16);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,17);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,18);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,19);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,20);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,21);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,22);
+
+
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);
 /*FIM DOS SQL de segurança*/

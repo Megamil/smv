@@ -19,3 +19,17 @@ function validacaoEmail(field) {
 		document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido</font>";
 	}
 }
+
+$(document).ready(function(){
+
+	$('#validar_Enviar').click(function(){
+
+		if($('.input_Vazio').val() == '') {
+			$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append("<p>Você deixou o campo em branco.</p>");
+			return false;
+		}
+
+	});
+
+});
