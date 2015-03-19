@@ -71,6 +71,9 @@
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Cliente')?></li>
 
+                <li <?php if($ativo == 'criar-nova_Dotacao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/criar-nova_Dotacao', 'Dotacao')?></li>
+
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Veículo')?></li>
 
@@ -159,7 +162,7 @@
             <!--GUIA Emprenho Inicio-->
              <li> 
 
-              <a class="btn" href="#">Emprenho
+              <a class="btn" href="#">Empenho
               </a> 
 
             </li>

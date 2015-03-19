@@ -310,6 +310,7 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Divi
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('departamento', 'Criar nova Departamento.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Departamento', 'Criar nova Departamento.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Departamento', 'Criar nova Departamento.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Dotacao', 'Criar nova Dotação.');
 
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -339,7 +340,7 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,19);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,20);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,21);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,22);
-
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,23);
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);
