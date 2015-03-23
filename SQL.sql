@@ -48,7 +48,7 @@ CONSTRAINT pk_unidademedida primary key (id_unidademedida)
 Create table tbl_marcaitens(
 
 id_marcaitens serial not null,
-marcaitens varchar(3),
+marcaitens varchar(20),
 
 CONSTRAINT pk_marcaitens primary key (id_marcaitens)
 
@@ -57,7 +57,7 @@ CONSTRAINT pk_marcaitens primary key (id_marcaitens)
 Create table tbl_grupoitens(
 
 id_grupoitens serial not null,
-grupoitens varchar(3),
+grupoitens varchar(30),
 
 
 CONSTRAINT pk_grupoitens primary key (id_grupoitens)
@@ -109,6 +109,15 @@ CONSTRAINT pk_divisao primary key (id_divisao)
 
 );
 
+Create table tbl_setor(
+
+id_setor serial not null,
+setor varchar(50),
+
+CONSTRAINT pk_setor primary key (id_setor)
+
+);
+
 Create table tbl_depto(
 
 id_depto serial not null,
@@ -149,11 +158,37 @@ CONSTRAINT pk_segmento primary key (id_segmento)
 Create table tbl_tipodotacao(
 
 id_tipodotacao serial not null,
-tipodotacao varchar(7),
+tipodotacao varchar(8),
 
 CONSTRAINT pk_tipodotacao primary key (id_tipodotacao)
 
 );
+
+Create table tbl_dotacao(
+
+id_dotacao serial not null,
+codigonumero varchar(40),
+id_segmento integer,
+idtipodotacao integer,
+statusdotacao integer
+
+CONSTRAINT pk_dotacao primary key (id_dotacao),
+CONSTRAINT fk_segmento FOREIGN key (id_segmento),
+CONSTRAINT fk_tipodotacao FOREIGN key (idtipodotacao)
+
+);
+
+CREATE TABLE tbl_servicos
+(
+  id_servicos serial NOT NULL,
+  servico character varying(50),
+  valorunitario real,
+  id_fornecedorprestador integer,
+  id_unidademedida integer,
+  CONSTRAINT pk_servicos PRIMARY KEY (id_servicos),
+  CONSTRAINT fk_fornecedorprestador FOREIGN key (id_fornecedorprestador),
+  CONSTRAINT fk_unidademedida FOREIGN key (id_unidademedida) REFERENCES tbl_unidademedida (id_unidademedida)
+)
 
 /*Fim SQL SMV*/
 
@@ -310,7 +345,30 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Divi
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('departamento', 'Criar nova Departamento.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Departamento', 'Criar nova Departamento.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Departamento', 'Criar nova Departamento.');
+
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Dotacao', 'Criar nova Dotação.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Dotacao', 'Editar Dotação.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('dotacao', 'Lista das Dotações.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Grupo_Itens', 'Criar novo Grupo de Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Grupo_Itens', 'Editar Grupo de Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('grupo_Itens', 'Lista dos Grupos e Itens.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('objeto', 'Lista dos Objetos.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Objeto', 'Criar novo Objeto.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Objeto', 'Editar Objeto.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('setor', 'Lista dos Setores.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Setor', 'Criar novo Setor.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Setor', 'Editar Setor.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('marca_Itens', 'Lista das Marcas dos Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Marca_Itens', 'Criar nova Marca de Item.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Marca_Itens', 'Editar Marca de Item.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('servicos', 'Lista dos Serviços.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Servico', 'Criar novo Serviço.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Servico', 'Editar Serviço.');
 
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -324,7 +382,6 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,4);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,5);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,6);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,7);
-
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,8);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,9);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,10);
@@ -341,6 +398,23 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,20);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,21);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,22);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,23);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,24);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,25);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,26);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,27);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,28);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,29);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,30);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,31);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,32);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,33);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,34);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,35);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,36);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,37);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,38);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,39);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,40);
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);

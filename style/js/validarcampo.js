@@ -20,14 +20,82 @@ function validacaoEmail(field) {
 	}
 }
 
+
+
 $(document).ready(function(){
+
+	$('.input_Vazio').focusout(function(){
+
+		if($('.input_Vazio').val() == '') {
+
+			$('#error').remove();
+
+			var ph = $('.input_Vazio').attr('placeholder');  
+
+			$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+		} else {
+
+			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+			$('#error').remove();
+
+		}
+
+	});
+
+	$('.textarea_Vazio').focusout(function(){
+
+		if($('.textarea_Vazio').val() == '') {
+
+			$('#error').remove();
+
+			var ph = $('.textarea_Vazio').attr('placeholder');  
+
+			$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+		} else {
+
+			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+			$('#error').remove();
+
+		}
+
+	});
 
 	$('#validar_Enviar').click(function(){
 
 		if($('.input_Vazio').val() == '') {
+
+			$('#error').remove();
+
+			var ph = $('.input_Vazio').attr('placeholder');  
 			$('.erro_Campo_Vazio').addClass("alert alert-danger")
-			.append("<p>Você deixou o campo em branco.</p>");
+			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 			return false;
+
+		} else {
+
+			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+			$('#error').remove();
+
+		}
+
+		if($('.textarea_Vazio').val().length == 0) {
+
+			$('#error').remove();
+
+			var ph = $('.input_Vazio').attr('placeholder');
+			$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+			return false;
+
+		} else {
+
+			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+			$('#error').remove();
+
 		}
 
 	});

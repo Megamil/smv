@@ -169,6 +169,172 @@ class criar extends CI_Controller {
 
 	}
 
+	public function nova_Dotacao(){
+
+		$this->form_validation->set_rules('nomedotacao','Nome da Dotação','required');
+		$this->form_validation->set_rules('segmento','Segmento','required');
+		$this->form_validation->set_rules('estadodotacao','Segmento','required');
+		$this->form_validation->set_rules('tipodotacao','Tipo dotação','required');
+
+		if($this->input->post('segmento') == 'Selecione...') {
+
+			$this->session->set_userdata('aviso','Campo de segmento é obrigatório');
+			$this->session->set_userdata('tipo','danger');
+
+			$this->session->set_flashdata('nomedotacao', $this->input->post('nomedotacao'));
+			$this->session->set_flashdata('segmento', $this->input->post('segmento'));
+			$this->session->set_flashdata('estadodotacao', $this->input->post('estadodotacao'));
+			$this->session->set_flashdata('tipodotacao', $this->input->post('tipodotacao'));
+
+			redirect('main/redirecionar/criar-nova_Dotacao');
+		}
+
+		if($this->form_validation->run()) {
+
+
+			$dados = array (
+
+				'codigonumero' => $this->input->post('nomedotacao'),
+				'id_segmento' => $this->input->post('segmento'),
+				'idtipodotacao' => $this->input->post('tipodotacao'),
+				'statusdotacao' => $this->input->post('estadodotacao')
+
+			);
+
+			$this->novo->dotacao_Nova($dados);
+
+			$this->session->set_userdata('aviso','Dotação : '.$this->input->post('nomedotacao').' Adicionada com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-nova_Dotacao');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			$this->session->set_flashdata('nomedotacao', $this->input->post('nomedotacao'));
+			$this->session->set_flashdata('segmento', $this->input->post('segmento'));
+			$this->session->set_flashdata('estadodotacao', $this->input->post('estadodotacao'));
+			$this->session->set_flashdata('tipodotacao', $this->input->post('tipodotacao'));
+
+			redirect('main/redirecionar/criar-nova_Dotacao');
+
+		}
+
+
+
+	}
+
+	public function novo_Grupo_Itens(){
+
+		$this->form_validation->set_rules('nomegrupoitens','Nome do Grupo de itens','is_unique[tbl_grupoitens.grupoitens]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array ('grupoitens' => $this->input->post('nomegrupoitens'));
+
+			$this->novo->grupo_Itens_Novo($dados);
+
+			$this->session->set_userdata('aviso','Grupo: '.$this->input->post('nomegrupoitens').' Adicionado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Grupo_Itens');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Grupo_Itens');
+
+		}
+
+	}
+
+	public function novo_Setor(){
+
+		$this->form_validation->set_rules('nome','Nome do setor','is_unique[tbl_setor.setor]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array ('setor' => $this->input->post('nome'));
+
+			$this->novo->setor_Novo($dados);
+
+			$this->session->set_userdata('aviso','Setor: '.$this->input->post('nome').' Adicionado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Setor');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Setor');
+
+		}
+
+	}
+
+	public function novo_Objeto(){
+
+		$this->form_validation->set_rules('nomeobjetotitulo','Título do Objeto','is_unique[tbl_objeto.objetotitulo]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array ('objetotitulo' => $this->input->post('nomeobjetotitulo'), 'objetotexto' => $this->input->post('nomeobjetotexto'));
+
+			$this->novo->objeto_Novo($dados);
+
+			$this->session->set_userdata('aviso','Objeto: '.$this->input->post('nomeobjetotitulo').' Adicionado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Objeto');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Objeto');
+
+		}
+
+	}
+
+	public function nova_Marca_Itens(){
+
+		$this->form_validation->set_rules('nome','Marca','is_unique[tbl_marcaitens.marcaitens]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array ('marcaitens' => $this->input->post('nome'));
+
+			$this->novo->Marca_Itens_Novo($dados);
+
+			$this->session->set_userdata('aviso','Marca: '.$this->input->post('nome').' Adicionada com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-nova_Marca_Itens');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-nova_Marca_Itens');
+
+		}
+
+	}
+
 }
 
 /* End of file main.php */

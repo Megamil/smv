@@ -139,6 +139,139 @@ class dados_iniciais_model extends CI_Model {
 
 	}
 
+	/*Inicio das codificações referente as telas de Dotação*/
+	public function nova_Dotacao(){
+		$pack = $this->db->get('tbl_segmento');
+		return $pack->result();
+	}
+
+	public function editar_Dotacao(){
+
+		$pack = array(
+			'dotacao' => $this->db->query('select * from tbl_dotacao where id_dotacao = '.$this->session->userdata('idEditar').';'), 
+			'segmentos' => $this->db->get('tbl_segmento')->result());
+		return $pack;
+
+	}
+
+	public function dotacao(){ /*Carrega a lista com todos as dotações*/
+		$pack = $this->db->get('tbl_dotacao');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Dotação*/
+	
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Grupo de Itens*/
+	public function novo_Grupo_Itens(){
+		$pack = $this->db->get('tbl_grupoitens');
+		return $pack->result();
+	}
+
+	public function editar_Grupo_Itens(){
+
+		$pack = $this->db->query('select * from tbl_grupoitens where id_grupoitens = '.$this->session->userdata('idEditar').';');
+		return $pack;
+
+	}
+
+	public function grupo_itens(){ /*Carrega a lista com todos os grupos de itens*/
+		$pack = $this->db->get('tbl_grupoitens');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Grupo de Itens*/
+	
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Objeto*/
+	public function novo_Objeto(){
+		$pack = $this->db->get('tbl_objeto');
+		return $pack->result();
+	}
+
+	public function editar_Objeto(){
+
+		$pack = $this->db->query('select * from tbl_objeto where id_objeto = '.$this->session->userdata('idEditar').';');
+		return $pack;
+
+	}
+
+	public function objeto(){ /*Carrega a lista com todos os objetos*/
+		$pack = $this->db->get('tbl_objeto');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Objeto*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Setor*/
+	public function novo_Setor(){
+		$pack = $this->db->get('tbl_setor');
+		return $pack->result();
+	}
+
+	public function editar_Setor(){
+
+		$pack = $this->db->query('select * from tbl_setor where id_setor = '.$this->session->userdata('idEditar').';');
+		return $pack;
+
+	}
+
+	public function setor(){ /*Carrega a lista com todos os setores*/
+		$pack = $this->db->get('tbl_setor');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Setor*/
+	
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Marcas de Itens*/
+	public function novo_Marca_Itens(){
+		$pack = $this->db->get('tbl_marcaitens');
+		return $pack->result();
+	}
+
+	public function editar_Marca_Itens(){
+
+		$pack = $this->db->query('select * from tbl_marcaitens where id_marcaitens = '.$this->session->userdata('idEditar').';');
+		return $pack;
+
+	}
+
+	public function marca_Itens(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = $this->db->get('tbl_marcaitens');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Marcas de Itens*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Serviço*/
+	public function novo_Servico(){
+		$pack = $this->db->get('tbl_servicos');
+		return $pack->result();
+	}
+
+	public function editar_Servico(){
+
+		$pack = array(
+			'servico' => $this->db->query('select * from tbl_servicos where id_servicos = '.$this->session->userdata('idEditar').';'), 
+			'unidademedida' => $this->db->get('tbl_unidademedida')->result());
+
+	}
+
+	public function servicos(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = $this->db->get('tbl_servicos');
+		return $pack->result();
+
+	}
+	/*Fim das codificações das telas de Marcas de Itens*/
+
 }
 
- ?>
+?>

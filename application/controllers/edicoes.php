@@ -187,6 +187,173 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editar_Dotacao(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Dotacao/'.$this->uri->segment(3)); /*Redirecionar para adicionar Dotações (Editar Dotação)*/
+
+	}
+
+	public function editando_Dotacao(){
+
+		$this->form_validation->set_rules('nomedotacao','Nome da Dotação','required');
+		$this->form_validation->set_rules('segmento','Segmento','required');
+		$this->form_validation->set_rules('estadodotacao','Segmento','required');
+		$this->form_validation->set_rules('tipodotacao','Tipo dotação','required');
+
+		if($this->input->post('segmento') == 'Selecione...') {
+
+			$this->session->set_userdata('aviso','Campo de segmento é obrigatório');
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Dotacao/'.$this->input->post('id_dotacao'));
+		}
+
+		if($this->form_validation->run()) {
+
+
+			$dados = array (
+
+				'id_dotacao' => $this->input->post('id_dotacao'),
+				'codigonumero' => $this->input->post('nomedotacao'),
+				'id_segmento' => $this->input->post('segmento'),
+				'idtipodotacao' => $this->input->post('tipodotacao'),
+				'statusdotacao' => $this->input->post('estadodotacao')
+
+			);
+
+			$this->edicao->dotacao_Editar($dados);
+
+			$this->session->set_userdata('aviso','Dotação : '.$this->input->post('nomedotacao').' Editada com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Dotacao/'.$this->input->post('id_dotacao'));
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Dotacao/'.$this->input->post('id_dotacao'));
+
+		}
+
+
+
+	}
+
+	public function editar_Grupo_Itens(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Grupo_Itens/'.$this->uri->segment(3)); /*Redirecionar para adicionar Grupo de Itens (Editar Grupo de Itens)*/
+
+	}
+
+	public function editando_Grupo_Itens(){
+
+		$this->form_validation->set_rules('nomegrupoitens','Nome do Grupo de itens','is_unique[tbl_grupoitens.grupoitens]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array (
+
+				'id_grupoitens' => $this->input->post('id_grupoitens'),
+				'grupoitens' => $this->input->post('nomegrupoitens')
+
+			);
+
+			$this->edicao->grupo_Itens_Editar($dados);
+
+			$this->session->set_userdata('aviso','Grupo itens : '.$this->input->post('nomegrupoitens').' Editado com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Grupo_Itens/'.$this->input->post('id_grupoitens'));
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Grupo_Itens/'.$this->input->post('id_grupoitens'));
+
+		}
+
+	}
+
+	public function editar_Setor(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Setor/'.$this->uri->segment(3)); /*Redirecionar para adicionar Setor (Editar Setor)*/
+
+	}
+
+	public function editando_Setor(){
+
+		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_setor.setor]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array(
+				'id_setor' => $this->input->post('id_setor'),
+				'setor' => $this->input->post('nome')
+				);
+
+			$this->edicao->setor_Editar($dados);
+
+				$this->session->set_userdata('aviso','Setor: '.$this->input->post('nome').' Alterado com sucesso!');
+				$this->session->set_userdata('tipo','success');
+
+				redirect('main/redirecionar/edicoes-editar_Setor/'.$this->input->post('id_setor'));
+
+		} else {
+
+				$this->session->set_userdata('aviso',validation_errors());
+				$this->session->set_userdata('tipo','danger');
+
+				redirect('main/redirecionar/edicoes-editar_Setor/'.$this->input->post('id_setor'));
+
+		}
+
+
+	}
+
+	public function editar_Marca_Itens(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Marca_Itens/'.$this->uri->segment(3)); /*Redirecionar para adicionar Setor (Editar Setor)*/
+
+	}
+
+	public function editando_Marca_Itens(){
+
+		$this->form_validation->set_rules('nome','Marca','is_unique[tbl_marcaitens.marcaitens]');
+
+		if($this->form_validation->run()) {
+
+			$dados = array(
+				'id_marcaitens' => $this->input->post('id_marcaitens'),
+				'marcaitens' => $this->input->post('nome')
+				);
+
+				$this->edicao->marca_Itens_Editar($dados);
+
+				$this->session->set_userdata('aviso','Marca: '.$this->input->post('nome').' Alterada com sucesso!');
+				$this->session->set_userdata('tipo','success');
+
+				redirect('main/redirecionar/edicoes-editar_Marca_Itens/'.$this->input->post('id_marcaitens'));
+
+		} else {
+
+				$this->session->set_userdata('aviso',validation_errors());
+				$this->session->set_userdata('tipo','danger');
+
+				redirect('main/redirecionar/edicoes-editar_Marca_Itens/'.$this->input->post('id_marcaitens'));
+
+		}
+
+	}
+
 	public function editando_Modalidade(){
 
 		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_modalidadedelicitacao.modalidadedelicitacao]');
@@ -219,6 +386,43 @@ class edicoes extends CI_Controller {
 				$this->session->set_userdata('tipo','danger');
 
 				redirect('main/redirecionar/edicoes-editar_Modalidade_Licitacao/'.$this->input->post('id_Modalidade'));
+
+		}
+
+	}
+
+	public function editar_Objeto(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Objeto/'.$this->uri->segment(3)); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Objeto(){
+
+		$this->form_validation->set_rules('nomeobjetotitulo','Título do objeto','required');
+
+		if($this->form_validation->run()) {
+
+			$dados = array(
+				'id_objeto' => $this->input->post('id_objeto'),
+				'objetotitulo' => $this->input->post('nomeobjetotitulo'),
+				'objetotexto' => $this->input->post('nomeobjetotexto')
+				);
+
+				$this->edicao->objeto_Editar($dados); 
+
+				$this->session->set_userdata('aviso','Objeto: '.$this->input->post('nomeobjetotitulo').' Alterado com sucesso!');
+				$this->session->set_userdata('tipo','success');
+
+				redirect('main/redirecionar/edicoes-editar_Objeto/'.$this->input->post('id_objeto'));
+
+		} else {
+
+				$this->session->set_userdata('aviso',validation_errors());
+				$this->session->set_userdata('tipo','danger');
+
+				redirect('main/redirecionar/edicoes-editar_Objeto/'.$this->input->post('id_objeto'));
 
 		}
 

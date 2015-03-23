@@ -38,6 +38,63 @@ class novo extends CI_Model {
 
 	}
 
+	public function dotacao_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_dotacao',$dados);
+
+	}
+
+	public function grupo_Itens_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_grupoitens',$dados);
+
+	}
+
+	public function objeto_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_objeto',$dados);
+
+	}
+
+	public function setor_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_setor',$dados);
+
+	}
+
+	public function grupo_Itens_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_grupoitens',$dados);
+
+	}
+
+	public function setor_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_setor',$dados);
+
+	}
+
+		public function Marca_Itens_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_marcaitens',$dados);
+
+	}
+
+		public function objeto_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_objeto',$dados);
+
+	}
+
+
 }
 
 ?>

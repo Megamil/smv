@@ -1,7 +1,10 @@
-<?php echo form_fieldset("Nova Dotação"); 
-echo form_open("criar/nova_Dotacao"); ?>
+<?php echo form_fieldset("Editar Dotação"); 
+echo form_open("edicoes/editando_Dotacao"); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
+
+	<?php echo form_hidden('id_dotacao', $pack['dotacao']->row()->id_dotacao); ?>
+
 	<table border="0">
 		<thead align="left"><span id="basic-addon1">Marque as opções</span></thead>
 		<tbody>
@@ -9,7 +12,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<?php if($this->session->flashdata('tipodotacao') == 1){
+						<?php if($pack['dotacao']->row()->idtipodotacao == 1){
 							$check = 'checked';	
 						}else{
 							$check = '';
@@ -27,7 +30,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<?php if($this->session->flashdata('estadodotacao') == 1){
+						<?php if($pack['dotacao']->row()->statusdotacao == 1){
 							$check = 'checked';	
 						}else{
 							$check = '';
@@ -47,7 +50,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 				<div class="control-group">
 					<div class="controls">
 
-						<?php if($this->session->flashdata('tipodotacao') == 2){
+						<?php if($pack['dotacao']->row()->idtipodotacao == 2){
 							$check = 'checked';	
 						}else{
 							$check = '';
@@ -65,7 +68,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<?php if($this->session->flashdata('estadodotacao') == 0 && $this->session->flashdata('estadodotacao') != ''){
+						<?php if($pack['dotacao']->row()->statusdotacao == 0){
 							$check = 'checked';	
 						}else{
 							$check = '';
@@ -89,7 +92,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 					
 					
 					<span class="input-group-addon" id="basic-addon1">Número / código da dotação</span>
-					<input type="text" class="form-control input_Vazio" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
+					<input type="text" class="form-control input_Vazio" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" value="<?php echo $pack['dotacao']->row()->codigonumero; ?>">
 				</div>
 			</td>
 		</tr>
@@ -100,26 +103,21 @@ echo form_open("criar/nova_Dotacao"); ?>
 					<span class="input-group-addon" id="basic-addon1">Segmento</span>
 
 					<select class="form-control" name="segmento">
-
 						<option>Selecione...</option>
-
 						<?php 
-
-							foreach ($pack as $segmentos) {
+							foreach ($pack['segmentos'] as $segmentos) {
 								
-								if($this->session->flashdata('segmento') == $segmentos->id_segmento){
+								if($pack['dotacao']->row()->id_segmento == $segmentos->id_segmento){
 
 									echo '<option selected value="'.$segmentos->id_segmento.'">'.$segmentos->segmento.'</option>';
 								
-								} else {
+								}else{
 								
 									echo '<option value="'.$segmentos->id_segmento.'">'.$segmentos->segmento.'</option>';
 								}
 							
 							}
-
 						?>
-
 					</select>
 
 
@@ -132,7 +130,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 
 	
 
-	<?php echo form_submit(array('name'=>'criarDotacao'),'Criar Dotação', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'editarDotacao'),'Editar Dotação', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-dotacao', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

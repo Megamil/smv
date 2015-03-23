@@ -68,11 +68,20 @@
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Fornecedor/Prestador')?></li>
 
+                <li <?php if($ativo == 'cadastros-servicos') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-servicos', 'Serviços')?></li>
+
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Cliente')?></li>
 
-                <li <?php if($ativo == 'criar-nova_Dotacao') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/criar-nova_Dotacao', 'Dotacao')?></li>
+                <li <?php if($ativo == 'cadastros-dotacao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-dotacao', 'Dotacao')?></li>
+
+                <li <?php if($ativo == 'cadastros-grupo_Itens') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-grupo_Itens', 'Grupo dos Itens')?></li>
+
+                <li <?php if($ativo == 'cadastros-objeto') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-objeto', 'Objetos')?></li>
 
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Veículo')?></li>
@@ -186,11 +195,18 @@
               
               <ul class="dropdown-menu">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
+
+                <li <?php if($ativo == 'adicionar-marca_Itens') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-marca_Itens', 'Marca dos Itens')?></li>
+
                 <li <?php if($ativo == 'adicionar-montadora') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-montadora', 'Montadora')?></li>
 
                 <li <?php if($ativo == 'adicionar-secao') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-secao', 'Seção')?></li>
+
+                <li <?php if($ativo == 'adicionar-setor') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-setor', 'Setor')?></li>
 
                 <li <?php if($ativo == 'adicionar-divisao') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-divisao', 'Divisão')?></li>
