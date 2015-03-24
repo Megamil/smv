@@ -18,8 +18,30 @@ function validacaoEmail(field) {
 
 		document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido</font>";
 	}
+
+}
+/*Aceita decimais*/
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0 || tecla==44 || tecla ==46) return true;
+	else  return false;
+    }
 }
 
+/*Somente números sem virgulas ou pontos*/
+function numero(e){
+
+    var tecla=(window.event)?event.keyCode:e.which;   
+
+    if((tecla>47 && tecla<58)) return true;
+
+    else {
+	 return false;
+
+    }
+}
 
 
 $(document).ready(function(){
@@ -64,9 +86,9 @@ $(document).ready(function(){
 
 	});
 
-	$('#validar_Enviar').click(function(){
+$('#validar_Enviar').click(function(){
 
-		if($('.input_Vazio').val() == '') {
+	if($('.input_Vazio').val() == '') {
 
 			$('#error').remove();
 
@@ -76,7 +98,10 @@ $(document).ready(function(){
 			return false;
 
 		} else {
-
+			
+			$('.telefoneValidar').mask("?999999999999");
+			$('#cnpjValidar').mask("?99999999999999");
+			$('#cepValidar').mask("?99999999");
 			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 			$('#error').remove();
 
@@ -86,18 +111,25 @@ $(document).ready(function(){
 
 			$('#error').remove();
 
-			var ph = $('.input_Vazio').attr('placeholder');
+			var ph = $('.textarea_Vazio').attr('placeholder');
 			$('.erro_Campo_Vazio').addClass("alert alert-danger")
 			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 			return false;
 
 		} else {
 
+			$('.telefoneValidar').mask("99999999999?9");
+			$('#cnpjValidar').mask("99999999999999");
+			$('#cepValidar').mask("99999999");
 			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 			$('#error').remove();
 
 		}
 
 	});
+
+	$('.telefoneValidar').mask("(?99)9999-99999");
+	$('#cnpjValidar').mask("?99.999.999/9999-99");
+	$('#cepValidar').mask("?99999-999");
 
 });

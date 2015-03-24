@@ -92,4 +92,33 @@ class edicao extends CI_Model {
 
 	}
 
+	public function fornecedor_Prestador_Editar($dados = null)
+	{
+
+		$this->db->where('id_fornecedorprestador',$dados["id_fornecedorprestador"]);
+		return $this->db->update('tbl_fornecedorprestador',$dados);
+
+	}
+
+	public function cliente($dados = null)
+	{
+
+		$this->db->where('id_cliente',$dados["id_cliente"]);
+		return $this->db->update('tbl_cliente',$dados);
+	}
+
+	public function colaborador($dados = null)
+	{
+
+		$this->db->where('id_colaborador',$dados["id_colaborador"]);
+		return $this->db->update('tbl_colaboradores',$dados);
+	}
+
+		public function veiculo($dados = null)
+	{
+
+		$this->db->where('id_veiculo',$dados["id_veiculo"]);
+		return $this->db->update('tbl_veiculo',$dados);
+	}
+
 }

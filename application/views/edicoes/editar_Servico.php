@@ -1,9 +1,9 @@
-<?php echo form_fieldset("Novo Servço"); 
-echo form_open("criar/novo_Servico"); ?>
+<?php echo form_fieldset("Editar Serviço"); 
+echo form_open("edicoes/editando_Servico"); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
-	
-		<?php echo form_hidden('id_servicos', $pack['servico']->row()->id_servicos); ?>
+
+	<?php echo form_hidden('id_servicos',$pack['servico']->row()->id_servicos); ?>
 
 	<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
@@ -19,7 +19,7 @@ echo form_open("criar/novo_Servico"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="input_Vazio" name="nomeservico" aria-describedby="basic-addon1" size="52" placeholder="Nome do Serviço" maxlength="100" />
+						<input type="text" class="form-control input_Vazio" name="nomeservico" aria-describedby="basic-addon1" size="52" placeholder="Nome do Serviço" maxlength="100"/>
 					</div>
 				</div>
 			</td>
@@ -35,27 +35,22 @@ echo form_open("criar/novo_Servico"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<select class="form-control" name="unidade">
-
+						<select class="form-control" name="unidademedida">
 						<option>Selecione...</option>
-
 						<?php 
+							foreach ($pack['unidademedida'] as $unidademedida) {
+								
+								if($pack['servico']->row()->id_unidademedida == $unidademedida->id_unidademedida){
 
-							foreach ($pack as $unidade) {
+									echo '<option selected value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->unidademedida.'</option>';
 								
-								if($this->session->flashdata('unidade') == $unidade->id_unidademedida){
-
-									echo '<option selected value="'.$unidade->id_unidademedida.'">'.$unidade->id_unidademedida.'</option>';
+								}else{
 								
-								} else {
-								
-									echo '<option value="'.$unidade->id_unidademedida.'">'.$unidade->id_unidademedida.'</option>';
+									echo '<option value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->unidademedida.'</option>';
 								}
 							
 							}
-
 						?>
-
 					</select>
 					</div>
 				</div>
@@ -71,8 +66,9 @@ echo form_open("criar/novo_Servico"); ?>
 			</td>
 			<td>
 				<div class="control-group">
-					<div class="controls">
-					<input type="text" class="input_Vazio" name="valorservico" aria-describedby="basic-addon1" size="52" placeholder="Valor do Serviço" maxlength="100" />
+					<div class="controls input-group">					
+					<span class="input-group-addon" id="basic-addon1">R$: </span>
+					<input type="text" class="form-control input_Vazio" onkeypress='return SomenteNumero(event)' name="valorservico" aria-describedby="basic-addon1" size="52" placeholder="Valor do Serviço" maxlength="100"/>
 					</div>
 				</div>
 			</td>
@@ -94,19 +90,18 @@ echo form_open("criar/novo_Servico"); ?>
 
 						<?php 
 
-							foreach ($pack as $forcedorprestador) {
+							foreach ($pack['forcedorprestador'] as $forcedorprestador) {
 								
-								if($this->session->flashdata('forcedorprestador') == $forcedorprestador->id_forcedorprestador){
+								if($pack['forcedorprestador']->row()->id_forcedorprestador == $forcedorprestador->id_forcedorprestador){
 
-									echo '<option selected value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->id_forcedorprestador.'</option>';
+									echo '<option selected value="'.$forcedorprestador->id_forcedorprestadora.'">'.$forcedorprestador->forcedorprestador.'</option>';
 								
-								} else {
+								}else{
 								
-									echo '<option value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->id_forcedorprestador.'</option>';
+									echo '<option value="'.$forcedorprestador->id_forcedorprestadora.'">'.$forcedorprestadora->forcedorprestador.'</option>';
 								}
 							
 							}
-
 						?>
 
 					</select>
@@ -120,7 +115,7 @@ echo form_open("criar/novo_Servico"); ?>
 
 	
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Criar Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-servicos', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

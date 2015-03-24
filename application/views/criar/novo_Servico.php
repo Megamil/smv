@@ -16,7 +16,7 @@ echo form_open("criar/novo_Servico"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="input_Vazio" name="nomeservico" aria-describedby="basic-addon1" size="52" placeholder="Nome do Serviço" maxlength="100" />
+						<input type="text" class="form-control input_Vazio" name="nomeservico" aria-describedby="basic-addon1" size="52" placeholder="Nome do Serviço" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -38,15 +38,15 @@ echo form_open("criar/novo_Servico"); ?>
 
 						<?php 
 
-							foreach ($pack as $unidademedida) {
+							foreach ($pack['unidademedida'] as $unidademedida) {
 								
 								if($this->session->flashdata('unidademedida') == $unidademedida->id_unidademedida){
 
-									echo '<option selected value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->id_unidademedida.'</option>';
+									echo '<option selected value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->unidademedida.'</option>';
 								
 								} else {
 								
-									echo '<option value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->id_unidademedida.'</option>';
+									echo '<option value="'.$unidademedida->id_unidademedida.'">'.$unidademedida->unidademedida.'</option>';
 								}
 							
 							}
@@ -68,8 +68,9 @@ echo form_open("criar/novo_Servico"); ?>
 			</td>
 			<td>
 				<div class="control-group">
-					<div class="controls">
-					<input type="text" class="input_Vazio" name="valorservico" aria-describedby="basic-addon1" size="52" placeholder="Valor do Serviço" maxlength="100" />
+					<div class="controls input-group">					
+					<span class="input-group-addon" id="basic-addon1">R$: </span>
+					<input type="text" class="form-control input_Vazio" onkeypress='return SomenteNumero(event)' name="valorservico" aria-describedby="basic-addon1" size="52" placeholder="Valor do Serviço" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -91,15 +92,15 @@ echo form_open("criar/novo_Servico"); ?>
 
 						<?php 
 
-							foreach ($pack as $forcedorprestador) {
+							foreach ($pack['fornecedorprestador'] as $forcedorprestador) {
 								
-								if($this->session->flashdata('forcedorprestador') == $forcedorprestador->id_forcedorprestador){
+								if($this->session->flashdata('fornecedorprestador') == $fornecedorprestador->id_fornecedorprestador){
 
-									echo '<option selected value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->id_forcedorprestador.'</option>';
+									echo '<option selected value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->forcedorprestador.'</option>';
 								
 								} else {
 								
-									echo '<option value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->id_forcedorprestador.'</option>';
+									echo '<option value="'.$forcedorprestador->id_forcedorprestador.'">'.$forcedorprestador->forcedorprestador.'</option>';
 								}
 							
 							}

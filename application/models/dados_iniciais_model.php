@@ -155,8 +155,13 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function dotacao(){ /*Carrega a lista com todos as dotações*/
-		$pack = $this->db->get('tbl_dotacao');
-		return $pack->result();
+		$pack = array (
+
+			'dotacao' => $this->db->get('tbl_dotacao')->result(),
+			'segmento' => $this->db->get('tbl_segmento')->result()
+
+		);
+		return $pack;
 
 	}
 	/*Fim das codificações das telas de Dotação*/
@@ -253,8 +258,10 @@ class dados_iniciais_model extends CI_Model {
 
 	/*Inicio das codificações referente as telas de Serviço*/
 	public function novo_Servico(){
-		$pack = $this->db->get('tbl_servicos');
-		return $pack->result();
+		$pack = array(
+			'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
 	}
 
 	public function editar_Servico(){
@@ -262,15 +269,122 @@ class dados_iniciais_model extends CI_Model {
 		$pack = array(
 			'servico' => $this->db->query('select * from tbl_servicos where id_servicos = '.$this->session->userdata('idEditar').';'), 
 			'unidademedida' => $this->db->get('tbl_unidademedida')->result());
+		return $pack;
 
 	}
 
 	public function servicos(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = $this->db->get('tbl_servicos');
-		return $pack->result();
+		$pack = array ('servicos' => $this->db->get('tbl_servicos')->result(),
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+			'unidademedida' => $this->db->get('tbl_unidademedida')->result());
+		return $pack;
 
 	}
-	/*Fim das codificações das telas de Marcas de Itens*/
+	/*Fim das codificações das telas de Serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Fornecedor/Prestador*/
+	public function novo_Fornecedor_Prestador(){
+		$pack = array ('fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(), 
+			'uf' => $this->db->get('tbl_uf')->result(),
+			'tiposervico' => $this->db->get('tbl_tiposervico')->result());
+		return $pack;
+	}
+
+	public function editar_Fornecedor_Prestador(){
+
+		$pack = array ('fornecedor' => $this->db->query('select * from tbl_fornecedorprestador where id_fornecedorprestador = '.$this->session->userdata('idEditar').';'),
+			'uf' => $this->db->get('tbl_uf')->result(),
+			'tiposervico' => $this->db->get('tbl_tiposervico')->result());
+		return $pack;
+
+	}
+
+	public function fornecedor_Prestador(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = $this->db->get('tbl_fornecedorprestador');
+		return $pack->result();
+		
+	}
+	/*Fim das codificações das telas de Fornecedor/Prestador*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Clientes*/
+	public function novo_Cliente(){
+		$pack = array ('cliente' => $this->db->get('tbl_clientes')->result(), 
+			'uf' => $this->db->get('tbl_uf')->result(),
+			'tiposervico' => $this->db->get('tbl_tiposervico')->result());
+		return $pack;
+	}
+
+	public function editar_Cliente(){
+
+		$pack = array ('cliente' => $this->db->query('select * from tbl_clientes where id_cliente = '.$this->session->userdata('idEditar').';'),
+			'uf' => $this->db->get('tbl_uf')->result(),
+			'tiposervico' => $this->db->get('tbl_tiposervico')->result());
+		return $pack;
+
+	}
+
+	public function cliente(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = $this->db->get('tbl_clientes');
+		return $pack->result();
+		
+	}
+	/*Fim das codificações das telas de Clientes*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Colaboradores*/
+	public function novo_Colaborador(){
+		$pack = array ('colaborador' => $this->db->get('tbl_colaboradores')->result(), 
+			'setor' => $this->db->get('tbl_setor')->result());
+		return $pack;
+	}
+
+	public function editar_Colaborador(){
+
+		$pack = array ('colaborador' => $this->db->query('select * from tbl_colaboradores where id_colaborador = '.$this->session->userdata('idEditar').';'),
+				'setor' => $this->db->get('tbl_setor')->result());
+		return $pack;
+
+	}
+
+	public function colaborador(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = array ('colaborador' => $this->db->get('tbl_colaboradores')->result(), 'setor' => $this->db->get('tbl_setor')->result());
+		return $pack;
+		
+	}
+	/*Fim das codificações das telas de Colaboradores*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Veículos*/
+	public function novo_Veiculo(){
+		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
+		  //'unidadeservico' => $this->db->get('tbl_unidadesaude')->result()),
+			'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
+		return $pack;
+	}
+
+	public function editar_Veiculo(){
+
+		$pack = array ('veiculo' => $this->db->query('select * from tbl_veiculo where id_veiculo = '.$this->session->userdata('idEditar').';'),
+				//'unidadeservico' => $this->db->get('tbl_unidadeservico')->result(),
+				'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
+		return $pack;
+
+	}
+
+	public function veiculo(){ /*Carrega a lista com todos as marcas dos itens*/
+		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
+			//'unidadeservico' => $this->db->get('tbl_unidadeservico')->result()),
+			'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
+		return $pack;
+		
+	}
+	/*Fim das codificações das telas de Veículos*/
 
 }
 

@@ -13,13 +13,13 @@ echo form_open("edicoes/editando_Dotacao"); ?>
 				<div class="control-group">
 					<div class="controls">
 						<?php if($pack['dotacao']->row()->idtipodotacao == 1){
-							$check = 'checked';	
+							$checkservico = 'checked';	
 						}else{
-							$check = '';
+							$checkservico = '';
 						}
 							
 						?>
-						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $checkservico; ?>/>
 						<span class="help-inline"> Serviços</span>
 					</div>
 				</div>
@@ -31,14 +31,14 @@ echo form_open("edicoes/editando_Dotacao"); ?>
 				<div class="control-group">
 					<div class="controls">
 						<?php if($pack['dotacao']->row()->statusdotacao == 1){
-							$check = 'checked';	
+							$checkstatus = 'checked';	
 						}else{
-							$check = '';
+							$checkstatus = '';
 						}
 							
 						?>			
 
-						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $checkstatus; ?>/>
 						<span class="help-inline"> Ativo</span>
 					</div>
 				</div>
@@ -51,13 +51,13 @@ echo form_open("edicoes/editando_Dotacao"); ?>
 					<div class="controls">
 
 						<?php if($pack['dotacao']->row()->idtipodotacao == 2){
-							$check = 'checked';	
+							$checktipo1 = 'checked';	
 						}else{
-							$check = '';
+							$checktipo1 = '';
 						}
 							
 						?>
-						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="2" <?php echo $check; ?> />
+						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="2" <?php echo $checktipo1; ?> />
 						<span class="help-inline"> Peças</span>
 					</div>
 				</div>
@@ -69,13 +69,13 @@ echo form_open("edicoes/editando_Dotacao"); ?>
 				<div class="control-group">
 					<div class="controls">
 						<?php if($pack['dotacao']->row()->statusdotacao == 0){
-							$check = 'checked';	
+							$checkstatus1 = 'checked';	
 						}else{
-							$check = '';
+							$checkstatus1 = '';
 						}
 							
 						?>	
-						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="0" <?php echo $check; ?> />
+						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="0" <?php echo $checkstatus1; ?> />
 						<span class="help-inline"> Inativo</span>
 					</div>
 				</div>

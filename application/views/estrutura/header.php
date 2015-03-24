@@ -65,14 +65,17 @@
               
               <ul class="dropdown-menu">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Fornecedor/Prestador')?></li>
+                <li <?php if($ativo == 'cadastros-fornecedor_Prestador') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-fornecedor_Prestador', 'Fornecedor/Prestador')?></li>
 
                 <li <?php if($ativo == 'cadastros-servicos') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-servicos', 'Serviços')?></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Cliente')?></li>
+                <li <?php if($ativo == 'cadastros-cliente') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-cliente', 'Cliente')?></li>
+
+                <li <?php if($ativo == 'cadastros-colaborador') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-colaborador', 'Colaboradores')?></li>
 
                 <li <?php if($ativo == 'cadastros-dotacao') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-dotacao', 'Dotacao')?></li>
@@ -83,11 +86,8 @@
                 <li <?php if($ativo == 'cadastros-objeto') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-objeto', 'Objetos')?></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Veículo')?></li>
-
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Colaboradores')?></li>
+                <li <?php if($ativo == 'cadastros-veiculo') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-veiculo', 'Veículo')?></li>
 
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Unidade Utilizadora')?></li>

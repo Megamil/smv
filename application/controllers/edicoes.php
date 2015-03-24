@@ -398,6 +398,116 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editar_Fornecedor_Prestador(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Fornecedor_Prestador/'.$this->uri->segment(3)); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Fornecedor_Prestador(){
+
+		$this->form_validation->set_rules('nomefornecedorprestador','Nome','required');
+		$this->form_validation->set_rules('cepfornecedorprestador','CEP','required');
+		$this->form_validation->set_rules('ruafornecedorprestador','Rua','required');
+		$this->form_validation->set_rules('numerofornecedorprestador','Número','required');
+		$this->form_validation->set_rules('cidadefornecedorprestador','Cidade','required');
+		$this->form_validation->set_rules('uf','UF','required');
+		$this->form_validation->set_rules('tel1fornecedorprestador','Telefone','required');
+		$this->form_validation->set_rules('contatofornecedorprestador','Contato','required');
+		$this->form_validation->set_rules('emailfornecedorprestador','E-mail','required');
+		$this->form_validation->set_rules('cnpjfornecedorprestador','CNPJ','required');
+		$this->form_validation->set_rules('checkpecas','Tipo de serviço','required');
+
+		if ($this->form_validation->run()) {
+
+				if ($this->input->post('complementofornecedorprestador') != '') {
+					
+					$complemento = $this->input->post('complementofornecedorprestador');
+
+				} else {
+
+					$complemento = null;
+
+				}
+
+				if($this->input->post('tel2fornecedorprestador') != '') {
+
+					$tel2 = $this->input->post('tel2fornecedorprestador');
+
+				} else {
+
+					$tel2 = null;
+
+				}
+
+				if($this->input->post('faxfornecedorprestador') != ''){
+
+					$fax = $this->input->post('faxfornecedorprestador');
+
+				} else {
+
+					$fax = null;
+
+				}
+
+			$dados = array (
+
+				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+				'nome' => $this->input->post('nomefornecedorprestador'),
+				'cep' => $this->input->post('cepfornecedorprestador'),
+				'rua' => $this->input->post('ruafornecedorprestador'),
+				'numero' => $this->input->post('numerofornecedorprestador'),
+				'complemento' => $complemento,
+				'cidade' => $this->input->post('cidadefornecedorprestador'),
+				'uf' => $this->input->post('uf'),
+				'tel1' => $this->input->post('tel1fornecedorprestador'),
+				'tel2' => $tel2,
+				'fax' => $fax,
+				'contato' => $this->input->post('contatofornecedorprestador'),
+				'email' => $this->input->post('emailfornecedorprestador'),
+				'cnpj' => $this->input->post('cnpjfornecedorprestador'),
+				'id_tiposervico' => $this->input->post('checkpecas')
+
+			);
+
+			$this->edicao->fornecedor_Prestador_Editar($dados);
+			$this->session->set_userdata('aviso',''.$this->input->post('nomefornecedorprestador').' Editado com sucesso');
+			$this->session->set_userdata('tipo','success');
+			redirect('main/redirecionar/edicoes-editar_Fornecedor_Prestador/'.$this->input->post('id_fornecedorprestador'));
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+			redirect('main/redirecionar/edicoes-editar_Fornecedor_Prestador/'.$this->input->post('id_fornecedorprestador'));
+
+		}
+
+
+	}
+
+	public function editar_Servico(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Servico/'.$this->uri->segment(3)); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_Colaborador(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Colaborador'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_Veiculo(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Veiculo'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
 	public function editando_Objeto(){
 
 		$this->form_validation->set_rules('nomeobjetotitulo','Título do objeto','required');

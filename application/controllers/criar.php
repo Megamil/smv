@@ -335,6 +335,107 @@ class criar extends CI_Controller {
 
 	}
 
+
+	public function novo_Fornecedor_Prestador() {
+
+		$this->form_validation->set_rules('codigofornecedorprestador','Código','required');
+		$this->form_validation->set_rules('nomefornecedorprestador','Nome','required');
+		$this->form_validation->set_rules('cepfornecedorprestador','CEP','required');
+		$this->form_validation->set_rules('ruafornecedorprestador','Rua','required');
+		$this->form_validation->set_rules('numerofornecedorprestador','Número','required');
+		$this->form_validation->set_rules('cidadefornecedorprestador','Cidade','required');
+		$this->form_validation->set_rules('uf','UF','required');
+		$this->form_validation->set_rules('tel1fornecedorprestador','Telefone','required');
+		$this->form_validation->set_rules('contatofornecedorprestador','Contato','required');
+		$this->form_validation->set_rules('emailfornecedorprestador','E-mail','required');
+		$this->form_validation->set_rules('cnpjfornecedorprestador','CNPJ','required');
+		$this->form_validation->set_rules('checkpecas','Tipo de serviço','required');
+
+		if ($this->form_validation->run()) {
+
+				if ($this->input->post('complementofornecedorprestador') != '') {
+					
+					$complemento = $this->input->post('complementofornecedorprestador');
+
+				} else {
+
+					$complemento = null;
+
+				}
+
+				if($this->input->post('tel2fornecedorprestador') != '') {
+
+					$tel2 = $this->input->post('tel2fornecedorprestador');
+
+				} else {
+
+					$tel2 = null;
+
+				}
+
+				if($this->input->post('faxfornecedorprestador') != ''){
+
+					$fax = $this->input->post('faxfornecedorprestador');
+
+				} else {
+
+					$fax = null;
+
+				}
+
+			$dados = array (
+
+				'codigo' => $this->input->post('codigofornecedorprestador'),
+				'nome' => $this->input->post('nomefornecedorprestador'),
+				'cep' => $this->input->post('cepfornecedorprestador'),
+				'rua' => $this->input->post('ruafornecedorprestador'),
+				'numero' => $this->input->post('numerofornecedorprestador'),
+				'complemento' => $complemento,
+				'cidade' => $this->input->post('cidadefornecedorprestador'),
+				'uf' => $this->input->post('uf'),
+				'tel1' => $this->input->post('tel1fornecedorprestador'),
+				'tel2' => $tel2,
+				'fax' => $fax,
+				'contato' => $this->input->post('contatofornecedorprestador'),
+				'email' => $this->input->post('emailfornecedorprestador'),
+				'cnpj' => $this->input->post('cnpjfornecedorprestador'),
+				'id_tiposervico' => $this->input->post('checkpecas')
+
+			);
+
+			$this->novo->fornecedor_Prestador_Novo($dados);
+
+			$this->session->set_userdata('aviso',''.$this->input->post('nomefornecedorprestador').' Adicionado com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Fornecedor_Prestador');
+
+		} else {
+
+			$this->session->set_flashdata('codigofornecedorprestador', $this->input->post('codigofornecedorprestador'));
+			$this->session->set_flashdata('nomefornecedorprestador', $this->input->post('nomefornecedorprestador'));
+			$this->session->set_flashdata('cepfornecedorprestador', $this->input->post('cepfornecedorprestador'));
+			$this->session->set_flashdata('ruafornecedorprestador', $this->input->post('ruafornecedorprestador'));
+			$this->session->set_flashdata('numerofornecedorprestador', $this->input->post('numerofornecedorprestador'));
+			$this->session->set_flashdata('complementofornecedorprestador', $this->input->post('complementofornecedorprestador'));
+			$this->session->set_flashdata('cidadefornecedorprestador', $this->input->post('cidadefornecedorprestador'));
+			$this->session->set_flashdata('uf', $this->input->post('uf'));
+			$this->session->set_flashdata('tel1fornecedorprestador', $this->input->post('tel1fornecedorprestador'));
+			$this->session->set_flashdata('tel2fornecedorprestador', $this->input->post('tel2fornecedorprestador'));
+			$this->session->set_flashdata('faxfornecedorprestador', $this->input->post('faxfornecedorprestador'));
+			$this->session->set_flashdata('contatofornecedorprestador', $this->input->post('contatofornecedorprestador'));
+			$this->session->set_flashdata('emailfornecedorprestador', $this->input->post('emailfornecedorprestador'));
+			$this->session->set_flashdata('cnpjfornecedorprestador', $this->input->post('cnpjfornecedorprestador'));
+			$this->session->set_flashdata('checkpecas', $this->input->post('checkpecas'));
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Fornecedor_Prestador');
+		}
+
+	}
+
 }
 
 /* End of file main.php */

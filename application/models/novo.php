@@ -94,6 +94,40 @@ class novo extends CI_Model {
 
 	}
 
+	public function servico_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_servicos',$dados);
+
+	}
+
+	public function fornecedor_Prestador_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_fornecedorprestador',$dados);
+
+	}
+
+	public function cliente_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_cliente',$dados);
+
+	}
+
+	public function colaborador_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_colaboradores',$dados);
+
+	}
+
+	public function veiculo_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_veiculo',$dados);
+
+	}
 
 }
 

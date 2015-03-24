@@ -17,14 +17,32 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $servico) {
+					foreach ($pack['servicos'] as $servico) {
 						 echo "<tr>";
 						     echo "<td>$servico->id_servicos</td>";
 						     echo "<td>$servico->servico</td>";
-							 echo "<td>$servico->id_unidademedida</td>"; //substituir id pelo texto referente
-							 echo "<td>$servico->id_fornecedorprestador</td>"; //substituir id pelo texto referente
-							 echo "<td>$servico->valor</td>";
-						     echo '<td>'.anchor('edicoes/editar_Servico/'.$servico->id_servico.'','Editar').'</td>';
+							 
+
+							 foreach ($pack['unidademedida'] as $unidade) {
+							 	
+							 	if($unidade->id_unidademedida == $servico->id_unidademedida) {
+							 		echo "<td>$unidade->unidademedida</td>"; 
+							 		break;
+							 	}
+
+							 }
+
+							 foreach ($pack['fornecedorprestador'] as $fornecedor) {
+							 	
+							 	if($servico->id_fornecedorprestador == $fornecedor->id_fornecedorprestador) {
+							 		echo "<td>$fornecedor->nome</td>";
+							 		break;
+							 	}
+
+							 }
+
+							 echo "<td>$servico->valorunitario</td>";
+						     echo '<td>'.anchor('edicoes/editar_Servico/'.$servico->id_servicos.'','Editar').'</td>';
 						 echo "</tr>";
 					}
 				?>

@@ -178,6 +178,15 @@ CONSTRAINT fk_tipodotacao FOREIGN key (idtipodotacao)
 
 );
 
+Create table tbl_uf(
+  
+  id_uf serial not null,
+  uf varchar (2),
+
+  CONSTRAINT pk_uf primary key (id_uf)
+
+);
+
 CREATE TABLE tbl_servicos
 (
   id_servicos serial NOT NULL,
@@ -189,6 +198,28 @@ CREATE TABLE tbl_servicos
   CONSTRAINT fk_fornecedorprestador FOREIGN key (id_fornecedorprestador),
   CONSTRAINT fk_unidademedida FOREIGN key (id_unidademedida) REFERENCES tbl_unidademedida (id_unidademedida)
 )
+
+CREATE TABLE tbl_fornecedorprestador
+(
+  id_fornecedorprestador serial NOT NULL,
+  codigo character varying(20),
+  nome character varying(50),
+  cep character varying(9),
+  rua character varying(100),
+  numero character varying(6),
+  complemento character varying(30),
+  cidade character varying(30),
+  uf character varying(2),
+  tel1 bigint,
+  tel2 bigint,
+  fax bigint,
+  contato character varying(20),
+  email character varying(40),
+  cnpj bigint,
+  id_tiposervico smallint,
+  CONSTRAINT pk_fornecedorprestador PRIMARY KEY (id_fornecedorprestador),
+  CONSTRAINT fk_tiposervico FOREIGN KEY (id_tiposervico)
+      REFERENCES tbl_tiposervico (id_tiposervico)
 
 /*Fim SQL SMV*/
 
@@ -221,6 +252,34 @@ Insert into tbl_combustivel (id_combustivel, combustivel) values (13,'Diesel/GNV
 Insert into tbl_combustivel (id_combustivel, combustivel) values (14,'GNV');
 Insert into tbl_combustivel (id_combustivel, combustivel) values (15,'Gasolina/Alcool');
 Insert into tbl_combustivel (id_combustivel, combustivel) values (16,'Gasolina/Eletrico');
+
+/* Tabela UF inserts*/
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('');
   
 /*Tabela tbl_unidademedida dados */
 Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (1,'mg');
@@ -370,6 +429,22 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('servicos', 
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Servico', 'Criar novo Serviço.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Servico', 'Editar Serviço.');
 
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('fornecedor_Prestador', 'Lista dos Fornecedores e/ou Prestadores.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Fornecedor_Prestador', 'Criar novo Fornecedor/Prstador.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Fornecedor_Prestador', 'Editar Fornecedor/Prestador.');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('cliente', 'Lista dos Clientes.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Cliente', 'Criar novo Cliente.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Cliente', 'Editar Cliente');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('colaborador', 'Lista dos Colaboradores.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Colaborador', 'Criar novo Colaborador.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Colaborador', 'Editar Colaborador');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('veiculo', 'Lista dos Veículos.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Veiculo', 'Criar novo Veículo.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Veiculo', 'Editar Veículo');
+
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -415,6 +490,18 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,37);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,38);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,39);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,40);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,41);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,42);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,43);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,44);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,45);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,46);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,47);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,48);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,49);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,50);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,51);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,52);
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);
