@@ -16,7 +16,7 @@
 	
 	<p class="nome">Sistema de Manutenção de Veículos</p>
 
-	<p class="versao">Versão Beta V 0.1</p>
+	<p class="versao">Versão Beta V 0.4</p>
 	<p class="navegador">Recomendado utilizar o navegador <a href="http://www.google.com.br/chrome/browser/desktop/">CHROME</a>
 	<img src="<?php echo base_url(); ?>style/img/chrome.ico" width=20 height=20></p>
 

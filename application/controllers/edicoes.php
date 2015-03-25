@@ -494,10 +494,111 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Servico(){
+
+		$this->form_validation->set_rules('nomeservico','Serviço','required');
+		$this->form_validation->set_rules('unidademedida','Unidade de medida','required');
+		$this->form_validation->set_rules('valorservico','Valor','required');
+		$this->form_validation->set_rules('fornecedorprestador','Fornecedor / Prestador','required');
+
+		if($this->form_validation->run()) {
+
+
+			if($this->input->post('fornecedorprestador') == 'Selecione...' || $this->input->post('unidademedida') == 'Selecione...') {
+
+			$this->session->set_userdata('aviso','Selecione um Prestador de serviço e uma unidade de medida.');
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Servico');
+
+			}
+
+			$dados = array (
+				
+				'id_servicos' => $this->input->post('id_servicos'),
+				'servico' => $this->input->post('nomeservico'),
+				'valorunitario' => $this->input->post('valorservico'),
+				'id_fornecedorprestador' => $this->input->post('fornecedorprestador'),
+				'id_unidademedida' => $this->input->post('unidademedida')
+
+				);
+
+			$this->edicao->servicos($dados);
+
+			$this->session->set_userdata('aviso','Serviço: '.$this->input->post('nomeservico').' Alterado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Servico');
+
+
+		} else {
+
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Servico');
+
+		}
+
+
+	}
+
 	public function editar_Colaborador(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
 		redirect('main/redirecionar/edicoes-editar_Colaborador'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Colaborador() {
+
+		$this->form_validation->set_rules('codigocolaborador','Código','required');
+		$this->form_validation->set_rules('nomecolaborador','Nome','required');
+		$this->form_validation->set_rules('cpfcolaborador','CPF','required');
+		$this->form_validation->set_rules('emailcolaborador','E-mail','required');
+		$this->form_validation->set_rules('telefonecolaborador','Telefone','required');
+		$this->form_validation->set_rules('celularcolaborador','Celular','required');
+		$this->form_validation->set_rules('funcaocolaborador','Fundação','required');
+
+		if($this->form_validation->run()) {
+
+			if($this->input->post('setor') == 'Selecione...') {
+
+			$this->session->set_userdata('aviso','O campo Setor é obrigatório.');
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Colaborador');
+
+			}
+
+			$dados = array(
+				'id_colaborador' => $this->input->post('id_colaborador'),
+				'codigofuncional' => $this->input->post('codigocolaborador'),
+				'nome' => $this->input->post('nomecolaborador'),
+				'cpf' => $this->input->post('cpfcolaborador'),
+				'email' => $this->input->post('emailcolaborador'),
+				'telefone' => $this->input->post('telefonecolaborador'),
+				'celular' => $this->input->post('celularcolaborador'),
+				'funcaocargo' => $this->input->post('funcaocolaborador'),
+				'id_setor' => $this->input->post('setor')
+				);
+
+			$this->edicao->colaborador($dados);
+
+			$this->session->set_userdata('aviso','Colaborador: '.$this->input->post('nomecolaborador').' Alterado com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Colaborador');
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Colaborador');
+
+		}
 
 	}
 

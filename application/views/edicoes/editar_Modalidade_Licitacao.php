@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Editar Modalidade Licitatória"); 
-echo form_open("edicoes/editando_Modalidade"); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Modalidade",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<div class="input-group">

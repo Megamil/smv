@@ -1,5 +1,6 @@
-<?php echo form_fieldset("Novo Setor"); 
-echo form_open("criar/novo_Setor"); ?>
+<?php echo form_fieldset("Novo Setor");
+$form = array('name' => 'form');
+echo form_open("criar/novo_Setor",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">

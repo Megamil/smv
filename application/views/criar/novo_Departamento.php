@@ -1,4 +1,5 @@
-<?php echo form_fieldset("Novo Departamento"); 
+<?php echo form_fieldset("Novo Departamento");
+$form = array('name' => 'form'); 
 echo form_open("criar/novo_Departamento"); ?>
 
 	<div class="erro_Campo_Vazio" ></div>

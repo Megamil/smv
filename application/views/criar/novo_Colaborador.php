@@ -1,6 +1,6 @@
 <?php echo form_fieldset("Novo Colaborador"); 
-$name = array('name' => 'novo'); /*Requerido para indicar de qual formulário é campo E-mail e Usuário no onblur*/
-echo form_open("criar/novo_Colaborador",$name); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/novo_Colaborador",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0" width="70%">
@@ -17,7 +17,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="codigocolaborador" value="<?php echo $this->session->flashdata('codigocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Codigo" maxlength="40" />
+						<input type="text" class="form-control input_Vazio" name="codigocolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('codigocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Codigo" maxlength="40" />
 					</div>
 				</div>
 			</td>
@@ -49,7 +49,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cpfcolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('cpfcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="CPF" maxlength="8" />
+					<input type="text" class="form-control input_Vazio" name="cpfcolaborador" id="cpfValidar" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('cpfcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="CPF" maxlength="11" />
 					</div>
 				</div>
 			</td>
@@ -64,7 +64,8 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td  colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" name="emailcolaborador" value="<?php echo $this->session->flashdata('emailcolaborador'); ?>" aria-describedby="basic-addon1" size="100" placeholder="E-mail" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" name="emailcolaborador" onblur="validacaoEmail(form.emailcolaborador)" value="<?php echo $this->session->flashdata('emailcolaborador'); ?>" aria-describedby="basic-addon1" size="100" placeholder="E-mail" maxlength="100" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
 			</td>
@@ -81,7 +82,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="telefonecolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('telefonecolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="6" />
+					<input type="text" class="form-control input_Vazio telefoneValidar" name="telefonecolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('telefonecolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="6" />
 					</div>
 				</div>
 			</td>
@@ -96,7 +97,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="celularcolaborador" value="<?php echo $this->session->flashdata('celularcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Celular" maxlength="30" />
+					<input type="text" class="form-control input_Vazio telefoneValidar" name="celularcolaborador" value="<?php echo $this->session->flashdata('celularcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Celular" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -130,7 +131,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 					<div class="controls">
 
 
-					<select class="form-control" name="setor" value="<?php echo $this->session->flashdata('setor'); ?>">
+					<select class="form-control input_Vazio" name="setor" value="<?php echo $this->session->flashdata('setor'); ?>" placeholder="Setor">
 
 						<option>Selecione...</option>
 

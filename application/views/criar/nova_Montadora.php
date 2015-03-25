@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Nova Montadora"); 
-echo form_open("criar/nova_Montadora"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/nova_Montadora",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<div class="input-group">

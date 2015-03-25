@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Editar Setor"); 
-echo form_open("edicoes/editando_Setor"); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Setor",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 

@@ -6,6 +6,7 @@
 		<thead> 
 			<tr>
 				<th class="span3">ID</th>
+				<th class="span3">Código Depto.</th>
 				<th class="span2">Departamento</th>
 				<th class="span2">Alterar</th>
 			</tr>
@@ -17,6 +18,7 @@
 					foreach ($pack as $departamento) {
 						 echo "<tr>";
 						     echo "<td>$departamento->id_depto</td>";
+						     echo "<td>$departamento->coddepto</td>";
 						     echo "<td>$departamento->depto</td>";
 						     echo '<td>'.anchor('edicoes/editar_Departamento/'.$departamento->id_depto.'','Editar').'</td>';
 						 echo "</tr>";

@@ -1,9 +1,8 @@
 <?php echo form_fieldset("Novo Fornecedor/Prestador"); 
-$name = array('name' => 'novo'); /*Requerido para indicar de qual formulário é campo E-mail e Usuário no onblur*/
-echo form_open("criar/novo_Fornecedor_Prestador",$name); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/novo_Fornecedor_Prestador",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
-	<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 	<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
 		<tbody>
@@ -131,7 +130,7 @@ echo form_open("criar/novo_Fornecedor_Prestador",$name); ?>
 					<div class="controls">
 
 
-					<select class="form-control" name="uf" value="<?php echo $this->session->flashdata('uf'); ?>">
+					<select class="form-control input_Vazio" name="uf" placeholder="UF" value="<?php echo $this->session->flashdata('uf'); ?>">
 
 						<option>Selecione...</option>
 
@@ -232,7 +231,8 @@ echo form_open("criar/novo_Fornecedor_Prestador",$name); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" name="emailfornecedorprestador" onblur="validacaoEmail(novo.emailfornecedorprestador)" value="<?php echo $this->session->flashdata('emailfornecedorprestador'); ?>" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<input type="email" class="form-control input_Vazio" name="emailfornecedorprestador" onblur="validacaoEmail(form.emailfornecedorprestador)" value="<?php echo $this->session->flashdata('emailfornecedorprestador'); ?>" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
 			</td>

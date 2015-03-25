@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Editar Grupo de Itens"); 
-echo form_open("edicoes/editando_Grupo_Itens"); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Grupo_Itens",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<?php echo form_hidden('id_grupoitens', $pack->row()->id_grupoitens); ?>

@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Novo Cliente"); 
-echo form_open("criar/novo_Cliente"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/novo_Cliente",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">
@@ -47,7 +48,7 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cepcliente" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
+					<input type="text" class="form-control input_Vazio" id="cepValidar" name="cepcliente" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
 					</div>
 				</div>
 			</td>
@@ -97,7 +98,7 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="complementocliente" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
+					<input type="text" class="form-control" name="complementocliente" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -129,7 +130,7 @@ echo form_open("criar/novo_Cliente"); ?>
 					<div class="controls">
 
 
-					<select class="form-control" name="uf">
+					<select class="form-control input_Vazio" name="uf" placeholder="UF">
 
 						<option>Selecione...</option>
 
@@ -168,7 +169,7 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="tel1cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control input_Vazio telefoneValidar " name="tel1cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -183,7 +184,7 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="tel2cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" name="tel2cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -198,7 +199,7 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="faxcliente" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" name="faxcliente" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -230,7 +231,8 @@ echo form_open("criar/novo_Cliente"); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" name="emailcliente" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<input type="email" class="form-control input_Vazio" onblur="validacaoEmail(form.emailcliente)" name="emailcliente" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
 			</tr>
@@ -241,7 +243,7 @@ echo form_open("criar/novo_Cliente"); ?>
 
 	
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Criar Cliente', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoCliente'),'Criar Cliente', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-cliente', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

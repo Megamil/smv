@@ -46,81 +46,69 @@ function numero(e){
 
 $(document).ready(function(){
 
+	//Cria as mascaras para os campos logo de inicio
+	$('.telefoneValidar').mask("(?99)9999-99999");
+	$('#cnpjValidar').mask("?99.999.999/9999-99");
+	$('#cpfValidar').mask("?999.999.999-99");
+	$('#cepValidar').mask("?99999-999");
+
+
+	//Verifica um campo input assim que perde o foco
 	$('.input_Vazio').focusout(function(){
 
-		if($('.input_Vazio').val() == '') {
-
-			$('#error').remove();
-
-			var ph = $('.input_Vazio').attr('placeholder');  
-
-			$('.erro_Campo_Vazio').addClass("alert alert-danger")
-			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
-
-		} else {
-
-			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
-			$('#error').remove();
-
-		}
-
-	});
-
-	$('.textarea_Vazio').focusout(function(){
-
-		if($('.textarea_Vazio').val() == '') {
-
-			$('#error').remove();
-
-			var ph = $('.textarea_Vazio').attr('placeholder');  
-
-			$('.erro_Campo_Vazio').addClass("alert alert-danger")
-			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
-
-		} else {
-
-			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
-			$('#error').remove();
-
-		}
-
-	});
-
-$('#validar_Enviar').click(function(){
-
-	if($('.input_Vazio').val() == '') {
-
-			$('#error').remove();
-
-			var ph = $('.input_Vazio').attr('placeholder');  
-			$('.erro_Campo_Vazio').addClass("alert alert-danger")
-			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
-			return false;
-
-		} else {
-			
+			//Antes de validar retira as mascaras dos campos
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("?99999999999999");
 			$('#cepValidar').mask("?99999999");
-			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
-			$('#error').remove();
+			$('#cpfValidar').mask("?99999999999");
 
-		}
-
-		if($('.textarea_Vazio').val().length == 0) {
+		if($(this).val() == '') {
 
 			$('#error').remove();
+			$(this).css('border','1px solid red');
 
-			var ph = $('.textarea_Vazio').attr('placeholder');
+			var ph = $(this).attr('placeholder');  
+
 			$('.erro_Campo_Vazio').addClass("alert alert-danger")
 			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
-			return false;
+
+			//Retorna as mascaras.
+			$('.telefoneValidar').mask("(?99)9999-99999");
+			$('#cnpjValidar').mask("?99.999.999/9999-99");
+			$('#cpfValidar').mask("?999.999.999-99");
+			$('#cepValidar').mask("?99999-999");
+
 
 		} else {
 
-			$('.telefoneValidar').mask("99999999999?9");
-			$('#cnpjValidar').mask("99999999999999");
-			$('#cepValidar').mask("99999999");
+			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+			$(this).css('border','1px solid green');
+			$('#error').remove();
+
+			//Retorna as mascaras.
+			$('.telefoneValidar').mask("(?99)9999-99999");
+			$('#cnpjValidar').mask("?99.999.999/9999-99");
+			$('#cpfValidar').mask("?999.999.999-99");
+			$('#cepValidar').mask("?99999-999");
+
+		}
+
+	});
+	
+	//Verifica um campo text area assim que perde o foco
+	$('.textarea_Vazio').focusout(function(){
+
+		if($(this).val() == '') {
+
+			$('#error').remove();
+
+			var ph = $(this).attr('placeholder');  
+
+			$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+		} else {
+
 			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 			$('#error').remove();
 
@@ -128,8 +116,49 @@ $('#validar_Enviar').click(function(){
 
 	});
 
-	$('.telefoneValidar').mask("(?99)9999-99999");
-	$('#cnpjValidar').mask("?99.999.999/9999-99");
-	$('#cepValidar').mask("?99999-999");
+		$('#validar_Enviar').click(function(e){
+			
+			e.preventDefault();
+			var erros = 0;
+			
+			//Antes de validar retira as mascaras dos campos
+			$('.telefoneValidar').mask("?999999999999");
+			$('#cnpjValidar').mask("?99999999999999");
+			$('#cepValidar').mask("?99999999");
+			$('#cpfValidar').mask("?99999999999");
+			
+			//Percorre todos inputs com essa classe
+			$(".input_Vazio").each(function(){
 
-});
+				if($(this).val() == "" || $(this).val() == "Selecione...") {
+
+					erros++;
+
+					$('#error').remove();
+					var ph = $(this).attr('placeholder'); 
+					$('.erro_Campo_Vazio').addClass("alert alert-danger")
+					.append('<p id="error">Você deixou o campo: '+ph+' em branco.</p>');
+					//Volta as mascaras aos campo
+					$('.telefoneValidar').mask("(?99)9999-99999");
+					$('#cnpjValidar').mask("?99.999.999/9999-99");
+					$('#cpfValidar').mask("?999.999.999-99");
+					$('#cepValidar').mask("?99999-999");
+
+					return false;
+
+				}
+				
+			}); //Fecha o percorre input
+
+				if(erros == 0) {
+
+					$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+					$('#error').remove();
+					$("form").submit();
+
+			}
+
+
+	}); //Fecha o validar enviar
+
+}); //Fecha o document ready

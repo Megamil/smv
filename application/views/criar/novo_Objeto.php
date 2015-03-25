@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Novo Objeto"); 
-echo form_open("criar/novo_Objeto"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/novo_Objeto",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">

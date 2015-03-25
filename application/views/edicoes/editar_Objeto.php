@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Editar Objeto"); 
-echo form_open("edicoes/editando_Objeto"); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Objeto",$form); ?>
 
 	<?php echo form_hidden('id_objeto', $pack->row()->id_objeto); ?>
 

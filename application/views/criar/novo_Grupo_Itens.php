@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Novo Grupo de Itens"); 
-echo form_open("criar/novo_Grupo_Itens"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/novo_Grupo_Itens",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">

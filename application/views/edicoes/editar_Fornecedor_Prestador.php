@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Editar Fornecedor/Prestador"); 
-echo form_open("edicoes/editando_Fornecedor_Prestador"); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Fornecedor_Prestador",$form); ?>
 
 	<?php echo form_hidden('id_fornecedorprestador', $pack['fornecedor']->row()->id_fornecedorprestador); ?>
 
@@ -132,7 +133,7 @@ echo form_open("edicoes/editando_Fornecedor_Prestador"); ?>
 					<div class="controls">
 
 
-					<select class="form-control" name="uf">
+					<select class="form-control input_Vazio" name="uf" placeholder="UF">
 
 						<option>Selecione...</option>
 
@@ -234,6 +235,7 @@ echo form_open("edicoes/editando_Fornecedor_Prestador"); ?>
 				<div class="control-group">
 					<div class="controls">
 					<input type="email" class="form-control input_Vazio" name="emailfornecedorprestador" onblur="validacaoEmail(novo.emailfornecedorprestador)" value="<?php echo $pack['fornecedor']->row()->email; ?>" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
 			</td>

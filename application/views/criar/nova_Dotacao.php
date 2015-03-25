@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Nova Dotação"); 
-echo form_open("criar/nova_Dotacao"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/nova_Dotacao",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">
@@ -99,7 +100,7 @@ echo form_open("criar/nova_Dotacao"); ?>
 				<div class="input-group"  width="200px">
 					<span class="input-group-addon" id="basic-addon1">Segmento</span>
 
-					<select class="form-control" name="segmento">
+					<select class="form-control input_Vazio" name="segmento" placeholder="Segmento">
 
 						<option>Selecione...</option>
 

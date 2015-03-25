@@ -1,10 +1,10 @@
 <?php echo form_fieldset("Editar Colaborador"); 
-$name = array('name' => 'novo'); /*Requerido para indicar de qual formulário é campo E-mail e Usuário no onblur*/
-echo form_open("criar/novo_Colaborador",$name); ?>
+$form = array('name' => 'form');
+echo form_open("edicoes/editando_Colaborador",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 
-			<?php echo form_hidden('id_colaborador',$pack['colaborador']->row()->id_colaborador); ?>
+	<?php echo form_hidden('id_colaborador',$pack['colaborador']->row()->id_colaborador); ?>
 
 	<table border="0" width="70%">
 		<thead align="left"><span id="basic-addon1"></span></thead>
@@ -20,7 +20,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="codigocolaborador" value="<?php echo $this->session->flashdata('codigocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Codigo" maxlength="40" />
+						<input type="text" class="form-control input_Vazio" name="codigocolaborador" onkeypress='return numero(event)' value="<?php echo $pack['colaborador']->row()->codigofuncional; ?>" aria-describedby="basic-addon1" size="52" placeholder="Codigo" maxlength="40" />
 					</div>
 				</div>
 			</td>
@@ -35,7 +35,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="nomecolaborador" value="<?php echo $this->session->flashdata('nomecolaborador'); ?>" aria-describedby="basic-addon1" size="85" placeholder="Nome do Colaborador" maxlength="100" />
+						<input type="text" class="form-control input_Vazio" name="nomecolaborador" value="<?php echo $pack['colaborador']->row()->nome; ?>" aria-describedby="basic-addon1" size="85" placeholder="Nome do Colaborador" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -52,7 +52,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cpfcolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('cpfcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="CPF" maxlength="8" />
+					<input type="text" class="form-control input_Vazio" name="cpfcolaborador" id="cpfValidar" onkeypress='return numero(event)' value="<?php echo $pack['colaborador']->row()->cpf; ?>" aria-describedby="basic-addon1" size="52" placeholder="CPF" maxlength="11" />
 					</div>
 				</div>
 			</td>
@@ -67,7 +67,8 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td  colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" name="emailcolaborador" value="<?php echo $this->session->flashdata('emailcolaborador'); ?>" aria-describedby="basic-addon1" size="100" placeholder="E-mail" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" name="emailcolaborador" onblur="validacaoEmail(form.emailcolaborador)" value="<?php echo $pack['colaborador']->row()->email; ?>" aria-describedby="basic-addon1" size="100" placeholder="E-mail" maxlength="100" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
 			</td>
@@ -84,7 +85,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="telefonecolaborador" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('telefonecolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="6" />
+					<input type="text" class="form-control input_Vazio telefoneValidar" name="telefonecolaborador" onkeypress='return numero(event)' value="<?php echo $pack['colaborador']->row()->telefone; ?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="6" />
 					</div>
 				</div>
 			</td>
@@ -99,7 +100,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="celularcolaborador" value="<?php echo $this->session->flashdata('celularcolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Celular" maxlength="30" />
+					<input type="text" class="form-control input_Vazio telefoneValidar" name="celularcolaborador" value="<?php echo $pack['colaborador']->row()->celular; ?>" aria-describedby="basic-addon1" size="52" placeholder="Celular" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -116,7 +117,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="funcaocolaborador" value="<?php echo $this->session->flashdata('funcaocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" name="funcaocolaborador" value="<?php echo $pack['colaborador']->row()->funcaocargo; ?>" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -133,7 +134,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 					<div class="controls">
 
 
-					<select class="form-control" name="setor" value="<?php echo $this->session->flashdata('setor'); ?>">
+					<select class="form-control input_Vazio" name="setor" value="<?php echo $pack['colaborador']->row()->id_setor; ?>" placeholder="Setor">
 
 						<option>Selecione...</option>
 
@@ -141,7 +142,7 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 
 							foreach ($pack['setor'] as $setor) {
 								
-								if($this->session->flashdata('setor') == $setor->id_setor){
+								if($pack['colaborador']->row()->id_setor == $setor->id_setor){
 
 									echo '<option selected value="'.$setor->id_setor.'">'.$setor->setor.'</option>';
 								
@@ -164,8 +165,6 @@ echo form_open("criar/novo_Colaborador",$name); ?>
 		</tbody>
 	</table>
 
-
-	
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Colaborador', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-colaborador', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

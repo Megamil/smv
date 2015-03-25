@@ -268,6 +268,7 @@ class dados_iniciais_model extends CI_Model {
 
 		$pack = array(
 			'servico' => $this->db->query('select * from tbl_servicos where id_servicos = '.$this->session->userdata('idEditar').';'), 
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 			'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
 
@@ -363,15 +364,15 @@ class dados_iniciais_model extends CI_Model {
 	/*Inicio das codificações referente as telas de Veículos*/
 	public function novo_Veiculo(){
 		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
-		  //'unidadeservico' => $this->db->get('tbl_unidadesaude')->result()),
-			'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
 	}
 
 	public function editar_Veiculo(){
 
 		$pack = array ('veiculo' => $this->db->query('select * from tbl_veiculo where id_veiculo = '.$this->session->userdata('idEditar').';'),
-				//'unidadeservico' => $this->db->get('tbl_unidadeservico')->result(),
+				'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 				'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
 
@@ -379,7 +380,7 @@ class dados_iniciais_model extends CI_Model {
 
 	public function veiculo(){ /*Carrega a lista com todos as marcas dos itens*/
 		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
-			//'unidadeservico' => $this->db->get('tbl_unidadeservico')->result()),
+			'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 			'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
 		

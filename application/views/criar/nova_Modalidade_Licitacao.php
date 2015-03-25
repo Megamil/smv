@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Nova Modalidade Licitatória"); 
-echo form_open("criar/nova_Modalidade_Licitatoria"); ?>
+$form = array('name' => 'form'); 
+echo form_open("criar/nova_Modalidade_Licitatoria",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<div class="input-group">

@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Nova Marca de Itens"); 
-echo form_open("criar/nova_Marca_Itens"); ?>
+$form = array('name' => 'form');
+echo form_open("criar/nova_Marca_Itens",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 

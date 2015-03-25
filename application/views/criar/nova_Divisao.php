@@ -1,5 +1,6 @@
 <?php echo form_fieldset("Nova Divisão"); 
-echo form_open("criar/nova_Divisao"); ?>
+$form = array('name' => 'form');
+echo form_open("criar/nova_Divisao",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<div class="input-group">

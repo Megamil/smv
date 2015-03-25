@@ -215,7 +215,7 @@
                 <?php echo anchor('main/redirecionar/adicionar-departamento', 'Departamento')?></li>
 
                 <li <?php if($ativo == 'adicionar-modalidade_Licitacao') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/adicionar-modalidade_Licitacao', 'Modalidade de Licitacao')?></li>
+                <?php echo anchor('main/redirecionar/adicionar-modalidade_Licitacao', 'Modalidade de Licitação')?></li>
 
               </ul>
 
