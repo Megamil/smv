@@ -1,4 +1,4 @@
-<?php echo form_fieldset("Novo Servço"); 
+<?php echo form_fieldset("Novo Serviço"); 
 $form = array('name' => 'form'); 
 echo form_open("criar/novo_Servico",$form); ?>
 

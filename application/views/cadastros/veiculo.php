@@ -22,7 +22,7 @@
 
 						echo "<tr>";
 						echo "<td>$veiculo->id_veiculo</td>";
-						echo "<td>$veiculor->prefixo</td>";
+						echo "<td>$veiculo->prefixo</td>";
 						echo "<td>$veiculo->modelo</td>";
 						echo "<td>$veiculo->marca</td>";
 						echo "<td>$veiculo->placa</td>";

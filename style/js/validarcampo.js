@@ -13,10 +13,14 @@ function validacaoEmail(field) {
 	    (dominio.indexOf(".") >=1)&& 
 	    (dominio.lastIndexOf(".") < dominio.length - 1)) {
 		document.getElementById("msgemail").innerHTML=""
+		$(field).css('border','1px solid green');
+		$(this).css('background','rgba(0,100,0,0.1)');
 	}
 	else{
 
 		document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido</font>";
+		$(field).css('border','1px solid red');
+		$(this).css('background','rgba(100,0,0,0.1)');
 	}
 
 }
@@ -31,7 +35,7 @@ function SomenteNumero(e){
 }
 
 /*Somente números sem virgulas ou pontos*/
-function numero(e){
+function Numero(e){
 
     var tecla=(window.event)?event.keyCode:e.which;   
 
@@ -47,10 +51,12 @@ function numero(e){
 $(document).ready(function(){
 
 	//Cria as mascaras para os campos logo de inicio
-	$('.telefoneValidar').mask("(?99)9999-99999");
+	$('.telefoneValidar').mask("(?99)?99999-9999");
 	$('#cnpjValidar').mask("?99.999.999/9999-99");
 	$('#cpfValidar').mask("?999.999.999-99");
 	$('#cepValidar').mask("?99999-999");
+	$('.cepValidar').mask("?99999-999");
+	$('#placaValidar').mask("?aaa-9999");
 
 
 	//Verifica um campo input assim que perde o foco
@@ -60,12 +66,15 @@ $(document).ready(function(){
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("?99999999999999");
 			$('#cepValidar').mask("?99999999");
+			$('.cepValidar').mask("?99999999");
 			$('#cpfValidar').mask("?99999999999");
+			$('#placaValidar').mask("?aaa9999");
 
-		if($(this).val() == '') {
+		if($(this).val() == '' || $(this).val() == "Selecione...") {
 
 			$('#error').remove();
 			$(this).css('border','1px solid red');
+			$(this).css('background','rgba(100,0,0,0.1)');
 
 			var ph = $(this).attr('placeholder');  
 
@@ -73,23 +82,28 @@ $(document).ready(function(){
 			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 
 			//Retorna as mascaras.
-			$('.telefoneValidar').mask("(?99)9999-99999");
+			$('.telefoneValidar').mask("(?99)?99999-9999");
 			$('#cnpjValidar').mask("?99.999.999/9999-99");
 			$('#cpfValidar').mask("?999.999.999-99");
 			$('#cepValidar').mask("?99999-999");
+			$('.cepValidar').mask("?99999-999");
+			$('#placaValidar').mask("?aaa-9999");
 
 
 		} else {
 
 			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 			$(this).css('border','1px solid green');
+			$(this).css('background','rgba(0,100,0,0.1)');
 			$('#error').remove();
 
 			//Retorna as mascaras.
-			$('.telefoneValidar').mask("(?99)9999-99999");
+			$('.telefoneValidar').mask("(?99)?99999-9999");
 			$('#cnpjValidar').mask("?99.999.999/9999-99");
 			$('#cpfValidar').mask("?999.999.999-99");
 			$('#cepValidar').mask("?99999-999");
+			$('.cepValidar').mask("?99999-999");
+			$('#placaValidar').mask("?aaa-9999");
 
 		}
 
@@ -101,7 +115,8 @@ $(document).ready(function(){
 		if($(this).val() == '') {
 
 			$('#error').remove();
-
+			$(this).css('border','1px solid red');
+			$(this).css('background','rgba(100,0,0,0.1)');
 			var ph = $(this).attr('placeholder');  
 
 			$('.erro_Campo_Vazio').addClass("alert alert-danger")
@@ -109,6 +124,8 @@ $(document).ready(function(){
 
 		} else {
 
+			$(this).css('border','1px solid green');
+			$(this).css('background','rgba(0,100,0,0.1)');
 			$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 			$('#error').remove();
 
@@ -125,7 +142,9 @@ $(document).ready(function(){
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("?99999999999999");
 			$('#cepValidar').mask("?99999999");
+			$('.cepValidar').mask("?99999999");
 			$('#cpfValidar').mask("?99999999999");
+			$('#placaValidar').mask("?aaa9999");
 			
 			//Percorre todos inputs com essa classe
 			$(".input_Vazio").each(function(){
@@ -138,11 +157,17 @@ $(document).ready(function(){
 					var ph = $(this).attr('placeholder'); 
 					$('.erro_Campo_Vazio').addClass("alert alert-danger")
 					.append('<p id="error">Você deixou o campo: '+ph+' em branco.</p>');
+
+					$(this).css('border','1px solid red');
+					$(this).css('background','rgba(100,0,0,0.1)');
+
 					//Volta as mascaras aos campo
-					$('.telefoneValidar').mask("(?99)9999-99999");
+					$('.telefoneValidar').mask("(?99)?99999-9999");
 					$('#cnpjValidar').mask("?99.999.999/9999-99");
 					$('#cpfValidar').mask("?999.999.999-99");
 					$('#cepValidar').mask("?99999-999");
+					$('.cepValidar').mask("?99999-999");
+					$('#placaValidar').mask("?aaa-9999");
 
 					return false;
 

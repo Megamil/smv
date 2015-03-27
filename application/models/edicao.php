@@ -1,4 +1,3 @@
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class edicao extends CI_Model {
@@ -84,7 +83,7 @@ class edicao extends CI_Model {
 
 	}
 
-	public function servicos($dados = null)
+	public function servicos_Editar($dados = null)
 	{
 
 		$this->db->where('id_servicos',$dados["id_servicos"]);
@@ -100,25 +99,39 @@ class edicao extends CI_Model {
 
 	}
 
-	public function cliente($dados = null)
+	public function cliente_Editar($dados = null)
 	{
 
 		$this->db->where('id_cliente',$dados["id_cliente"]);
-		return $this->db->update('tbl_cliente',$dados);
+		return $this->db->update('tbl_clientes',$dados);
 	}
 
-	public function colaborador($dados = null)
+	public function colaborador_Editar($dados = null)
 	{
 
 		$this->db->where('id_colaborador',$dados["id_colaborador"]);
 		return $this->db->update('tbl_colaboradores',$dados);
 	}
 
-		public function veiculo($dados = null)
+		public function veiculo_Editar($dados = null)
 	{
 
 		$this->db->where('id_veiculo',$dados["id_veiculo"]);
 		return $this->db->update('tbl_veiculo',$dados);
+	}
+
+	public function unidade_Utilizadora_Editar($dados = null)
+	{
+
+		$this->db->where('id_unidadeutilizadora',$dados["id_unidadeutilizadora"]);
+		return $this->db->update('tbl_unidadeutilizadora',$dados);
+	}
+
+	public function solicita_Ordem_Servico_Editar($dados = null)
+	{
+
+		$this->db->where('id_solicitaordemservico',$dados["id_solicitaordemservico"]);
+		return $this->db->update('tbl_solicitaordemservico',$dados);
 	}
 
 }

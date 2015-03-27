@@ -112,7 +112,8 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('divisao' => $this->input->post('nome'));
+			$nome = array('divisao' => $this->input->post('nome'), 
+				'coddivisao' => $this->input->post('coddivisao'));
 
 			if($this->novo->divisao_Nova($nome)) {
 
@@ -145,7 +146,12 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('secao' => $this->input->post('nome'));
+			$nome = array(
+
+					'secao' => $this->input->post('nome'),
+					'codsecao' => $this->input->post('codsecao')
+
+				);
 
 			if($this->novo->secao_Nova($nome)) {
 
@@ -161,6 +167,7 @@ class criar extends CI_Controller {
 
 				redirect('main/redirecionar/criar-nova_Secao');
 			}
+
 		} else {
 
 				$this->session->set_userdata('aviso',validation_errors());
@@ -178,7 +185,8 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('depto' => $this->input->post('nome'));
+			$nome = array('depto' => $this->input->post('nome'), 
+				'coddepto' => $this->input->post('coddepto'));
 
 			if($this->novo->departamento_Novo($nome)) {
 
@@ -329,7 +337,12 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array ('setor' => $this->input->post('nome'));
+			$dados = array (
+
+				'setor' => $this->input->post('nome'), 
+				'codsetor' => $this->input->post('codsetor')
+
+				);
 
 			$this->novo->setor_Novo($dados);
 
@@ -557,6 +570,180 @@ class criar extends CI_Controller {
 			$this->session->set_userdata('tipo','danger');
 
 			redirect('main/redirecionar/criar-novo_Fornecedor_Prestador');
+		}
+
+	}
+
+public function novo_Cliente() {
+
+	$this->form_validation->set_rules('nomecliente','Nome','is_unique[tbl_clientes.nome]');
+
+	if($this->form_validation->run()){
+
+			if ($this->input->post('complementocliente') != '') {
+				
+				$complemento = $this->input->post('complementocliente');
+
+			} else {
+
+				$complemento = null;
+
+			}
+
+			if($this->input->post('tel2cliente') != '') {
+
+				$tel2 = $this->input->post('tel2cliente');
+
+			} else {
+
+				$tel2 = null;
+
+			}
+
+			if($this->input->post('faxcliente') != ''){
+
+				$fax = $this->input->post('faxcliente');
+
+			} else {
+
+				$fax = null;
+
+			}
+
+		$dados = array (
+
+			'codigo' => $this->input->post('codigocliente'),
+			'nome' => $this->input->post('nomecliente'),
+			'cep' => $this->input->post('cepcliente'),
+			'rua' => $this->input->post('ruacliente'),
+			'numero' => $this->input->post('numeroclienter'),
+			'complemento' => $complemento,
+			'cidade' => $this->input->post('cidadecliente'),
+			'uf' => $this->input->post('uf'),
+			'telramal1' => $this->input->post('tel1cliente'),
+			'telramal2' => $tel2,
+			'fax' => $fax,
+			'contato' => $this->input->post('contatocliente'),
+			'email' => $this->input->post('emailcliente')
+
+		);
+
+			$this->novo->cliente_Novo($dados);
+
+			$this->session->set_userdata('aviso','Cliente: '.$this->input->post('nomecliente').' Adicionado com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Cliente');
+
+
+	} else {
+
+			$this->session->set_flashdata('codigocliente', $this->input->post('codigocliente'));
+			$this->session->set_flashdata('nomecliente', $this->input->post('nomecliente'));
+			$this->session->set_flashdata('cepcliente', $this->input->post('cepcliente'));
+			$this->session->set_flashdata('ruacliente', $this->input->post('ruacliente'));
+			$this->session->set_flashdata('numeroclienter', $this->input->post('numeroclienter'));
+			$this->session->set_flashdata('complementocliente', $this->input->post('complementocliente'));
+			$this->session->set_flashdata('cidadecliente', $this->input->post('cidadecliente'));
+			$this->session->set_flashdata('uf', $this->input->post('uf'));
+			$this->session->set_flashdata('tel1cliente', $this->input->post('tel1cliente'));
+			$this->session->set_flashdata('tel2cliente', $this->input->post('tel2cliente'));
+			$this->session->set_flashdata('faxcliente', $this->input->post('faxcliente'));
+			$this->session->set_flashdata('contatocliente', $this->input->post('contatocliente'));
+			$this->session->set_flashdata('emailcliente', $this->input->post('emailcliente'));
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Cliente');
+
+		}
+
+	}
+
+	public function novo_Veiculo() {
+
+	$this->form_validation->set_rules('prefixo','Prefixo','is_unique[tbl_veiculo.prefixo]');
+
+	if($this->form_validation->run()){
+
+			if ($this->input->post('numeromotor') != '') {
+				
+				$numeromotor = $this->input->post('numeromotor');
+
+			} else {
+
+				$numeromotor = null;
+
+			}
+
+			if($this->input->post('detalhemotor') != '') {
+
+				$detalhemotor = $this->input->post('detalhemotor');
+
+			} else {
+
+				$detalhemotor = null;
+
+			}
+
+			if($this->input->post('observ') != ''){
+
+				$observ = $this->input->post('observ');
+
+			} else {
+
+				$observ = null;
+
+			}
+
+		$dados = array (
+
+			'prefixo' => $this->input->post('prefixo'),
+			'modelo' => $this->input->post('modelo'),
+			'marca' => $this->input->post('marca'),
+			'tipo' => $this->input->post('tipo'),
+			'chassis' => $this->input->post('chassis'),
+			'anomodelo' => $this->input->post('anomodelo'),
+			'placa' => $this->input->post('placa'),
+			'numeromotor' => $numeromotor,
+			'detalhemotor' =>$detalhemotor,
+			'id_combustivel' => $this->input->post('id_combustivel'),
+			'id_unidadeservicosaude' => $this->input->post('id_unidadeservicosaude'),
+			'id_estadoveiculo' => $this->input->post('id_estadoveiculo'),
+			'observ' => $observ
+
+		);
+
+			$this->novo->veiculo_Novo($dados);
+
+			$this->session->set_userdata('aviso','Veículo: '.$this->input->post('prefixo').' Adicionado com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Veiculo');
+
+
+	} else {
+
+			$this->session->set_flashdata('prefixo', $this->input->post('prefixo'));
+			$this->session->set_flashdata('modelo', $this->input->post('modelo'));
+			$this->session->set_flashdata('marca', $this->input->post('marca'));
+			$this->session->set_flashdata('tipo', $this->input->post('tipo'));
+			$this->session->set_flashdata('chassis', $this->input->post('chassis'));
+			$this->session->set_flashdata('anomodelo', $this->input->post('anomodelo'));
+			$this->session->set_flashdata('placa', $this->input->post('placa'));
+			$this->session->set_flashdata('numeromotor', $this->input->post('numeromotor'));
+			$this->session->set_flashdata('detalhemotor', $this->input->post('detalhemotor'));
+			$this->session->set_flashdata('id_combustivel', $this->input->post('id_combustivel'));
+			$this->session->set_flashdata('id_unidadeservicosaude', $this->input->post('tel2cliente'));
+			$this->session->set_flashdata('id_estadoveiculo', $this->input->post('id_estadoveiculo'));
+			$this->session->set_flashdata('observ', $this->input->post('observ'));
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Veiculo');
+
 		}
 
 	}

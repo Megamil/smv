@@ -363,8 +363,8 @@ class dados_iniciais_model extends CI_Model {
 
 	/*Inicio das codificações referente as telas de Veículos*/
 	public function novo_Veiculo(){
-		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
-		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		$pack = array ('unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'combustivel' => $this->db->get('tbl_combustivel')->result(),
 		  'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
 	}
@@ -373,6 +373,7 @@ class dados_iniciais_model extends CI_Model {
 
 		$pack = array ('veiculo' => $this->db->query('select * from tbl_veiculo where id_veiculo = '.$this->session->userdata('idEditar').';'),
 				'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+				'combustivel' => $this->db->get('tbl_combustivel')->result(),
 				'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
 
@@ -387,6 +388,75 @@ class dados_iniciais_model extends CI_Model {
 	}
 	/*Fim das codificações das telas de Veículos*/
 
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Unidades Utilizadoras*/
+	public function nova_Unidade_Utilizadora(){
+		$pack = array ('unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(), 
+		  'depto' => $this->db->get('tbl_depto')->result(),
+		  'divisao' => $this->db->get('tbl_divisao')->result(),
+		  'setor' => $this->db->get('tbl_setor')->result(),
+		  'uf' => $this->db->get('tbl_uf')->result(),
+		  'secao' => $this->db->get('tbl_secao')->result());
+		return $pack;
+	}
+
+	public function editar_Unidade_Utilizadora(){
+
+		$pack = array ('unidadeutilizadora' => $this->db->query('select * from tbl_unidadeutilizadora where id_unidadeutilizadora = '.$this->session->userdata('idEditar').';'),
+		  'depto' => $this->db->get('tbl_depto')->result(),
+		  'divisao' => $this->db->get('tbl_divisao')->result(),
+		  'setor' => $this->db->get('tbl_setor')->result(),
+		  'uf' => $this->db->get('tbl_uf')->result(),
+		  'secao' => $this->db->get('tbl_secao')->result());
+		return $pack;
+
+	}
+
+	public function unidade_Utilizadora(){ /*Carrega a lista com todos as unidades utilizadoras*/
+		$pack = array ('unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(), 
+		  'depto' => $this->db->get('tbl_depto')->result(),
+		  'divisao' => $this->db->get('tbl_divisao')->result(),
+		  'setor' => $this->db->get('tbl_setor')->result(),
+		  'uf' => $this->db->get('tbl_uf')->result(),
+		  'secao' => $this->db->get('tbl_secao')->result());
+		return $pack;
+		
+	}
+	/*Fim das codificações das telas de Veículos*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Ordem de Serviço*/
+	public function nova_Solicitacao_Ordem_Servico(){
+		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
+		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		return $pack;
+	}
+
+	public function editar_Solicitacao_Ordem_Servico(){
+		$pack = array ('solicitaordemservico' => $this->db->query('select * from tbl_solicitaordemservico where id_solicitaordemservico = '.$this->session->userdata('idEditar').';')->result(),
+		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		return $pack;
+
+	}
+
+	public function solicita_Ordem_Servico(){ /*Carrega a lista com todos as ordens de serviço*/
+		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
+		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		return $pack;
+		
+	}
+	/*Fim das codificações das telas de  de Ordem de Serviço*/
 }
 
 ?>

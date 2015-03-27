@@ -6,6 +6,7 @@
 	box-shadow: 2px 2px 1px #000;
   background-color: white;
   opacity: 0.85;	
+  overflow: auto;
 
   position: relative;
   padding: 10px;
@@ -14,6 +15,10 @@
   margin-left: auto;
 	transition: 1s;
 
+}
+
+select {
+  text-transform: uppercase;
 }
 
 /* Dropdown-submenu, foi removido do BootStrap 3 na forma nativa. */

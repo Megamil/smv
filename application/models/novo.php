@@ -111,7 +111,7 @@ class novo extends CI_Model {
 	public function cliente_Novo($dados = null)
 	{
 
-		return $this->db->insert('tbl_cliente',$dados);
+		return $this->db->insert('tbl_clientes',$dados);
 
 	}
 
@@ -126,6 +126,20 @@ class novo extends CI_Model {
 	{
 
 		return $this->db->insert('tbl_veiculo',$dados);
+
+	}
+
+	public function unidade_Utilizadora_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_unidadeutilizadora',$dados);
+
+	}
+
+	public function solicita_Ordem_Servico_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_solicitaordemservico',$dados);
 
 	}
 

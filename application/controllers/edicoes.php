@@ -57,13 +57,22 @@ class edicoes extends CI_Controller {
 
 	public function editando_Secao(){
 
-		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_secao.secao]');
+		if($this->input->post('nome') != $this->input->post('nomeOriginal')) {
+
+			$this->form_validation->set_rules('nome','Nome','is_unique[tbl_secao.secao]');
+		}
+
+		if($this->input->post('codsecao') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('codsecao','Código','is_unique[tbl_secao.codsecao]');
+		}
+
 
 		if($this->form_validation->run()) {
 
 			$dados = array(
 				'id_secao' => $this->input->post('id_secao'),
-				'secao' => $this->input->post('nome')
+				'secao' => $this->input->post('nome'),
+				'codsecao' => $this->input->post('codsecao')
 				);
 
 			if($this->edicao->secao_Editar($dados)) {
@@ -92,6 +101,99 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editar_Cliente(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Cliente'); /*Redirecionar para adicionar aplicações (Editar Cliente)*/
+
+	}
+
+	public function editando_Cliente(){
+
+		//Else criado somente para o "if ($this->form_validation->run())" entrar.
+		if($this->input->post('nomecliente') != $this->input->post('nomeOriginal')) {
+
+			$this->form_validation->set_rules('nomecliente','Nome','is_unique[tbl_clientes.nome]');
+		}else {
+			$this->form_validation->set_rules('nomecliente','Nome','required');
+		}
+
+		if($this->input->post('codigocliente') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('codigocliente','Código','is_unique[tbl_clientes.codigo]');
+		} else {
+			$this->form_validation->set_rules('codigocliente','Código','required');
+		}
+
+		if ($this->form_validation->run()) {
+		
+			if ($this->input->post('complementocliente') != '') {
+				
+				$complemento = $this->input->post('complementocliente');
+
+			} else {
+
+				$complemento = null;
+
+			}
+
+			if($this->input->post('tel2cliente') != '') {
+
+				$tel2 = $this->input->post('tel2cliente');
+
+			} else {
+
+				$tel2 = null;
+
+			}
+
+			if($this->input->post('faxcliente') != ''){
+
+				$fax = $this->input->post('faxcliente');
+
+			} else {
+
+				$fax = null;
+
+			}
+
+		$dados = array (
+
+			'id_cliente' => $this->input->post('id_cliente'),
+			'codigo' => $this->input->post('codigocliente'),
+			'nome' => $this->input->post('nomecliente'),
+			'cep' => $this->input->post('cepcliente'),
+			'rua' => $this->input->post('ruacliente'),
+			'numero' => $this->input->post('numeroclienter'),
+			'complemento' => $complemento,
+			'cidade' => $this->input->post('cidadecliente'),
+			'uf' => $this->input->post('uf'),
+			'telramal1' => $this->input->post('tel1cliente'),
+			'telramal2' => $tel2,
+			'fax' => $fax,
+			'contato' => $this->input->post('contatocliente'),
+			'email' => $this->input->post('emailcliente')
+
+			);
+
+			$this->edicao->cliente($dados);
+
+			$this->session->set_userdata('aviso','Cliente: '.$this->input->post('nomecliente').' Editado com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Cliente/'.$this->input->post('id_cliente'));
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Cliente/'.$this->input->post('id_cliente'));
+
+		}
+
+	}
+
+
 	public function editar_Divisao(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
@@ -101,13 +203,20 @@ class edicoes extends CI_Controller {
 
 	public function editando_Divisao(){
 
-		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_divisao.divisao]');
+		if($this->input->post('nome') != $this->input->post('nomeOriginal')) {
+			$this->form_validation->set_rules('nome','Nome','is_unique[tbl_divisao.divisao]');
+		}
+		
+		if($this->input->post('coddivisao') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('coddivisao','Código','is_unique[tbl_divisao.coddivisao]');
+		}
 
 		if($this->form_validation->run()) {
 
 			$dados = array(
 				'id_divisao' => $this->input->post('id_divisao'),
-				'divisao' => $this->input->post('nome')
+				'divisao' => $this->input->post('nome'),
+				'coddivisao' => $this->input->post('coddivisao')
 				);
 
 			if($this->edicao->divisao_Editar($dados)) {
@@ -145,13 +254,20 @@ class edicoes extends CI_Controller {
 
 	public function editando_Departamento(){
 
-		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_depto.depto]');
+		if($this->input->post('nome') != $this->input->post('nomeOriginal')) {
+			$this->form_validation->set_rules('nome','Nome','is_unique[tbl_depto.depto]');
+		}
+
+		if($this->input->post('coddepto') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('coddepto','Código','is_unique[tbl_depto.coddepto]');
+		}
 
 		if($this->form_validation->run()) {
 
 			$dados = array(
 				'id_depto' => $this->input->post('id_departamento'),
-				'depto' => $this->input->post('nome')
+				'depto' => $this->input->post('nome'),
+				'coddepto' => $this->input->post('coddepto')
 				);
 
 			if($this->edicao->departamento_Editar($dados)) {
@@ -290,13 +406,20 @@ class edicoes extends CI_Controller {
 
 	public function editando_Setor(){
 
-		$this->form_validation->set_rules('nome','Nome','is_unique[tbl_setor.setor]');
+		if($this->input->post('nome') != $this->input->post('nomeOriginal')) {
+			$this->form_validation->set_rules('nome','Nome','is_unique[tbl_setor.setor]');
+		}
+
+		if($this->input->post('codsetor') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('codsetor','Código','is_unique[tbl_setor.codsetor]');
+		}
 
 		if($this->form_validation->run()) {
 
 			$dados = array(
 				'id_setor' => $this->input->post('id_setor'),
-				'setor' => $this->input->post('nome')
+				'setor' => $this->input->post('nome'),
+				'codsetor' => $this->input->post('codsetor')
 				);
 
 			$this->edicao->setor_Editar($dados);
@@ -391,12 +514,6 @@ class edicoes extends CI_Controller {
 
 	}
 
-	public function editar_Objeto(){
-
-		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
-		redirect('main/redirecionar/edicoes-editar_Objeto/'.$this->uri->segment(3)); /*Redirecionar para adicionar aplicações (Editar grupo)*/
-
-	}
 
 	public function editar_Fornecedor_Prestador(){
 
@@ -609,6 +726,93 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Veiculo(){
+
+	if($this->input->post('preOriginal') != $this->input->post('prefixo')) {
+		$this->form_validation->set_rules('prefixo','Prefixo','is_unique[tbl_veiculo.prefixo]');
+	} else {
+		$this->form_validation->set_rules('prefixo','Prefixo','required');
+	}
+
+	if($this->form_validation->run()){
+
+			if ($this->input->post('numeromotor') != '') {
+				
+				$numeromotor = $this->input->post('numeromotor');
+
+			} else {
+
+				$numeromotor = null;
+
+			}
+
+			if($this->input->post('detalhemotor') != '') {
+
+				$detalhemotor = $this->input->post('detalhemotor');
+
+			} else {
+
+				$detalhemotor = null;
+
+			}
+
+			if($this->input->post('observ') != ''){
+
+				$observ = $this->input->post('observ');
+
+			} else {
+
+				$observ = null;
+
+			}
+
+		$dados = array (
+
+			'id_veiculo' => $this->input->post('id_veiculo'),
+			'prefixo' => $this->input->post('prefixo'),
+			'modelo' => $this->input->post('modelo'),
+			'marca' => $this->input->post('marca'),
+			'tipo' => $this->input->post('tipo'),
+			'chassis' => $this->input->post('chassis'),
+			'anomodelo' => $this->input->post('anomodelo'),
+			'placa' => $this->input->post('placa'),
+			'numeromotor' => $numeromotor,
+			'detalhemotor' =>$detalhemotor,
+			'id_combustivel' => $this->input->post('id_combustivel'),
+			'id_unidadeservicosaude' => $this->input->post('id_unidadeservicosaude'),
+			'id_estadoveiculo' => $this->input->post('id_estadoveiculo'),
+			'observ' => $observ
+
+		);
+
+			$this->edicao->veiculo($dados);
+
+			$this->session->set_userdata('aviso','Veículo: '.$this->input->post('prefixo').' Alterado com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Veiculo');
+
+
+	} else {
+
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Veiculo');
+
+		}
+
+
+	}
+
+	public function editar_Objeto(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Objeto/'.$this->uri->segment(3)); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
 	public function editando_Objeto(){
 
 		$this->form_validation->set_rules('nomeobjetotitulo','Título do objeto','required');
@@ -638,5 +842,20 @@ class edicoes extends CI_Controller {
 		}
 
 	}
+
+	public function editar_Unidade_Utilizadora(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Unidade_Utilizadora'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_Solicitacao_Ordem_Servico(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
 
 }

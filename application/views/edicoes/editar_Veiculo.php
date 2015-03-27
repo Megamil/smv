@@ -3,8 +3,10 @@ $form = array('name' => 'form');
 echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
+<!-- Previne que o usuário altere o nome ou o código para um já existente -->
+<?php echo form_hidden('preOriginal',$pack['veiculo']->row()->prefixo); ?>
 
-	<?php echo form_hidden('id_veiculo',$pack->row()->id_veiculo); ?>
+<?php echo form_hidden('id_veiculo',$pack['veiculo']->row()->id_veiculo); ?>
 
 	<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 	<table border="0">
@@ -25,7 +27,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 								<div class="control-group">
 									<div class="controls input-group">
 										<span class="input-group-addon" id="basic-addon1">DT- </span>
-										<input type="text" class="form-control input_Vazio" name="prefixoveiculo" value="<?php echo $this->session->flashdata('prefixoveiculo'); ?>" aria-describedby="basic-addon1" placeholder="Prefixo" maxlength="10" size="15"/>
+										<input type="text" class="form-control input_Vazio" name="prefixo" value="<?php echo $pack['veiculo']->row()->prefixo; ?>" aria-describedby="basic-addon1" placeholder="Prefixo" maxlength="10" size="15"/>
 									</div>
 
 								</div>
@@ -40,7 +42,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="modeloveiculo" value="<?php echo $this->session->flashdata('modeloveiculo'); ?>" aria-describedby="basic-addon1" size="50" placeholder="Modelo" maxlength="50" />
+									<input type="text" class="form-control input_Vazio" name="modelo" value="<?php echo $pack['veiculo']->row()->modelo; ?>" aria-describedby="basic-addon1" size="50" placeholder="Modelo" maxlength="50" />
 									</div>
 								</div>
 							</td>
@@ -54,7 +56,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 								<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="marcaveiculo" value="<?php echo $this->session->flashdata('marcaveiculo'); ?>" aria-describedby="basic-addon1" size="20" placeholder="Marca" maxlength="20" />
+									<input type="text" class="form-control input_Vazio" name="marca" value="<?php echo $pack['veiculo']->row()->marca; ?>" aria-describedby="basic-addon1" size="20" placeholder="Marca" maxlength="20" />
 								</div>
 								</div>
 							</td>
@@ -68,7 +70,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="tipoveiculo" value="<?php echo $this->session->flashdata('tipoveiculo'); ?>" aria-describedby="basic-addon1" size="20" placeholder="Tipo" maxlength="30" />
+									<input type="text" class="form-control input_Vazio" name="tipo" value="<?php echo $pack['veiculo']->row()->tipo; ?>" aria-describedby="basic-addon1" size="20" placeholder="Tipo" maxlength="30" />
 									</div>
 								</div>
 							</td>
@@ -90,7 +92,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="anofabmodveiculo" value="<?php echo $this->session->flashdata('anofabmodveiculo'); ?>" aria-describedby="basic-addon1" size="10" placeholder="Ano" maxlength="9" />
+									<input type="text" class="form-control input_Vazio" maxlength="4" name="anomodelo" onkeypress='return numero(event)' value="<?php echo $pack['veiculo']->row()->anomodelo; ?>" aria-describedby="basic-addon1" size="10" placeholder="Ano" maxlength="9" />
 									</div>
 								</div>
 							</td>
@@ -104,7 +106,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="placaveiculo" value="<?php echo $this->session->flashdata('placaveiculo'); ?>" aria-describedby="basic-addon1" size="10" placeholder="Placa" maxlength="9" />
+									<input type="text" class="form-control input_Vazio" id="placaValidar" name="placa" value="<?php echo $pack['veiculo']->row()->placa; ?>" aria-describedby="basic-addon1" size="10" placeholder="Placa" maxlength="9" />
 									</div>
 								</div>
 							</td>
@@ -118,7 +120,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="chassisveiculo" value="<?php echo $this->session->flashdata('chassisveiculo'); ?>" aria-describedby="basic-addon1" size="60" placeholder="Chassis" maxlength="60" />
+									<input type="text" class="form-control input_Vazio" name="chassis" value="<?php echo $pack['veiculo']->row()->chassis; ?>" aria-describedby="basic-addon1" size="60" placeholder="Chassis" maxlength="60" />
 								</div>
 								</div>
 							</td>
@@ -140,7 +142,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="numeromotorveiculo" value="<?php echo $this->session->flashdata('numeromotorveiculo'); ?>" aria-describedby="basic-addon1" size="19" placeholder="Nº Motor" maxlength="16" />
+									<input type="text" class="form-control" name="numeromotor" value="<?php echo $pack['veiculo']->row()->numeromotor; ?>" aria-describedby="basic-addon1" size="19" placeholder="Nº Motor" maxlength="16" />
 									</div>
 								</div>
 							</td>
@@ -154,7 +156,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="detealhemotorveiculo" value="<?php echo $this->session->flashdata('detalhemotorveiculo'); ?>" aria-describedby="basic-addon1" size="25" placeholder="Detalhe Motor" maxlength="50" />
+									<input type="text" class="form-control" name="detalhemotor" value="<?php echo $pack['veiculo']->row()->detalhemotor; ?>" aria-describedby="basic-addon1" size="25" placeholder="Detalhe Motor" maxlength="50" />
 										</div>
 									</div>
 								</td>
@@ -168,9 +170,28 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 	
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="combustivelveiculo" value="<?php echo $this->session->flashdata('combustivelveiculo'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Combustível" maxlength="13" />
-									</div>
+					
+									<select class="form-control input_Vazio" placeholder="Combustível" style="min-width:500px" name="id_combustivel" value="<?php echo $pack['veiculo']->row()->id_combustivel; ?>">
+
+									<option>Selecione...</option>
+
+									<?php 
+
+										foreach ($pack['combustivel'] as $combustivel) {
+								
+											if($pack['veiculo']->row()->id_combustivel == $combustivel->id_combustivel){
+												echo '<option selected value="'.$combustivel->id_combustivel.'">'.$combustivel->combustivel.'</option>';
+											} else {
+												echo '<option value="'.$combustivel->id_combustivel.'">'.$combustivel->combustivel.'</option>';
+											}
+							
+										}
+
+									?>
+
+									</select>
 								</div>
+
 							</td>
 						</tr>
 					</table>
@@ -191,7 +212,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 								<div class="control-group">
 									<div class="controls">
 					
-									<select class="form-control" style="min-width:500px" name="unidadesaude" value="<?php echo $this->session->flashdata('unidadesaude'); ?>">
+									<select class="form-control input_Vazio" placeholder="Unidade de saúde" style="min-width:500px" name="id_unidadeservicosaude" value="<?php echo $pack['veiculo']->row()->id_unidadeservicosaude; ?>">
 
 									<option>Selecione...</option>
 
@@ -199,7 +220,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 
 										foreach ($pack['unidadesaude'] as $unidadesaude) {
 								
-											if($this->session->flashdata('unidadesaude') == $unidadesaude->id_unidadesaude){
+											if($pack['veiculo']->row()->id_unidadeservicosaude == $unidadesaude->id_unidadesaude){
 												echo '<option selected value="'.$unidadesaude->id_unidadesaude.'">'.$unidadesaude->unidadesaude.'</option>';
 											} else {
 												echo '<option value="'.$unidadesaude->id_unidadesaude.'">'.$unidadesaude->unidadesaude.'</option>';
@@ -229,10 +250,10 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 
 										foreach ($pack['estadoveiculo'] as $estadoveiculo) {
 					
-											if($estadoveiculo->id_estadoveiculo == $this->session->flashdata('estadoveiculo')) {
-												echo '<input type="radio" name="estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'" checked /> '.$estadoveiculo->estadoveiculo.' ';
+											if($estadoveiculo->id_estadoveiculo == $pack['veiculo']->row()->id_estadoveiculo) {
+												echo '<input type="radio" name="id_estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'" checked /> '.$estadoveiculo->estadoveiculo.' ';
 											} else {
-												echo '<input type="radio" name="estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'"/> '.$estadoveiculo->estadoveiculo.' ';
+												echo '<input type="radio" name="id_estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'"/> '.$estadoveiculo->estadoveiculo.' ';
 											}						
 										}
 
@@ -248,7 +269,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control input_Vazio" name="observveiculo" onkeypress='return numero(event)' value="<?php echo $this->session->flashdata('observveiculo'); ?>" aria-describedby="basic-addon1" size="80" placeholder="Observações" maxlength="300" />
+									<input type="text" class="form-control" name="observ" value="<?php echo $pack['veiculo']->row()->observ ?>" aria-describedby="basic-addon1" size="80" placeholder="Observações" maxlength="300" />
 									</div>
 								</div>
 							</td>
@@ -260,7 +281,6 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			</tr>
 			</tbody>
 	</table>
-
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Veiculo', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-veiculo', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

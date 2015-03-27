@@ -3,17 +3,14 @@ $form = array('name' => 'form');
 echo form_open("criar/nova_Marca_Itens",$form); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
-
 	<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
 		<tbody>
 		<tr>
 			<td>
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Nome:</span>
-						<input type="text" class="input_Vazio" placeholder="Nome Marca de Itens." name="nome"  size="35" aria-describedby="basic-addon1" maxlength="20" />
-					</div>
+				<div class="input-group">
+					<span class="input-group-addon">Nome:</span>
+					<input type="text" class="form-control input_Vazio" placeholder="Nome Marca de Itens." name="nome"  size="35" aria-describedby="basic-addon1" maxlength="20" />
 				</div>
 			</td>
 		</tr>

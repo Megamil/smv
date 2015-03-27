@@ -8,41 +8,22 @@ echo form_open("criar/novo_Objeto",$form); ?>
 		<tbody>
 		<tr>
 			<td>
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Título</span>
-					</div>
-				</div>
-			</td>
-			<td>
-				<div class="control-group">
-					<div class="controls">
-						<input type="text" class="input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
-					</div>
+				<div class="input-group">
+					<span class="input-group-addon">Título</span>
+					<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td valign="top">
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Texto</span>
-					</div>
-				</div>
-			</td>
-			<td>
-				<div class="control-group">
-					<div class="controls">
-						<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="50" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
-					</div>
+				<div class="input-group">
+					<span class="input-group-addon">Texto</span>
+					<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 				</div>
 			</td>
 		</tr>
 		</tbody>
 	</table>
-
-
-	
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Criar Objeto', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-objeto', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

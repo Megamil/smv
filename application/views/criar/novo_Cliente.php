@@ -17,7 +17,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio disabled" name="codigocliente" aria-describedby="basic-addon1" size="52" placeholder="Código" maxlength="40" />
+						<input type="text" class="form-control input_Vazio disabled" value="<?php echo $this->session->flashdata('codigocliente'); ?>" name="codigocliente" aria-describedby="basic-addon1" size="52" placeholder="Código" maxlength="40" />
 					</div>
 				</div>
 			</td>
@@ -32,7 +32,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="nomecliente" aria-describedby="basic-addon1" size="85" placeholder="Nome do cliente" maxlength="100" />
+						<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('nomecliente'); ?>" name="nomecliente" aria-describedby="basic-addon1" size="85" placeholder="Nome do cliente" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -48,7 +48,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" id="cepValidar" name="cepcliente" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
+					<input type="text" class="form-control input_Vazio" id="cepValidar" value="<?php echo $this->session->flashdata('cepcliente'); ?>" name="cepcliente" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
 					</div>
 				</div>
 			</td>
@@ -64,7 +64,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td  colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="ruacliente" aria-describedby="basic-addon1" size="100" placeholder="Endereço" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('ruacliente'); ?>" name="ruacliente" aria-describedby="basic-addon1" size="100" placeholder="Endereço" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -81,7 +81,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numeroclienter" aria-describedby="basic-addon1" size="52" placeholder="Nº" maxlength="6" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('numeroclienter'); ?>" name="numeroclienter" aria-describedby="basic-addon1" size="52" placeholder="Nº" maxlength="6" />
 					</div>
 				</div>
 			</td>
@@ -98,7 +98,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" name="complementocliente" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
+					<input type="text" class="form-control" value="<?php echo $this->session->flashdata('complementocliente'); ?>" name="complementocliente" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -113,7 +113,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cidadecliente" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('cidadecliente'); ?>" name="cidadecliente" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -169,7 +169,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio telefoneValidar " name="tel1cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control input_Vazio telefoneValidar " value="<?php echo $this->session->flashdata('tel1cliente'); ?>" name="tel1cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -184,7 +184,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control telefoneValidar" name="tel2cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" value="<?php echo $this->session->flashdata('tel2cliente'); ?>" name="tel2cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -199,7 +199,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control telefoneValidar" name="faxcliente" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" value="<?php echo $this->session->flashdata('faxcliente'); ?>" name="faxcliente" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -216,7 +216,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="contatocliente" aria-describedby="basic-addon1" size="52" placeholder="Contato" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('contatocliente'); ?>" name="contatocliente" aria-describedby="basic-addon1" size="52" placeholder="Contato" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -231,7 +231,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" onblur="validacaoEmail(form.emailcliente)" name="emailcliente" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<input type="email" class="form-control input_Vazio" onblur="validacaoEmail(form.emailcliente)" value="<?php echo $this->session->flashdata('emailcliente'); ?>" name="emailcliente" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
 					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>

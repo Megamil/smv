@@ -89,8 +89,8 @@
                 <li <?php if($ativo == 'cadastros-veiculo') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-veiculo', 'Veículo')?></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Unidade Utilizadora')?></li>
+                <li <?php if($ativo == 'cadastros-unidade_Utilizadora') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/cadastros-unidade_Utilizadora', 'Unidade Utilizadora')?></li>
 
               </ul>
 
@@ -106,10 +106,10 @@
               
               <ul class="dropdown-menu">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Solicitar')?></li>
+                <li <?php if($ativo == 'ordemservico-solicita_Ordem_Servico') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', 'Solicitar')?></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
+                <li <?php if($ativo == 'ordemservico-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Consultar')?></li>
 
               </ul>

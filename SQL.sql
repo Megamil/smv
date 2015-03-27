@@ -254,32 +254,33 @@ Insert into tbl_combustivel (id_combustivel, combustivel) values (15,'Gasolina/A
 Insert into tbl_combustivel (id_combustivel, combustivel) values (16,'Gasolina/Eletrico');
 
 /* Tabela UF inserts*/
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
-Insert into tbl_uf (uf) values ('');
+Insert into tbl_uf (uf) values ('AC');
+Insert into tbl_uf (uf) values ('AL');
+Insert into tbl_uf (uf) values ('AP');
+Insert into tbl_uf (uf) values ('AM');
+Insert into tbl_uf (uf) values ('BA');
+Insert into tbl_uf (uf) values ('CE');
+Insert into tbl_uf (uf) values ('DF');
+Insert into tbl_uf (uf) values ('ES');
+Insert into tbl_uf (uf) values ('GO');
+Insert into tbl_uf (uf) values ('MA');
+Insert into tbl_uf (uf) values ('MT');
+Insert into tbl_uf (uf) values ('MS');
+Insert into tbl_uf (uf) values ('MG');
+Insert into tbl_uf (uf) values ('PR');
+Insert into tbl_uf (uf) values ('PB');
+Insert into tbl_uf (uf) values ('PA');
+Insert into tbl_uf (uf) values ('PE');
+Insert into tbl_uf (uf) values ('PI');
+Insert into tbl_uf (uf) values ('RJ');
+Insert into tbl_uf (uf) values ('RN');
+Insert into tbl_uf (uf) values ('RS');
+Insert into tbl_uf (uf) values ('RO');
+Insert into tbl_uf (uf) values ('RR');
+Insert into tbl_uf (uf) values ('SC');
+Insert into tbl_uf (uf) values ('SE');
+Insert into tbl_uf (uf) values ('SP');
+Insert into tbl_uf (uf) values ('TO');
   
 /*Tabela tbl_unidademedida dados */
 Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (1,'mg');
@@ -445,6 +446,14 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('veiculo', '
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Veiculo', 'Criar novo Veículo.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Veiculo', 'Editar Veículo');
 
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('unidade_Utilizadora', 'Lista das Unidades Utilizadoras.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Unidade_Utilizadora', 'Criar nova Unidade Utilizadora.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Unidade_Utilizadora', 'Editar Unidade Utilizadora');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('solicita_Ordem_Servico', 'Lista das Solicitações Ordens de Serviço.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Solicitacao_Ordem_Servico', 'Criar nova Solicitação de Ordem de Serviço.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Solicitacao_Ordem_Servico', 'Editar Solicitação de Ordem de Serviço');
+
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -502,6 +511,13 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,49);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,50);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,51);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,52);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,53);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,54);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,55);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,56);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,57);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,58);
+
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);

@@ -2,11 +2,14 @@
 $form = array('name' => 'form');
 echo form_open("edicoes/editando_Cliente",$form); ?>
 
-	<div class="erro_Campo_Vazio" ></div>
+<!-- Previne que o usuário altere o nome ou o código para um já existente -->
+<?php echo form_hidden('codOriginal',$pack['cliente']->row()->codigo); ?>
+<?php echo form_hidden('nomeOriginal',$pack['cliente']->row()->nome); ?>
 
-			<?php echo form_hidden('id_cliente',$pack->row()->id_cliente); ?>
+<?php echo form_hidden('id_cliente',$pack['cliente']->row()->id_cliente); ?>
 
-	<table border="0">
+<div class="erro_Campo_Vazio" ></div>
+<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
 		<tbody>
 		<tr>
@@ -20,11 +23,11 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="codigocliente" aria-describedby="basic-addon1" size="52" value="<?php echo $pack['fornecedor']->row()->codigo?>" maxlength="40" disabled/>
+						<input type="text" class="form-control input_Vazio disabled" value="<?php echo $pack['cliente']->row()->codigo; ?>" name="codigocliente" aria-describedby="basic-addon1" size="52" placeholder="Código" maxlength="40" />
 					</div>
 				</div>
 			</td>
-		<!-- Separação entre o código e o nome do fornecedor -->
+		<!-- Separação entre o código e o nome do cliente -->
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
@@ -35,7 +38,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="nomecliente" value="<?php echo $pack['fornecedor']->row()->nome?>" aria-describedby="basic-addon1" size="85" placeholder="Nome do Fornecedor/Prestador" maxlength="100" />
+						<input type="text" class="form-control input_Vazio" value="<?php echo $pack['cliente']->row()->nome; ?>" name="nomecliente" aria-describedby="basic-addon1" size="85" placeholder="Nome do cliente" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -51,7 +54,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cepcliente" value="<?php echo $pack['fornecedor']->row()->cep?>" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
+					<input type="text" class="form-control input_Vazio" id="cepValidar" value="<?php echo $pack['cliente']->row()->cep; ?>" name="cepcliente" aria-describedby="basic-addon1" size="52" placeholder="CEP" maxlength="9" />
 					</div>
 				</div>
 			</td>
@@ -67,7 +70,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td  colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="ruacliente" value="<?php echo $pack['fornecedor']->row()->rua?>" aria-describedby="basic-addon1" size="100" placeholder="Endereço" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['cliente']->row()->rua; ?>" name="ruacliente" aria-describedby="basic-addon1" size="100" placeholder="Endereço" maxlength="100" />
 					</div>
 				</div>
 			</td>
@@ -84,7 +87,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numerocliente" value="<?php echo $pack['fornecedor']->row()->numero?>" aria-describedby="basic-addon1" size="52" placeholder="Nº" maxlength="6" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['cliente']->row()->numero; ?>" name="numeroclienter" aria-describedby="basic-addon1" size="52" placeholder="Nº" maxlength="6" />
 					</div>
 				</div>
 			</td>
@@ -101,7 +104,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="complementocliente" value="<?php echo $pack['fornecedor']->row()->complemento?>" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
+					<input type="text" class="form-control" value="<?php echo $pack['cliente']->row()->complemento; ?>" name="complementocliente" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -116,7 +119,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="cidadecliente" value="<?php echo $pack['fornecedor']->row()->cidade?>" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['cliente']->row()->cidade; ?>" name="cidadecliente" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -132,7 +135,8 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 				<div class="control-group">
 					<div class="controls">
 
-					<select class="form-control" name="uf">
+
+					<select class="form-control input_Vazio" name="uf" placeholder="UF">
 
 						<option>Selecione...</option>
 
@@ -140,7 +144,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 
 							foreach ($pack['uf'] as $uf) {
 								
-								if($pack['fornecedor']->row()->uf == $uf->id_uf){
+								if($pack['cliente']->row()->uf == $uf->id_uf){
 
 									echo '<option selected value="'.$uf->id_uf.'">'.$uf->uf.'</option>';
 								
@@ -154,8 +158,8 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 						?>
 
 					</select>
+
 					</div>
-					
 				</div>
 			</td>
 		</tr>
@@ -164,14 +168,14 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Telefone</span>
+						<span class="help-inline">Telefone/Ramal</span>
 					</div>
 				</div>
 			</td>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="tel1cliente" value="<?php echo $pack['fornecedor']->row()->tel1?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control input_Vazio telefoneValidar " value="<?php echo $pack['cliente']->row()->telramal1; ?>" name="tel1cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -179,14 +183,14 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Telefone</span>
+						<span class="help-inline">Telefone/Ramal</span>
 					</div>
 				</div>
 			</td>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="tel2cliente" value="<?php echo $pack['fornecedor']->row()->tel2?>" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" value="<?php echo $pack['cliente']->row()->telramal2; ?>" name="tel2cliente" aria-describedby="basic-addon1" size="52" placeholder="Telefone" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -201,7 +205,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="faxcliente" value="<?php echo $pack['fornecedor']->row()->fax?>" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
+					<input type="text" class="form-control telefoneValidar" value="<?php echo $pack['cliente']->row()->fax; ?>" name="faxcliente" aria-describedby="basic-addon1" size="52" placeholder="Fax" maxlength="12" />
 					</div>
 				</div>
 			</td>
@@ -218,7 +222,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="contatocliente" value="<?php echo $pack['fornecedor']->row()->contato?>" aria-describedby="basic-addon1" size="52" placeholder="Contato" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['cliente']->row()->contato; ?>" name="contatocliente" aria-describedby="basic-addon1" size="52" placeholder="Contato" maxlength="30" />
 					</div>
 				</div>
 			</td>
@@ -233,18 +237,14 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 			<td colspan="3">
 				<div class="control-group">
 					<div class="controls">
-					<input type="email" class="form-control input_Vazio" name="emailcliente" value="<?php echo $pack['fornecedor']->row()->codigo?>" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<input type="email" class="form-control input_Vazio" onblur="validacaoEmail(form.emailcliente)" value="<?php echo $pack['cliente']->row()->email; ?>" name="emailcliente" aria-describedby="basic-addon1" size="45" placeholder="E-mail" maxlength="40" />
+					<div id="msgemail"></div> <!--Aviso de e-mail incorreto-->
 					</div>
 				</div>
-			</td>
-
-		</tr>
+			</tr>
 
 		</tbody>
 	</table>
-
-
-	
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Cliente', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-cliente', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

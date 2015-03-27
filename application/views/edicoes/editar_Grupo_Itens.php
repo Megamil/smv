@@ -19,9 +19,6 @@ echo form_open("edicoes/editando_Grupo_Itens",$form); ?>
 		</tbody>
 	</table>
 
-
-	
-
 	<?php echo form_submit(array('name'=>'editarGrupoitens'),'Editar Grupo dos Itens', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-grupo_Itens', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
