@@ -23,7 +23,7 @@
 
 						echo "<tr>";
 						echo "<td>$unidadeutilizadora->id_unidadeutilizadora</td>";
-						echo "<td>$unidadeutilizadora->cnpj</td>";
+						echo '<td><input class="cnpjValidar" value="'.$unidadeutilizadora->cnpj.'" disabled></td>';
 
 						foreach ($pack['depto'] as $depto) {
 

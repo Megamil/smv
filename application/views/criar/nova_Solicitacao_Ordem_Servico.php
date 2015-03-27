@@ -41,10 +41,22 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 												<?php 
 													foreach ($pack['unidadesaude'] as $unidadesaude) {
 														if($this->session->flashdata('unidadesaude') == $unidadesaude->id_unidadesaude){
-															echo '<option selected value="'.$unidadesaude->id_unidadesaude.'">'.$unidadesaude->unidadesaude.'</option>';
+															echo '<option selected value="'.$unidadesaude->cnes.'">'.$unidadesaude->unidadesaude.'</option>';
 														} else {
-															echo '<option value="'.$unidadesaude->id_unidadesaude.'">'.$unidadesaude->unidadesaude.'</option>';
+															echo '<option value="'.$unidadesaude->cnes.'">'.$unidadesaude->unidadesaude.'</option>';
 														}
+													}
+
+													foreach ($pack['unidadeutilizadora'] as $unidadeutilizadora) {
+
+														if($this->session->flashdata('unidadeutilizadora') == $unidadeutilizadora->id_unidadeutilizadora){ $selected = 'selected';} else {$selected = '';}
+														if(count($unidadeutilizadora->depto) > 0) {$departamento = 'Depto: '.$unidadeutilizadora->depto.' / ';} else {$departamento = '';}
+														if(count($unidadeutilizadora->divisao) > 0) {$divisao = 'Divisão: '.$unidadeutilizadora->divisao.' / ';} else {$divisao = '';}
+														if(count($unidadeutilizadora->secao) > 0) {$secao = 'Seção: '.$unidadeutilizadora->secao.' / ';} else {$secao = '';}
+														if(count($unidadeutilizadora->setor) > 0) {$setor = 'Setor: '.$unidadeutilizadora->setor;} else {$setor = '';}
+
+														echo '<option '.$selected.' value="'.$unidadeutilizadora->id_unidadeutilizadora.'">'.$departamento.' '.$divisao.' '.$secao.' '.$setor.'</option>';
+
 													}
 												?>
 										</select>

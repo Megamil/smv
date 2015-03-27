@@ -24,7 +24,7 @@
 						echo "<td>$cliente->id_cliente</td>";
 						echo "<td>$cliente->codigo</td>";
 						echo "<td>$cliente->nome</td>";
-						echo "<td>$cliente->telramal1</td>";
+						echo '<td><input class="telefoneValidar" value="'.$cliente->telramal1.'" disabled></td>';
 						echo "<td>$cliente->contato</td>";
 						echo "<td>$cliente->email</td>";
 						echo '<td>'.anchor('edicoes/editar_cliente/'.$cliente->id_cliente.'','Editar').'</td>';

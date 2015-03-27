@@ -24,7 +24,7 @@
 						echo "<td>$colaborador->id_colaborador</td>";
 						echo "<td>$colaborador->codigofuncional</td>";
 						echo "<td>$colaborador->nome</td>";
-						echo "<td>$colaborador->telefone</td>";
+						echo '<td><input class="telefoneValidar" value="'.$colaborador->telefone.'" disabled></td>';
 						echo "<td>$colaborador->funcaocargo</td>";
 						
 						foreach ($pack['setor'] as $setor) {

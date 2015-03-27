@@ -52,8 +52,9 @@ $(document).ready(function(){
 
 	//Cria as mascaras para os campos logo de inicio
 	$('.telefoneValidar').mask("(?99)?99999-9999");
-	$('#cnpjValidar').mask("?99.999.999/9999-99");
-	$('#cpfValidar').mask("?999.999.999-99");
+	$('#cnpjValidar').mask("99.999.999/9999-99");
+	$('.cnpjValidar').mask("99.999.999/9999-99");
+	$('#cpfValidar').mask("999.999.999-99");
 	$('#cepValidar').mask("?99999-999");
 	$('.cepValidar').mask("?99999-999");
 	$('#placaValidar').mask("?aaa-9999");
@@ -64,10 +65,11 @@ $(document).ready(function(){
 
 			//Antes de validar retira as mascaras dos campos
 			$('.telefoneValidar').mask("?999999999999");
-			$('#cnpjValidar').mask("?99999999999999");
+			$('#cnpjValidar').mask("99999999999999");
+			$('.cnpjValidar').mask("99999999999999");
 			$('#cepValidar').mask("?99999999");
 			$('.cepValidar').mask("?99999999");
-			$('#cpfValidar').mask("?99999999999");
+			$('#cpfValidar').mask("99999999999");
 			$('#placaValidar').mask("?aaa9999");
 
 		if($(this).val() == '' || $(this).val() == "Selecione...") {
@@ -83,8 +85,9 @@ $(document).ready(function(){
 
 			//Retorna as mascaras.
 			$('.telefoneValidar').mask("(?99)?99999-9999");
-			$('#cnpjValidar').mask("?99.999.999/9999-99");
-			$('#cpfValidar').mask("?999.999.999-99");
+			$('#cnpjValidar').mask("99.999.999/9999-99");
+			$('.cnpjValidar').mask("99.999.999/9999-99");
+			$('#cpfValidar').mask("999.999.999-99");
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");
@@ -99,8 +102,9 @@ $(document).ready(function(){
 
 			//Retorna as mascaras.
 			$('.telefoneValidar').mask("(?99)?99999-9999");
-			$('#cnpjValidar').mask("?99.999.999/9999-99");
-			$('#cpfValidar').mask("?999.999.999-99");
+			$('#cnpjValidar').mask("99.999.999/9999-99");
+			$('.cnpjValidar').mask("99.999.999/9999-99");
+			$('#cpfValidar').mask("999.999.999-99");
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");
@@ -140,10 +144,11 @@ $(document).ready(function(){
 			
 			//Antes de validar retira as mascaras dos campos
 			$('.telefoneValidar').mask("?999999999999");
-			$('#cnpjValidar').mask("?99999999999999");
+			$('#cnpjValidar').mask("99999999999999");
+			$('.cnpjValidar').mask("99999999999999");
 			$('#cepValidar').mask("?99999999");
 			$('.cepValidar').mask("?99999999");
-			$('#cpfValidar').mask("?99999999999");
+			$('#cpfValidar').mask("99999999999");
 			$('#placaValidar').mask("?aaa9999");
 			
 			//Percorre todos inputs com essa classe
@@ -163,8 +168,9 @@ $(document).ready(function(){
 
 					//Volta as mascaras aos campo
 					$('.telefoneValidar').mask("(?99)?99999-9999");
-					$('#cnpjValidar').mask("?99.999.999/9999-99");
-					$('#cpfValidar').mask("?999.999.999-99");
+					$('#cnpjValidar').mask("99.999.999/9999-99");
+					$('.cnpjValidar').mask("99.999.999/9999-99");
+					$('#cpfValidar').mask("999.999.999-99");
 					$('#cepValidar').mask("?99999-999");
 					$('.cepValidar').mask("?99999-999");
 					$('#placaValidar').mask("?aaa-9999");
