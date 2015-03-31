@@ -879,6 +879,70 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Contrato_Ata() {
+
+		$this->form_validation->set_rules('numerocontratoata','Número do Contrato/ATA','required');
+		$this->form_validation->set_rules('dtinivigencia','Início da Vigência','required|valid_date');
+		$this->form_validation->set_rules('dtfimvigencia','Término da Vigência','required|valid_date');
+		$this->form_validation->set_rules('dtinivigenciaprorrog','Início da Vigência','valid_date');
+		$this->form_validation->set_rules('dtfimvigenciaprorrog','Término da Vigência','valid_date');
+		$this->form_validation->set_rules('id_fornecedorprestador','Fornecedor','required');
+		$this->form_validation->set_rules('cnpj','CNPJ','required');
+		$this->form_validation->set_rules('procadmin','Processo Administrativo','required');
+		$this->form_validation->set_rules('id_modalidadelicitacao','Modalidade Licitação','required');
+		$this->form_validation->set_rules('numerolicitacao','Licitação','required');
+		$this->form_validation->set_rules('datahomologacao','Data da Homologação','required|valid_date');
+		$this->form_validation->set_rules('id_objetotitulo','Objeto - Título','required');
+		$this->form_validation->set_rules('prazoentrega','Prazo de Entrega','required');
+		$this->form_validation->set_rules('prazopagto','Prazo de pagamento','required');
+
+		if($this->form_validation->run()){
+
+			if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
+			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
+			if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
+			if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
+
+			$dados = array (
+
+				'id_contratoata' => $this->input->post('id_contratoata'),
+				'numerocontratoata' => $this->input->post('numerocontratoata'),
+				'dtinivigencia' => $this->input->post('dtinivigencia'),
+				'dtfimvigencia' => $this->input->post('dtfimvigencia'),
+				'numanoemissorprorrogacao' => $numanoemissorprorrogacao,
+				'dtinivigenciaprorrog' => $dtinivigenciaprorrog,
+				'dtfimvigenciaprorrog' => $dtfimvigenciaprorrog,
+				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+				'cnpj' => $this->input->post('cnpj'),
+				'procadmin' => $this->input->post('procadmin'),
+				'id_modalidadelicitacao' => $this->input->post('id_modalidadelicitacao'),
+				'numerolicitacao' => $this->input->post('numerolicitacao'),
+				'datahomologacao' => $this->input->post('datahomologacao'),
+				'id_objetotitulo' => $this->input->post('id_objetotitulo'),
+				'prazoentrega' => $this->input->post('prazoentrega'),
+				'prazopagto' => $this->input->post('prazopagto'),
+				'orgaosparticipantes' => $orgaosparticipantes
+
+			);
+
+			$this->edicao->Contrato_Ata_Editar($dados);
+
+			$this->session->set_userdata('aviso','Contrato/ATA Criado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
+
+		}
+		
+	}
+
 	public function editar_Unidade_Utilizadora(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/

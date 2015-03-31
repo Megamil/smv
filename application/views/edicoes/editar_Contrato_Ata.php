@@ -1,3 +1,5 @@
+<!--Usado para preencher alguns campos-->
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <?php echo form_fieldset("Editar Contrato/Ata"); 
 $form = array('name' => 'form'); 
 echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
@@ -19,7 +21,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio disabled" name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
+						<input type="text" class="form-control input_Vazio nem" value="<?php echo $pack['contratoata']->row()->numerocontratoata ?>" name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
 					</div>
 				</div>
 			</td>
@@ -33,7 +35,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="date" class="form-control input_Vazio dataValidar" name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
+						<!--Previne erro de 01/01/1970 que o PHP cria quando usamos a função strtotime sem uma variável vazia.-->
+					<?php if($pack['contratoata']->row()->dtinivigencia != '') {$dtinivigencia = date("d-m-Y", strtotime($pack['contratoata']->row()->dtinivigencia));} else {$dtinivigencia = '';} ?>
+						<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $dtinivigencia; ?>"  name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
 					</div>
 				</div>
 			</td>
@@ -47,7 +51,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
+						<!--Previne erro de 01/01/1970 que o PHP cria quando usamos a função strtotime sem uma variável vazia.-->
+					<?php if($pack['contratoata']->row()->dtfimvigencia != '') {$dtfimvigencia = date("d-m-Y", strtotime($pack['contratoata']->row()->dtfimvigencia));} else {$dtfimvigencia = '';} ?>
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $dtfimvigencia; ?>"  name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
 					</div>
 				</div>
 			</td>
@@ -68,7 +74,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
+					<input type="text" class="form-control nem" value="<?php echo $pack['contratoata']->row()->numanoemissorprorrogacao ?>"  name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
 					</div>
 				</div>
 			</td>
@@ -82,7 +88,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="date" class="form-control input_Vazio dataValidar" name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
+					<!--Previne erro de 01/01/1970 que o PHP cria quando usamos a função strtotime sem uma variável vazia.-->
+					<?php if($pack['contratoata']->row()->dtinivigenciaprorrog != '') {$dtinivigenciaprorrog = date("d-m-Y", strtotime($pack['contratoata']->row()->dtinivigenciaprorrog));} else {$dtinivigenciaprorrog = '';} ?>
+						<input type="text" class="form-control dataValidar" value="<?php echo $dtinivigenciaprorrog; ?>"  name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
 					</div>
 				</div>
 			</td>
@@ -96,7 +104,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
+					<!--Previne erro de 01/01/1970 que o PHP cria quando usamos a função strtotime sem uma variável vazia.-->
+					<?php if($pack['contratoata']->row()->dtfimvigenciaprorrog != '') {$dtfimvigenciaprorrog = date("d-m-Y", strtotime($pack['contratoata']->row()->dtfimvigenciaprorrog));} else {$dtfimvigenciaprorrog = '';} ?>
+					<input type="text" class="form-control dataValidar" value="<?php echo $dtfimvigenciaprorrog; ?>"  name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
 					</div>
 				</div>
 			</td>
@@ -112,7 +122,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio" name="id_fornecedorprestador" placeholder="Fornecedor">
+					<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
 
 						<option>Selecione...</option>
 
@@ -120,7 +130,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 
 							foreach ($pack['fornecedorprestador'] as $fornecedorprestador) {
 								
-								if($this->session->flashdata('fornecedorprestador') == $fornecedorprestador->id_fornecedorprestador){
+								if($pack['contratoata']->row()->id_fornecedorprestador == $fornecedorprestador->id_fornecedorprestador){
 
 									echo '<option selected value="'.$fornecedorprestador->id_fornecedorprestador.'">'.$fornecedorprestador->nome.'</option>';
 								
@@ -149,7 +159,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" name="cnpj" id="cnpjValidar" aria-describedby="basic-addon1" placeholder="CNPJ" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['contratoata']->row()->cnpj; ?>"  name="cnpj" id="cnpjValidar" aria-describedby="basic-addon1" placeholder="CNPJ" />
 					</div>
 				</div>
 			</td>
@@ -163,7 +173,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
+					<input type="text" class="form-control input_Vazio processo" value="<?php echo $pack['contratoata']->row()->procadmin; ?>" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
 					</div>
 				</div>
 			</td>
@@ -180,14 +190,14 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 				<div class="control-group">
 					<div class="controls">
 
-					<select class="form-control input_Vazio" name="id_modalidadedelicitacao" placeholder="Modalidade">
+					<select class="form-control input_Vazio" name="id_modalidadelicitacao" placeholder="Modalidade">
 						<option>Selecione...</option>
 
 						<?php 
 
 							foreach ($pack['modalidadedelicitacao'] as $modalidadedelicitacao) {
 								
-								if($this->session->flashdata('modalidadedelicitacao') == $modalidadedelicitacao->id_modalidadedelicitacao){
+								if($pack['contratoata']->row()->id_modalidadelicitacao == $modalidadedelicitacao->id_modalidadedelicitacao){
 
 									echo '<option selected value="'.$modalidadedelicitacao->id_modalidadedelicitacao.'">'.$modalidadedelicitacao->modalidadedelicitacao.'</option>';
 
@@ -213,7 +223,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
+					<input type="text" class="form-control input_Vazio nem" value="<?php echo $pack['contratoata']->row()->numerolicitacao; ?>" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
 					</div>
 				</div>
 			</td>
@@ -227,7 +237,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
+					<!--Previne erro de 01/01/1970 que o PHP cria quando usamos a função strtotime sem uma variável vazia.-->
+					<?php if($pack['contratoata']->row()->datahomologacao != '') {$datahomologacao = date("d-m-Y", strtotime($pack['contratoata']->row()->datahomologacao));} else {$datahomologacao = '';} ?>
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $datahomologacao; ?>" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
 					</div>
 				</div>
 			</td>
@@ -243,11 +255,11 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio" name="id_objeto" placeholder="Objeto">
+					<select class="form-control input_Vazio" name="id_objetotitulo" id="objeto" placeholder="Objeto">
 						<option>Selecione...</option>
 						<?php 
 							foreach ($pack['objeto'] as $objeto) {
-								if($this->session->flashdata('objeto') == $objeto->id_objeto){
+								if($pack['contratoata']->row()->id_objetotitulo == $objeto->id_objeto){
 									echo '<option selected value="'.$objeto->id_objeto.'">'.$objeto->objetotitulo.'</option>';
 								} else {
 									echo '<option value="'.$objeto->id_objeto.'">'.$objeto->objetotitulo.'</option>';
@@ -262,7 +274,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			<td valign="bottom">
 				<div class="control-group">
 					<div class="controls">
-					<?php echo anchor('main/redirecionar/criar-novo_Objeto', '<div class="btn btn-success pull-center"> NOVO </div>')?>
+					<div class="btn btn-success pull-center" data-toggle="modal" data-target="#modelAdicionar">NOVO</div>
 					</div>
 				</div>
 			</td>
@@ -278,7 +290,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 
 				<div class="control-group">
 					<div class="controls">
-					<textarea name="objetotexto" cols="86" rows="3" disabled></textarea>
+					<textarea name="objetotexto" id="objetoTexto" cols="86" rows="3" disabled></textarea>
 					</div>
 				</div>
 			</td>
@@ -294,7 +306,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" name="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['contratoata']->row()->prazoentrega; ?>" name="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
 					</div>
 				</div>
 			</td>
@@ -307,7 +319,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $pack['contratoata']->row()->prazopagto; ?>" name="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
 					</div>
 				</div>
 			</td>
@@ -320,7 +332,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
+					<input type="text" class="form-control" value="<?php echo $pack['contratoata']->row()->orgaosparticipantes; ?>" name="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
 					</div>
 				</div>
 			</td>
@@ -337,3 +349,25 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 	<?php echo anchor('main/redirecionar/contratoata-Contrato_Ata', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
+
+<!-- Modal para Adicionar novo objeto -->
+<div class="modal fade" id="modelAdicionar" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="modelDeletar"> Cancelar a edição do Contrato/Ata?</h4>
+      </div>
+
+      <div class="modal-body">
+      	<p>Para criar um novo objeto você será redirecionado para a tela de criação de objeto. <br> Deseja realmente cancelar a edição do Contrato/Ata?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Criar Objeto </div>')?>
+       </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio disabled" name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
+						<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerocontratoata'); ?>" name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
 					</div>
 				</div>
 			</td>
@@ -32,7 +32,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="date" class="form-control input_Vazio dataValidar" name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
+						<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtinivigencia'); ?>"  name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
 					</div>
 				</div>
 			</td>
@@ -46,7 +46,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtfimvigencia'); ?>"  name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
 					</div>
 				</div>
 			</td>
@@ -67,7 +67,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
+					<input type="text" class="form-control nem" value="<?php echo $this->session->flashdata('numanoemissorprorrogacao'); ?>"  name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
 					</div>
 				</div>
 			</td>
@@ -81,7 +81,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="date" class="form-control input_Vazio dataValidar" name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
+						<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtinivigenciaprorrog'); ?>"  name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
 					</div>
 				</div>
 			</td>
@@ -95,7 +95,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
+					<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtfimvigenciaprorrog'); ?>"  name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
 					</div>
 				</div>
 			</td>
@@ -111,7 +111,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio" name="id_fornecedorprestador" placeholder="Fornecedor">
+					<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
 
 						<option>Selecione...</option>
 
@@ -119,7 +119,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
 							foreach ($pack['fornecedorprestador'] as $fornecedorprestador) {
 								
-								if($this->session->flashdata('fornecedorprestador') == $fornecedorprestador->id_fornecedorprestador){
+								if($this->session->flashdata('id_fornecedorprestador') == $fornecedorprestador->id_fornecedorprestador){
 
 									echo '<option selected value="'.$fornecedorprestador->id_fornecedorprestador.'">'.$fornecedorprestador->nome.'</option>';
 								
@@ -148,7 +148,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" name="cnpj" id="cnpjValidar" aria-describedby="basic-addon1" placeholder="CNPJ" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('cnpj'); ?>"  name="cnpj" id="cnpjValidar" aria-describedby="basic-addon1" placeholder="CNPJ" />
 					</div>
 				</div>
 			</td>
@@ -162,7 +162,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
+					<input type="text" class="form-control input_Vazio processo" value="<?php echo $this->session->flashdata('procadmin'); ?>" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
 					</div>
 				</div>
 			</td>
@@ -179,14 +179,14 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 				<div class="control-group">
 					<div class="controls">
 
-					<select class="form-control input_Vazio" name="id_modalidadedelicitacao" placeholder="Modalidade">
+					<select class="form-control input_Vazio" name="id_modalidadelicitacao" placeholder="Modalidade">
 						<option>Selecione...</option>
 
 						<?php 
 
 							foreach ($pack['modalidadedelicitacao'] as $modalidadedelicitacao) {
 								
-								if($this->session->flashdata('modalidadedelicitacao') == $modalidadedelicitacao->id_modalidadedelicitacao){
+								if($this->session->flashdata('id_modalidadelicitacao') == $modalidadedelicitacao->id_modalidadedelicitacao){
 
 									echo '<option selected value="'.$modalidadedelicitacao->id_modalidadedelicitacao.'">'.$modalidadedelicitacao->modalidadedelicitacao.'</option>';
 
@@ -212,7 +212,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
+					<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerolicitacao'); ?>" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
 					</div>
 				</div>
 			</td>
@@ -226,7 +226,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="date" class="form-control input_Vazio dataValidar" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('datahomologacao'); ?>" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
 					</div>
 				</div>
 			</td>
@@ -242,11 +242,11 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio" name="id_objeto" id="objeto" placeholder="Objeto">
+					<select class="form-control input_Vazio" name="id_objetotitulo" id="objeto" placeholder="Objeto">
 						<option>Selecione...</option>
 						<?php 
 							foreach ($pack['objeto'] as $objeto) {
-								if($this->session->flashdata('objeto') == $objeto->id_objeto){
+								if($this->session->flashdata('id_objetotitulo') == $objeto->id_objeto){
 									echo '<option selected value="'.$objeto->id_objeto.'">'.$objeto->objetotitulo.'</option>';
 								} else {
 									echo '<option value="'.$objeto->id_objeto.'">'.$objeto->objetotitulo.'</option>';
@@ -293,7 +293,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" name="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazoentrega'); ?>" name="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
 					</div>
 				</div>
 			</td>
@@ -306,7 +306,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazopagto'); ?>" name="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
 					</div>
 				</div>
 			</td>
@@ -319,7 +319,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
+					<input type="text" class="form-control" value="<?php echo $this->session->flashdata('orgaosparticipantes'); ?>" name="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
 					</div>
 				</div>
 			</td>
@@ -337,7 +337,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
 <?php echo form_fieldset_close(); ?>
 
-<!-- Modal para Adicionar novo objeto grupo -->
+<!-- Modal para Adicionar novo objeto -->
 <div class="modal fade" id="modelAdicionar" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -352,7 +352,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Continuar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
         <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Criar Objeto </div>')?>
        </div>
     </div>

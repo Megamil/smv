@@ -23,6 +23,7 @@ $lang['is_natural_no_zero']	= "O campo %s deve conter um número positivo difere
 $lang['decimal']			= "O campo %s deve conter um número decimal.";
 $lang['less_than']			= "O campo %s deve conter um número menor que %s.";
 $lang['greater_than']		= "O campo %s deve conter um número maior que %s.";
+$lang['valid_date'] 		= "O campo %s não está em formato válido de acordo com o calendário gregoriano.";
 
 
 /* End of file form_validation_lang.php */

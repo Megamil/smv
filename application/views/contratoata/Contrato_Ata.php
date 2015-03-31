@@ -20,15 +20,9 @@
 						echo "<tr>";
 						    echo "<td>$contratoata->numerocontratoata</td>";
 						    echo "<td>$contratoata->procadmin</td>";
-
-						    $data=$contratoata->datahomologacao;
-						    $dataatual = explode("-",$data);
-							$ano = $dataatual['0'];//ano
-							$mes = $dataatual['1'];//mes
-							$dia = $dataatual['2'];//dia
-							$datahomologacao = $dia.'/'.$mes.'/'.$ano;
-
-							echo '<td>'.$datahomologacao.'</td>';
+						    //Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
+							$dataFormatada = date("d-m-Y", strtotime($contratoata->datahomologacao));
+							echo '<td>'.$dataFormatada.'</td>';
 							echo "<td>$contratoata->numerolicitacao</td>";
 							echo '<td>'.anchor('edicoes/editar_Contrato_Ata/'.$contratoata->id_contratoata.'','Editar').'</td>';
 						echo "</tr>";

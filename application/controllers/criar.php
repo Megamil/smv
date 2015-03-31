@@ -826,6 +826,135 @@ public function novo_Cliente() {
 		
 	}
 
+
+	public function novo_Contrato_Ata() {
+
+		$this->form_validation->set_rules('numerocontratoata','Número do Contrato/ATA','required');
+		$this->form_validation->set_rules('dtinivigencia','Início da Vigência','required|valid_date');
+		$this->form_validation->set_rules('dtfimvigencia','Término da Vigência','required|valid_date');
+		$this->form_validation->set_rules('dtinivigenciaprorrog','Início da Vigência','valid_date');
+		$this->form_validation->set_rules('dtfimvigenciaprorrog','Término da Vigência','valid_date');
+		$this->form_validation->set_rules('id_fornecedorprestador','Fornecedor','required');
+		$this->form_validation->set_rules('cnpj','CNPJ','required');
+		$this->form_validation->set_rules('procadmin','Processo Administrativo','required');
+		$this->form_validation->set_rules('id_modalidadelicitacao','Modalidade Licitação','required');
+		$this->form_validation->set_rules('numerolicitacao','Licitação','required');
+		$this->form_validation->set_rules('datahomologacao','Data da Homologação','required|valid_date');
+		$this->form_validation->set_rules('id_objetotitulo','Objeto - Título','required');
+		$this->form_validation->set_rules('prazoentrega','Prazo de Entrega','required');
+		$this->form_validation->set_rules('prazopagto','Prazo de pagamento','required');
+
+
+		if($this->form_validation->run()){
+
+			if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
+			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
+			if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
+			if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
+
+			$dados = array (
+
+				'numerocontratoata' => $this->input->post('numerocontratoata'),
+				'dtinivigencia' => $this->input->post('dtinivigencia'),
+				'dtfimvigencia' => $this->input->post('dtfimvigencia'),
+				'numanoemissorprorrogacao' => $numanoemissorprorrogacao,
+				'dtinivigenciaprorrog' => $dtinivigenciaprorrog,
+				'dtfimvigenciaprorrog' => $dtfimvigenciaprorrog,
+				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+				'cnpj' => $this->input->post('cnpj'),
+				'procadmin' => $this->input->post('procadmin'),
+				'id_modalidadelicitacao' => $this->input->post('id_modalidadelicitacao'),
+				'numerolicitacao' => $this->input->post('numerolicitacao'),
+				'datahomologacao' => $this->input->post('datahomologacao'),
+				'id_objetotitulo' => $this->input->post('id_objetotitulo'),
+				'prazoentrega' => $this->input->post('prazoentrega'),
+				'prazopagto' => $this->input->post('prazopagto'),
+				'orgaosparticipantes' => $orgaosparticipantes
+
+			);
+
+			$this->novo->Contrato_Ata_Novo($dados);
+
+			$this->session->set_userdata('aviso','Contrato/ATA Criado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Contrato_Ata');
+
+		} else {
+
+			$this->session->set_flashdata('numerocontratoata', $this->input->post('numerocontratoata'));
+			$this->session->set_flashdata('dtinivigencia', $this->input->post('dtinivigencia'));
+			$this->session->set_flashdata('dtfimvigencia', $this->input->post('dtfimvigencia'));
+			$this->session->set_flashdata('numanoemissorprorrogacao', $this->input->post('numanoemissorprorrogacao'));
+			$this->session->set_flashdata('dtinivigenciaprorrog', $this->input->post('dtinivigenciaprorrog'));
+			$this->session->set_flashdata('dtfimvigenciaprorrog', $this->input->post('dtfimvigenciaprorrog'));
+			$this->session->set_flashdata('id_fornecedorprestador', $this->input->post('id_fornecedorprestador'));
+			$this->session->set_flashdata('cnpj', $this->input->post('cnpj'));
+			$this->session->set_flashdata('procadmin', $this->input->post('procadmin'));
+			$this->session->set_flashdata('id_modalidadelicitacao', $this->input->post('id_modalidadelicitacao'));
+			$this->session->set_flashdata('numerolicitacao', $this->input->post('numerolicitacao'));
+			$this->session->set_flashdata('datahomologacao', $this->input->post('datahomologacao'));
+			$this->session->set_flashdata('id_objetotitulo', $this->input->post('id_objetotitulo'));
+			$this->session->set_flashdata('prazoentrega', $this->input->post('prazoentrega'));
+			$this->session->set_flashdata('prazopagto', $this->input->post('prazopagto'));
+			$this->session->set_flashdata('orgaosparticipantes', $this->input->post('orgaosparticipantes'));
+
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Contrato_Ata');
+
+		}
+		
+	}
+
+/*
+	public function EXEMPLO() {
+
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post('')
+
+			);
+
+			$id_retorno = $this->novo->solicita_Ordem_Servico_Nova($dados);
+
+			$this->session->set_userdata('aviso','');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico'.$id_retorno);
+
+		}
+
+
+
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico');
+		
+	}
+*/
+
 }
 
 /* End of file main.php */
