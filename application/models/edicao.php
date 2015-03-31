@@ -134,4 +134,11 @@ class edicao extends CI_Model {
 		return $this->db->update('tbl_solicitaordemservico',$dados);
 	}
 
+	public function Contrato_Ata_Editar($dados = null)
+	{
+
+		$this->db->where('id_contratoata',$dados["id_contratoata"]);
+		return $this->db->update('tbl_contratoata',$dados);
+	}
+
 }

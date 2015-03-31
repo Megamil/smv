@@ -25,6 +25,10 @@
 						echo "<td>$unidadeutilizadora->id_unidadeutilizadora</td>";
 						echo '<td><input class="cnpjValidar" value="'.$unidadeutilizadora->cnpj.'" disabled></td>';
 
+						$secaoS = '---';
+						$divisaoS = '---';
+						$setorS = '---';
+
 						foreach ($pack['depto'] as $depto) {
 
 							if($unidadeutilizadora->id_depto == $depto->id_depto) {
@@ -36,26 +40,33 @@
 						foreach ($pack['divisao'] as $divisao) {
 
 							if($unidadeutilizadora->id_divisao == $divisao->id_divisao) {
-								echo "<td>$divisao->divisao</td>";
+								$divisaoS = "$divisao->divisao";
 								break;
 							}
 						}
+
+						echo '<td>'.$divisaoS.'</td>';
 
 						foreach ($pack['secao'] as $secao) {
 
 							if($unidadeutilizadora->id_secao == $secao->id_secao) {
-								echo "<td>$secao->secao</td>";
+								$secaoS = "$secao->secao";
 								break;
 							}
 						}
+
+						echo '<td>'.$secaoS.'</td>';
 
 						foreach ($pack['setor'] as $setor) {
 
 							if($unidadeutilizadora->id_setor == $setor->id_setor) {
-								echo "<td>$setor->setor</td>";
+								$setorS = "$setor->setor";
 								break;
 							}
 						}
+
+						echo '<td>'.$setorS.'</td>';
+
 						echo "<td>$unidadeutilizadora->telefone</td>";
 						echo '<td>'.anchor('edicoes/editar_Unidade_Utilizadora/'.$unidadeutilizadora->id_unidadeutilizadora.'','Editar').'</td>';
 						echo "</tr>";

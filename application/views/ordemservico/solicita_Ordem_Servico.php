@@ -36,10 +36,10 @@
 								}
 							}
 
-							foreach ($pack['estadoordemservico'] as $estadoordemservico) {
+							foreach ($pack['estadoordemservico'] as $estadosolicitacao) {
 
-								if($solicitaordemservico->id_estadosolicitacao == $estadoordemservico->id_estadoordemservico) {
-									echo "<td>$estadoordemservico->estadoordemservico</td>";
+								if($solicitaordemservico->id_estadosolicitacao == $estadosolicitacao->id_estadosolicitacao) {
+									echo "<td>$estadosolicitacao->estadosolicitacao</td>";
 									break;
 								}
 							}

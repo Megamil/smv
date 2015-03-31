@@ -58,6 +58,8 @@ $(document).ready(function(){
 	$('#cepValidar').mask("?99999-999");
 	$('.cepValidar').mask("?99999-999");
 	$('#placaValidar').mask("?aaa-9999");
+	$('.placaValidar').mask("?aaa-9999");
+	$('.dataValidar').mask("?99/99/9999");
 
 
 	//Verifica um campo input assim que perde o foco
@@ -71,6 +73,8 @@ $(document).ready(function(){
 			$('.cepValidar').mask("?99999999");
 			$('#cpfValidar').mask("99999999999");
 			$('#placaValidar').mask("?aaa9999");
+			$('.placaValidar').mask("?aaa9999");
+			$('.dataValidar').mask("?99999999");
 
 		if($(this).val() == '' || $(this).val() == "Selecione...") {
 
@@ -91,6 +95,8 @@ $(document).ready(function(){
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");
+			$('.placaValidar').mask("?aaa-9999");
+			$('.dataValidar').mask("?99/99/9999");
 
 
 		} else {
@@ -108,6 +114,8 @@ $(document).ready(function(){
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");
+			$('.placaValidar').mask("?aaa-9999");
+			$('.dataValidar').mask("?99/99/9999");
 
 		}
 
@@ -150,6 +158,8 @@ $(document).ready(function(){
 			$('.cepValidar').mask("?99999999");
 			$('#cpfValidar').mask("99999999999");
 			$('#placaValidar').mask("?aaa9999");
+			$('.placaValidar').mask("?aaa9999");
+			$('.dataValidar').mask("?99999999");
 			
 			//Percorre todos inputs com essa classe
 			$(".input_Vazio").each(function(){
@@ -174,6 +184,8 @@ $(document).ready(function(){
 					$('#cepValidar').mask("?99999-999");
 					$('.cepValidar').mask("?99999-999");
 					$('#placaValidar').mask("?aaa-9999");
+					$('.placaValidar').mask("?aaa-9999");
+					$('.dataValidar').mask("?99/99/9999");
 
 					return false;
 
@@ -188,7 +200,6 @@ $(document).ready(function(){
 					$("form").submit();
 
 			}
-
 
 	}); //Fecha o validar enviar
 

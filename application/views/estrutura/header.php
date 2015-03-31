@@ -30,7 +30,6 @@
   <!--Indicação do css e JS estilizado e imagem do favicon-->
   <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/estilo.css" class="stylesheet">
   <link rel="shortcut icon" href="<?php echo base_url(); ?>style/img/favicon.png" type="image/x-icon">
-  <script type="text/javascript" src="<?php echo base_url(); ?>style/js/formularios.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>style/js/validarcampo.js"></script>
   <!--Indicação do css e JS estilizado e imagem do favicon FIM-->
   
@@ -160,30 +159,18 @@
             <!--GUIA ESTOQUE FIM-->
             
             <!--GUIA Contrato/ATA Inicio-->
-             <li> 
-
-              <a class="btn" href="#">Contrato/Ata
-              </a> 
-
-            </li>
+            <li <?php if($ativo == 'contratoata-Contrato_Ata') {echo 'class="active"';}?>>
+            <?php echo anchor('main/redirecionar/contratoata-Contrato_Ata', 'Contrato/Ata')?></li>
             <!--GUIA Contrato/ATA FIM-->
 
             <!--GUIA Emprenho Inicio-->
-             <li> 
-
-              <a class="btn" href="#">Empenho
-              </a> 
-
-            </li>
+            <li <?php if($ativo == 'contratoata-Contrato_At') {echo 'class="active"';}?>>
+            <?php echo anchor('main/redirecionar/contratoata-Contrato_ta', 'Empenho')?></li>
             <!--GUIA Emprenho FIM-->
 
             <!--GUIA Autorização de fornecimento Inicio-->
-             <li> 
-
-              <a class="btn" href="#">Autorização
-              </a> 
-
-            </li>
+            <li <?php if($ativo == 'contratoata-Contrato_At') {echo 'class="active"';}?>>
+            <?php echo anchor('main/redirecionar/contratoata-Contrato_Aa', 'Autorização')?></li>
             <!--GUIA Autorização de fornecimento FIM-->
 
             <!--GUIA CADASTROS INICIO-->

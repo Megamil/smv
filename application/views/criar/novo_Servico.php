@@ -26,7 +26,7 @@ echo form_open("criar/novo_Servico",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Unidade</span>
+						<span class="help-inline">Unidade de Medida</span>
 					</div>
 				</div>
 			</td>

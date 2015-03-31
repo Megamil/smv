@@ -430,7 +430,7 @@ class dados_iniciais_model extends CI_Model {
 	/*Inicio das codificações referente as telas de Ordem de Serviço*/
 	public function nova_Solicitacao_Ordem_Servico(){
 		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
-		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
 		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
 left join tbl_setor TS on TS.id_setor = TU.id_setor
@@ -442,23 +442,62 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	}
 
 	public function editar_Solicitacao_Ordem_Servico(){
-		$pack = array ('solicitaordemservico' => $this->db->query('select * from tbl_solicitaordemservico where id_solicitaordemservico = '.$this->session->userdata('idEditar').';')->result(),
-		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+
+		$pack = array (
+
+		  'solicitaordemservico' => $this->db->query('select * from tbl_solicitaordemservico where id_solicitaordemservico = '.$this->session->userdata('idEditar').';'),
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
 		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result()
+
+		 );
+
 		return $pack;
 
 	}
 
 	public function solicita_Ordem_Servico(){ /*Carrega a lista com todos as ordens de serviço*/
 		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
-		  'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
 		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
 		  'veiculo' => $this->db->get('tbl_veiculo')->result());
 		return $pack;
 		
+	}
+	/*Fim das codificações das telas de  de Ordem de Serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Ordem de Serviço*/
+	public function novo_Contrato_Ata(){
+		$pack = array ('contratoata' => $this->db->get('tbl_contratoata')->result(), 
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
+		  'objeto' => $this->db->get('tbl_objeto')->result());
+		return $pack;
+	}
+
+	public function editar_Contrato_Ata(){
+		$pack = array ('contratoata' => $this->db->query('select * from tbl_contratoata where id_contratoata = '.$this->session->userdata('idEditar').';'),
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
+		  'objeto' => $this->db->get('tbl_objeto')->result());
+		return $pack;
+
+	}
+
+	public function Contrato_Ata(){ 
+		$pack = array ('contratoata' => $this->db->get('tbl_contratoata')->result(), 
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
+		  'objeto' => $this->db->get('tbl_objeto')->result());
+		return $pack;
 	}
 	/*Fim das codificações das telas de  de Ordem de Serviço*/
 }

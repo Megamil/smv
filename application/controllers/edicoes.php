@@ -843,13 +843,6 @@ class edicoes extends CI_Controller {
 
 	}
 
-	public function editar_Unidade_Utilizadora(){
-
-		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
-		redirect('main/redirecionar/edicoes-editar_Unidade_Utilizadora'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
-
-	}
-
 	public function editar_Solicitacao_Ordem_Servico(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
@@ -857,5 +850,98 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Solicitacao_Ordem_Servico(){
+
+		$dados = array (
+
+			'id_solicitaordemservico' => $this->input->post('id_solicitaordemservico'),
+			'id_unidadesolicitante' => $this->input->post('unidadesolicitante'),
+			'id_veiculo' => $this->input->post('prefixo'),
+			'km' => $this->input->post('km'),
+			'defeitoapresentado' => $this->input->post('defeitoapresentado'),
+			'id_estadosolicitacao' => $this->input->post('id_estadosolicitacao')
+
+		);
+
+		$this->edicao->solicita_Ordem_Servico_Editar($dados);
+
+		$this->session->set_userdata('aviso','Ordem de serviço alterada com sucesso');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico/'.$this->input->post('id_solicitaordemservico'));
+
+	}
+
+	public function editar_Contrato_Ata(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Contrato_Ata'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_Unidade_Utilizadora(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Unidade_Utilizadora'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Unidade_Utilizadora() {
+
+		/*Impede que '' ou 'Selecione...', em caso de campo select, seja enviado para o banco no lugar de um número, para os campos não obrigatórios*/
+		if($this->input->post('complemento') == '') { $complemento = null;} else { $complemento = $this->input->post('complemento'); }
+		if($this->input->post('ramal') == '') { $ramal = null;} else { $ramal = $this->input->post('ramal'); }
+		if($this->input->post('fax') == '') { $fax = null;} else { $fax = $this->input->post('fax'); }
+		if($this->input->post('complementofaturamento') == '') { $complementofaturamento = null;} else { $complementofaturamento = $this->input->post('complementofaturamento'); }
+		if($this->input->post('id_divisao') == 'Selecione...') { $id_divisao = null;} else { $id_divisao = $this->input->post('id_divisao'); }
+		if($this->input->post('id_secao') == 'Selecione...') { $id_secao = null;} else { $id_secao = $this->input->post('id_secao'); }
+		if($this->input->post('id_setor') == 'Selecione...') { $id_setor = null;} else { $id_setor = $this->input->post('id_setor'); }
+
+
+		$dados = array (
+
+			'id_unidadeutilizadora' => $this->input->post('id_unidadeutilizadora'),
+			'cep' => $this->input->post('cep'),
+			'rua' => $this->input->post('rua'),
+			'numero' => $this->input->post('numero'),
+			'complemento' => $complemento,
+			'cidade' => $this->input->post('cidade'),
+			'uf' => $this->input->post('uf'),
+			'telefone' => $this->input->post('telefone'),
+			'ramal' => $ramal,
+			'fax' => $fax,
+			'contato' => $this->input->post('contato'),
+			'email' => $this->input->post('email'),
+			'cnpj' => $this->input->post('cnpj'),
+			'cepfaturamento' => $this->input->post('cepfaturamento'),
+			'ruafaturamento' => $this->input->post('ruafaturamento'),
+			'numerofaturamento' => $this->input->post('numerofaturamento'),
+			'complementofaturamento' => $complementofaturamento,
+			'cidadefaturamento' => $this->input->post('cidadefaturamento'),
+			'uffaturamento' => $this->input->post('uffaturamento'),
+			'id_depto' => $this->input->post('id_depto'),
+			'id_divisao' => $id_divisao,
+			'id_secao' => $id_secao,
+			'id_setor' => $id_setor
+
+		);
+
+		if($this->edicao->unidade_Utilizadora_Editar($dados)){
+
+			$this->session->set_userdata('aviso','Unidade utilizadora Adicionada com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Unidade_Utilizadora');
+
+		} else {
+
+			$this->session->set_userdata('aviso','Unidade utilizadora não pode ser Editada.');
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Unidade_Utilizadora');
+
+		}
+
+	}
 
 }

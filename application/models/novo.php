@@ -139,7 +139,15 @@ class novo extends CI_Model {
 	public function solicita_Ordem_Servico_Nova($dados = null)
 	{
 
-		return $this->db->insert('tbl_solicitaordemservico',$dados);
+		$this->db->insert('tbl_solicitaordemservico',$dados);
+		return $this->db->insert_id;
+
+	}
+
+	public function Contrato_Ata_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_contratoata',$dados);
 
 	}
 
