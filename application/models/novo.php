@@ -151,6 +151,34 @@ class novo extends CI_Model {
 
 	}
 
+	public function item_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_itens',$dados);
+
+	}
+
+	public function entrada_Itens_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_entradaitens',$dados);
+
+	}
+
+	public function saida_Itens_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_saidaitens',$dados);
+
+	}
+
+		public function empenho_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_empenho',$dados);
+
+	}
+
 }
 
 ?>

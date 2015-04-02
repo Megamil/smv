@@ -141,4 +141,38 @@ class edicao extends CI_Model {
 		return $this->db->update('tbl_contratoata',$dados);
 	}
 
+	public function item_Editar($dados = null)
+	{
+
+		$this->db->where('id_itens',$dados["id_itens"]);
+		return $this->db->update('tbl_itens',$dados);
+	}
+
+	public function entrada_Itens_Editar($dados = null)
+	{
+
+		$this->db->where('id_entradaitens',$dados["id_entradaitens"]);
+		return $this->db->update('tbl_entradaitens',$dados);
+	}
+
+	public function saida_Itens_Editar($dados = null)
+	{
+
+		$this->db->where('id_saidaitens',$dados["id_saidaitens"]);
+		return $this->db->update('tbl_saidaitens',$dados);
+	}
+
+	public function empenho_Editar($dados = null)
+	{
+
+		$this->db->where('id_empenho',$dados["id_empenho"]);
+		return $this->db->update('tbl_empenho',$dados);
+	}
+
+	public function saida_Itens_Novo($subtrairTotal){
+
+		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel - '.$subtrairTotal["quantidade"].' where id_itens = '.$subtrairTotal["id_itens"].';');
+
+	}
+
 }

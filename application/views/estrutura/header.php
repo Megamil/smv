@@ -125,6 +125,19 @@
               
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
+
+                <li <?php if($ativo == 'estoque-itens') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/estoque-itens', 'Cadastro de Itens')?></li>
+                    <li class="dropdown-submenu">
+                     <a tabindex="-1" href="#">Movimentação</a>
+                    <ul class="dropdown-menu">
+                        <li <?php if($ativo == 'estoque-entradaitens') {echo 'class="active"';}?>>
+                        <?php echo anchor('main/redirecionar/estoque-entrada_Itens', 'Entrada de Itens')?></li>
+                        
+                        <li <?php if($ativo == 'estoque-saidaitens') {echo 'class="active"';}?>>
+                        <?php echo anchor('main/redirecionar/estoque-saida_Itens', 'Saída de Itens')?></li>
+                    </ul></li>
+
                 <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/seguranca-usuarios', 'Consultar')?></li>
 
@@ -164,13 +177,13 @@
             <!--GUIA Contrato/ATA FIM-->
 
             <!--GUIA Emprenho Inicio-->
-            <li <?php if($ativo == 'contratoata-Contrato_At') {echo 'class="active"';}?>>
-            <?php echo anchor('main/redirecionar/contratoata-Contrato_ta', 'Empenho')?></li>
+            <li <?php if($ativo == 'empenho-empenho') {echo 'class="active"';}?>>
+            <?php echo anchor('main/redirecionar/empenho-empenho', 'Empenho')?></li>
             <!--GUIA Emprenho FIM-->
 
             <!--GUIA Autorização de fornecimento Inicio-->
             <li <?php if($ativo == 'contratoata-Contrato_At') {echo 'class="active"';}?>>
-            <?php echo anchor('main/redirecionar/contratoata-Contrato_Aa', 'Autorização')?></li>
+            <?php echo anchor('main/redirecionar/', 'Autorização')?></li>
             <!--GUIA Autorização de fornecimento FIM-->
 
             <!--GUIA CADASTROS INICIO-->

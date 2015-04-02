@@ -9,7 +9,7 @@
 	
 	} else {
 		//SQL de BUSCA LISTAGEM
-		$sql 	= "select * from tbl_objeto where id_objeto ='".$_GET["id"]."';"; 
+		$sql 	= "select * from tbl_itens where id_itens = '".$_GET["id"]."';"; 
 		$result = pg_query($sql); //Executar a SQL
 		$quantidade = pg_num_rows($result);
 		if($quantidade == 0) {

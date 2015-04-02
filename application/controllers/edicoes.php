@@ -1008,4 +1008,132 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editar_item(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Item'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Item(){
+		if($this->input->post('codigomontadoraOriginal') != $this->input->post('codigomontadora')) {
+
+			$this->form_validation->set_rules('codigomontadora','Código Montadora','required|is_unique[tbl_itens.codigomontadora]');
+
+		} 
+
+		$this->form_validation->set_rules('descricao','Descrição','required');
+		$this->form_validation->set_rules('id_unidademedida','Unidade de Medida','required');
+
+		if($this->input->post('id_grupoitens') == 'Selecione...') {$id_grupoitens = null;} else {$id_grupoitens = $this->input->post('id_grupoitens');}
+		if($this->input->post('id_montadora1') == 'Selecione...') {$id_montadora1 = null;} else {$id_montadora1 = $this->input->post('id_montadora1');}
+		if($this->input->post('id_montadora2') == 'Selecione...') {$id_montadora2 = null;} else {$id_montadora2 = $this->input->post('id_montadora2');}
+		if($this->input->post('localizacao') == '') {$localizacao = null;} else {$localizacao = $this->input->post('localizacao');}
+		if($this->input->post('id_estadoitem') == '') {$id_estadoitem = null;} else {$id_estadoitem = $this->input->post('id_estadoitem');}
+		if($this->input->post('precobruto') == '') {$precobruto = null;} else {$precobruto = $this->input->post('precobruto');}
+		if($this->input->post('gaveta') == '') {$gaveta = null;} else {$gaveta = $this->input->post('gaveta');}
+		if($this->input->post('desconto') == '') {$desconto = null;} else {$desconto = $this->input->post('desconto');}
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+				
+				'id_itens' => $this->input->post('id_itens'),
+				'codigomontadora' => $this->input->post('codigomontadora'),
+				'descricao' => $this->input->post('descricao'),
+				'id_unidademedida' => $this->input->post('id_unidademedida'),
+				'id_grupoitens' => $id_grupoitens,
+				'id_montadora1' => $id_montadora1,
+				'id_montadora2' => $id_montadora2,
+				'localizacao' => $localizacao,
+				'id_estadoitem' => $id_estadoitem,
+				'precobruto' => $precobruto,
+				'gaveta' => $gaveta,
+				'desconto' => $desconto
+
+			);
+
+			$this->edicao->item_Editar($dados);
+
+			$this->session->set_userdata('aviso','Item alterado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Item/'.$this->input->post('id_itens'));
+
+		}
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/edicoes-editar_Item/'.$this->input->post('id_itens'));
+
+	}
+
+	public function editar_entrada_Itens(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Entrada_Itens'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_saida_Itens(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Saida_Itens'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_empenho(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Empenho'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+/*
+	public function EXEMPLO() {
+
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+		$this->form_validation->set_rules('','','');
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post(''),
+				'' => $this->input->post('')
+
+			);
+
+			$id_retorno = $this->novo->solicita_Ordem_Servico_Nova($dados);
+
+			$this->session->set_userdata('aviso','');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico'.$id_retorno);
+
+		}
+
+
+
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+		$this->session->set_flashdata('', $this->input->post(''));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico');
+		
+	}
+*/
+
 }

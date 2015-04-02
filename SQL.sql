@@ -458,6 +458,22 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('Contrato_At
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Contrato_Ata', 'Criar novo Contrato/Ata.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Contrato_Ata', 'Editar Contrato/Ata');
 
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('item', 'Lista dos Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Item', 'Criar novo Item.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Item', 'Editar Item');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('entrada_Itens', 'Lista das Entradas dos Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Entrada_Itens', 'Criar nova Entrada de Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Entrada_Itens', 'Editar Entrada de Itens');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('saida_Itens', 'Lista das Saída dos Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Saida_Itens', 'Criar nova Saída de Itens.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Saida_Itens', 'Editar Saída de Itens');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('empenho', 'Lista dos Empenhos.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Empenho', 'Criar novo Empenho.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Empenho', 'Editar Empenho');
+
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -524,6 +540,19 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,58);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,59);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,60);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,61);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,62);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,63);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,64);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,65);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,66);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,67);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,68);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,69);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,70);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,71);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,72);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,73);
+
 
 
 

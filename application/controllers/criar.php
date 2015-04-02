@@ -909,6 +909,125 @@ public function novo_Cliente() {
 		
 	}
 
+public function novo_Item() {
+
+		$this->form_validation->set_rules('codigomontadora','Código Montadora','required|is_unique[tbl_itens.codigomontadora]');
+		$this->form_validation->set_rules('descricao','Descrição','required');
+		$this->form_validation->set_rules('id_unidademedida','Unidade de Medida','required');
+
+		if($this->input->post('id_grupoitens') == 'Selecione...') {$id_grupoitens = null;} else {$id_grupoitens = $this->input->post('id_grupoitens');}
+		if($this->input->post('id_montadora1') == 'Selecione...') {$id_montadora1 = null;} else {$id_montadora1 = $this->input->post('id_montadora1');}
+		if($this->input->post('id_montadora2') == 'Selecione...') {$id_montadora2 = null;} else {$id_montadora2 = $this->input->post('id_montadora2');}
+		if($this->input->post('localizacao') == '') {$localizacao = null;} else {$localizacao = $this->input->post('localizacao');}
+		if($this->input->post('id_estadoitem') == '') {$id_estadoitem = null;} else {$id_estadoitem = $this->input->post('id_estadoitem');}
+		if($this->input->post('precobruto') == '') {$precobruto = null;} else {$precobruto = $this->input->post('precobruto');}
+		if($this->input->post('gaveta') == '') {$gaveta = null;} else {$gaveta = $this->input->post('gaveta');}
+		if($this->input->post('desconto') == '') {$desconto = null;} else {$desconto = $this->input->post('desconto');}
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'codigomontadora' => $this->input->post('codigomontadora'),
+				'descricao' => $this->input->post('descricao'),
+				'id_unidademedida' => $this->input->post('id_unidademedida'),
+				'id_grupoitens' => $id_grupoitens,
+				'id_montadora1' => $id_montadora1,
+				'id_montadora2' => $id_montadora2,
+				'localizacao' => $localizacao,
+				'id_estadoitem' => $id_estadoitem,
+				'precobruto' => $precobruto,
+				'gaveta' => $gaveta,
+				'desconto' => $desconto
+
+			);
+
+			$this->novo->item_Novo($dados);
+
+			$this->session->set_userdata('aviso','Item adicionado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Item');
+
+		}
+
+
+
+		$this->session->set_flashdata('codigomontadora', $this->input->post('codigomontadora'));
+		$this->session->set_flashdata('descricao', $this->input->post('descricao'));
+		$this->session->set_flashdata('id_unidademedida', $this->input->post('id_unidademedida'));
+		$this->session->set_flashdata('id_grupoitens', $this->input->post('id_grupoitens'));
+		$this->session->set_flashdata('id_montadora1', $this->input->post('id_montadora1'));
+		$this->session->set_flashdata('id_montadora2', $this->input->post('id_montadora2'));
+		$this->session->set_flashdata('localizacao', $this->input->post('localizacao'));
+		$this->session->set_flashdata('gaveta', $this->input->post('gaveta'));
+		$this->session->set_flashdata('id_estadoitem', $this->input->post('id_estadoitem'));
+		$this->session->set_flashdata('precobruto', $this->input->post('precobruto'));
+		$this->session->set_flashdata('desconto', $this->input->post('desconto'));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/criar-novo_Item');
+		
+	}
+
+
+public function nova_Saida_Itens() {
+
+		$this->form_validation->set_rules('codigointerno','Item','required');
+		$this->form_validation->set_rules('quantidade','Quantidade','required');
+		$this->form_validation->set_rules('id_cliente','Cliente','required');
+		$this->form_validation->set_rules('datasaida','Data Saída','required');
+
+		if($this->form_validation->run()){
+
+
+			if($this->input->post('ordemservico') != '') {$ordemservico = $this->input->post('ordemservico');} else {$ordemservico = null;}
+			if($this->input->post('observacoes') != '') {$observacoes = $this->input->post('observacoes');} else {$observacoes = null;}
+
+			$dados = array (
+
+				'codigointerno' => $this->input->post('codigointerno'),
+				'quantidade' => $this->input->post('quantidade'),
+				'id_cliente' => $this->input->post('id_cliente'),
+				'datasaida' => $this->input->post('datasaida'),
+				'ordemservico' => $ordemservico,
+				'observacoes' => $observacoes
+
+			);
+			//Usado para subtrair do total.
+			$subtrairTotal = array (
+
+				'id_itens' => $this->input->post('codigointerno'),
+				'quantidade' => $this->input->post('quantidade'),
+
+			);
+
+			$this->novo->saida_Itens_Novo($dados);
+			$this->edicao->saida_Itens_Novo($subtrairTotal);
+
+			$this->session->set_userdata('aviso','Saída realizada com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-nova_Saida_Itens');
+
+		}
+
+		$this->session->set_flashdata('codigointerno', $this->input->post('codigointerno'));
+		$this->session->set_flashdata('quantidade', $this->input->post('quantidade'));
+		$this->session->set_flashdata('id_cliente', $this->input->post('id_cliente'));
+		$this->session->set_flashdata('datasaida', $this->input->post('datasaida'));
+		$this->session->set_flashdata('ordemservico', $this->input->post('ordemservico'));
+		$this->session->set_flashdata('observacoes', $this->input->post('observacoes'));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/criar-nova_Saida_Itens');
+		
+	}
+
 /*
 	public function EXEMPLO() {
 

@@ -138,7 +138,7 @@ class dados_iniciais_model extends CI_Model {
 		return $pack;
 
 	}
-
+	/*----------------------------------------------------------------------------------------------------------*/
 	/*Inicio das codificações referente as telas de Dotação*/
 	public function nova_Dotacao(){
 		$pack = $this->db->get('tbl_segmento');
@@ -500,6 +500,124 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		return $pack;
 	}
 	/*Fim das codificações das telas de  de Ordem de Serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Itens*/
+	public function novo_Item(){
+		$pack = array ('itens' => $this->db->get('tbl_itens')->result(), 
+		  'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+		  'montadora' => $this->db->get('tbl_montadora')->result(),
+		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function editar_Item(){
+		$pack = array ('itens' => $this->db->query('select * from tbl_itens where id_itens = '.$this->session->userdata('idEditar').';'),
+		  'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+		  'montadora' => $this->db->get('tbl_montadora')->result(),
+		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function itens(){ 
+		$pack = array ('itens' => $this->db->get('tbl_itens')->result(), 
+		  'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+		  'montadora' => $this->db->get('tbl_montadora')->result(),
+		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de  de Ordem de Serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Entrada de Itens*/
+	public function nova_Entrada_Itens(){
+		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function editar_Entrada_Itens(){
+		$pack = array ('entradaitens' => $this->db->query('select * from tbl_entradaitens where id_entradaitens = '.$this->session->userdata('idEditar').';'),
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function entrada_Itens(){ 
+		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de Entrada de Itens*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de Saída de Itens*/
+	public function nova_Saida_Itens(){
+		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'cliente' => $this->db->get('tbl_clientes')->result());
+		return $pack;
+	}
+
+	public function editar_Saida_Itens(){
+		$pack = array ('saidaitens' => $this->db->query('select * from tbl_saidaitens where id_saidaitens = '.$this->session->userdata('idEditar').';'),
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'cliente' => $this->db->get('tbl_clientes')->result());
+		return $pack;
+	}
+
+	public function saida_Itens(){ 
+		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'cliente' => $this->db->get('tbl_clientes')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de Saída de Itens*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de empenho*/
+	public function novo_Empenho(){
+		$pack = array ('empenho' => $this->db->get('tbl_empenho')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function editar_Empenho(){
+		$pack = array ('empenho' => $this->db->query('select * from tbl_empenho where id_empenho = '.$this->session->userdata('idEditar').';'),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+
+	public function empenho(){ 
+		$pack = array ('empenho' => $this->db->get('tbl_empenho')->result(), 
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de Saída de Itens*/
 }
 
 ?>
