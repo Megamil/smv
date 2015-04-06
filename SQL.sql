@@ -474,6 +474,10 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('empenho', '
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('novo_Empenho', 'Criar novo Empenho.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Empenho', 'Editar Empenho');
 
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('ordem_Servico', 'Lista das Ordens de Serviço.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Ordem_Servico', 'Criar nova Ordem de Serviço.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Ordem_Servico', 'Editar Ordem de Serviço');
+
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
@@ -552,6 +556,9 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,70);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,71);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,72);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,73);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,74);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,75);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,76);
 
 
 

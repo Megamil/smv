@@ -16,7 +16,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
+						<select class="form-control input_Vazio"  name="id_segmento" placeholder="Segmento">
 
 						<option>Selecione...</option>
 
@@ -101,7 +101,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
+						<input type="text" class="form-control input_Vazio" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
 						</div>
 					</div>
 			</td>
@@ -115,7 +115,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="--------" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
+					<input type="text" class="form-control input_Vazio" name="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
 					</div>
 				</div>
 			</td>
@@ -129,7 +129,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="--------" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
+						<input type="text" class="form-control input_Vazio" name="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
 					</div>
 				</div>
 			</td>
@@ -189,7 +189,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
+					<select class="form-control input_Vazio"  name="id_contratoata" placeholder="Contrato / Ata">
 
 						<option>Selecione...</option>
 
@@ -286,7 +286,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
+					<select class="form-control input_Vazio"  name="id_dotacao" placeholder="Dotação">
 
 						<option>Selecione...</option>
 

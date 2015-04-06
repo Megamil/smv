@@ -179,6 +179,13 @@ class novo extends CI_Model {
 
 	}
 
+	public function ordem_Servico_Novo($dados = null)
+	{
+
+		return $this->db->insert('tbl_ordemservico',$dados);
+
+	}
+
 }
 
 ?>

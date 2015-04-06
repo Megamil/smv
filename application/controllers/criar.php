@@ -1028,6 +1028,61 @@ public function nova_Saida_Itens() {
 		
 	}
 
+public function nova_Entrada_Itens() {
+
+		$this->form_validation->set_rules('codigointerno','Item','required');
+		$this->form_validation->set_rules('quantidade','Quantidade','required');
+		$this->form_validation->set_rules('id_fornecedor','Fornecedor','required');
+		$this->form_validation->set_rules('dataentrada','Data Entrada','required');
+
+		if($this->form_validation->run()){
+
+
+			if($this->input->post('numnotafiscal') != '') {$numnotafiscal = $this->input->post('numnotafiscal');} else {$numnotafiscal = null;}
+			if($this->input->post('observacoes') != '') {$observacoes = $this->input->post('observacoes');} else {$observacoes = null;}
+
+			$dados = array (
+
+				'codigointerno' => $this->input->post('codigointerno'),
+				'quantidade' => $this->input->post('quantidade'),
+				'id_fornecedor' => $this->input->post('id_fornecedor'),
+				'dataentrada' => $this->input->post('dataentrada'),
+				'numnotafiscal' => $numnotafiscal,
+				'observacoes' => $observacoes
+
+			);
+			//Usado para subtrair do total.
+			$somaTotal = array (
+
+				'id_itens' => $this->input->post('codigointerno'),
+				'quantidade' => $this->input->post('quantidade'),
+
+			);
+
+			$this->novo->entrada_Itens_Novo($dados);
+			$this->edicao->entrada_Itens_Novo($somaTotal);
+
+			$this->session->set_userdata('aviso','Saída realizada com sucesso');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-nova_Entrada_Itens');
+
+		}
+
+		$this->session->set_flashdata('codigointerno', $this->input->post('codigointerno'));
+		$this->session->set_flashdata('quantidade', $this->input->post('quantidade'));
+		$this->session->set_flashdata('id_fornecedor', $this->input->post('id_fornecedor'));
+		$this->session->set_flashdata('dataentrada', $this->input->post('dataentrada'));
+		$this->session->set_flashdata('numnotafiscal', $this->input->post('numnotafiscal'));
+		$this->session->set_flashdata('observacoes', $this->input->post('observacoes'));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/criar-nova_Entrada_Itens');
+		
+	}
+
 /*
 	public function EXEMPLO() {
 

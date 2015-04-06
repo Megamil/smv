@@ -41,7 +41,7 @@
 
 							 }
 
-							 echo "<td>R$: $servico->valorunitario</td>";
+							 echo "<td>R$ $servico->valorunitario</td>";
 						     echo '<td>'.anchor('edicoes/editar_Servico/'.$servico->id_servicos.'','Editar').'</td>';
 						 echo "</tr>";
 					}

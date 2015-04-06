@@ -18,7 +18,15 @@
 				<?php
 
 					foreach ($pack['saidaitens'] as $saidaitens) {
-						echo "<tr>";
+
+						if($saidaitens->estorno == 't') {
+							echo '<tr class="success">';
+							$texto = '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','VER ESTORNO').'</td>';
+						} else {
+							echo '<tr class="warning">';
+							$texto = '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','EDITAR').'</td>';
+						}
+
 						    echo "<td>$saidaitens->codigointerno</td>";
 						    
 						    foreach($pack['itens'] as $itens){
@@ -30,14 +38,13 @@
 							 	}
 
 						    }
-							echo "<td>$saidaitens->ordemservico</td>";
 
+							echo "<td>$saidaitens->ordemservico</td>";
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($saidaitens->datasaida));
-							echo '<td>'.$dataFormatada.'</td>';
-							
+							echo '<td>'.$dataFormatada.'</td>';				
 							echo "<td>$saidaitens->quantidade</td>";
-							echo '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','Editar').'</td>';
+							echo $texto;
 							echo "</tr>";
 					}
 				?>

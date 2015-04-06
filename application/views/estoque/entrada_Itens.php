@@ -18,7 +18,14 @@
 				<?php
 
 					foreach ($pack['entradaitens'] as $entradaitens) {
-						echo "<tr>";
+						if($entradaitens->estorno == 't') {
+							echo '<tr class="success">';
+							$texto = '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Ver Estorno').'</td>';
+						} else {
+							echo '<tr class="warning">';
+							$texto = '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Editar').'</td>';
+						}
+
 						    echo "<td>$entradaitens->codigointerno</td>";
 						    
 						    foreach($pack['itens'] as $itens){
@@ -31,13 +38,11 @@
 
 						    }
 							echo "<td>$entradaitens->numnotafiscal</td>";
-
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($entradaitens->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
-							
 							echo "<td>$entradaitens->quantidade</td>";
-							echo '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Editar').'</td>';
+							echo $texto;
 							echo "</tr>";
 					}
 				?>

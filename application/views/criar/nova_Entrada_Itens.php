@@ -1,6 +1,10 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/entradaItem.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <?php echo form_fieldset("Nova Entrada de Itens");
 $form = array('name' => 'form'); 
 echo form_open("criar/nova_Entrada_Itens"); ?>
+
+	<input type="hidden" id="maximo" disabled>
 
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">
@@ -16,15 +20,19 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
  			
 				<div class="control-group">
 					<div class="controls">
-						<select class="form-control input_Vazio" name="codigointerno" placeholder="Descrição do Item">
+						<select class="form-control input_Vazio" name="codigointerno" id="codigointerno" placeholder="Descrição do Item">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['itens'] as $itens) {
-									if($this->session->flashdata('itens') == $itens->id_itens){
-										echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.'</option>';
-									} else {
-										echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.'</option>';
-									}
+									if($itens->estoquedisponivel > 0) { //Só poderá dar saída em itens com estoque acima de 0
+
+										if($this->session->flashdata('itens') == $itens->id_itens){
+											echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
+										} else {
+											echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
+										}
+
+									} 
 								}
 							?>
 						</select>
@@ -37,7 +45,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
   						<span id="basic-addon1">Quantidade</span>
- 						<input type="text" class="form-control input_Vazio" placeholder="Qtd." name="quantidade" aria-describedby="basic-addon1" style="max-width:90px" />
+ 						<input class="form-control input_Vazio" type="text" id="entrada" class="form-control input_Vazio" placeholder="Qtd." name="quantidade" aria-describedby="basic-addon1" style="max-width:90px" />
 					</div>
 				</div>
 			</td>
@@ -46,7 +54,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
   						<span id="basic-addon1">Valor Bruto</span>
- 						<input type="text" class="form-control input_Vazio" placeholder="Valor Bruto" name="valorbruto" aria-describedby="basic-addon1" style="max-width:90px" disabled/>
+ 						<input class="form-control" type="text" id="preco" name="valorbruto" aria-describedby="basic-addon1" style="max-width:90px" disabled>
 					</div>
 				</div>
 			</td>
@@ -55,7 +63,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">	
   						<span id="basic-addon1">Desconto %</span>
- 						<input type="text" class="form-control input_Vazio" placeholder="Desconto %" name="desconto" aria-describedby="basic-addon1" style="max-width:90px" disabled/>
+ 						<input class="form-control" type="text" id="desconto" name="desconto" aria-describedby="basic-addon1" style="max-width:90px" disabled>
  					</div>
 				</div>
 			</td>
@@ -64,7 +72,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
   						<span id="basic-addon1">Valor Líquido</span>
- 						<input type="text" class="form-control input_Vazio" placeholder="Valor Líquido" name="valorliquido" aria-describedby="basic-addon1" style="max-width:90px" disabled />
+ 						<input class="form-control" type="text" id="resultado" name="valorliquido" aria-describedby="basic-addon1" style="max-width:90px" disabled>
   					</div>
 				</div>
 			</td>
@@ -73,7 +81,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">	
   						<span id="basic-addon1">Nota Fiscal</span>
- 						<input type="text" class="form-control input_Vazio" placeholder="Nota Fiscal" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
+ 						<input type="text" class="form-control" placeholder="Nota Fiscal" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
  					</div>
 				</div>
 			</td>
@@ -83,7 +91,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
 						<span id="basic-addon1">Fornecedor / Prestador</span>
-						<select class="form-control input_Vazio" name="id_fornecedorprestador" placeholder="Fornecedor/Prestador">
+						<select class="form-control input_Vazio" name="id_fornecedor" placeholder="Clientes">
 							<option>Selecione...</option>
 							<?php 
 
@@ -110,7 +118,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
   						<span id="basic-addon1">Data Entrada</span>
- 						<input type="text" class="form-control input_Vazio dataValidar" placeholder="Data Entrada" name="dataentrada" aria-describedby="basic-addon1" style="max-width:100px" />
+ 						<input type="text" class="form-control input_Vazio dataValidar" placeholder="Data Entrada" id="dataentrada" name="dataentrada" aria-describedby="basic-addon1" style="max-width:100px" />
  					</div>
 				</div>
 			</td>
@@ -120,7 +128,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">
 						<span id="basic-addon1">Observações</span>
-						<textarea name="observacoes" cols="30" rows="2" class="form-control input_Vazio"></textarea>
+						<textarea name="observacoes" cols="30" rows="2" class="form-control"></textarea>
 					</div>	
 				</div>
 			</td>

@@ -1076,6 +1076,25 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Entrada_Itens(){
+
+		$estornoEntrada = array (
+
+			'id_entradaitens' => $this->input->post('id_entradaitens'),
+			'codigointerno' => $this->input->post('codigointerno'),
+			'quantidade' => $this->input->post('quantidade')
+
+		);
+
+		$this->edicao->estorno_Entrada_Itens_Novo($estornoEntrada);
+
+		$this->session->set_userdata('aviso','');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Entrada_Itens/'.$this->input->post('id_entradaitens')); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
 	public function editar_saida_Itens(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
@@ -1083,10 +1102,36 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function editando_Saida_Itens(){
+
+		$estornoSaida = array (
+
+			'id_saidaitens' => $this->input->post('id_saidaitens'),
+			'codigointerno' => $this->input->post('codigointerno'),
+			'quantidade' => $this->input->post('quantidade')
+
+		);
+
+		$this->edicao->estorno_Saida_Itens_Novo($estornoSaida);
+
+		$this->session->set_userdata('aviso','');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Saida_Itens/'.$this->input->post('id_saidaitens')); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
 	public function editar_empenho(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
 		redirect('main/redirecionar/edicoes-editar_Empenho'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function ordem_Servico(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Ordem_Servico'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
 
 	}
 

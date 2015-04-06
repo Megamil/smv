@@ -169,9 +169,43 @@ class edicao extends CI_Model {
 		return $this->db->update('tbl_empenho',$dados);
 	}
 
+	public function ordem_Servico_Editar($dados = null)
+	{
+
+		$this->db->where('id_ordemservico',$dados["id_ordemservico"]);
+		return $this->db->update('tbl_ordemservico',$dados);
+	}
+
+
+//**************************************************FUNÇÕES DE CALCULOS**************************************************************//
+
+	//Em caso de saída de itens da baixa na tabela de itens.
 	public function saida_Itens_Novo($subtrairTotal){
 
 		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel - '.$subtrairTotal["quantidade"].' where id_itens = '.$subtrairTotal["id_itens"].';');
+
+	}
+
+	//Estorno de uma saída para a tabela de itens.
+	public function estorno_Saida_Itens_Novo($estornoSaida){
+
+		$this->db->query('update tbl_saidaitens set estorno = \'t\' where id_saidaitens ='.$estornoSaida["id_saidaitens"].';');
+		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel + '.$estornoSaida["quantidade"].' where id_itens = '.$estornoSaida["codigointerno"].';');
+
+	}
+
+	//Em caso de entrada de itens soma na tabela de itens.
+	public function entrada_Itens_Novo($somaTotal){
+
+		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel + '.$somaTotal["quantidade"].' where id_itens = '.$somaTotal["id_itens"].';');
+
+	}
+
+	//Estorno de uma entrada para a tabela de itens.
+	public function estorno_Entrada_Itens_Novo($estornoEntrada){
+
+		$this->db->query('update tbl_entradaitens set estorno = \'t\' where id_entradaitens ='.$estornoEntrada["id_entradaitens"].';');
+		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel - '.$estornoEntrada["quantidade"].' where id_itens = '.$estornoEntrada["codigointerno"].';');
 
 	}
 

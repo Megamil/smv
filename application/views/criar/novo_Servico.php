@@ -71,7 +71,7 @@ echo form_open("criar/novo_Servico",$form); ?>
 				<div class="control-group">
 					<div class="controls input-group">					
 					<span class="input-group-addon" id="basic-addon1">R$: </span>
-					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('valorservico');  ?>" onkeypress='return SomenteNumero(event)' name="valorservico" aria-describedby="basic-addon1" size="52" placeholder="Valor do Serviço" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('valorservico');  ?>" onkeypress='return SomenteNumero(event)' name="valorservico" aria-describedby="basic-addon1" placeholder="Valor do Serviço" />
 					</div>
 				</div>
 			</td>

@@ -617,7 +617,44 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
 		return $pack;
 	}
-	/*Fim das codificações das telas de Saída de Itens*/
+	/*Fim das codificações das telas de empenho*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de ordem de serviço*/
+	public function nova_Ordem_Servico(){
+		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result());
+		return $pack;
+	}
+
+	public function editar_Ordem_Servico(){
+		$pack = array ('ordemservico' => $this->db->query('select * from tbl_ordemservico where id_ordemservico = '.$this->session->userdata('idEditar').';'),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result());
+		return $pack;
+	}
+	
+	public function ordem_Servico(){ 
+		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de ordem de serviço*/
 }
 
 ?>

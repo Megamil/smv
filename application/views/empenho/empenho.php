@@ -20,7 +20,7 @@
 					foreach ($pack['empenho'] as $empenho) {
 						echo "<tr>";
 						    echo "<td>$empenho->numeroempenho</td>";
-   							echo "<td>$empenho->valorempenho</td>";
+   							echo "<td>R$ $empenho->valorempenho</td>";
 
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($empenho->dtfimvigencia));
