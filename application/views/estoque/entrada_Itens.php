@@ -18,13 +18,8 @@
 				<?php
 
 					foreach ($pack['entradaitens'] as $entradaitens) {
-						if($entradaitens->estorno == 't') {
-							echo '<tr class="success">';
-							$texto = '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Ver Estorno').'</td>';
-						} else {
-							echo '<tr class="warning">';
-							$texto = '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Editar').'</td>';
-						}
+						
+						echo '<tr>';
 
 						    echo "<td>$entradaitens->codigointerno</td>";
 						    
@@ -42,7 +37,7 @@
 							$dataFormatada = date("d-m-Y", strtotime($entradaitens->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
 							echo "<td>$entradaitens->quantidade</td>";
-							echo $texto;
+							echo '<td>'.anchor('edicoes/editar_Entrada_Itens/'.$entradaitens->id_entradaitens.'','Editar').'</td>';
 							echo "</tr>";
 					}
 				?>

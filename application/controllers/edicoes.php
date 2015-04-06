@@ -1078,17 +1078,19 @@ class edicoes extends CI_Controller {
 
 	public function editando_Entrada_Itens(){
 
-		$estornoEntrada = array (
+		$dados = array (
 
 			'id_entradaitens' => $this->input->post('id_entradaitens'),
-			'codigointerno' => $this->input->post('codigointerno'),
-			'quantidade' => $this->input->post('quantidade')
+			'id_fornecedor' => $this->input->post('id_fornecedor'),
+			'numnotafiscal' => $this->input->post('numnotafiscal'),
+			'observacoes' => $this->input->post('observacoes')
+
 
 		);
 
-		$this->edicao->estorno_Entrada_Itens_Novo($estornoEntrada);
+		$this->edicao->entrada_Itens_Editar($dados);
 
-		$this->session->set_userdata('aviso','');
+		$this->session->set_userdata('aviso','Entrada realizada com sucesso.');
 		$this->session->set_userdata('tipo','success');
 
 		redirect('main/redirecionar/edicoes-editar_Entrada_Itens/'.$this->input->post('id_entradaitens')); /*Redirecionar para adicionar aplicações (Editar grupo)*/
@@ -1114,7 +1116,7 @@ class edicoes extends CI_Controller {
 
 		$this->edicao->estorno_Saida_Itens_Novo($estornoSaida);
 
-		$this->session->set_userdata('aviso','');
+		$this->session->set_userdata('aviso','Estorno da saída realizado com sucesso.');
 		$this->session->set_userdata('tipo','success');
 
 		redirect('main/redirecionar/edicoes-editar_Saida_Itens/'.$this->input->post('id_saidaitens')); /*Redirecionar para adicionar aplicações (Editar grupo)*/

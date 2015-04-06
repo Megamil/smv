@@ -201,12 +201,4 @@ class edicao extends CI_Model {
 
 	}
 
-	//Estorno de uma entrada para a tabela de itens.
-	public function estorno_Entrada_Itens_Novo($estornoEntrada){
-
-		$this->db->query('update tbl_entradaitens set estorno = \'t\' where id_entradaitens ='.$estornoEntrada["id_entradaitens"].';');
-		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel - '.$estornoEntrada["quantidade"].' where id_itens = '.$estornoEntrada["codigointerno"].';');
-
-	}
-
 }

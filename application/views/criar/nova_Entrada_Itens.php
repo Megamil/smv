@@ -24,15 +24,13 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['itens'] as $itens) {
-									if($itens->estoquedisponivel > 0) { //Só poderá dar saída em itens com estoque acima de 0
 
-										if($this->session->flashdata('itens') == $itens->id_itens){
-											echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
-										} else {
-											echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
-										}
+									if($this->session->flashdata('itens') == $itens->id_itens){
+										echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
+									} else {
+										echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.' Quantidade Atual: '.$itens->estoquedisponivel.'</option>';
+									}
 
-									} 
 								}
 							?>
 						</select>

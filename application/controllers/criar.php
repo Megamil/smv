@@ -1062,7 +1062,7 @@ public function nova_Entrada_Itens() {
 			$this->novo->entrada_Itens_Novo($dados);
 			$this->edicao->entrada_Itens_Novo($somaTotal);
 
-			$this->session->set_userdata('aviso','Saída realizada com sucesso');
+			$this->session->set_userdata('aviso','Entrada realizada com sucesso');
 			$this->session->set_userdata('tipo','success');
 
 			redirect('main/redirecionar/criar-nova_Entrada_Itens');

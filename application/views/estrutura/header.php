@@ -108,6 +108,9 @@
                 <li <?php if($ativo == 'ordemservico-solicita_Ordem_Servico') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', 'Solicitar')?></li>
 
+                <li <?php if($ativo == 'ordemservico-ordem_Servico') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', 'Ordens')?></li>
+
                 <li <?php if($ativo == 'ordemservico-usuarios') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/', 'Consultar')?></li>
 

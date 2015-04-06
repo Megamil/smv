@@ -629,6 +629,8 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
 		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
 	}
@@ -640,6 +642,8 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
 		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
 	}
@@ -651,6 +655,8 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
 		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
 	}
