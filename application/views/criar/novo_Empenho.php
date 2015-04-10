@@ -1,3 +1,5 @@
+<!--Usado para preencher alguns campos-->
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <?php echo form_fieldset("Novo Empenho"); 
 $form = array('name' => 'form'); 
 echo form_open("criar/novo_Empenho",$form); ?>
@@ -88,7 +90,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numeroempenho" aria-describedby="basic-addon1" placeholder="Nº Empenho" />
+					<input type="text" value="<?php echo $this->session->flashdata('numeroempenho'); ?>" class="form-control input_Vazio processo" name="numeroempenho" aria-describedby="basic-addon1" placeholder="Nº Empenho" />
 					</div>
 				</div>
 			</td>
@@ -100,8 +102,9 @@ echo form_open("criar/novo_Empenho",$form); ?>
 						</div>
 					</div>
 					<div class="control-group">
-						<div class="controls">
-						<input type="text" class="form-control input_Vazio" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
+						<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+						<input type="text" value="<?php echo $this->session->flashdata('valorempenho'); ?>" class="form-control input_Vazio preco" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
 						</div>
 					</div>
 			</td>
@@ -114,8 +117,9 @@ echo form_open("criar/novo_Empenho",$form); ?>
 				</div>
 			
 				<div class="control-group">
-					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
+					<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+					<input type="text" value="<?php echo $this->session->flashdata('valorutilizado'); ?>" class="form-control" name="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
 					</div>
 				</div>
 			</td>
@@ -128,8 +132,9 @@ echo form_open("criar/novo_Empenho",$form); ?>
 				</div>
 			
 				<div class="control-group">
-					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
+					<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+						<input type="text" value="<?php echo $this->session->flashdata('saldo'); ?>" class="form-control" name="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
 					</div>
 				</div>
 			</td>
@@ -145,7 +150,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" name="dtiniciovigencia" aria-describedby="basic-addon1"  placeholder="Data Início"/>
+					<input type="text" value="<?php echo $this->session->flashdata('dtiniciovigencia'); ?>" class="form-control input_Vazio dataValidar" name="dtiniciovigencia" aria-describedby="basic-addon1"  placeholder="Data Início"/>
 					</div>
 				</div>
 			</td>
@@ -159,7 +164,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
+					<input type="text" value="<?php echo $this->session->flashdata('dtfimvigencia'); ?>" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
 					</div>
 				</div>
 			</td>
@@ -173,7 +178,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio processo" name="numprocadmempenho" aria-describedby="basic-addon1"  placeholder="PA Empenho"/>
+					<input type="text" value="<?php echo $this->session->flashdata('numprocadmempenho'); ?>" class="form-control input_Vazio processo" name="numprocadmempenho" aria-describedby="basic-addon1"  placeholder="PA Empenho"/>
 					</div>
 				</div>
 			</td>
@@ -189,7 +194,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio"  name="id_contratoata" placeholder="Contrato / Ata">
+					<select class="form-control input_Vazio" id="contrato"  name="numcontratoata" placeholder="Contrato / Ata">
 
 						<option>Selecione...</option>
 
@@ -197,13 +202,14 @@ echo form_open("criar/novo_Empenho",$form); ?>
 
 							foreach ($pack['contratoata'] as $contratoata) {
 								
-								if($this->session->flashdata('id_contratoata') == $contratoata->id_contratoata){
+								if($this->session->flashdata('numcontratoata') == $contratoata->id_contratoata){
 
-									echo '<option selected value="'.$contratoata->id_contratoatao.'">'.$contratoata->numerocontratoata.'</option>';
+									echo '<option selected value="'.$contratoata->id_contratoata.'">'.$contratoata->numerocontratoata.'</option>';
 								
 								} else {
 								
 									echo '<option value="'.$contratoata->id_contratoata.'">'.$contratoata->numerocontratoata.'</option>';
+
 								}
 							
 							}
@@ -224,7 +230,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio processo" name="numprocregpreco" aria-describedby="basic-addon1"  placeholder="PA registro preço"/>
+					<input type="text" value="<?php echo $this->session->flashdata('numprocregpreco'); ?>" class="form-control input_Vazio processo" name="numprocregpreco" aria-describedby="basic-addon1"  placeholder="PA registro preço"/>
 					</div>
 				</div>
 			</td>
@@ -242,7 +248,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<textarea name="id_objeto" cols="110" rows="2" class="textarea_Vazio" placeholder="Objeto"></textarea>
+					<textarea class="form-control" id="objetoTexto" name="id_objeto" cols="110" rows="2" class="textarea_Vazio" placeholder="Objeto" disabled></textarea>
 					</div>
 				</div>
 			</td>
@@ -258,7 +264,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="reservaorcamentaria" aria-describedby="basic-addon1" placeholder="Reserva Orçamentária" />
+					<input type="text" value="<?php echo $this->session->flashdata('reservaorcamentaria'); ?>" class="form-control input_Vazio" name="reservaorcamentaria" aria-describedby="basic-addon1" placeholder="Reserva Orçamentária" maxlength="5"/>
 					</div>
 				</div>
 			</td>
@@ -272,7 +278,7 @@ echo form_open("criar/novo_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="numeroficha" aria-describedby="basic-addon1" placeholder="Número Ficha" />
+						<input type="text" value="<?php echo $this->session->flashdata('numeroficha'); ?>" class="form-control input_Vazio" name="numeroficha" aria-describedby="basic-addon1" placeholder="Número Ficha" maxlength="5"/>
 					</div>
 				</div>
 			</td>

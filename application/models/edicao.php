@@ -176,6 +176,37 @@ class edicao extends CI_Model {
 		return $this->db->update('tbl_ordemservico',$dados);
 	}
 
+	public function itemExcluir($dados = null){
+
+		return $this->db->delete("tbl_ordemservico_x_item",array('id_ordemservico_x_item' => $dados));
+
+	}
+
+	public function obter_Id_Os($id_solicitacao = null)
+	{
+
+		$this->db->where('id_solicitacao',$id_solicitacao);
+		$dados = $this->db->get('tbl_ordemservico')->result();
+
+		$id = 2;
+
+		return $id;
+	}
+
+	public function af_Pecas_Editar($dados = null)
+	{
+
+		$this->db->where('id_afpecas',$dados["id_afpecas"]);
+		return $this->db->update('tbl_autofornecpecas',$dados);
+	}
+
+	public function af_Servicos_Editar($dados = null)
+	{
+
+		$this->db->where('id_afservicos',$dados["id_afservicos"]);
+		return $this->db->update('tbl_autofornecservicos',$dados);
+	}
+
 
 //**************************************************FUNÇÕES DE CALCULOS**************************************************************//
 

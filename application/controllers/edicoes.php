@@ -1032,7 +1032,7 @@ class edicoes extends CI_Controller {
 		if($this->input->post('id_estadoitem') == '') {$id_estadoitem = null;} else {$id_estadoitem = $this->input->post('id_estadoitem');}
 		if($this->input->post('precobruto') == '') {$precobruto = null;} else {$precobruto = $this->input->post('precobruto');}
 		if($this->input->post('gaveta') == '') {$gaveta = null;} else {$gaveta = $this->input->post('gaveta');}
-		if($this->input->post('desconto') == '') {$desconto = null;} else {$desconto = $this->input->post('desconto');}
+		if($this->input->post('desconto') == '') {$desconto = 0;} else {$desconto = $this->input->post('desconto');}
 
 		if($this->form_validation->run()){
 
@@ -1130,10 +1130,117 @@ class edicoes extends CI_Controller {
 
 	}
 
-	public function ordem_Servico(){
+	public function editando_Empenho() {
+
+		if($this->input->post('numeroempenhoOriginal') != $this->input->post('numeroempenho')) {
+			$this->form_validation->set_rules('numeroempenho','Empenho','is_unique[tbl_empenho.numeroempenho]');
+		} else {
+			$this->form_validation->set_rules('numeroempenho','Empenho','required');
+		}
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'id_empenho' => $this->input->post('id_empenho'),
+				'id_segmento' => $this->input->post('id_segmento'),
+				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+				'numeroempenho' => $this->input->post('numeroempenho'),
+				'valorempenho' => $this->input->post('valorempenho'),
+				'dtiniciovigencia' => $this->input->post('dtiniciovigencia'),
+				'dtfimvigencia' => $this->input->post('dtfimvigencia'),
+				'numprocadmempenho' => $this->input->post('numprocadmempenho'),
+				'numcontratoata' => $this->input->post('numcontratoata'),
+				'reservaorcamentaria' => $this->input->post('reservaorcamentaria'),
+				'numeroficha' => $this->input->post('numeroficha'),
+				'id_dotacao' => $this->input->post('id_dotacao'),
+				'numprocregpreco' => $this->input->post('numprocregpreco')
+
+			);
+
+			$this->edicao->empenho_Editar($dados);
+
+			$this->session->set_userdata('aviso','Empenho Criado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Empenho/'.$this->input->post('id_empenho'));
+
+		} else {
+
+			$this->session->set_flashdata('id_segmento', $this->input->post('id_segmento'));
+			$this->session->set_flashdata('id_fornecedorprestador', $this->input->post('id_fornecedorprestador'));
+			$this->session->set_flashdata('numeroempenho', $this->input->post('numeroempenho'));
+			$this->session->set_flashdata('valorempenho', $this->input->post('valorempenho'));
+			$this->session->set_flashdata('dtiniciovigencia', $this->input->post('dtiniciovigencia'));
+			$this->session->set_flashdata('dtfimvigencia', $this->input->post('dtfimvigencia'));
+			$this->session->set_flashdata('numprocadmempenho', $this->input->post('numprocadmempenho'));
+			$this->session->set_flashdata('numcontratoata', $this->input->post('numcontratoata'));
+			$this->session->set_flashdata('reservaorcamentaria', $this->input->post('reservaorcamentaria'));
+			$this->session->set_flashdata('numeroficha', $this->input->post('numeroficha'));
+			$this->session->set_flashdata('id_dotacao', $this->input->post('id_dotacao'));
+			$this->session->set_flashdata('numprocregpreco', $this->input->post('numprocregpreco'));
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/edicoes-editar_Empenho/'.$this->input->post('id_empenho'));
+
+		}
+		
+	}
+
+	public function editar_Ordem_Servico(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
 		redirect('main/redirecionar/edicoes-editar_Ordem_Servico'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Ordem_Servico (){
+
+		$dados = array (
+
+			'id_ordemservico' => $this->input->post('id_ordemservico'),
+			'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+			'dataentrada' => $this->input->post('dataentrada'),
+			'datasaida' => $this->input->post('datasaida'),
+			'observacoes' => $this->input->post('observacoes'),
+			'id_colaborador' => $this->input->post('id_colaborador'),
+			'laudotecnicoocorrencia' => $this->input->post('laudotecnicoocorrencia')
+
+		);
+
+			$this->edicao->ordem_Servico_Editar($dados);
+
+			$this->session->set_userdata('aviso','Ordem de serviço Editada com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/edicoes-editar_Ordem_Servico/'.$this->input->post('id_ordemservico'));
+
+	}
+
+	public function excluirItem (){
+
+		$this->edicao->itemExcluir($this->uri->segment(3));
+
+		$this->session->set_userdata('aviso','Item removido da lista com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Ordem_Servico/'.$this->uri->segment(4));
+
+	}
+
+	public function editar_Af_Pecas(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Af_Pecas'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editar_Af_Servicos(){
+
+		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Af_Servicos'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
 
 	}
 

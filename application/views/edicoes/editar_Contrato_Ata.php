@@ -290,7 +290,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 
 				<div class="control-group">
 					<div class="controls">
-					<textarea name="objetotexto" id="objetoTexto" cols="86" rows="3" disabled></textarea>
+					<textarea class="form-control" name="objetotexto" id="objetoTexto" cols="86" rows="3" disabled></textarea>
 					</div>
 				</div>
 			</td>

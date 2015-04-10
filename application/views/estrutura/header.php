@@ -111,8 +111,8 @@
                 <li <?php if($ativo == 'ordemservico-ordem_Servico') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', 'Ordens')?></li>
 
-                <li <?php if($ativo == 'ordemservico-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/', 'Consultar')?></li>
+                <li <?php if($ativo == 'relatorios-relatorio_Ordem_Servico') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/relatorios-relatorio_Ordem_Servico', 'Consultar')?></li>
 
               </ul>
 
@@ -141,27 +141,28 @@
                         <?php echo anchor('main/redirecionar/estoque-saida_Itens', 'Saída de Itens')?></li>
                     </ul></li>
 
-                <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/seguranca-usuarios', 'Consultar')?></li>
+                <li <?php if($ativo == 'relatorios-relatorio_Saldo_Estoque') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/relatorios-relatorio_Saldo_Estoque', 'Saldo Estoque')?>
+                </li>
 
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#">Relatórios</a>
                     <ul class="dropdown-menu">
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Entrada de itens')?></li>
+                      <li <?php if($ativo == 'relatorios-relatorio_Entrada_Itens') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Entrada_Itens', 'Entrada de itens')?></li>
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Saída de itens')?></li>
+                      <li <?php if($ativo == 'relatorio_Saida_Itens') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Saida_Itens', 'Saída de itens')?></li>
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Inventario')?></li>
+                      <li <?php if($ativo == 'relatorios-relatorio_Inventario') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Inventario', 'Inventario')?></li>
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Estoque Ativo')?></li>
+                      <li <?php if($ativo == 'relatorios-relatorio_Estoque_Ativo') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Ativo', 'Estoque Ativo')?></li>
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Itens com estoque limite')?></li>
+                      <li <?php if($ativo == 'relatorios-relatorio_Estoque_Limite') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Limite', 'Itens com estoque limite')?></li>
 
                       <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/', 'Etiquetas')?></li>
@@ -185,8 +186,20 @@
             <!--GUIA Emprenho FIM-->
 
             <!--GUIA Autorização de fornecimento Inicio-->
-            <li <?php if($ativo == 'contratoata-Contrato_At') {echo 'class="active"';}?>>
-            <?php echo anchor('main/redirecionar/', 'Autorização')?></li>
+            <li> 
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Autorização
+                <span class="caret"></span> 
+              </a> 
+              <ul class="dropdown-menu">
+              <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
+
+                <li <?php if($ativo == 'autorizacoes-Af_Pecas') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/autorizacoes-af_Pecas', 'Fornecimento Peças')?></li>
+
+                <li <?php if($ativo == 'autorizacoes-Af_Servicos') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/autorizacoes-af_Servicos', 'Fornecimento Serviços')?></li>
+              </ul>
+            </li>
             <!--GUIA Autorização de fornecimento FIM-->
 
             <!--GUIA CADASTROS INICIO-->

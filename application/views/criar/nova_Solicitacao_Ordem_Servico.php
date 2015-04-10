@@ -158,7 +158,7 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 									
 									<div class="control-group">
 										<div class="controls">
-											<input type="text" class="form-control input_Vazio" id="km" placeholder="KM" name="km" aria-describedby="basic-addon1" size="10" />
+											<input type="text" class="form-control input_Vazio" onkeypress='return Numero(event)' id="km" placeholder="KM" name="km" aria-describedby="basic-addon1" size="10" />
 										</div>
 									</div>
 								</td>
@@ -180,7 +180,7 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 			
 									<div class="control-group">
 										<div class="controls">
-											<textarea name="defeitoapresentado" class="textarea_Vazio" cols="130" rows="3" placeholder="Defeito apresentado"></textarea>
+											<textarea name="defeitoapresentado" class="form-control textarea_Vazio" cols="130" rows="3" placeholder="Defeito apresentado"></textarea>
 										</div>
 									</div>
 								</td>
@@ -231,7 +231,5 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Criar Solicitação de Ordem de Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
-
-	<?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', '<div class="btn btn-info pull-center"> Gerar Ordem de Serviço </div>')?>
 
 <?php echo form_fieldset_close(); ?>

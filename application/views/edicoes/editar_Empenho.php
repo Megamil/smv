@@ -1,8 +1,13 @@
+<!--Usado para preencher alguns campos-->
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <?php echo form_fieldset("Editar Empenho"); 
 $form = array('name' => 'form'); 
 echo form_open("edicoes/editando_Empenho",$form); ?>
 
-	<div class="erro_Campo_Vazio" ></div>
+<?php echo form_hidden('numeroempenhoOriginal', $pack['empenho']->row()->numeroempenho); ?>
+<?php echo form_hidden('id_empenho', $pack['empenho']->row()->id_empenho); ?>
+
+<div class="erro_Campo_Vazio" ></div>
 	<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
 		<tbody>
@@ -24,7 +29,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 
 							foreach ($pack['segmento'] as $segmento) {
 								
-								if($this->session->flashdata('id_segmento') == $segmento->id_segmento){
+								if($pack['empenho']->row()->id_segmento == $segmento->id_segmento){
 
 									echo '<option selected value="'.$segmento->id_segmento.'">'.$segmento->segmento.'</option>';
 								
@@ -59,7 +64,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 
 							foreach ($pack['fornecedorprestador'] as $fornecedorprestador) {
 								
-								if($this->session->flashdata('id_fornecedorprestador') == $fornecedorprestador->id_fornecedorprestador){
+								if($pack['empenho']->row()->id_fornecedorprestador == $fornecedorprestador->id_fornecedorprestador){
 
 									echo '<option selected value="'.$fornecedorprestador->id_fornecedorprestador.'">'.$fornecedorprestador->nome.'</option>';
 								
@@ -88,7 +93,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="numeroempenho" aria-describedby="basic-addon1" placeholder="Nº Empenho" />
+					<input type="text" value="<?php echo $pack['empenho']->row()->numeroempenho; ?>" class="form-control input_Vazio processo" name="numeroempenho" aria-describedby="basic-addon1" placeholder="Nº Empenho" />
 					</div>
 				</div>
 			</td>
@@ -100,8 +105,9 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						</div>
 					</div>
 					<div class="control-group">
-						<div class="controls">
-						<input type="text" class="form-control input_Vazio" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
+						<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+						<input type="text" value="<?php echo $pack['empenho']->row()->valorempenho; ?>" class="form-control input_Vazio preco" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
 						</div>
 					</div>
 			</td>
@@ -114,8 +120,9 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 				</div>
 			
 				<div class="control-group">
-					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="--------" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
+					<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+					<input type="text" class="form-control" name="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
 					</div>
 				</div>
 			</td>
@@ -128,8 +135,9 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 				</div>
 			
 				<div class="control-group">
-					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="--------" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
+					<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
+						<input type="text"  class="form-control" name="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
 					</div>
 				</div>
 			</td>
@@ -142,10 +150,10 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						<span class="help-inline">Início da Vigência</span>
 					</div>
 				</div>
-			
+			<?php if($pack['empenho']->row()->dtiniciovigencia != '') {$dtiniciovigencia = date("d-m-Y", strtotime($pack['empenho']->row()->dtiniciovigencia));} else {$dtiniciovigencia = '';} ?>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" name="dtiniciovigencia" aria-describedby="basic-addon1"  placeholder="Data Início"/>
+					<input type="text" value="<?php echo $dtiniciovigencia; ?>" class="form-control input_Vazio dataValidar" name="dtiniciovigencia" aria-describedby="basic-addon1"  placeholder="Data Início"/>
 					</div>
 				</div>
 			</td>
@@ -156,10 +164,10 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						<span class="help-inline">Término da Vigência</span>
 					</div>
 				</div>
-			
+			<?php if($pack['empenho']->row()->dtfimvigencia != '') {$dtfimvigencia = date("d-m-Y", strtotime($pack['empenho']->row()->dtfimvigencia));} else {$dtfimvigencia = '';} ?>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
+					<input type="text" value="<?php echo $dtfimvigencia; ?>" class="form-control input_Vazio dataValidar" name="dtfimvigencia" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
 					</div>
 				</div>
 			</td>
@@ -173,7 +181,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio processo" name="numprocadmempenho" aria-describedby="basic-addon1"  placeholder="PA Empenho"/>
+					<input type="text" value="<?php echo $pack['empenho']->row()->numprocadmempenho; ?>" class="form-control input_Vazio processo" name="numprocadmempenho" aria-describedby="basic-addon1"  placeholder="PA Empenho"/>
 					</div>
 				</div>
 			</td>
@@ -189,7 +197,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio"  name="id_contratoata" placeholder="Contrato / Ata">
+					<select class="form-control input_Vazio" id="contrato"  name="numcontratoata" placeholder="Contrato / Ata">
 
 						<option>Selecione...</option>
 
@@ -197,13 +205,14 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 
 							foreach ($pack['contratoata'] as $contratoata) {
 								
-								if($this->session->flashdata('id_contratoata') == $contratoata->id_contratoata){
+								if($pack['empenho']->row()->numcontratoata == $contratoata->id_contratoata){
 
-									echo '<option selected value="'.$contratoata->id_contratoatao.'">'.$contratoata->numerocontratoata.'</option>';
+									echo '<option selected value="'.$contratoata->id_contratoata.'">'.$contratoata->numerocontratoata.'</option>';
 								
 								} else {
 								
 									echo '<option value="'.$contratoata->id_contratoata.'">'.$contratoata->numerocontratoata.'</option>';
+
 								}
 							
 							}
@@ -224,7 +233,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio processo" name="numprocregpreco" aria-describedby="basic-addon1"  placeholder="PA registro preço"/>
+					<input type="text" value="<?php echo $pack['empenho']->row()->numprocregpreco; ?>" class="form-control input_Vazio processo" name="numprocregpreco" aria-describedby="basic-addon1"  placeholder="PA registro preço"/>
 					</div>
 				</div>
 			</td>
@@ -242,7 +251,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<textarea name="id_objeto" cols="110" rows="2" class="textarea_Vazio" placeholder="Objeto"></textarea>
+					<textarea class="form-control" id="objetoTexto" name="id_objeto" cols="110" rows="2" class="textarea_Vazio" placeholder="Objeto" disabled></textarea>
 					</div>
 				</div>
 			</td>
@@ -258,7 +267,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="reservaorcamentaria" aria-describedby="basic-addon1" placeholder="Reserva Orçamentária" />
+					<input type="text" value="<?php echo $pack['empenho']->row()->reservaorcamentaria; ?>" class="form-control input_Vazio" name="reservaorcamentaria" aria-describedby="basic-addon1" placeholder="Reserva Orçamentária" maxlength="5"/>
 					</div>
 				</div>
 			</td>
@@ -272,7 +281,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" name="numeroficha" aria-describedby="basic-addon1" placeholder="Número Ficha" />
+						<input type="text" value="<?php echo $pack['empenho']->row()->numeroficha; ?>" class="form-control input_Vazio" name="numeroficha" aria-describedby="basic-addon1" placeholder="Número Ficha" maxlength="5"/>
 					</div>
 				</div>
 			</td>
@@ -294,7 +303,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 
 							foreach ($pack['dotacao'] as $dotacao) {
 								
-								if($this->session->flashdata('id_dotacao') == $dotacao->id_dotacao){
+								if($pack['empenho']->row()->id_dotacao == $dotacao->id_dotacao){
 
 									echo '<option selected value="'.$dotacao->id_dotacao.'">'.$dotacao->codigonumero.'</option>';
 								
@@ -315,7 +324,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			<td valign="bottom">
 				<div class="control-group">
 					<div class="controls">
-					
+					<?php echo anchor('main/redirecionar/criar-nova_Dotacao', '<div class="btn btn-info pull-center"> NOVO </div>')?>	
 					</div>
 				</div>
 			</td>
@@ -323,6 +332,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 <!-- final da sexta linha da tela -->
 		</tbody>
 </table>
+
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoEmpenho'),'Editar Empenho', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/empenho-empenho', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

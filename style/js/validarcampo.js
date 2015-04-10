@@ -205,6 +205,14 @@ $(document).ready(function(){
 
 				if(erros == 0) {
 
+					var preco = ''; //Garante que mesmo na inexistencia do campo com classe "preço" o formulário será enviado sem erros.
+
+					var preco = preco+$('.preco').val();
+					var precoComPonto = preco.replace(",", ".");
+					
+					$('.preco').val(precoComPonto);
+					
+
 					$('.erro_Campo_Vazio').removeClass('alert alert-danger');
 					$('#error').remove();
 					$("form").submit();

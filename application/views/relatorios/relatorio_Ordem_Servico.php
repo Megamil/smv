@@ -1,12 +1,14 @@
-	<table class="table table-striped table-hover table-condensed" id="tabela">
-		<thead> 
+<table class="table table-striped table-hover table-condensed" id="tabela">
+		<thead>
+		<tr>
+		 	<td align="center" colspan="5"><strong>RELATÓRIO DAS ORDENS DE SERVIÇO</strong></td>
+		</tr>  
 			<tr>
 				<th class="span3">Número da Solicitação</th>
 				<th class="span3">Número da Ordem</th>
 				<th class="span2">Unidade Cliente</th>
 				<th class="span2">Prefixo</th>
 				<th class="span2">Data de Entrada</th>
-				<th class="span2">Alterar</th>
 			</tr>
 		</thead>
 
@@ -16,8 +18,8 @@
 						echo "<tr>";
 							echo "<td>$ordemservico->id_solicitacao</td>";
 						    echo "<td>$ordemservico->id_ordemservico</td>";
-
-						    foreach ($pack['unidadesaude'] as $unidadesaude) {
+						    
+						    	foreach ($pack['unidadesaude'] as $unidadesaude) {
 						    		if($ordemservico->id_unidadecliente == $unidadesaude->cnes){
 						    			echo "<td>$unidadesaude->unidadesaude</td>";
 						    			break;
@@ -50,13 +52,21 @@
 				    				break;
 						    		}
 						    	}
+						    	
+
 						    echo "<td>$ordemservico->prefixo</td>";
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
-							echo '<td>'.anchor('edicoes/editar_Ordem_Servico/'.$ordemservico->id_ordemservico.'','Editar').'</td>';
 						echo "</tr>";
 					}
 				?>
 		</tbody>
 	</table>
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	MODIFICAR A ESTRUTURA DA DELA DESSE RELATÓRIO, O MESMO ESTÁ COMO A TELA BASE PARA A EDIÇÃO DAS ORDENS DE SERVIÇO
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->

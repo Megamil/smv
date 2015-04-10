@@ -100,6 +100,40 @@ $(document).ready(function(){
 
 });
 
+//Usado para trazer dados do objeto atravez do Contrato/Ata
+$(document).ready(function(){
+
+
+
+       $.ajax({
+            url : "/smv/style/json/objetosDoContrato.php?id="+$('#contrato').val(), /* URL que será chamada */ 
+            dataType: 'json', /* Tipo de transmissão */
+            success: function(json){
+               $('#objetoTexto').val(json.objetotexto);
+              }
+
+         });  
+
+
+   /* Executa a requisição quando o campo DT perder o foco */
+   $('#contrato').change(function(){
+       /* Configura a requisição AJAX */
+
+       $.ajax({
+            url : "/smv/style/json/objetosDoContrato.php?id="+$('#contrato').val(), /* URL que será chamada */ 
+            dataType: 'json', /* Tipo de transmissão */
+            success: function(json){
+              $('#objetoTexto').val(json.objetotexto);
+              }
+
+         });   
+
+   return false;    
+   
+   })
+
+});
+
 //Usado para trazer dados de veículos
 $(document).ready(function(){
 

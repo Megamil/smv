@@ -140,7 +140,16 @@ class novo extends CI_Model {
 	{
 
 		$this->db->insert('tbl_solicitaordemservico',$dados);
-		return $this->db->insert_id;
+		return $this->db->insert_id();
+
+	}
+
+	//Cria uma ordem de serviço somente com o id.
+	public function gerar_Nova_Os($dados = null)
+	{
+
+		$this->db->insert('tbl_ordemservico',$dados);
+		return $this->db->insert_id();
 
 	}
 
@@ -179,10 +188,18 @@ class novo extends CI_Model {
 
 	}
 
-	public function ordem_Servico_Novo($dados = null)
+
+	public function af_Pecas_Nova($dados = null)
 	{
 
-		return $this->db->insert('tbl_ordemservico',$dados);
+		return $this->db->insert('tbl_autofornecpecas',$dados);
+
+	}
+
+	public function af_Servicos_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_autofornecservicos',$dados);
 
 	}
 

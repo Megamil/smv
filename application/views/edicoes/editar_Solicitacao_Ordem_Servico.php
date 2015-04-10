@@ -171,7 +171,7 @@ echo form_open("edicoes/editando_Solicitacao_Ordem_Servico",$form); ?>
 									
 									<div class="control-group">
 										<div class="controls">
-											<input type="text" class="form-control input_Vazio" value="<?php echo $pack['solicitaordemservico']->row()->km; ?>" id="km" placeholder="KM" name="km" aria-describedby="basic-addon1" size="10" />
+											<input type="text" class="form-control input_Vazio" onkeypress='return Numero(event)' value="<?php echo $pack['solicitaordemservico']->row()->km; ?>" id="km" placeholder="KM" name="km" aria-describedby="basic-addon1" size="10" />
 										</div>
 									</div>
 								</td>
@@ -193,7 +193,7 @@ echo form_open("edicoes/editando_Solicitacao_Ordem_Servico",$form); ?>
 			
 									<div class="control-group">
 										<div class="controls">
-											<textarea name="defeitoapresentado" class="textarea_Vazio" cols="130" rows="3" placeholder="Defeito apresentado"><?php echo $pack['solicitaordemservico']->row()->defeitoapresentado; ?></textarea>
+											<textarea name="defeitoapresentado" class="form-control textarea_Vazio" cols="130" rows="3" placeholder="Defeito apresentado"><?php echo $pack['solicitaordemservico']->row()->defeitoapresentado; ?></textarea>
 										</div>
 									</div>
 								</td>
@@ -240,6 +240,6 @@ echo form_open("edicoes/editando_Solicitacao_Ordem_Servico",$form); ?>
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Solicitação de Ordem de Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
-	<?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', '<div class="btn btn-info pull-center"> Gerar Ordem de Serviço </div>')?>
+	<?php echo anchor('criar/gerar_Ordem_Servico/'. $pack['solicitaordemservico']->row()->id_solicitaordemservico, '<div class="btn btn-info pull-center"> Gerar Ordem de Serviço </div>')?>
 
 <?php echo form_fieldset_close(); ?>

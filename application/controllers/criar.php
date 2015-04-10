@@ -819,13 +819,27 @@ public function novo_Cliente() {
 
 		$id_retorno = $this->novo->solicita_Ordem_Servico_Nova($dados);
 
-		$this->session->set_userdata('aviso','Ordem de serviço criada com sucesso');
+		$this->session->set_userdata('aviso','Solicitação de Ordem de serviço criada com sucesso');
 		$this->session->set_userdata('tipo','success');
 
-		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico'.$id_retorno);
+		$this->session->set_userdata('idEditar',$id_retorno); /*Saber ID que está sendo editado*/
+		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico/'.$id_retorno);
 		
 	}
 
+	public function gerar_Ordem_Servico() {
+
+			$dados = array ('id_solicitacao' => $this->uri->segment(3));
+
+			$id_retorno = $this->novo->gerar_Nova_Os($dados);
+
+			$this->session->set_userdata('aviso','Ordem de serviço gerada com sucesso');
+			$this->session->set_userdata('tipo','success');
+			
+			$this->session->set_userdata('idEditar',$id_retorno); /*Saber ID que está sendo editado*/
+			redirect('main/redirecionar/edicoes-editar_Ordem_Servico/'.$id_retorno);
+
+	}
 
 	public function novo_Contrato_Ata() {
 
@@ -922,7 +936,7 @@ public function novo_Item() {
 		if($this->input->post('id_estadoitem') == '') {$id_estadoitem = null;} else {$id_estadoitem = $this->input->post('id_estadoitem');}
 		if($this->input->post('precobruto') == '') {$precobruto = null;} else {$precobruto = $this->input->post('precobruto');}
 		if($this->input->post('gaveta') == '') {$gaveta = null;} else {$gaveta = $this->input->post('gaveta');}
-		if($this->input->post('desconto') == '') {$desconto = null;} else {$desconto = $this->input->post('desconto');}
+		if($this->input->post('desconto') == '') {$desconto = 0;} else {$desconto = $this->input->post('desconto');}
 
 		if($this->form_validation->run()){
 
@@ -1080,6 +1094,60 @@ public function nova_Entrada_Itens() {
 		$this->session->set_userdata('tipo','danger');
 
 		redirect('main/redirecionar/criar-nova_Entrada_Itens');
+		
+	}
+
+	public function novo_Empenho() {
+
+		$this->form_validation->set_rules('numeroempenho','Empenho','is_unique[tbl_empenho.numeroempenho]');
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'id_segmento' => $this->input->post('id_segmento'),
+				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+				'numeroempenho' => $this->input->post('numeroempenho'),
+				'valorempenho' => $this->input->post('valorempenho'),
+				'dtiniciovigencia' => $this->input->post('dtiniciovigencia'),
+				'dtfimvigencia' => $this->input->post('dtfimvigencia'),
+				'numprocadmempenho' => $this->input->post('numprocadmempenho'),
+				'numcontratoata' => $this->input->post('numcontratoata'),
+				'reservaorcamentaria' => $this->input->post('reservaorcamentaria'),
+				'numeroficha' => $this->input->post('numeroficha'),
+				'id_dotacao' => $this->input->post('id_dotacao'),
+				'numprocregpreco' => $this->input->post('numprocregpreco')
+
+			);
+
+			$this->novo->empenho_Novo($dados);
+
+			$this->session->set_userdata('aviso','Empenho Criado com sucesso.');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Empenho');
+
+		} else {
+
+			$this->session->set_flashdata('id_segmento', $this->input->post('id_segmento'));
+			$this->session->set_flashdata('id_fornecedorprestador', $this->input->post('id_fornecedorprestador'));
+			$this->session->set_flashdata('numeroempenho', $this->input->post('numeroempenho'));
+			$this->session->set_flashdata('valorempenho', $this->input->post('valorempenho'));
+			$this->session->set_flashdata('dtiniciovigencia', $this->input->post('dtiniciovigencia'));
+			$this->session->set_flashdata('dtfimvigencia', $this->input->post('dtfimvigencia'));
+			$this->session->set_flashdata('numprocadmempenho', $this->input->post('numprocadmempenho'));
+			$this->session->set_flashdata('numcontratoata', $this->input->post('numcontratoata'));
+			$this->session->set_flashdata('reservaorcamentaria', $this->input->post('reservaorcamentaria'));
+			$this->session->set_flashdata('numeroficha', $this->input->post('numeroficha'));
+			$this->session->set_flashdata('id_dotacao', $this->input->post('id_dotacao'));
+			$this->session->set_flashdata('numprocregpreco', $this->input->post('numprocregpreco'));
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Empenho');
+
+		}
 		
 	}
 

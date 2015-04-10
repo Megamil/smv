@@ -428,53 +428,6 @@ class dados_iniciais_model extends CI_Model {
 	/*----------------------------------------------------------------------------------------------------------*/
 
 	/*Inicio das codificações referente as telas de Ordem de Serviço*/
-	public function nova_Solicitacao_Ordem_Servico(){
-		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
-		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
-		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
-left join tbl_setor TS on TS.id_setor = TU.id_setor
-left join tbl_secao TC on TC.id_secao = TU.id_secao
-left join tbl_depto TD on TD.id_depto = TU.id_depto
-left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
-		  'veiculo' => $this->db->get('tbl_veiculo')->result());
-		return $pack;
-	}
-
-	public function editar_Solicitacao_Ordem_Servico(){
-
-		$pack = array (
-
-		  'solicitaordemservico' => $this->db->query('select * from tbl_solicitaordemservico where id_solicitaordemservico = '.$this->session->userdata('idEditar').';'),
-		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
-		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
-left join tbl_setor TS on TS.id_setor = TU.id_setor
-left join tbl_secao TC on TC.id_secao = TU.id_secao
-left join tbl_depto TD on TD.id_depto = TU.id_depto
-left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
-		  'veiculo' => $this->db->get('tbl_veiculo')->result()
-
-		 );
-
-		return $pack;
-
-	}
-
-	public function solicita_Ordem_Servico(){ /*Carrega a lista com todos as ordens de serviço*/
-		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
-		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
-		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		  'veiculo' => $this->db->get('tbl_veiculo')->result());
-		return $pack;
-		
-	}
-	/*Fim das codificações das telas de  de Ordem de Serviço*/
-
-	/*----------------------------------------------------------------------------------------------------------*/
-
-	/*Inicio das codificações referente as telas de Ordem de Serviço*/
 	public function novo_Contrato_Ata(){
 		$pack = array ('contratoata' => $this->db->get('tbl_contratoata')->result(), 
 		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
@@ -619,30 +572,76 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	}
 	/*Fim das codificações das telas de empenho*/
 
-	/*----------------------------------------------------------------------------------------------------------*/
+		/*----------------------------------------------------------------------------------------------------------*/
 
-	/*Inicio das codificações referente as telas de ordem de serviço*/
-	public function nova_Ordem_Servico(){
-		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
-		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
-		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
-		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
-		'servico' => $this->db->get('tbl_servicos')->result());
+	/*Inicio das codificações referente as telas de Ordem de Serviço*/
+	public function nova_Solicitacao_Ordem_Servico(){
+		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result());
 		return $pack;
 	}
+
+	public function editar_Solicitacao_Ordem_Servico(){
+
+		$pack = array (
+
+		  'solicitaordemservico' => $this->db->query('select * from tbl_solicitaordemservico where id_solicitaordemservico = '.$this->session->userdata('idEditar').';'),
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result()
+
+		 );
+
+		return $pack;
+
+	}
+
+	public function solicita_Ordem_Servico(){ /*Carrega a lista com todos as ordens de serviço*/
+		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
+		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
+		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		return $pack;
+		
+	}
+	/*Fim das codificações das telas de  de Ordem de Serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
 
 	public function editar_Ordem_Servico(){
 		$pack = array ('ordemservico' => $this->db->query('select * from tbl_ordemservico where id_ordemservico = '.$this->session->userdata('idEditar').';'),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
+		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculo' => $this->db->get('tbl_veiculo')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
-		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
 		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'subtelaitens' => $this->db->query('select id_ordemservico_x_item, toi.id_item,id_ordemservico,codigomontadora,descricao,quantidade,tf.nome,precobruto,desconto, precobruto - ((precobruto*desconto)/100) as liquido
+		from tbl_itens ti 
+		left join tbl_ordemservico_x_item toi on toi.id_item = ti.id_itens 
+		left join tbl_colaboradores on id_colaborador = toi.id_fornecedorprestador 
+		left join tbl_fornecedorprestador tf on tf.id_fornecedorprestador = toi.id_fornecedorprestador 
+		where id_ordemservico ='.$this->session->userdata('idEditar').';')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
@@ -651,16 +650,171 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	public function ordem_Servico(){ 
 		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'unidadecliente' => $this->db->get('tbl_unidadesaude, tbl_unidadeutilizadora')->result(),
+		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculo' => $this->db->get('tbl_veiculo')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
-		'materiaisutilizados' => $this->db->get('tbl_itens')->result(),
 		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
 	}
 	/*Fim das codificações das telas de ordem de serviço*/
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de autorização de fornecimento de peças */
+	public function nova_Af_Pecas(){
+		$pack = array ('afpecas' => $this->db->get('tbl_autofornecpecas')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+
+	public function editar_Af_Pecas(){
+		$pack = array ('afpecas' => $this->db->query('select * from tbl_autofornecpecas where id_afpecas = '.$this->session->userdata('idEditar').';'),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+	
+	public function af_Pecas(){ 
+		$pack = array ('afpecas' => $this->db->get('tbl_autofornecpecas')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de autorização de fornecimento de peças */
+
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	/*Inicio das codificações referente as telas de autorização de fornecimento de serviços */
+	public function nova_Af_Servicos(){
+		$pack = array ('afservicos' => $this->db->get('tbl_autofornecservicos')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+
+	public function editar_Af_Servicos(){
+		$pack = array ('afservicos' => $this->db->query('select * from tbl_autofornecservicos where id_afservicos = '.$this->session->userdata('idEditar').';'),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+	
+	public function af_Servicos(){ 
+		$pack = array ('afservicos' => $this->db->get('tbl_autofornecservicos')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'contratoata' => $this->db->get('tbl_contratoata')->result(),
+		'objeto' => $this->db->get('tbl_objeto')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result(),
+		'dotacao' => $this->db->get('tbl_dotacao')->result(),
+		'segmento' => $this->db->get('tbl_segmento')->result(),
+		'empenho' => $this->db->get('tbl_empenho')->result());
+		return $pack;
+	}
+	/*Fim das codificações das telas de autorização de fornecimento de serviços */
+
+	/*----------------------------------------------------------------------------------------------------------*/
+	/*-----------------------INICIO DAS FUNÇÕES DOS RELATÓRIOS DO SISTEMA---------------------------------------*/
+	/*----------------------------------------------------------------------------------------------------------*/
+
+	public function relatorio_Entrada_Itens(){ 
+		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
+	}
+	
+	public function relatorio_Saida_Itens(){ 
+		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'cliente' => $this->db->get('tbl_clientes')->result());
+		return $pack;
+	}
+
+	public function relatorio_Ordem_Servico(){ 
+		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+		left join tbl_setor TS on TS.id_setor = TU.id_setor
+		left join tbl_secao TC on TC.id_secao = TU.id_secao
+		left join tbl_depto TD on TD.id_depto = TU.id_depto
+		left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
+		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
+		'veiculo' => $this->db->get('tbl_veiculo')->result(),
+		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'servico' => $this->db->get('tbl_servicos')->result());
+		return $pack;
+	}
+
+	public function relatorio_Saldo_Estoque(){
+		$pack = array ('itens' => $this->db->get('tbl_itens')->result(),
+			'entradas' => $this->db->get('tbl_entradaitens')->result(),
+			'saidas' => $this->db->get('tbl_saidaitens')->result(),
+			'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+			);
+		return $pack;
+	}
+
+	/*----------------------------------------------------------------------------------------------------------*/
+	/*------------------------FINAL DAS FUNÇÕES DOS RELATÓRIOS DO SISTEMA---------------------------------------*/
+	/*----------------------------------------------------------------------------------------------------------*/
 }
 
 ?>
