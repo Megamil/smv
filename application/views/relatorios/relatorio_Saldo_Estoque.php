@@ -1,3 +1,4 @@
+	
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 		<tr>
@@ -30,12 +31,17 @@
 							 	}
 						    }
 
+						    $ent = 0;
+						    $sai = 0;
+
 						    $existe = false; // Varíável para validação
 						    foreach($pack['entradas'] as $entradas){
 							 	if($itens->id_itens == $entradas->codigointerno) {
+							 			$ent = $entradas->quantidade;
 							 			$existe = true; //confirma que existe um valor
-							 			echo "<td>$entradas->quantidade</td>"; 
+							 			echo '<td>'.$entradas->quantidade.'</td>';
 							 			break;
+							 			
 							 	} else {
 						 		
 							 	}
@@ -50,8 +56,9 @@
 							$existe2 = false; // Varíável para validação
 						    foreach($pack['saidas'] as $saidas){
 							 	if($itens->id_itens == $saidas->codigointerno) {
+							 			$sai = $saidas->quantidade;
 							 			$existe2 = true; //confirma que existe um valor
-							 			echo "<td>$saidas->quantidade</td>"; 
+							 			echo '<td>'.$saidas->quantidade.'</td>'; 
 							 			break;
 							 	} else {
 							 		
@@ -62,9 +69,7 @@
 								echo "<td></td>";
 							}
 							
-							/*		IMPRIMIR O SALDO AQUI		
-							echo "<td>$itens-></td>"; */
-							
+							echo '<td>'.($ent - $sai).'</td>';
 							echo "</tr>";
 					}
 				?>

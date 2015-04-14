@@ -112,8 +112,22 @@
                 <?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', 'Ordens')?></li>
 
                 <li <?php if($ativo == 'relatorios-relatorio_Ordem_Servico') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/relatorios-relatorio_Ordem_Servico', 'Consultar')?></li>
+                <?php echo anchor('main/redirecionar/relatorios-relatorio_Ordem_Servico', 'Relatório')?></li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">Impressões</a>
+                        <ul class="dropdown-menu">
+                            
+                            <li <?php if($ativo == 'impressos-impresso_Vistoria') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/impressos-impresso_Vistoria', 'Formulário Vistoria')?></li>
 
+                            <li <?php if($ativo == 'impressos-impresso_Servicos_Externos') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/impressos-impresso_Servicos_Externos', 'Formulário Serviços Externos')?></li>
+
+                            <li <?php if($ativo == 'impressos-impresso_Retirada_Estoque') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/impressos-impresso_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
+                                                        
+                        </ul>
+                    </li>
               </ul>
 
             </li>

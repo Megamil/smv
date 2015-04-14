@@ -182,6 +182,18 @@ class edicao extends CI_Model {
 
 	}
 
+	public function itemExcluirAf($dados = null){
+
+		return $this->db->delete("tbl_afpecas_x_itens",array('id_afpecas_x_itens' => $dados));
+
+	}
+
+	public function servicoExcluir($dados = null){
+
+		return $this->db->delete("tbl_ordemservico_x_servico",array('id_ordemservico_x_servico' => $dados));
+
+	}
+
 	public function obter_Id_Os($id_solicitacao = null)
 	{
 

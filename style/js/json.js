@@ -172,4 +172,64 @@ $(document).ready(function(){
    
    })
 
+    //Usado na tela de af peças quando o contrato ata é carregado ou alterado.
+      $.ajax({
+        url : "/smv/style/json/dadosAf.php?id="+$('#id_contratoata').val(), /* URL que será chamada */ 
+        dataType: 'json', /* Tipo de transmissão */
+        success: function(json){
+           $('#iniciovigencia').val(json.dtinivigencia);
+           $('#fimvigencia').val(json.dtfimvigencia);
+           $('#prazoentrega').val(json.prazoentrega);
+           $('#prazopagto').val(json.prazopagto);
+           $('#paempenho').val(json.numprocadmempenho);
+           $('#paregprecos').val(json.numprocregpreco);
+           $('#objeto').val(json.objeto);
+          }
+
+     });
+
+     $('#id_contratoata').change(function(){
+
+        //Usado na tela de af peças quando o contrato ata é carregado ou alterado.
+        $.ajax({
+          url : "/smv/style/json/dadosAf.php?id="+$('#id_contratoata').val(), /* URL que será chamada */ 
+          dataType: 'json', /* Tipo de transmissão */
+          success: function(json){
+             $('#iniciovigencia').val(json.dtinivigencia);
+             $('#fimvigencia').val(json.dtfimvigencia);
+             $('#prazoentrega').val(json.prazoentrega);
+             $('#prazopagto').val(json.prazopagto);
+             $('#paempenho').val(json.numprocadmempenho);
+             $('#paregprecos').val(json.numprocregpreco);
+             $('#objeto').val(json.objeto);
+            }
+
+       });
+
+     }) ;
+
+    //Usado na tela de af peças quando ordem de serviço é carregado ou alterado.
+      $.ajax({
+        url : "/smv/style/json/os.php?id="+$('#id_ordemservico').val(), /* URL que será chamada */ 
+        dataType: 'json', /* Tipo de transmissão */
+        success: function(json){
+           $('#id_veiculoprefixo').val(json.prefixo);
+          }
+
+     });
+
+     $('#id_ordemservico').change(function(){
+
+      //Usado na tela de af peças quando ordem de serviço é carregado ou alterado.
+        $.ajax({
+          url : "/smv/style/json/os.php?id="+$('#id_ordemservico').val(), /* URL que será chamada */ 
+          dataType: 'json', /* Tipo de transmissão */
+          success: function(json){
+             $('#id_veiculoprefixo').val(json.prefixo);
+            }
+
+       });
+
+     }) ;
+
 });

@@ -380,13 +380,15 @@
 		</tr>
 		<!-- ***************************** FINAL DA OITAVA LINHA *********************************** -->
 		<tr>
-			<td valign="top" colspan="4">
+			<td valign="top" colspan="7">
 					<table class="table table-striped table-hover table-condensed">
 						<thead> 
 							<tr>
 								<th class="span2">Descrição</th>
 								<th class="span2">Qtd</th>
 								<th class="span2">Valor</th>
+								<th class="span2">Valor Total</th>
+								<th class="span2">Cobrado:</th>
 								<th class="span2">Prestador / Colaborador</th>
 								<th class="span2">Excluir</th>
 							</tr>
@@ -394,11 +396,32 @@
 
 						<tbody>
 							<?php
-								/*
-								TRAZER AS INFORMAÇÕES DA TABELA tbl_ordemservico_x_servico
-								Colocar os botões de EDITAR E EXCLUIR conforme ordem acima nos títulos das colunas
+								foreach ($pack["subtelaservicos"] as $subtelaservicos) {
+									echo "<tr>";
+									echo '<input type="hidden" name="id_ordemservico_x_servico" id="bkp_servico" value="'.$subtelaservicos->id_ordemservico_x_servico.'">';
+									echo '<td>'.$subtelaservicos->descricao.'</td>';
+									echo '<td>'.$subtelaservicos->quantidade.'</td>';
+									echo '<td> R$ '.$subtelaservicos->valor.'</td>';
+									echo '<td> R$ '.$subtelaservicos->valor * $subtelaservicos->quantidade.'</td>';
+
+									if($subtelaservicos->id_unidademedida == 11) {
+										echo '<td> Por Serviço </td>';
+									} else if ($subtelaservicos->id_unidademedida == 10){
+										echo '<td> Por Hora </td>';
+									} else {
+										echo '<td> Não definido </td>'; //Não pode cair neste Else,
+									}
+
+									if($subtelaservicos->prestador != ''){
+										echo '<td>'.$subtelaservicos->prestador.'</td>';
+									} else {
+										echo '<td>'.$subtelaservicos->colaborador.'</td>';
+									}
+
+									//uri 4 usado para saber qual item deletar, uri 5 usado para redirecionar para está ordem de serviço.
+									echo '<td>'.anchor('edicoes/excluirServico/'.$subtelaservicos->id_ordemservico_x_servico.'/'.$subtelaservicos->id_ordemservico.'','EXCLUIR').'</td>';
+									echo "</tr>";
 								}
-								*/
 							?>
 						</tbody>
 					</table>
@@ -510,7 +533,7 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Serviço?</h4>
       </div>
-
+	<div class="errorModalServico"></div>
       <div class="modal-body">
       	<table border="0">
       		<tr>
@@ -523,7 +546,7 @@
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control" id="Servico_id_servicos" name="Servico_id_servicos" placeholder="Servico" style="max-width:300px">
+							<select class="form-control input_Servico_Vazio" id="Servico_id_servicos" name="Servico_id_servicos" placeholder="Servico" style="max-width:300px">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['servico'] as $servico) {
@@ -547,7 +570,8 @@
 					</div>
 				
 					<div class="control-group">
-						<div class="controls">
+						<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
 							<input type="text" class="form-control" id="Servico_valorunitario" name="Servico_valorunitario" aria-describedby="basic-addon1" placeholder="Valor Unitário" style="max-width:130px" disabled/>
 						</div>
 					</div>		
@@ -558,10 +582,10 @@
       			<td>
       				<div class="control-group">
 						<div class="controls">
-							<input type="radio" name="Servico_id_unidademedida" id="Servico_id_unidademedida" aria-describedby="basic-addon1" value="11" /> <span>Por Serviço</span>
+							<input type="radio" name="Servico_id_unidademedida" id="Servico_id_unidademedida1" aria-describedby="basic-addon1" value="11" checked/> <span>Por Serviço</span>
 						</div>	
 						<div class="controls">
-							<input type="radio" name="Servico_id_unidademedida" id="Servico_id_unidademedida" aria-describedby="basic-addon1" value="10" /> <span>Por Hora</span>
+							<input type="radio" name="Servico_id_unidademedida" id="Servico_id_unidademedida2" aria-describedby="basic-addon1" value="10" /> <span>Por Hora</span>
 						</div>
 					</div>
 				</td>
@@ -575,7 +599,7 @@
 					
 					<div class="control-group">
 						<div class="controls">
-							<input type="text" class="form-control" name="Servico_quantidade" id="Servico_quantidade" aria-describedby="basic-addon1" placeholder="Qtd" style="max-width:80px"/>
+							<input type="text" class="form-control input_Servico_Vazio" name="Servico_quantidade" id="Servico_quantidade" aria-describedby="basic-addon1" placeholder="Qtd" style="max-width:80px"/>
 						</div>
 					</div>		
       			</td>
@@ -588,7 +612,8 @@
 					</div>
 					
 					<div class="control-group">
-						<div class="controls">
+						<div class="controls input-group">
+						<span class="input-group-addon" id="basic-addon1">R$</span>
 							<input type="text" class="form-control" name="Servico_valortotal" id="Servico_valortotal" aria-describedby="basic-addon1" placeholder="Total" style="max-width:150px" disabled/>
 						</div>
 					</div>      				
@@ -660,15 +685,6 @@
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- ///////////////////////////////////////// MODAL PARA ADICIONAR ITENS NA ORDEM //////////////////////////////////////////////// -->
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-	<!--Para não perder o que o usuário Editou nos campos do outro formulário.-->
-	<input type="hidden" name="bkp_id_ordemservico" id="bkp_itens" value="1">
-	<input type="hidden" name="bkp_id_fornecedorprestador" id="bkp_itens" value="">
-	<input type="hidden" name="bkp_dataentrada" id="bkp_itens" value="">
-	<input type="hidden" name="bkp_datasaida" id="bkp_itens" value="">
-	<input type="hidden" name="bkp_observacoes" id="bkp_itens" value="">
-	<input type="hidden" name="bkp_id_colaborador" id="bkp_itens" value="">
-	<input type="hidden" name="bkp_laudotecnicoocorrencia" id="bkp_itens" value="">
 
 <div class="modal fade" id="modelAdicionarItem" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">

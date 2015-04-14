@@ -96,7 +96,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 					<table class="table table-striped table-hover table-condensed">
 						<thead> 
 							<tr>
-								<th class="span3">Editar</th>
 								<th class="span2">Código</th>
 								<th class="span2">Código Montadora</th>
 								<th class="span2">Descrição</th>
@@ -113,7 +112,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 							<?php
 								foreach ($pack['afpecas'] as $afpecas) {
 									echo "<tr>";
-						  				echo '<td>'.anchor('edicoes/editar_Af_Pecas_x_itens/'.$afpecas->id_afpecas.'','Editar').'</td>';
 						    			echo "<td> </td>";
 						    			echo "<td> </td>";
 						    			echo "<td> </td>";
@@ -166,7 +164,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 				<table class="table table-striped table-hover table-condensed">
 						<thead> 
 							<tr>
-								<th class="span3">Editar</th>
 								<th class="span2">Número/Ano</th>
 								<th class="span2">Segmento</th>
 								<th class="span2">Dotação</th>
@@ -181,7 +178,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 							<?php
 								foreach ($pack['afpecas'] as $afpecas) {
 									echo "<tr>";
-						  				echo '<td>'.anchor('edicoes/editar_Af_Pecas_x_Pecas/'.$afpecas->id_empenho.'','Editar').'</td>';
 						    			echo "<td> </td>";
 						    			echo "<td> </td>";
 						    			echo "<td> </td>";
@@ -293,7 +289,7 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 
 				<div class="control-group">
 					<div class="controls">
-						<textarea name="id_objeto" class="form-control input_Vazio" cols="140" rows="1" placeholder="Objeto"></textarea>
+						<textarea name="id_objeto" class="form-control input_Vazio" cols="140" rows="1" placeholder="Objeto" disabled></textarea>
 					</div>
 				</div>
 			</td>
@@ -430,7 +426,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 </table>
 
 	<?php echo form_submit(array('name'=>'cadastrarNovaAutorizacaoPecas'),'Criar Autorização de Fornecimento de Peças', 'class="btn btn-success" id="validar_Enviar"'); ?>
-	<?php echo anchor('main/redirecionar/', '<div class="btn btn-info pull-center"> Imprimir </div>')?>
 	<?php echo anchor('main/redirecionar/autorizacoes-af_Pecas', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
@@ -446,37 +441,13 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Empenho?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Adição do Empenho?</h4>
       </div>
 
       <div class="modal-body">
       	<table border="0">
       		<tr>
-      			<td colspan="2">
-      				<div class="control-group">
-						<div class="controls">
-							<span class="help-inline">Segmento</span>
-						</div>
-					</div>
-				
-					<div class="control-group">
-						<div class="controls">
-							<select class="form-control input_Vazio" name="id_segmento" placeholder="Segmento" style="max-width:300px">
-							<option>Selecione...</option>
-							<?php 
-								foreach ($pack['segmento'] as $segmento) {
-									if($this->session->flashdata('id_segmento') == $segmento->id_segmento){
-										echo '<option selected value="'.$segmento->id_segmento.'">'.$segmento->segmento.'</option>';
-									} else {
-										echo '<option value="'.$segmento->id_segmento.'">'.$segmento->segmento.'</option>';
-									}
-								}
-							?>
-						</select>
-						</div>
-					</div>	
-      			</td>
-      			
+
       			<td>
       			    <div class="control-group">
 						<div class="controls">
@@ -486,39 +457,19 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control input_Vazio" name="id_empenho" placeholder="Empenho" style="max-width:300px">
+							<select class="form-control" name="id_empenho" placeholder="Empenho" style="max-width:600px">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['empenho'] as $empenho) {
+
+									$antes = substr($empenho->numeroempenho, 0, 4);
+									$depois = substr($empenho->numeroempenho, 4);
+									$formatada = $antes . "/" . $depois;
+
 									if($this->session->flashdata('id_empenho') == $empenho->id_empenho) {
-										echo '<option selected value="'.$empenho->id_empenho.'">'.$empenho->numeroempenho.'</option>';
+										echo '<option selected value="'.$empenho->id_empenho.'">Empenho: '.$formatada.' - Segmento: '.$empenho->segmento.' - Dotação: '.$empenho->dotacao.'</option>';
 									}else{
-										echo '<option value="'.$empenho->id_empenho.'">'.$empenho->numeroempenho.'</option>';
-									}
-								}
-							?>
-						</select>
-						</div>
-					</div>		
-      			</td>
-   
-      			<td>
-	      			<div class="control-group">
-						<div class="controls">
-							<span class="help-inline">Número da Dotação</span>
-						</div>
-					</div>
-					
-					<div class="control-group">
-						<div class="controls">
-							<select class="form-control input_Vazio" name="id_empenho" placeholder="Empenho" style="max-width:300px">
-							<option>Selecione...</option>
-							<?php 
-								foreach ($pack['dotacao'] as $dotacao) {
-									if($this->session->flashdata('id_dotacao') == $dotacao->id_dotacao) {
-										echo '<option selected value="'.$dotacao->id_dotacao.'">'.$dotacao->codigonumero.'</option>';
-									}else{
-										echo '<option value="'.$dotacao->id_dotacao.'">'.$dotacao->codigonumero.'</option>';
+										echo '<option value="'.$empenho->id_empenho.'">Empenho: '.$formatada.' - Segmento: '.$empenho->segmento.' - Dotação: '.$empenho->dotacao.'</option>';
 									}
 								}
 							?>
@@ -532,8 +483,8 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <?php echo form_submit(array('name'=>'cadastrarNovoServicoOrdem'),'Incluir Empenho', 'class="btn btn-success" id="validar_Enviar"'); ?>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+        <?php echo form_submit(array('name'=>'cadastrarNovoServicoOrdem'),'Incluir Empenho', 'class="btn btn-success" id="validar_Enviar_Empenho"'); ?>
        </div>
     </div>
   </div>
@@ -549,7 +500,7 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Item?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Adição do Item?</h4>
       </div>
 
       <div class="modal-body">
@@ -568,10 +519,13 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['itens'] as $itens) {
+									
+									$valor = number_format($itens->liquido, 2,',','');
+
 									if($this->session->flashdata('id_itens') == $itens->id_itens){
-										echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.'</option>';
+										echo '<option selected value="'.$itens->id_itens.'">'.$itens->descricao.' Valor R$: '.$valor.'</option>';
 									} else {
-										echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.'</option>';
+										echo '<option value="'.$itens->id_itens.'">'.$itens->descricao.' Valor R$: '.$valor.'</option>';
 									}
 								}
 							?>
@@ -595,20 +549,6 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 						</div>
 					</div>		
       			</td>
-
-      			<td>
-					<div class="control-group">
-						<div class="controls">
-							<span class="help-inline">Valor unitário</span>
-						</div>
-					</div>
-				
-					<div class="control-group">
-						<div class="controls">
-							<input type="text" class="form-control input_Vazio" name="valorunitario" aria-describedby="basic-addon1" placeholder="Valor unitário" disabled/>
-						</div>
-					</div>	
-				</td>
       		</tr>
 
       	</table>

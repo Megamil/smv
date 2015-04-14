@@ -17,7 +17,7 @@
 							echo "<td>$ordemservico->id_solicitacao</td>";
 						    echo "<td>$ordemservico->id_ordemservico</td>";
 
-						    foreach ($pack['unidadesaude'] as $unidadesaude) {
+						    	foreach ($pack['unidadesaude'] as $unidadesaude) {
 						    		if($ordemservico->id_unidadecliente == $unidadesaude->cnes){
 						    			echo "<td>$unidadesaude->unidadesaude</td>";
 						    			break;
@@ -45,12 +45,11 @@
 										echo $detalhes.''.$departamento.'</td>';
 									}
 
-
-
 				    				break;
 						    		}
 						    	}
-						    echo "<td>$ordemservico->prefixo</td>";
+								echo "<td>$ordemservico->prefixo</td>";
+
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
