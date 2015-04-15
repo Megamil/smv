@@ -1241,6 +1241,17 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function excluir_Af_Pecas_x_Pecas(){
+
+		$this->edicao->empenhoExcluirAf($this->uri->segment(3));
+
+		$this->session->set_userdata('aviso','Empenho removido da lista com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Pecas/'.$this->uri->segment(4));
+
+	}
+
 	public function excluir_Af_Pecas_x_itens(){
 
 		$this->edicao->itemExcluirAf($this->uri->segment(3));
@@ -1256,6 +1267,31 @@ class edicoes extends CI_Controller {
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
 		redirect('main/redirecionar/edicoes-editar_Af_Pecas'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Af_Pecas() {
+
+		$dados = array (
+
+			'id_afpecas' => $this->input->post('id_afpecas'),
+			'ano' => $this->input->post('ano'),
+			'id_ordemservico' => $this->input->post('id_ordemservico'),
+			'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+			'id_contratoata' => $this->input->post('id_contratoata'),
+			'contato' => $this->input->post('contato'),
+			'id_colaborador' => $this->input->post('id_colaborador'),
+			'id_colaborador2' => $this->input->post('id_colaborador2'),
+			'observacoes' => $this->input->post('observacoes')
+
+		);
+
+		$this->edicao->af_Pecas_Editar($dados);
+
+		$this->session->set_userdata('aviso','AF Editada com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Pecas/'.$this->input->post('id_afpecas'));
 
 	}
 

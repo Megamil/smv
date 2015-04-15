@@ -695,8 +695,13 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 
 	public function editar_Af_Pecas(){
 		$pack = array ('afpecas' => $this->db->query('select * from tbl_autofornecpecas where id_afpecas = '.$this->session->userdata('idEditar').';'),
-		'afitens' => $this->db->query('select ti.*, unidademedida, quantidade from tbl_itens ti left join tbl_afpecas_x_itens tai on tai.id_itens = ti.id_itens
-inner join tbl_autofornecpecas taf on taf.id_afpecas = tai.id_afpecas inner join tbl_unidademedida tu on tu.id_unidademedida = ti.id_unidademedida  where tai.id_itens ='.$this->session->userdata('idEditar').';')->result(),
+		'afitens' => $this->db->query('select ti.*, id_afpecas_x_itens, unidademedida, quantidade from tbl_itens ti left join tbl_afpecas_x_itens tai on tai.id_itens = ti.id_itens
+inner join tbl_autofornecpecas taf on taf.id_afpecas = tai.id_afpecas inner join tbl_unidademedida tu on tu.id_unidademedida = ti.id_unidademedida  where tai.id_afpecas ='.$this->session->userdata('idEditar').';')->result(),
+		'afempenho' => $this->db->query('select segmento,id_afpecas_x_empenho, codigonumero,numeroempenho,valorempenho,numeroficha,numcontratoata from tbl_empenho te 
+left join tbl_afpecas_x_empenho tae on tae.id_empenho = te.id_empenho
+left join tbl_dotacao td on td.id_dotacao = te.id_dotacao
+left join tbl_segmento ts on ts.id_segmento = te.id_segmento
+where id_afpecas ='.$this->session->userdata('idEditar').';')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		'contratoata' => $this->db->get('tbl_contratoata')->result(),
 		'objeto' => $this->db->get('tbl_objeto')->result(),
@@ -711,7 +716,21 @@ left join tbl_segmento ts on ts.id_segmento = te.id_segmento
 left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 		return $pack;
 	}
-	
+
+	public function af_Pecas() {
+
+
+		$pack = $this->db->query('select taf.id_ordemservico ordemservico, id_afpecas,tc.numerocontratoata contratoata,prazoentrega,prefixo from tbl_autofornecpecas taf
+left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
+left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
+left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
+left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
+
+		return $pack;
+
+	}
+
+	/*
 	public function af_Pecas(){ 
 		$pack = array ('afpecas' => $this->db->get('tbl_autofornecpecas')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
@@ -727,7 +746,7 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 left join tbl_segmento ts on ts.id_segmento = te.id_segmento
 left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 		return $pack;
-	}
+	}*/
 	/*Fim das codificações das telas de autorização de fornecimento de peças */
 
 	/*----------------------------------------------------------------------------------------------------------*/

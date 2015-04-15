@@ -232,4 +232,86 @@ $(document).ready(function(){
 
      }) ;
 
+     $("#validar_Enviar_Empenho").click(function(){
+
+        if($("#empenho_id_empenho").val() != 'Selecione...') {
+
+         var json = 'http://172.16.177.73/smv/style/json/adicionarEmpenhoAf.php?id_empenho='+$("#empenho_id_empenho").val()+'&id_afpecas='+$("#id_afpecas").val();
+
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          $("#empenho_id_empenho").css('border','1px solid green');
+          $("#empenho_id_empenho").css('background','rgba(0,100,0,0.1)');
+          $('.errorModalEmpenho').removeClass('alert alert-danger');
+          $('#error').remove();
+
+          location.reload(true);
+
+        } else {
+
+           $('#error').remove();
+            $("#empenho_id_empenho").css('border','1px solid red');
+            $("#empenho_id_empenho").css('background','rgba(100,0,0,0.1)');
+            var ph = $("#empenho_id_empenho").attr('placeholder');  
+
+            $('.errorModalEmpenho').addClass("alert alert-danger")
+            .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+        }
+
+     });
+
+     $("#validar_Enviar_Item").click(function(){
+
+      var erro = false;
+
+        $(".vazio").each(function(){
+
+          if($(this).val() != 'Selecione...' && $(this).val() != '') {
+
+            $(this).css('border','1px solid green');
+            $(this).css('background','rgba(0,100,0,0.1)');
+            $('.errorModalItem').removeClass('alert alert-danger');
+            $('#error').remove();
+
+          } else {
+
+            erro = true;
+
+             $('#error').remove();
+              $(this).css('border','1px solid red');
+              $(this).css('background','rgba(100,0,0,0.1)');
+              var ph = $(this).attr('placeholder');  
+
+              $('.errorModalItem').addClass("alert alert-danger")
+              .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+          }
+
+        });
+
+        if(erro == false) {
+
+          var json = 'http://172.16.177.73/smv/style/json/adicionarItemAf.php?id_afpecas='+$("#id_afpecas").val()+'&id_itens='+$("#item_id_servico").val()+'&quantidade='+$("#modal_quantidade").val();
+
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          location.reload(true);
+          
+        }
+
+     });
+
 });

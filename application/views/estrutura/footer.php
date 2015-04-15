@@ -2,7 +2,7 @@
 
   </body> 
 
-  <footer class="footer">
+  <footer class="footer no-print">
 
     <p id="maximizar" align="center"> ^ </p>
     <button type="button" class="aviso btn btn-primary pull-right" align="center"> Download do Manual</button>

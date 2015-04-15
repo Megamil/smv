@@ -182,6 +182,12 @@ class edicao extends CI_Model {
 
 	}
 
+	public function empenhoExcluirAf($dados = null){
+
+		return $this->db->delete("tbl_afpecas_x_empenho",array('id_afpecas_x_empenho' => $dados));
+
+	}
+
 	public function itemExcluirAf($dados = null){
 
 		return $this->db->delete("tbl_afpecas_x_itens",array('id_afpecas_x_itens' => $dados));

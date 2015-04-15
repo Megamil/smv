@@ -191,8 +191,8 @@ class novo extends CI_Model {
 
 	public function af_Pecas_Nova($dados = null)
 	{
-
-		return $this->db->insert('tbl_autofornecpecas',$dados);
+		$this->db->insert('tbl_autofornecpecas',$dados);
+		return $this->db->insert_id();
 
 	}
 

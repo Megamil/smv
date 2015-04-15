@@ -17,6 +17,24 @@
 		<tbody>
 				<?php
 
+					foreach ($pack as $afpecas) {
+
+						$contratoata = substr($afpecas->contratoata, 0,4);
+						$contratoata = $contratoata.'/'.substr($afpecas->contratoata, 4,4);
+						$contratoata = $contratoata.'-'.substr($afpecas->contratoata, 8);
+
+						echo "<tr>";
+							echo "<td>$afpecas->ordemservico</td>";
+							echo "<td>$afpecas->id_afpecas</td>";
+							echo "<td>$contratoata</td>";
+							echo "<td>$afpecas->prazoentrega</td>";
+							echo "<td>$afpecas->prefixo</td>";
+							echo '<td>'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
+						echo "</tr>";
+
+					}
+
+					/*
 					foreach ($pack['afpecas'] as $afpecas) {
 						echo "<tr>";
 						    foreach($pack['ordemservico'] as $ordemservico){
@@ -42,24 +60,24 @@
 							foreach($pack['veiculoprefixo'] as $veiculoprefixo){
 
 							 	if($veiculoprefixo->id_veiculo == $afpecas->id_veiculoprefixo) {
-							 		echo "<td>$veiculoprefixo->prefixo</td>"; 
-							 		break;
-
+						 			echo "<td>$veiculoprefixo->prefixo</td>"; 							 			
+						 			break;
 							 	}
 							}
 
 						    foreach($pack['contratoata'] as $contratoata){
 
 							 	if($contratoata->id_contratoata == $afpecas->id_contratoata) {
-							 		echo "<td>$contratoata->prazoentrega</td>"; 
+									echo "<td>$contratoata->prazoentrega</td>"; 
 							 		break;
-
+						 		
 							 	}
 							}
 
 							echo '<td>'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
 							echo "</tr>";
 					}
+					*/
 				?>
 		</tbody>
 	</table>
