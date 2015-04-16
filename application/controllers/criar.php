@@ -1209,6 +1209,66 @@ public function nova_Entrada_Itens() {
 			
 		}
 
+		public function nova_Af_Servicos(){
+
+		$this->form_validation->set_rules('ano','Ano','Required');
+		$this->form_validation->set_rules('id_ordemservico','Ordem de Servico','Required');
+		$this->form_validation->set_rules('id_fornecedorprestador','Fornecedor','Required');
+		$this->form_validation->set_rules('id_contratoata','Contrato/Ata','Required');
+		$this->form_validation->set_rules('contato','Contato','Required');
+		$this->form_validation->set_rules('orcamento','Orçamento','Required');
+		$this->form_validation->set_rules('id_colaborador','Colaborador','Required');
+		$this->form_validation->set_rules('id_colaborador2','Colaborador 2','Required');
+		$this->form_validation->set_rules('observacoes','Observação','Required');
+
+		if($this->form_validation->run()){
+
+			$dados = array (
+
+				'ano' => $this->input->post('ano'),
+				'id_ordemservico' => $this->input->post('id_ordemservico'),
+				'id_fornecedor' => $this->input->post('id_fornecedorprestador'),
+				'id_contratoata' => $this->input->post('id_contratoata'),
+				'contato' => $this->input->post('contato'),
+				'orcamento' => $this->input->post('orcamento'),
+				'id_colaborador' => $this->input->post('id_colaborador'),
+				'id_colaborador2' => $this->input->post('id_colaborador2'),
+				'observacoes' => $this->input->post('observacoes')
+
+			);
+
+			$id_retorno = $this->novo->af_Servicos_Nova($dados);
+
+			$this->session->set_userdata('aviso','AF Criada com Sucesso!');
+			$this->session->set_userdata('tipo','success');
+			
+			$this->session->set_userdata('idEditar',$id_retorno); /*Saber ID que está sendo editado*/
+			redirect('main/redirecionar/edicoes-editar_Af_Servicos/'.$id_retorno);
+
+		} else {
+
+
+
+		$this->session->set_flashdata('ano', $this->input->post('ano'));
+		$this->session->set_flashdata('id_ordemservico', $this->input->post('id_ordemservico'));
+		$this->session->set_flashdata('id_fornecedorprestador', $this->input->post('id_fornecedorprestador'));
+		$this->session->set_flashdata('id_contratoata', $this->input->post('id_contratoata'));
+		$this->session->set_flashdata('contato', $this->input->post('contato'));
+		$this->session->set_flashdata('orcamento', $this->input->post('orcamento'));
+		$this->session->set_flashdata('id_colaborador', $this->input->post('id_colaborador'));
+		$this->session->set_flashdata('id_colaborador2', $this->input->post('id_colaborador2'));
+		$this->session->set_flashdata('observacoes', $this->input->post('observacoes'));
+
+		$this->session->set_userdata('aviso',validation_errors());
+		$this->session->set_userdata('tipo','danger');
+
+		redirect('main/redirecionar/criar-nova_Af_Pecas');
+
+		}
+
+			
+		}
+
 	}
 
 /*

@@ -34,50 +34,6 @@
 
 					}
 
-					/*
-					foreach ($pack['afpecas'] as $afpecas) {
-						echo "<tr>";
-						    foreach($pack['ordemservico'] as $ordemservico){
-
-							 	if($ordemservico->id_ordemservico == $afpecas->id_ordemservico) {
-							 		echo "<td>$ordemservico->id_ordemservico</td>"; 
-							 		break;
-
-							 	}
-							}
-
-   							echo "<td>$afpecas->id_afpecas</td>";
-
-							foreach($pack['contratoata'] as $contratoata){
-
-							 	if($contratoata->id_contratoata == $afpecas->id_contratoata) {
-							 		echo "<td>$contratoata->numerocontratoata</td>"; 
-							 		break;
-
-							 	}
-							}
-
-							foreach($pack['veiculoprefixo'] as $veiculoprefixo){
-
-							 	if($veiculoprefixo->id_veiculo == $afpecas->id_veiculoprefixo) {
-						 			echo "<td>$veiculoprefixo->prefixo</td>"; 							 			
-						 			break;
-							 	}
-							}
-
-						    foreach($pack['contratoata'] as $contratoata){
-
-							 	if($contratoata->id_contratoata == $afpecas->id_contratoata) {
-									echo "<td>$contratoata->prazoentrega</td>"; 
-							 		break;
-						 		
-							 	}
-							}
-
-							echo '<td>'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
-							echo "</tr>";
-					}
-					*/
 				?>
 		</tbody>
 	</table>

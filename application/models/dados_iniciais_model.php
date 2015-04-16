@@ -633,9 +633,7 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		left join tbl_depto TD on TD.id_depto = TU.id_depto
 		left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
-		//'veiculo' => $this->db->get('tbl_veiculo')->result(),
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
-		//'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
 		'subtelaitens' => $this->db->query('select id_ordemservico_x_item, toi.id_item,id_ordemservico,codigomontadora,descricao,quantidade,tf.nome,precobruto,desconto, precobruto - ((precobruto*desconto)/100) as liquido
 		from tbl_itens ti 
 		left join tbl_ordemservico_x_item toi on toi.id_item = ti.id_itens 
@@ -730,23 +728,6 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 
 	}
 
-	/*
-	public function af_Pecas(){ 
-		$pack = array ('afpecas' => $this->db->get('tbl_autofornecpecas')->result(),
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'contratoata' => $this->db->get('tbl_contratoata')->result(),
-		'objeto' => $this->db->get('tbl_objeto')->result(),
-		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
-		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
-		'itens' => $this->db->query('select id_itens, descricao, precobruto - ((precobruto * desconto)/100) liquido from tbl_itens;')->result(),
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'dotacao' => $this->db->get('tbl_dotacao')->result(),
-		'segmento' => $this->db->get('tbl_segmento')->result(),
-		'empenho' => $this->db->query('select id_empenho,numeroempenho, codigonumero dotacao, segmento from tbl_empenho te
-left join tbl_segmento ts on ts.id_segmento = te.id_segmento
-left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
-		return $pack;
-	}*/
 	/*Fim das codificações das telas de autorização de fornecimento de peças */
 
 	/*----------------------------------------------------------------------------------------------------------*/
@@ -771,32 +752,36 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 	public function editar_Af_Servicos(){
 		$pack = array ('afservicos' => $this->db->query('select * from tbl_autofornecservicos where id_afservicos = '.$this->session->userdata('idEditar').';'),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'afitens' => $this->db->query('select ti.*, id_afservicos_x_itens, unidademedida, quantidade from tbl_itens ti left join tbl_afservicos_x_itens tai on tai.id_itens = ti.id_itens
+inner join tbl_autofornecservicos tas on tas.id_afservicos = tai.id_afservicos inner join tbl_unidademedida tu on tu.id_unidademedida = ti.id_unidademedida  where tas.id_afservicos ='.$this->session->userdata('idEditar').';')->result(),
+		'afempenho' => $this->db->query('select segmento,id_afservicos_x_empenho, codigonumero,numeroempenho,valorempenho,numeroficha,numcontratoata from tbl_empenho te 
+left join tbl_afservicos_x_empenho tae on tae.id_empenho = te.id_empenho
+left join tbl_dotacao td on td.id_dotacao = te.id_dotacao
+left join tbl_segmento ts on ts.id_segmento = te.id_segmento
+where id_afservicos ='.$this->session->userdata('idEditar').';')->result(),
 		'contratoata' => $this->db->get('tbl_contratoata')->result(),
 		'objeto' => $this->db->get('tbl_objeto')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
 		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
+		'itens' => $this->db->query('select id_itens, descricao, precobruto - ((precobruto * desconto)/100) liquido from tbl_itens;')->result(),
 		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
 		'servico' => $this->db->get('tbl_servicos')->result(),
 		'dotacao' => $this->db->get('tbl_dotacao')->result(),
 		'segmento' => $this->db->get('tbl_segmento')->result(),
-		'empenho' => $this->db->get('tbl_empenho')->result());
+		'empenho' => $this->db->query('select id_empenho, numeroempenho, codigonumero dotacao, segmento from tbl_empenho te
+left join tbl_segmento ts on ts.id_segmento = te.id_segmento
+left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 		return $pack;
 	}
 	
 	public function af_Servicos(){ 
-		$pack = array ('afservicos' => $this->db->get('tbl_autofornecservicos')->result(),
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'contratoata' => $this->db->get('tbl_contratoata')->result(),
-		'objeto' => $this->db->get('tbl_objeto')->result(),
-		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
-		'veiculoprefixo' => $this->db->get('tbl_veiculo')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'servico' => $this->db->get('tbl_servicos')->result(),
-		'dotacao' => $this->db->get('tbl_dotacao')->result(),
-		'segmento' => $this->db->get('tbl_segmento')->result(),
-		'empenho' => $this->db->get('tbl_empenho')->result());
+
+		$pack = $this->db->query('select taf.id_ordemservico ordemservico, id_afservicos,tc.numerocontratoata contratoata,prazoentrega,prefixo from tbl_autofornecservicos taf
+left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
+left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
+left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
+left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
+		
 		return $pack;
 	}
 	/*Fim das codificações das telas de autorização de fornecimento de serviços */

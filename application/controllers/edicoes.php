@@ -1263,6 +1263,28 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function excluir_Af_Servicos_x_Pecas(){
+
+		$this->edicao->empenhoExcluirAfs($this->uri->segment(3));
+
+		$this->session->set_userdata('aviso','Empenho removido da lista com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Servicos/'.$this->uri->segment(4));
+
+	}
+
+	public function excluir_Af_Servicos_x_itens(){
+
+		$this->edicao->itemExcluirAfs($this->uri->segment(3));
+
+		$this->session->set_userdata('aviso','Item removido da lista com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Servicos/'.$this->uri->segment(4));
+
+	}
+
 	public function editar_Af_Pecas(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
@@ -1299,6 +1321,32 @@ class edicoes extends CI_Controller {
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
 		redirect('main/redirecionar/edicoes-editar_Af_Servicos'); /*Redirecionar para adicionar aplicações (Editar grupo)*/
+
+	}
+
+	public function editando_Af_Servicos() {
+
+		$dados = array (
+
+			'id_afservicos' => $this->input->post('id_afservicos'),
+			'ano' => $this->input->post('ano'),
+			'id_ordemservico' => $this->input->post('id_ordemservico'),
+			'id_fornecedor' => $this->input->post('id_fornecedorprestador'),
+			'id_contratoata' => $this->input->post('id_contratoata'),
+			'orcamento' => $this->input->post('orcamento'),
+			'contato' => $this->input->post('contato'),
+			'id_colaborador' => $this->input->post('id_colaborador'),
+			'id_colaborador2' => $this->input->post('id_colaborador2'),
+			'observacoes' => $this->input->post('observacoes')
+
+		);
+
+		$this->edicao->af_Servicos_Editar($dados);
+
+		$this->session->set_userdata('aviso','AF Editada com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Servicos/'.$this->input->post('id_afservicos'));
 
 	}
 

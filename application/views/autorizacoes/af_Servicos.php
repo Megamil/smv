@@ -17,48 +17,21 @@
 		<tbody>
 				<?php
 
-					foreach ($pack['afservicos'] as $afservicos) {
+					foreach ($pack as $id_afservicos) {
+
+						$contratoata = substr($id_afservicos->contratoata, 0,4);
+						$contratoata = $contratoata.'/'.substr($id_afservicos->contratoata, 4,4);
+						$contratoata = $contratoata.'-'.substr($id_afservicos->contratoata, 8);
+
 						echo "<tr>";
-						    foreach($pack['ordemservico'] as $ordemservico){
+							echo "<td>$id_afservicos->ordemservico</td>";
+							echo "<td>$id_afservicos->id_afservicos</td>";
+							echo "<td>$contratoata</td>";
+							echo "<td>$id_afservicos->prazoentrega</td>";
+							echo "<td>$id_afservicos->prefixo</td>";
+							echo '<td>'.anchor('edicoes/editar_Af_Servicos/'.$id_afservicos->id_afservicos.'','Editar').'</td>';
+						echo "</tr>";
 
-							 	if($ordemservico->id_ordemservico == $afservicos->id_ordemservico) {
-							 		echo "<td>$ordemservico->id_ordemservico</td>"; 
-							 		break;
-
-							 	}
-							}
-
-   							echo "<td>$afservicos->id_afservicos</td>";
-
-							foreach($pack['contratoata'] as $contratoata){
-
-							 	if($contratoata->id_contratoata == $afservicos->id_contratoata) {
-							 		echo "<td>$contratoata->numerocontratoata</td>"; 
-							 		break;
-
-							 	}
-							}
-
-							foreach($pack['veiculoprefixo'] as $veiculoprefixo){
-
-							 	if($veiculoprefixo->id_veiculo == $afservicos->id_veiculoprefixo) {
-							 		echo "<td>$veiculoprefixo->prefixo</td>"; 
-							 		break;
-
-							 	}
-							}
-
-						    foreach($pack['contratoata'] as $contratoata){
-
-							 	if($contratoata->id_contratoata == $afservicos->id_contratoata) {
-							 		echo "<td>$contratoata->prazoentrega</td>"; 
-							 		break;
-
-							 	}
-							}
-
-							echo '<td>'.anchor('edicoes/editar_Af_Servicos/'.$afservicos->id_afservicos.'','Editar').'</td>';
-							echo "</tr>";
 					}
 				?>
 		</tbody>

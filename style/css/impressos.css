@@ -1,0 +1,95 @@
+ /*!
+ * Bootstrap v3.3.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+table {
+    border-collapse: collapse !important;
+    padding: 0;
+    border: 0;
+    border-spacing: 0;
+  }
+.table td,
+  .table th {
+    background-color: #fff !important;
+    padding: 0;
+  }
+.table-bordered th,
+  .table-bordered td {
+    border: 0px solid #ddd !important;
+    padding: 0;
+  }
+}
+
+#listapecas{
+	border-spacing: 0;
+ 	border: 1px solid black;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  padding: 5px;
+  position: static;
+  float: none;
+  width: 100%;
+}
+
+#listapecas th{
+	text-align: center;
+	border: 1px solid black;
+}
+
+#listapecas td{
+	border: 1px solid black;
+}
+
+
+body {
+    margin: 5px 5px 5px 5px;
+    padding: 0;
+    background-color: #FAFAFA;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.page {
+    width: 20cm;
+    min-height: 29cm;
+    padding: 0cm;
+    margin: 0cm auto;
+    border: 0px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font: 8pt "Tahoma";
+}
+
+.subpage {
+  padding: 1cm;
+  border: 5px red solid;
+  height: 256mm;
+  outline: 0.5cm #FFEAEA solid;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+    }
+  .corpo{
+    border: 0 0 0 0 !important;
+  }
+}

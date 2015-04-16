@@ -198,8 +198,8 @@ class novo extends CI_Model {
 
 	public function af_Servicos_Nova($dados = null)
 	{
-
-		return $this->db->insert('tbl_autofornecservicos',$dados);
+		$this->db->insert('tbl_autofornecservicos',$dados);
+		return $this->db->insert_id();
 
 	}
 

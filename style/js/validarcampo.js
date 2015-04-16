@@ -50,6 +50,18 @@ function Numero(e){
 
 $(document).ready(function(){
 
+	$("#imprimir").click(function(){
+
+		$(".corpo").css({"border-width":"0",
+			"border-color":"#fff", "border-style":"none","box-shadow":"0px 0px 0px #fff"});
+
+		window.print();
+
+		$(".corpo").css({"border-width":"1",
+			"border-color":"#000", "border-style":"solid","box-shadow":"2px 2px 1px #000"});
+
+	});
+
 	//Cria as mascaras para os campos logo de inicio
 	$('.telefoneValidar').mask("(?99)?99999-9999");
 	$('#cnpjValidar').mask("99.999.999/9999-99");
