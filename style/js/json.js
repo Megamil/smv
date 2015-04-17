@@ -383,6 +383,52 @@ $(document).ready(function(){
         if(erro == false) {
 
           var json = 'http://172.16.177.73/smv/style/json/adicionarItemAfs.php?id_afservicos='+$("#id_afservicos").val()+'&id_itens='+$("#item_id_servico").val()+'&quantidade='+$("#modal_quantidade").val();
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          location.reload(true);
+          
+        }
+
+     });
+
+$("#validar_Enviar_Servicoas").click(function(){
+
+      var erro = false;
+
+        $(".vazios").each(function(){
+
+          if($(this).val() != 'Selecione...' && $(this).val() != '') {
+
+            $(this).css('border','1px solid green');
+            $(this).css('background','rgba(0,100,0,0.1)');
+            $('.errorModalItem').removeClass('alert alert-danger');
+            $('#error').remove();
+
+          } else {
+
+            erro = true;
+
+             $('#error').remove();
+              $(this).css('border','1px solid red');
+              $(this).css('background','rgba(100,0,0,0.1)');
+              var ph = $(this).attr('placeholder');  
+
+              $('.errorModalItem').addClass("alert alert-danger")
+              .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+
+          }
+
+        });
+
+        if(erro == false) {
+
+          var json = 'http://172.16.177.73/smv/style/json/adicionarServicoAfs.php?id_servicos='+$("#id_servicos").val()+'&quantidade='+$("#quantidade").val()+'&id_afservicos='+$("#id_afservicos").val();
           alert(json);
           $.ajax({        
 

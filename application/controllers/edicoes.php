@@ -1285,6 +1285,15 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function excluir_Af_Servicos_x_servicos(){
+		$this->edicao->ServicoExcluirAfs($this->uri->segment(3));
+
+		$this->session->set_userdata('aviso','Serviço removido da lista com sucesso.');
+		$this->session->set_userdata('tipo','success');
+
+		redirect('main/redirecionar/edicoes-editar_Af_Servicos/'.$this->uri->segment(4));
+	}
+
 	public function editar_Af_Pecas(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/

@@ -759,6 +759,11 @@ left join tbl_afservicos_x_empenho tae on tae.id_empenho = te.id_empenho
 left join tbl_dotacao td on td.id_dotacao = te.id_dotacao
 left join tbl_segmento ts on ts.id_segmento = te.id_segmento
 where id_afservicos ='.$this->session->userdata('idEditar').';')->result(),
+		'afsservicos' => $this->db->query('select id_afservicos_x_servicos, servico descricao, unidademedida, quantidade,valorunitario, (quantidade * valorunitario) valortotal
+from tbl_afservicos_x_servicos tas
+left join tbl_servicos ts on tas.id_servicos = ts.id_servicos
+left join tbl_unidademedida tu on tu.id_unidademedida = ts.id_unidademedida
+where id_afservicos ='.$this->session->userdata('idEditar').';')->result(),
 		'contratoata' => $this->db->get('tbl_contratoata')->result(),
 		'objeto' => $this->db->get('tbl_objeto')->result(),
 		'colaborador' => $this->db->get('tbl_colaboradores')->result(),
@@ -843,6 +848,20 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	/*===========================================================================================================*/	
 
 	public function impresso_Vistoria(){ 
+		$pack = array (
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		'depto' => $this->db->get('tbl_depto')->result(),
+		'veiculo' => $this->db->get('tbl_veiculo')->result(),
+		'divisao' => $this->db->get('tbl_divisao')->result(),
+		'setor' => $this->db->get('tbl_setor')->result(),
+		'secao' => $this->db->get('tbl_secao')->result(),
+		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result());
+		return $pack;
+	}
+
+	public function impresso_Servicos_Externos(){ 
 		$pack = array (
 		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
 		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),

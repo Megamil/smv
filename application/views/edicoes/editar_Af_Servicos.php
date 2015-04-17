@@ -139,9 +139,9 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 						    			echo "<td>$afitens->descricao</td>";
 						    			echo "<td>$afitens->unidademedida</td>";
 						    			echo "<td>$afitens->quantidade</td>";
-						    			echo "<td>R$ $afitens->precobruto</td>";
+						    			echo "<td>R$ ".number_format($afitens->precobruto, 2,',','')."</td>";
 						    			echo "<td>$afitens->desconto %</td>";
-						    			echo "<td>R$ $liquido</td>";
+						    			echo "<td>R$ ".number_format($liquido, 2,',','')."</td>";
 										echo '<td class="no-print">'.anchor('edicoes/excluir_Af_Servicos_x_itens/'.$afitens->id_afservicos_x_itens.'/'.$pack['afservicos']->row()->id_afservicos,'Excluir').'</td>';
 									echo "</tr>";
 								}
@@ -155,8 +155,8 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 							<td align="right">
 								<div class="control-group">
 									<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-										<input type="text" class="form-control" name="valortotal" value="<?php echo $custo; ?>" aria-describedby="basic-addon1" placeholder="Valor Total" style="max-width:150px" disabled/>
+										<span class="input-group-addon" id="basic-addon1">R$</span>
+										<input type="text" class="form-control" name="valortotal" value="<?php echo number_format($custo, 2,',',''); ?>" aria-describedby="basic-addon1" placeholder="Valor Total" style="max-width:150px" disabled/>
 									</div>
 								</div>
 							</td>
@@ -192,36 +192,38 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 								<th class="span2">Unid.</th>
 								<th class="span2">Qtde.</th>
 								<th class="span2">Valor Unitário</th>
-								<th class="span2">Valor do Item</th>
-								<th class="span2 no-print">Excluir</th>
+								<th class="span2">Valor Total</th>
+								<th class="span4 no-print">Excluir</th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<?php
-								/*foreach ($pack['afservicos'] as $afservicos) {
+
+								$soma = 0;
+
+								foreach ($pack['afsservicos'] as $afsservicos) {
 									echo "<tr>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-						    			echo "<td> </td>";
-										echo '<td class="no-print">'.anchor('exclusoes/excluir_Af_Servicos_x_itens/'.$afservicos->id_afservicos.'','Excluir').'</td>';
+										$soma = $soma + $afsservicos->valortotal; 
+						    			echo "<td>$afsservicos->descricao</td>";
+						    			echo "<td>$afsservicos->unidademedida</td>";
+						    			echo "<td>$afsservicos->quantidade</td>";
+						    			echo "<td>R$ ".number_format($afsservicos->valorunitario, 2,',','')."</td>";
+						    			echo "<td>R$ ".number_format($afsservicos->valortotal, 2,',','')."</td>";
+										echo '<td class="span4 no-print">'.anchor('edicoes/excluir_Af_Servicos_x_servicos/'.$afsservicos->id_afservicos_x_servicos.'/'.$pack['afservicos']->row()->id_afservicos,'Excluir').'</td>';
 									echo "</tr>";
-								}*/
+								}
 							?>
 						<tr>
-							<td colspan="6" valign="top" align="right">
+							<td colspan="5" valign="top" align="right">
 										<span class="help-inline">Valor Total</span>
 							</td>
 
 							<td align="right">
 								<div class="control-group">
-									<div class="controls">
-										<input type="text" class="form-control" name="valortotal" aria-describedby="basic-addon1" placeholder="Valor Total" style="max-width:150px" disabled/>
+									<div class="controls input-group">
+										<span class="input-group-addon" id="basic-addon1">R$</span>
+										<input type="text" class="form-control" value="<?php echo number_format($soma, 2,',',''); ?>" name="valortotal" aria-describedby="basic-addon1" placeholder="Valor Total" style="max-width:150px" disabled/>
 									</div>
 								</div>
 							</td>
@@ -272,7 +274,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 										echo "<td>$afempenho->numeroempenho</td>";
 										echo "<td>$afempenho->segmento</td>";
 						    			echo "<td>$afempenho->codigonumero</td>";
-						    			echo "<td>$afempenho->valorempenho</td>";
+						    			echo "<td>R$ ".number_format($afempenho->valorempenho, 2,',','')."</td>";
 						    			echo "<td>$afempenho->numeroficha</td>";
 						    			echo "<td>$afempenho->numcontratoata</td>";
 										echo '<td class="no-print">'.anchor('edicoes/excluir_Af_Servicos_x_Pecas/'.$afempenho->id_afservicos_x_empenho.'/'.$pack['afservicos']->row()->id_afservicos,'Excluir').'</td>';
@@ -287,8 +289,8 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 
 							<td align="right">
 								<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-										<input type="text" class="form-control" name="valortotal2" aria-describedby="basic-addon1" value="<?php echo $soma; ?>" placeholder="Valor Total" style="max-width:150px" disabled/>
+									<span class="input-group-addon" id="basic-addon1">R$</span>
+										<input type="text" class="form-control" name="valortotal2" aria-describedby="basic-addon1" value="<?php echo number_format($soma, 2,',',''); ?>" placeholder="Valor Total" style="max-width:150px" disabled/>
 									</div>
 								</div>
 							</td>
@@ -679,7 +681,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" id="validar_Enviar_Itemas">Incluir Material</button>
        </div>
     </div>
@@ -698,7 +700,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Serviço?</h4>
       </div>
-
+	<div class="errorModalItem" ></div>
       <div class="modal-body">
       		<table border="0">
       		<tr>
@@ -711,14 +713,14 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control" name="id_servico" placeholder="Servico" >
+							<select class="form-control vazios" name="id_servico" id="id_servicos" placeholder="Servico" >
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['servico'] as $servico) {
-									if($this->session->flashdata('id_servico') == $servico->id_servico){
-										echo '<option selected value="'.$servico->id_servico.'">'.$servico->servico.'</option>';
+									if($this->session->flashdata('id_servico') == $servico->id_servicos){
+										echo '<option selected value="'.$servico->id_servicos.'">'.$servico->servico.' - Valor R$: '.number_format($servico->valorunitario, 2,',','').'</option>';
 									} else {
-										echo '<option value="'.$servico->id_servico.'">'.$servico->servico.'</option>';
+										echo '<option value="'.$servico->id_servicos.'">'.$servico->servico.' - Valor R$: '.number_format($servico->valorunitario, 2,',','').'</option>';
 									}
 								}
 							?>
@@ -738,31 +740,17 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<input type="text" class="form-control" name="quantidade" aria-describedby="basic-addon1" placeholder="Quantidade" style="max-width:130px" />
+							<input type="text" class="form-control vazios" name="quantidade" id="quantidade" aria-describedby="basic-addon1" placeholder="Quantidade" style="max-width:130px" />
 						</div>
 					</div>		
       			</td>
-
-      			<td>
-					<div class="control-group">
-						<div class="controls">
-							<span class="help-inline">Valor unitário</span>
-						</div>
-					</div>
-				
-					<div class="control-group">
-						<div class="controls">
-							<input type="text" class="form-control" name="valorunitario" aria-describedby="basic-addon1" placeholder="Valor unitário" disabled/>
-						</div>
-					</div>	
-				</td>
       		</tr>
 
       	</table>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" id="validar_Enviar_Servicoas">Incluir Serviço</button>
        </div>
     </div>

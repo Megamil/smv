@@ -738,6 +738,8 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Modali
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Modalidade_Licitacao', 'Criar nova Modalidade de licitação.');
 
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Vistoria', 'Formulário Impresso para Vistoria.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Servicos_Externos', 'Formulário Impresso para Serviços Externos.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Retirada_Estoque', 'Formulário Impresso para Retiradas do Estoque.');
 
 /*Dando permissão de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
@@ -857,6 +859,8 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,88);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,89);
 
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,90);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,91);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,92);
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);

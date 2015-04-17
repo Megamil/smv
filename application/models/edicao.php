@@ -212,6 +212,10 @@ class edicao extends CI_Model {
 
 	}
 
+	public function ServicoExcluirAfs($dados = null) {
+		return $this->db->delete("tbl_afservicos_x_servicos",array('id_afservicos_x_servicos' => $dados));
+	}
+
 	public function obter_Id_Os($id_solicitacao = null)
 	{
 
