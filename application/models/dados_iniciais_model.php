@@ -875,6 +875,22 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		return $pack;
 	}
 
+	public function impresso_Retirada_Estoque(){ 
+		$pack = array (
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
+		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		'depto' => $this->db->get('tbl_depto')->result(),
+		'veiculo' => $this->db->get('tbl_veiculo')->result(),
+		'divisao' => $this->db->get('tbl_divisao')->result(),
+		'setor' => $this->db->get('tbl_setor')->result(),
+		'secao' => $this->db->get('tbl_secao')->result(),
+		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
+		'itens' => $this->db->get('tbl_itens')->result(),
+		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),);
+		return $pack;
+	}
 
 }
 

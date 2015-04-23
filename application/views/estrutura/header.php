@@ -125,7 +125,7 @@
 
                             <li <?php if($ativo == 'impressos-impresso_Retirada_Estoque') {echo 'class="active"';}?>>
                             <?php echo anchor('main/redirecionar/impressos-impresso_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
-                                                        
+                                                                                    
                         </ul>
                     </li>
               </ul>

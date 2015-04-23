@@ -7,26 +7,26 @@
 				<!-- /////////////////////////////////BOTÃO DE IMPRIMIR O FORMULÁRIO//////////////////////////////// -->
 				<tr>
 					<td align="right" colspan="4">
-						<button type="button" class="btn btn-info no-print" name="imprimir" id="imprimir">Imprimir</button>
+						<button type="button" class="no-print" name="imprimir" id="imprimir">Imprimir</button>
 					</td>
 				</tr>
 				<!-- /////////////////////////////////LINHA DO CABEÇALHO DO FORMULÁRIO//////////////////////////////// -->
 				<tr>
-					<tr>
-						<td rowspan="2" align="center" valign="top" width="180">
-							<img id="img" width="150" src="/smv/style/img/brasaopmg.jpg" /></td>
-						<td colspan="3" align="center">
-							<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label></td>
-					</tr>
+					<td rowspan="2" align="center" valign="top" width="180">
+						<img id="img" width="150" src="/smv/style/img/brasaopmg.jpg" />
+					</td>
+					<td colspan="3" align="center">
+						<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
+					</td>
+				</tr>
 						
-					<tr>
-						<td colspan="3" align="center" valign="top">
+				<tr>
+					<td colspan="3" align="center" valign="top">
 						<font size="1px"><label name="departamento">Departamento</label></font><br />
 						<font size="1px"><label name="divisao">Divisão</label></font><br />
 						<font size="1px"><label name="secao">Seção</label></font><br />
 						<font size="1px"><label name="setor">Setor</label></font>
-						</td>
-					</tr>
+					</td>
 				</tr>
 				<!-- /////////////////////////////////LINHA DO SUBTITULO DO FORMULÁRIO//////////////////////////////// -->
 				<tr>
