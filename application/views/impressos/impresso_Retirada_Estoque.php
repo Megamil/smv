@@ -7,7 +7,8 @@
 			<!-- /////////////////////////////////BOTÃO DE IMPRIMIR O FORMULÁRIO//////////////////////////////// -->
 				<tr>
 					<td align='right' colspan='4'>
-						<button type='button' class='no-print' name='imprimir' id='imprimir'>Imprimir</button>
+						<a href="<?php echo base_url(); ?>pdf/pdf_impressos/pdf_impresso_Retirada_Estoque.php" target="_blank" class="btn no-print btn-info">PDF Impressão</a>
+						<!-- <button type='button' class='no-print' name='imprimir' id='imprimir'>Imprimir</button> -->
 					</td>
 				</tr>
 				<!-- /////////////////////////////////LINHA DO CABEÇALHO DO FORMULÁRIO//////////////////////////////// -->
@@ -268,7 +269,7 @@
 
 							<tr>
 								<td height="30px" width="40%">
-									<span>Data ____/ ____/ ______</span>
+									<span>Data ____/____/______</span>
 								</td>
 								<td colspan='3'>
 									<span>Assinatura__________________________________________________________</span>

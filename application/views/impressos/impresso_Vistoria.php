@@ -7,7 +7,8 @@
 				<!-- /////////////////////////////////BOTÃO DE IMPRIMIR O FORMULÁRIO//////////////////////////////// -->
 				<tr>
 					<td align="right" colspan="4">
-						<button type="button" class="no-print" name="imprimir" id="imprimir">Imprimir</button>
+						<a href="<?php echo base_url(); ?>pdf/pdf_impressos/pdf_impresso_Vistoria.php" target="_blank" class="btn no-print btn-info">PDF Impressão</a>
+						<!-- <button type="button" class="no-print" name="imprimir" id="imprimir">Imprimir</button> -->
 					</td>
 				</tr>
 				<!-- /////////////////////////////////LINHA DO CABEÇALHO DO FORMULÁRIO//////////////////////////////// -->
@@ -188,14 +189,12 @@
 													<tr>
 														<td>
 															<span>Data:</span>
-																<br />
-															<label name="dataresponsavel">Data</label>
+															<label name="dataresponsavel">____/____/____</label>
 														</td>
 																			
 														<td>
 															<span>Nome:</span>
-																<br />
-															<label name="nomeresponsavel">Nome do Responsável</label>
+															<label name="nomeresponsavel">______________________________________</label>
 														</td>	
 													</tr>
 												</table>

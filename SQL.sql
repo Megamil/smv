@@ -740,7 +740,14 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('editar_Moda
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Vistoria', 'Formulário Impresso para Vistoria.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Servicos_Externos', 'Formulário Impresso para Serviços Externos.');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Retirada_Estoque', 'Formulário Impresso para Retiradas do Estoque.');
-Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Teste', 'Teste do mPDF.');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_impresso_Autorizacao_Fornec_Exec_Servicos_pag1', 'Autorização de Fornecimento / Execução de Serviços');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_impresso_Autorizacao_Fornec_Exec_Servicos_pag2', 'Autorização de Fornecimento / Execução de Serviços');
+
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Vistoria', 'Impressão em PDF do Fomulario de Vistoria');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Servicos_Externos', 'Impressão em PDF do Fomulario de Serviços Externos');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Retirada_Estoque', 'Impressão em PDF de Retirada de Estoque');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag1', 'Impressão Autorição Página 1');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag2', 'Impressão Autorição Página 2');
 
 /*Dando permissão de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
@@ -863,6 +870,14 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,90);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,91);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,92);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,93);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,94);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,95);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,96);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,97);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,98);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,99);
+
+
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);

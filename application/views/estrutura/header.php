@@ -126,6 +126,8 @@
                             <li <?php if($ativo == 'impressos-impresso_Retirada_Estoque') {echo 'class="active"';}?>>
                             <?php echo anchor('main/redirecionar/impressos-impresso_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
                                                                                     
+                            <li <?php if($ativo == 'impressos-impresso_Autorizacao_Fornec_Exec_Servicos_pag1') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/impressos-impresso_Autorizacao_Fornec_Exec_Servicos_pag1', 'Autorização de Fornecimento/Execução')?></li>                                                                                  
                         </ul>
                     </li>
               </ul>
