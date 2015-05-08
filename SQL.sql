@@ -748,6 +748,8 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impress
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Retirada_Estoque', 'Impressão em PDF de Retirada de Estoque');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag1', 'Impressão Autorição Página 1');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag2', 'Impressão Autorição Página 2');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Etiqueta', 'Etiquetas para imprimir');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Etiqueta', 'Impressão das Etiquetas');
 
 /*Dando permissão de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
@@ -876,7 +878,8 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,96);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,97);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,98);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,99);
-
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,100);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,101);
 
 
 /*Adicionando o usuário ao grupo:*/

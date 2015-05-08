@@ -47,14 +47,17 @@
 										echo $detalhes.''.$departamento.'</td>';
 									}
 
-
-
 				    				break;
 						    		}
 						    	}
 						    	
-
-						    echo "<td>$ordemservico->prefixo</td>";
+					    		foreach ($pack['prefixo'] as $prefixo) {
+					    			if($prefixo->id_solicitaordemservico == $ordemservico->id_solicitacao){
+					    				echo "<td>$prefixo->prefixo</td>";
+					    				break;
+					    			}
+					    		}
+						    
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
@@ -63,10 +66,3 @@
 				?>
 		</tbody>
 	</table>
-
-
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	MODIFICAR A ESTRUTURA DA DELA DESSE RELATÓRIO, O MESMO ESTÁ COMO A TELA BASE PARA A EDIÇÃO DAS ORDENS DE SERVIÇO
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->

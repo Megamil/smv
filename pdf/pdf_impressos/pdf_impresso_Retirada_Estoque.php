@@ -1,6 +1,7 @@
 <?php
 $html = '
 <html>
+<meta charset="utf-8"/>
 	<head>
 		<title></title>
 			<style>
@@ -163,15 +164,15 @@ $html = '
 								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
-								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SA&Uacute;DE</label>
+								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
 							</td>
 						</tr>
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
 								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divis&atilde;o</label><br />
-								<label name="secao">Se&ccedil;&atilde;o</label><br />
+								<label name="divisao">Divisão</label><br />
+								<label name="secao">Seção</label><br />
 								<label name="setor">Setor</label>
 							</td>
 						</tr>
@@ -180,12 +181,12 @@ $html = '
 							<td height="20px" align="bottom" id="negrito"><span>RETIRADA DE ITENS DO ESTOQUE</span></td>
 							<td align="right" colspan="2" id="negrito">
 								<div>
-									<span>Ordem de Servi&ccedil;o No:&nbsp;</span>
+									<span>Ordem de Serviço Nº:&nbsp;</span>
 								</div>
 							</td>
 							<td align="left" width="100px">
 								<div>
-									<label name="ordemservico">OS No.</label>
+									<label name="ordemservico">OS Nº</label>
 								</div>
 							</td>
 						</tr>
@@ -197,7 +198,7 @@ $html = '
 								<table border="0" width="100%">
 									<tr>
 										<td valign="top" colspan="2">
-											<label name="modelo" id="negrito">C&oacute;digo&nbsp;</label>________________________________________
+											<label name="modelo" id="negrito">Código&nbsp;</label>________________________________________
 										</td>
 															
 										<td valign="top" colspan="2">
@@ -215,18 +216,18 @@ $html = '
 						</fieldset>
 
 						<fieldset class="borda">
-							<legend class="borda">Rela&ccedil;&atilde;o de Itens Entregues do Estoque</legend>
+							<legend class="borda">Relação de Itens Entregues do Estoque</legend>
 								<br />
 								<table>
 									<tr>
 										<td align="center">
 											<table id="pecas">
 												<tr>
-													<td width="55px" align="center" id="negrito">C&oacute;digo</td>
-													<td align="center" id="negrito">C&oacute;digo Montadora</td>
+													<td width="55px" align="center" id="negrito">Código</td>
+													<td align="center" id="negrito">Código Montadora</td>
 													<td width="35px" align="center" id="negrito">Quant</td>
 													<td align="center" id="negrito">Unidade</td>
-													<td width="470px" align="center" id="negrito">Descri&ccedil;&atilde;o</td>
+													<td width="470px" align="center" id="negrito">Descrição</td>
 												</tr>
 												<tr>
 													<td>&nbsp;</td>
@@ -348,7 +349,7 @@ $html = '
 						</fieldset>
 											
 						<fieldset class="borda">
-							<legend class="borda">Observa&ccedil;&otilde;es</legend>
+							<legend class="borda">Observações</legend>
 								<table>
 									<tr>
 										<td height="80px">

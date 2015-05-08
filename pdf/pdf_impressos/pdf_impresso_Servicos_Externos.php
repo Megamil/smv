@@ -1,6 +1,7 @@
 <?php
 $html = '
 <html>
+<meta charset="utf-8"/>
 	<head>
 		<title></title>
 			<style>
@@ -152,15 +153,15 @@ $html = '
 								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
-								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SA&Uacute;DE</label>
+								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
 							</td>
 						</tr>
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
 								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divis&atilde;o</label><br />
-								<label name="secao">Se&ccedil;&atilde;o</label><br />
+								<label name="divisao">Divisão</label><br />
+								<label name="secao">Seção</label><br />
 								<label name="setor">Setor</label>
 							</td>
 						</tr>
@@ -169,19 +170,19 @@ $html = '
 							<td height="20px" align="bottom" id="negrito"><span>VISTORIA</span></td>
 							<td align="right" colspan="2" id="negrito">
 								<div>
-									<span>Ordem de Servi&ccedil;o No:&nbsp;</span>
+									<span>Ordem de Serviço Nº:&nbsp;</span>
 								</div>
 							</td>
 							<td align="left" width="100px">
 								<div>
-									<label name="ordemservico">OS No.</label>
+									<label name="ordemservico">OS Nº.</label>
 								</div>
 							</td>
 						</tr>
 					</table>
 					<span>&nbsp;</span>
 					<fieldset class="borda">
-						<legend class="borda">Dados do Ve&iacute;culo</legend>
+						<legend class="borda">Dados do Veículo</legend>
 							<br />
 							<table border="0" cellpadding="0" cellspacing="0">
 								<tr>
@@ -220,7 +221,7 @@ $html = '
 											<tr>
 												<td align="center" id="negrito">S</td>
 												<td align="center" id="negrito">N</td>
-												<td align="center" id="negrito">Descri&ccedil;&atilde;o</td>
+												<td align="center" id="negrito">Descrição</td>
 											</tr>
 												
 											<tr>
@@ -232,7 +233,7 @@ $html = '
 											<tr>
 												<td></td>
 												<td></td>
-												<td>Tri&acirc;ngulo</td>
+												<td>Triângulo</td>
 											</tr>
 													
 											<tr>
@@ -262,7 +263,7 @@ $html = '
 											<tr>
 												<td></td>
 												<td></td>
-												<td>Tac&oacute;grafo</td>
+												<td>Tacógrafo</td>
 											</tr>
 												
 											<tr>
@@ -290,7 +291,7 @@ $html = '
 									<td align="center">
 										
 										<fieldset class="borda">
-											<legend class="borda">N&uacute;mero da Bateria</legend>
+											<legend class="borda">Número da Bateria</legend>
 												<p>
 													&nbsp;
 												</p>
@@ -308,7 +309,7 @@ $html = '
 								<tr>
 									<td colspan="3">
 										<fieldset class="borda">
-											<legend class="borda">Respons&aacute;vel pela vistoria</legend>
+											<legend class="borda">Responsável pela vistoria</legend>
 												<table border="0" width="100%">
 													<tr>
 														<td align="left" width="100px" height="40px" valign="bottom">
@@ -341,7 +342,7 @@ $html = '
 					</fieldset>
 						
 					<fieldset class="borda">
-						<legend class="borda">Observa&ccedil;&otilde;es</legend>
+						<legend class="borda">Observações</legend>
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td height="80px">
@@ -352,17 +353,17 @@ $html = '
 					</fieldset>
 
 					<fieldset class="borda">
-						<legend class="borda">Recibo de Entrega do Ve&iacute;culo para Reparos</legend>
+						<legend class="borda">Recibo de Entrega do Veículo para Reparos</legend>
 							<table width="100%" border="0">
 								<tr>
 									<td colspan="4" height="26px">
-										<span id="negrito">Nome do prestador dos servi&ccedil;os </span>___________________________________________________
+										<span id="negrito">Nome do prestador dos serviços </span>___________________________________________________
 									</td>
 								</tr>
 
 								<tr>
 									<td colspan="4" height="26px">
-										<span id="negrito">Endere&ccedil;o </span>_____________________________________________________________________
+										<span id="negrito">Endereço </span>_____________________________________________________________________
 									</td>
 								</tr>
 									

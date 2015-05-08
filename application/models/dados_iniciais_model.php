@@ -823,7 +823,11 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		'estadoordemservico' => $this->db->get('tbl_estadoordemservico')->result(),
 		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
-		'servico' => $this->db->get('tbl_servicos')->result());
+		'servico' => $this->db->get('tbl_servicos')->result(),
+		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
+		'prefixo' => $this->db->query('select s.id_solicitaordemservico, o.id_ordemservico, v.prefixo from tbl_veiculo v 
+		inner join tbl_solicitaordemservico s on s.id_veiculo = v.id_veiculo, tbl_ordemservico o
+		where o.id_solicitacao = s.id_solicitaordemservico;')->result());
 		return $pack;
 	}
 
@@ -888,7 +892,7 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),);
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
 	}
 
@@ -905,7 +909,7 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),);
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
 	}	
 
@@ -922,8 +926,18 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),);
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
+	}
+
+		public function impresso_Etiquetas(){ 
+		$pack = $this->db->get('tbl_itens');
+		return $pack->result();
+	}
+
+		public function nova_Etiqueta(){ 
+		$pack = $this->db->get('tbl_itens');
+		return $pack->result();
 	}
 
 }//Não apagar essa chave, todos os demais itens devem ser incluídos antes dela

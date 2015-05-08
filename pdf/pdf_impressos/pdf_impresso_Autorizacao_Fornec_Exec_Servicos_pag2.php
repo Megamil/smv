@@ -1,6 +1,7 @@
 <?php
 $html = '
 <html>
+<meta charset="utf-8"/>
 	<head>
 		<title></title>
 			<style>
@@ -152,30 +153,30 @@ $html = '
 								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
-								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SA&Uacute;DE</label>
+								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
 							</td>
 						</tr>
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
 								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divis&atilde;o</label><br />
-								<label name="secao">Se&ccedil;&atilde;o</label><br />
+								<label name="divisao">Divisão</label><br />
+								<label name="secao">Seção</label><br />
 								<label name="setor">Setor</label>
 							</td>
 						</tr>
 
 						<tr>
-							<td colspan="2" height="30px"><label id="negrito">AUTORIZA&Ccedil;&Atilde;O DE FORNECIMENTO / EXECU&Ccedil;&Atilde;O DE SERVI&Ccedil;OS No.:</label></td>
+							<td colspan="2" height="30px"><label id="negrito">AUTORIZAÇÃO DE FORNECIMENTO / EXECUÇÃO DE SERVIÇOS Nº:</label></td>
 					
 							<td align="center">
 								<div>
-									<label name="ordemservico">9999/9999 - C&oacute;digo Divis&atilde;o SS</label>
+									<label name="ordemservico">9999/9999 - Código Divisão SS</label>
 								</div>
 							</td>
 							<td align="center">
 								<div>
-									<span><b>P&aacute;gina</b>&nbsp;02/02</span>
+									<span><b>Página</b>&nbsp;02/02</span>
 								</div>
 							</td>
 						</tr>
@@ -321,7 +322,7 @@ $html = '
 			<tr>
 				<td colspan="4">
 					<span>
-						FUNDAMENTO: ESTÁ AUTORIZAÇÃO DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO DECORRENTE DO INSTRUMENTO DE REGISTRO DE PREÇOS ACIMA IDENTIFICADO, FOI EMITIDA EM CONFORMIDADE COM O DISPOSTO DO ARTIGO 62, £4º, LEI FEDERAL Nº 8.666/93, CUJOS TERMOS E CONDIÇÕES DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO SÃO OS CONSTANTES DO EDITAL, ATA DE REGISTRO DE PREÇOS - ARP E NESTA AUTORIZAÇÃO DE FORNECIMENTO - AF.
+						FUNDAMENTO: ESTA AUTORIZAÇÃO DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO DECORRENTE DO INSTRUMENTO DE REGISTRO DE PREÇOS ACIMA IDENTIFICADO, FOI EMITIDA EM CONFORMIDADE COM O DISPOSTO DO ARTIGO 62, £4º, LEI FEDERAL Nº 8.666/93, CUJOS TERMOS E CONDIÇÕES DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO SÃO OS CONSTANTES DO EDITAL, ATA DE REGISTRO DE PREÇOS - ARP E NESTA AUTORIZAÇÃO DE FORNECIMENTO - AF.
 					</span>
 				</td>
 			</tr>

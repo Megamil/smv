@@ -1,6 +1,7 @@
 <?php
 $html = '
 <html>
+<meta charset="utf-8"/>
 	<head>
 		<title></title>
 			<style>
@@ -152,37 +153,37 @@ $html = '
 								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
-								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SA&Uacute;DE</label>
+								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
 							</td>
 						</tr>
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
 								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divis&atilde;o</label><br />
-								<label name="secao">Se&ccedil;&atilde;o</label><br />
+								<label name="divisao">Divisão</label><br />
+								<label name="secao">Seção</label><br />
 								<label name="setor">Setor</label>
 							</td>
 						</tr>
 
 						<tr>
-							<td colspan="2" height="30px"><label id="negrito">AUTORIZA&Ccedil;&Atilde;O DE FORNECIMENTO / EXECU&Ccedil;&Atilde;O DE SERVI&Ccedil;OS No.:</label></td>
+							<td colspan="2" height="30px"><label id="negrito">AUTORIZAÇÃO DE FORNECIMENTO / EXECUÇÃO DE SERVIÇOS Nº:</label></td>
 					
 							<td align="center">
 								<div>
-									<label name="ordemservico">9999/9999 - C&oacute;digo Divis&atilde;o SS</label>
+									<label name="ordemservico">9999/9999 - Código Divisão SS</label>
 								</div>
 							</td>
 							<td align="center">
 								<div>
-									<span><b>P&aacute;gina</b>&nbsp;01/02</span>
+									<span><b>Página</b>&nbsp;01/02</span>
 								</div>
 							</td>
 						</tr>
 					</table>
 					<br />
 						<fieldset class="borda">
-							<legend class="borda">Identifica&ccedil;&atilde;o do Contratante</legend>
+							<legend class="borda">Identificação do Contratante</legend>
 							<br />
 								<table border="0" cellspacing="0" cellpadding="0" width="100%">
 									<tr>
@@ -207,13 +208,13 @@ $html = '
 										</td>
 														
 										<td valign="top" align="center">
-											<label id="negrito">Vig&ecirc;ncia</label>
+											<label id="negrito">Vigência</label>
 											<br />
 											<span name="data">de 99/99/9999 a 99/99/9999</span>
 										</td>
 												
 										<td valign="top" align="center">
-											<label id="negrito">P.A - Reg. Pre&ccedil;os</label>
+											<label id="negrito">P.A - Reg. Preços</label>
 											<br />
 											<span name="data">9999/9999</span>
 										</td>
@@ -229,7 +230,7 @@ $html = '
 						</fieldset>
 
 						<fieldset class="borda">
-							<legend class="borda">Identifica&ccedil;&atilde;o do Fornecedor</legend>
+							<legend class="borda">Identificação do Fornecedor</legend>
 								<br />
 								<table border="0" cellspacing="0" cellpadding="0" width="100%">
 									<tr>
@@ -240,17 +241,17 @@ $html = '
 										</td>
 
 										<td>
-											<label id="negrito">C&oacute;digo</label>
+											<label id="negrito">Código</label>
 											<br />
-											<span>C&oacute;digo</span>
+											<span>Código</span>
 										</td>
 									</tr>
 
 									<tr>
 										<td colspan="4" height="40px">
-											<label id="negrito">B - Endere&ccedil;o</label>
+											<label id="negrito">B - Endereço</label>
 											<br />
-											<span>(rua, n&uacute;mero, complemento, bairro, cidade, estado)</span>
+											<span>(rua, número, complemento, bairro, cidade, estado)</span>
 										</td>
 									</tr>
 
@@ -286,7 +287,7 @@ $html = '
 						</fieldset>
 								
 						<fieldset class="borda">
-							<legend class="borda">Identifica&ccedil;&atilde;o da Unidade Requisitante</legend>
+							<legend class="borda">Identificação da Unidade Requisitante</legend>
 								<br />
 								<table border="0" cellspacing="0" cellpadding="0" width="100%">
 									<tr>
@@ -304,9 +305,9 @@ $html = '
 
 									<tr>
 										<td height="40px">
-											<label id="negrito">B - Or&ccedil;amento</label>
+											<label id="negrito">B - Orçamento</label>
 											<br />
-											<span>Or&ccedil;amento</span>
+											<span>Orçamento</span>
 										</td>
 										<td>
 											<label id="negrito">C - Prazo de Entrega</label>
@@ -322,9 +323,9 @@ $html = '
 
 									<tr>
 										<td colspan="3" height="40px">
-											<label id="negrito">D - Endere&ccedil;o de entrega</label>
+											<label id="negrito">D - Endereço de entrega</label>
 											<br />
-											<span>(rua, n&uacute;mero, complemento, bairro, cidade, estado)</span>
+											<span>(rua, número, complemento, bairro, cidade, estado)</span>
 										</td>
 									</tr>
 								</table>
@@ -332,7 +333,7 @@ $html = '
 						</fieldset>
 								
 						<fieldset class="borda">
-							<legend class="borda">Identifica&ccedil;&atilde;o da Fonte de Pagamento</legend>
+							<legend class="borda">Identificação da Fonte de Pagamento</legend>
 								<br />
 								<table border="0">	
 									<tr>
@@ -340,7 +341,7 @@ $html = '
 											<table border="1" width="100%" id="listapecas" cellspacing="0" cellpadding="0">
 												<tr>
 													<td width="90px" align="center" id="negrito">A - Empenho</td>
-													<td align="center" id="negrito">B - Dota&ccedil;&atilde;o</td>
+													<td align="center" id="negrito">B - Dotação</td>
 													<td width="80px" align="center" id="negrito">Valor</td>
 													<td width="100px" align="center" id="negrito">Segmento</td>
 													<td width="100px" align="center" id="negrito">Reserva</td>
@@ -385,19 +386,19 @@ $html = '
 									</tr>
 									<tr>
 										<td width="200px" height="40px">
-											<label id="negrito">D - Condi&ccedil;oes de pagamento</label>
+											<label id="negrito">D - Condições de pagamento</label>
 											<br />
 											<span>Valor total</span>
 										</td>
 										<td colspan="3">
-											<span>CONDI&Ccedil;&Otilde;ES DE PAGAMENTO CONTADAS DA DATA DA APRESENTA&Ccedil;&Atilde;O DO DOCUMENTO FISCAL, QUE DEVER&Atilde; SER DEVIDAMENTE ATESTADO PELA UNIDADE REQUISITANTE</span>
+											<span>CONDIÇÕES DE PAGAMENTO CONTADAS DA DATA DA APRESENTAÇÃO DO DOCUMENTO FISCAL, QUE DEVERÃO SER DEVIDAMENTE ATESTADO PELA UNIDADE REQUISITANTE</span>
 										</td>
 									</tr>
 									<tr>
 										<td colspan="4" height="40px">
-											<label id="negrito">E - Endere&ccedil;o para faturamento</label>
+											<label id="negrito">E - Endereço para faturamento</label>
 											<br />
-											<span>(rua, n&uacute;mero, complemento, bairro, cidade, estado)</span>
+											<span>(rua, número, complemento, bairro, cidade, estado)</span>
 										</td>
 									</tr>							
 								</table>
@@ -416,7 +417,7 @@ $html = '
 
 			<tr>
 				<td align="center"  height="40px">
-					<label id="negrito">Ve&iacute;culo</label>
+					<label id="negrito">Veículo</label>
 				</td>
 				<td>
 					<label id="negrito">Prefixo</label>
@@ -431,7 +432,7 @@ $html = '
 				<td>
 					<label id="negrito">Tipo</label>
 					<br />
-					<span>Tipo do Ve&iacute;culo</span>
+					<span>Tipo do Veículo</span>
 				</td>
 			</tr>
 		</table>

@@ -180,8 +180,8 @@
                       <li <?php if($ativo == 'relatorios-relatorio_Estoque_Limite') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Limite', 'Itens com estoque limite')?></li>
 
-                      <li <?php if($ativo == 'seguranca-usuarios') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/', 'Etiquetas')?></li>
+                      <li <?php if($ativo == 'impressos-impresso_Etiqueta') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/impressos-impresso_Etiqueta', 'Etiquetas')?></li>
 
                     </ul>
                   </li>
