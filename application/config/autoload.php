@@ -110,7 +110,7 @@ $autoload['language'] = array('calendar','date','db','email','form_validation','
 |
 */
 
-$autoload['model'] = array('logar_model','seguranca_model','dados_iniciais_model','novo','edicao');
+$autoload['model'] = array('logar_model','seguranca_model','dados_iniciais_model','novo','edicao','pdf');
 
 
 /* End of file autoload.php */

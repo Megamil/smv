@@ -326,7 +326,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 		</tr>
 		<!-- final da oitava linha da tela -->
 		<tr>
-			<td><?php echo anchor('main/redirecionar/', '<div class="btn btn-warning pull-center"> Inserir Anexo </div>')?></td>
+			<td><div class="btn btn-warning pull-center" data-toggle="modal" data-target="#modelAdicionarAnexo">Inserir Anexo</div></td>
 			<td><?php echo anchor('main/redirecionar/', '<div class="btn btn-warning pull-center"> Excluir Anexo </div>')?></td>
 		</tr>
 		</tbody>
@@ -337,23 +337,84 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
 <?php echo form_fieldset_close(); ?>
 
-<!-- Modal para Adicionar novo objeto -->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////// Modal para Adicionar novo objeto /////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////-->
+
 <div class="modal fade" id="modelAdicionar" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Contrato/Ata?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Obejto?</h4>
       </div>
 
       <div class="modal-body">
-      	<p>Para criar um novo objeto você será redirecionado para a tela de criação de objeto. <br> Deseja realmente cancelar a adição do Contrato/Ata?</p>
+      	<table border="0">
+			<thead align="left"><span id="basic-addon1"></span></thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Título</span>
+								<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top">
+							<div class="input-group">
+								<span class="input-group-addon">Texto</span>
+								<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+		</table>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
         <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Criar Objeto </div>')?>
+       </div>
+    </div>
+  </div>
+</div>
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////// MODAL PARA INCLUIR ANEXO /////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////-->
+	
+<div class="modal fade" id="modelAdicionarAnexo" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="modelDeletar"> Cancelar inclusão do anexo?</h4>
+      </div>
+
+      <div class="modal-body">
+      	<table border="0">
+			<thead align="left"><span id="basic-addon1"></span></thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">Nome do Anexo</span>
+								<input type="text" class="form-control input_Vazio" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
+							</div>
+						</td>
+						<td><input type="button" class="btn" value="Procurar..." name="procuraranexo" /></td>
+					</tr>
+				</tbody>
+		</table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Incluir Anexo </div>')?>
        </div>
     </div>
   </div>

@@ -324,7 +324,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 			<td valign="bottom">
 				<div class="control-group">
 					<div class="controls">
-					<?php echo anchor('main/redirecionar/criar-nova_Dotacao', '<div class="btn btn-info pull-center"> NOVO </div>')?>	
+					<div class="btn btn-info pull-center" data-toggle="modal" data-target="#modelAdicionarDotacao">NOVO</div>	
 					</div>
 				</div>
 			</td>
@@ -338,3 +338,157 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 	<?php echo anchor('main/redirecionar/empenho-empenho', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////// MODAL PARA ADICIONAR SERVIÇOS NA ORDEM ///////////////////////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<div class="modal fade" id="modelAdicionarDotacao" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição da Dotação?</h4>
+      </div>
+	<div class="errorModalServico"></div>
+      <div class="modal-body">
+      	
+			<table border="0">
+		<thead align="left"><span id="basic-addon1">Marque as opções</span></thead>
+		<tbody>
+		<tr>
+			<td>
+				<div class="control-group">
+					<div class="controls">
+						<?php if($this->session->flashdata('tipodotacao') == 1){
+							$check = 'checked';	
+						}else{
+							$check = '';
+						}
+							
+						?>
+						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<span class="help-inline"> Serviços</span>
+					</div>
+				</div>
+			</td>
+
+			<td width="200px"></td>
+
+			<td>
+				<div class="control-group">
+					<div class="controls">
+						<?php if($this->session->flashdata('estadodotacao') == 1){
+							$check = 'checked';	
+						}else{
+							$check = '';
+						}
+							
+						?>			
+
+						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<span class="help-inline"> Ativo</span>
+					</div>
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<div class="control-group">
+					<div class="controls">
+
+						<?php if($this->session->flashdata('tipodotacao') == 2){
+							$check = 'checked';	
+						}else{
+							$check = '';
+						}
+							
+						?>
+						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="2" <?php echo $check; ?> />
+						<span class="help-inline"> Peças</span>
+					</div>
+				</div>
+			</td>
+
+			<td></td>
+
+			<td>
+				<div class="control-group">
+					<div class="controls">
+						<?php if($this->session->flashdata('estadodotacao') == 0 && $this->session->flashdata('estadodotacao') != ''){
+							$check = 'checked';	
+						}else{
+							$check = '';
+						}
+							
+						?>	
+						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="0" <?php echo $check; ?> />
+						<span class="help-inline"> Inativo</span>
+					</div>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<table>
+		<tbody>
+		<tr>
+			<td colspan="2">
+				<div class="input-group">
+					
+					
+					<span class="input-group-addon" id="basic-addon1">Número / código da dotação</span>
+					<input type="text" class="form-control input_Vazio" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2">
+				<div class="input-group"  width="200px">
+					<span class="input-group-addon" id="basic-addon1">Segmento</span>
+
+					<select class="form-control input_Vazio" name="segmento" placeholder="Segmento">
+
+						<option>Selecione...</option>
+
+						<?php 
+
+							foreach ($pack['segmento'] as $segmentos) {
+								
+								if($this->session->flashdata('segmento') == $segmentos->id_segmento){
+
+									echo '<option selected value="'.$segmentos->id_segmento.'">'.$segmentos->segmento.'</option>';
+								
+								} else {
+								
+									echo '<option value="'.$segmentos->id_segmento.'">'.$segmentos->segmento.'</option>';
+								}
+							
+							}
+
+						?>
+
+					</select>
+
+
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" id="AdicionarServico">Incluir Dotação</button>
+       </div>
+    </div>
+  </div>
+</div>

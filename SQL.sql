@@ -750,6 +750,16 @@ Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impress
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag2', 'Impressão Autorição Página 2');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('impresso_Etiqueta', 'Etiquetas para imprimir');
 Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('pdf_impresso_Etiqueta', 'Impressão das Etiquetas');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('nova_Etiqueta', 'Impressão das Etiquetas');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Pdf_Vistoria', 'Filtro para imprimir o formulário de vistoria');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Pdf_Servicos_Externos', 'Filtro para imprimir o formulário de serviços externos');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Pdf_Retirada_Estoque', 'Filtro para imprimir o formulário de retirada de estoque');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Pdf_Autorizacao_Fornecimento', 'Filtro para imprimir o formulário de autorização de fornecimento');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Entrada_Itens', 'Filtro relatório das entradas dos itens');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Saída_Itens', 'Filtro relatório das saídas dos itens');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('ajuste_Inventario', 'Formulário para o ajuste do inventário');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Inventario', 'Filtro realtório de inventário');
+Insert into aplicacoes (nome_aplicacao,descricao_aplicacao) values ('filtro_Estoque_Ativo', 'Filtro do Estoque Ativo');
 
 /*Dando permissão de acesso ao grupo Administrador:*/
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,1);
@@ -880,7 +890,16 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,98);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,99);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,100);
 Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,101);
-
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,102);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,103);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,104);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,105);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,106);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,107);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,108);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,109);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,110);
+Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,111);
 
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);

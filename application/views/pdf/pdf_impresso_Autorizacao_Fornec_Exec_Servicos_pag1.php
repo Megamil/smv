@@ -1,4 +1,7 @@
 <?php
+
+anchor_popup("pdf_controller/autorizacao_Fornec_Exec_Servicos_pag2");
+
 $html = '
 <html>
 <meta charset="utf-8"/>
@@ -150,7 +153,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -439,7 +442,7 @@ $html = '
 	</body>
 </html>
 ';
-require_once('../dompdf_config.inc.php');
+require_once('dompdf_config.inc.php');
 $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper('A4','portrait');

@@ -136,18 +136,7 @@ $html = '
 						border: 0 0 0 0 !important;
 					  }
 					}
-
-					#pecas{
-						border-style: solid;
-						border-width: 1px;
-						border-collapse: collapse;
-					}
-					#pecas td{
-						border-style: solid;
-						border-width: 1px;
-						border-collapse: collapse;
-					}
-
+					
 					#negrito{
 					font-weight: bold;
 					}
@@ -157,11 +146,11 @@ $html = '
 	<body>
 		<table border="0" class="page">
 			<tr>
-				<td>
+				<td colspan="4">
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -178,59 +167,43 @@ $html = '
 						</tr>
 
 						<tr>
-							<td height="20px" align="bottom" id="negrito"><span>RETIRADA DE ITENS DO ESTOQUE</span></td>
-							<td align="right" colspan="2" id="negrito">
+							<td colspan="2" height="30px"><label id="negrito">AUTORIZAÇÃO DE FORNECIMENTO / EXECUÇÃO DE SERVIÇOS Nº:</label></td>
+					
+							<td align="center">
 								<div>
-									<span>Ordem de Serviço Nº:&nbsp;</span>
+									<label name="ordemservico">9999/9999 - Código Divisão SS</label>
 								</div>
 							</td>
-							<td align="left" width="100px">
+							<td align="center">
 								<div>
-									<label name="ordemservico">OS Nº</label>
+									<span><b>Página</b>&nbsp;02/02</span>
 								</div>
 							</td>
 						</tr>
 					</table>
-					<span>&nbsp;</span>
-						<fieldset class="borda">
-							<legend class="borda">Dados do Cliente</legend>
-								<br />
-								<table border="0" width="100%">
+					<br />
+					<fieldset class="borda">
+						<legend class="borda">Peças</legend>
+							<br />
+								<table border="0" width="100% cellspacing="0" cellpadding="0">
 									<tr>
-										<td valign="top" colspan="2">
-											<label name="modelo" id="negrito">Código&nbsp;</label>________________________________________
-										</td>
-															
-										<td valign="top" colspan="2">
-											<label name="data" id="negrito">Data&nbsp;</label>____/____/_____
-										</td>
-									</tr>
-
-									<tr>
-										<td colspan="4" height="40px">
-											<label name="unidade" id="negrito">Unidade&nbsp;</label>__________________________________________________________________
-										</td>
-									</tr>
-								</table>
-								<br />
-						</fieldset>
-
-						<fieldset class="borda">
-							<legend class="borda">Relação de Itens Entregues do Estoque</legend>
-								<br />
-								<table>
-									<tr>
-										<td align="center">
-											<table id="pecas">
+										<td>
+											<table border="1" width="100%" cellspacing="0" cellpadding="0">
 												<tr>
-													<td width="55px" align="center" id="negrito">Código</td>
-													<td align="center" id="negrito">Código Montadora</td>
-													<td width="35px" align="center" id="negrito">Quant</td>
-													<td align="center" id="negrito">Unidade</td>
-													<td width="470px" align="center" id="negrito">Descrição</td>
+													<td width="50px" align="center" id="negrito">Código</td>
+													<td width="110px" align="center" id="negrito">Código Montadora</td>
+													<td width="300px" align="center" id="negrito">Descrição</td>
+													<td align="center" id="negrito">Unid</td>
+													<td width="45px" align="center" id="negrito">Quant</td>
+													<td width="60px" align="center" id="negrito">Valor Unitário</td>
+													<td width="50px" align="center" id="negrito">Desc %</td>
+													<td width="50px" align="center" id="negrito">Valor total</td>
 												</tr>
 												<tr>
 													<td>&nbsp;</td>
+													<td></td>
+													<td></td>
+													<td></td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -242,10 +215,6 @@ $html = '
 													<td></td>
 													<td></td>
 													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -256,10 +225,6 @@ $html = '
 													<td></td>
 													<td></td>
 													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -269,129 +234,129 @@ $html = '
 													<td></td>
 													<td></td>
 													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
 													<td></td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>
 											</table>
-											<br />
 										</td>
 									</tr>
-								</table>
-						</fieldset>
-											
-						<fieldset class="borda">
-							<legend class="borda">Observações</legend>
-								<table>
 									<tr>
-										<td height="80px">
-											&nbsp;
+										<td align="right">
+											<table border="0" width="100%">
+												<tr>
+													<td align="right" id="negrito">
+														<label>Total das peças:&nbsp;</label>
+													</td>
+													<td width="150px">
+														<span>Total das peças</span>
+													</td>
+												</tr>
+											</table>
 										</td>
 									</tr>
 								</table>
-						</fieldset>
-
-						<fieldset class="borda">
-							<legend class="borda">Recibo de Entrega dos Itens</legend>
 							<br />
-								<table border="0" width="100%">
+					</fieldset>
+
+					<fieldset class="borda">
+						<legend class="borda">Serviços</legend>
+							<br />
+								<table border="0" cellspacing="0" cellpadding="0" width="100%">
 									<tr>
-										<td colspan="4" height="30px">
-											<span id="negrito">Nome</span> _______________________________________________________________________________________________
+										<td>
+											<table border="1" width="100%" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="300px" align="center" id="negrito">Descrição</td>
+													<td width="45px" align="center" id="negrito">Quant</td>
+													<td width="60px" align="center" id="negrito">Valor Unitário</td>
+													<td width="50px" align="center" id="negrito">Valor total</td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>&nbsp;</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</table>
 										</td>
 									</tr>
-
 									<tr>
-										<td height="30px">
-											<span id="negrito">Data</span> ____/____/______
-										</td>
-										<td colspan="3">
-											<span id="negrito">Assinatura</span>__________________________________________________________
+										<td align="right">
+											<table border="0" width="100%">
+												<tr>
+													<td align="right" id="negrito">
+														<label>Total dos serviços:&nbsp;</label>
+													</td>
+													<td width="150px">
+														<span>Total dos serviços</span>
+													</td>
+												</tr>
+											</table>
 										</td>
 									</tr>
 								</table>
-						</fieldset>
+							<br />
+					</fieldset>
 				</td>
-			</tr>			
+			</tr>
+			<tr>
+				<td colspan="4">
+					<span>
+						FUNDAMENTO: ESTA AUTORIZAÇÃO DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO DECORRENTE DO INSTRUMENTO DE REGISTRO DE PREÇOS ACIMA IDENTIFICADO, FOI EMITIDA EM CONFORMIDADE COM O DISPOSTO DO ARTIGO 62, £4º, LEI FEDERAL Nº 8.666/93, CUJOS TERMOS E CONDIÇÕES DE FORNECIMENTO/EXECUÇÃO DE SERVIÇO SÃO OS CONSTANTES DO EDITAL, ATA DE REGISTRO DE PREÇOS - ARP E NESTA AUTORIZAÇÃO DE FORNECIMENTO - AF.
+					</span>
+				</td>
+			</tr>
+
+			<tr>
+				<td align="center" height="100px" colspan="4">
+					<span>
+						Guarulhos _____, de ___________________ de 20____.
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"  height="100px">
+					<span>Nome do Colaborador-1</span>
+					<br />
+					<span>Cargo/Função do Colaborador-1</span>
+				</td>
+				<td colspan="2" align="center">
+					<span>Nome do Colaborador-2</span>
+					<br />
+					<span>Cargo/Função do Colaborador-2</span>
+				</td>
+			</tr>
 		</table>
 	</body>
 </html>
 ';
-require_once('../dompdf_config.inc.php');
+require_once('dompdf_config.inc.php');
 $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper('A4','portrait');
 $dompdf->render();
 
-$dompdf->stream('retirada_estoque.pdf',array('Attachment'=>0));
+$dompdf->stream('autorizacao_fornecimento_pag2.pdf',array('Attachment'=>0));
 
 /*array('Attachment'=>0) esse array e para abrir o pdf no navegador */
 ?>

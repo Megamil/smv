@@ -538,7 +538,23 @@ class dados_iniciais_model extends CI_Model {
 	}
 	/*Fim das codificações das telas de Saída de Itens*/
 
-	/*----------------------------------------------------------------------------------------------------------*/
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+	/*//////////////////////////Inicio das codificações referente a tela de Inventário////////////////////////////////*/
+
+	public function ajuste_Inventario(){
+		$pack = array ('itens' => $this->db->get('tbl_itens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
+		'entradas' => $this->db->query('select ti.descricao, te.codigointerno, sum(te.quantidade) quantidade from tbl_entradaitens te
+			left join tbl_itens ti on ti.id_itens = te.codigointerno group by ti.descricao, te.codigointerno;')->result(),
+		'saidas' => $this->db->query('select ti.descricao, te.codigointerno, sum(te.quantidade) quantidade from tbl_saidaitens te
+			left join tbl_itens ti on ti.id_itens = te.codigointerno group by ti.descricao, te.codigointerno;')->result());
+		return $pack;
+	}
+
+	/*////////////////////////////Fim das codificações referente a tela de Inventário/////////////////////////////////*/
+
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 	/*Inicio das codificações referente as telas de empenho*/
 	public function novo_Empenho(){
@@ -798,14 +814,20 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	public function relatorio_Entrada_Itens(){ 
 		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'afpecas' => $this->db->get('tbl_afpecas_x_itens')->result(),
+		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
 		return $pack;
 	}
 	
 	public function relatorio_Saida_Itens(){ 
 		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
-		'cliente' => $this->db->get('tbl_clientes')->result());
+		'cliente' => $this->db->get('tbl_clientes')->result(),
+		'solicitacao' => $this->db->get('tbl_solicitaordemservico')->result(),
+		'prefixo' => $this->db->query('select id_saidaitens, prefixo from tbl_veiculo v, tbl_ordemservico os, tbl_saidaitens si, tbl_solicitaordemservico so where
+		si.ordemservico = os.id_ordemservico and os.id_solicitacao = so.id_solicitaordemservico and so.id_veiculo = v.id_veiculo')->result(),
+		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
 		return $pack;
 	}
 
@@ -840,6 +862,15 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 			'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
 			
 			);
+		return $pack;
+	}
+
+	public function relatorio_Estoque_Ativo(){ 
+		$pack = array ($this->db->order_by('id_itens','asc'),
+		'itens' => $this->db->get('tbl_itens')->result(), 
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
 	}
 
@@ -930,15 +961,61 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 		return $pack;
 	}
 
-		public function impresso_Etiquetas(){ 
-		$pack = $this->db->get('tbl_itens');
+	public function nova_Etiqueta(){ 
+
+			$pack = $this->db->get('tbl_itens');
+			return $pack->result();
+	}
+
+	public function filtro_Pdf_Vistoria(){
+		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
 		return $pack->result();
 	}
 
-		public function nova_Etiqueta(){ 
-		$pack = $this->db->get('tbl_itens');
+	public function filtro_Pdf_Servicos_Externos(){
+		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
 		return $pack->result();
 	}
+
+	public function filtro_Pdf_Retirada_Estoque(){
+		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
+		return $pack->result();
+	}
+
+	public function filtro_Pdf_Autorizacao_Fornecimento(){
+		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
+		return $pack->result();
+	}
+
+	/*===========================================================================================================*/
+	/*                            FINAL DAS FUNÇÕES DOS IMPRESSOS DO SISTEMA                                     */
+	/*===========================================================================================================*/
+
+	/*===========================================================================================================*/
+	/*                            INICIO DAS FUNÇÕES DOS FILTROS DOS RELATÓRIOS                                  */
+	/*===========================================================================================================*/	
+
+	public function filtro_Entrada_Itens(){
+		$pack = array (
+			'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result()
+			);
+		return $pack;
+	}
+
+	public function filtro_Saida_Itens(){
+		$pack = array (
+			'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result()
+			);
+		return $pack;
+	}
+
+
+
+
+
+
 
 }//Não apagar essa chave, todos os demais itens devem ser incluídos antes dela
 

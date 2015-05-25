@@ -40,7 +40,75 @@ disponíveis*/
           			"sNext": "Seguinte",
           			"sLast": "Último"
           		}
-          	}
+          	},
+
+            "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 4 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                } );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 4, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 4 ).footer() ).html(
+                ''+pageTotal +' ( '+ total +' total)'
+            );
+
+
+            // Total over all pages ///////////////////////////////////////////////////////////////
+              var api6 = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal6 = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total6 = api6
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal6(a) + intVal6(b);
+                } );
+ 
+            // Total over this page
+            pageTotal6 = api6
+                .column( 6, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal6(a) + intVal6(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api6.column( 6 ).footer() ).html(
+                'R$ '+pageTotal6 +' ( R$ '+ total6 +' total)'
+            );
+
+
+        }
           }
 
           	);}

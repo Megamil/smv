@@ -117,17 +117,17 @@
                         <a tabindex="-1" href="#">Impressões</a>
                         <ul class="dropdown-menu">
                             
-                            <li <?php if($ativo == 'impressos-impresso_Vistoria') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/impressos-impresso_Vistoria', 'Formulário Vistoria')?></li>
+                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Vistoria') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Vistoria', 'Formulário Vistoria')?></li>
 
-                            <li <?php if($ativo == 'impressos-impresso_Servicos_Externos') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/impressos-impresso_Servicos_Externos', 'Formulário Serviços Externos')?></li>
+                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Servicos_Externos') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Servicos_Externos', 'Formulário Serviços Externos')?></li>
 
-                            <li <?php if($ativo == 'impressos-impresso_Retirada_Estoque') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/impressos-impresso_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
+                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Retirada_Estoque') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
                                                                                     
-                            <li <?php if($ativo == 'impressos-impresso_Autorizacao_Fornec_Exec_Servicos_pag1') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/impressos-impresso_Autorizacao_Fornec_Exec_Servicos_pag1', 'Autorização de Fornecimento/Execução')?></li>                                                                                  
+                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Autorizacao_Fornecimento') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Autorizacao_Fornecimento', 'Autorização de Fornecimento/Execução')?></li>                                                                                  
                         </ul>
                     </li>
               </ul>
@@ -165,23 +165,23 @@
                     <a tabindex="-1" href="#">Relatórios</a>
                     <ul class="dropdown-menu">
 
-                      <li <?php if($ativo == 'relatorios-relatorio_Entrada_Itens') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Entrada_Itens', 'Entrada de itens')?></li>
+                      <li <?php if($ativo == 'filtrorelatorios-filtro_Entrada_Itens') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Entrada_Itens', 'Entrada de itens')?></li>
 
-                      <li <?php if($ativo == 'relatorio_Saida_Itens') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Saida_Itens', 'Saída de itens')?></li>
+                      <li <?php if($ativo == 'filtrorelatorios-filtro_Saida_Itens') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Saida_Itens', 'Saída de itens')?></li>
 
-                      <li <?php if($ativo == 'relatorios-relatorio_Inventario') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Inventario', 'Inventario')?></li>
+                      <li <?php if($ativo == 'filtrorelatorios-filtro_Inventario') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Inventario', 'Inventario')?></li>
 
-                      <li <?php if($ativo == 'relatorios-relatorio_Estoque_Ativo') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Ativo', 'Estoque Ativo')?></li>
+                      <li <?php if($ativo == 'filtrorelatorios-filtro_Estoque_Ativo') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Estoque_Ativo', 'Estoque Ativo')?></li>
 
                       <li <?php if($ativo == 'relatorios-relatorio_Estoque_Limite') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Limite', 'Itens com estoque limite')?></li>
 
-                      <li <?php if($ativo == 'impressos-impresso_Etiqueta') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/impressos-impresso_Etiqueta', 'Etiquetas')?></li>
+                      <li <?php if($ativo == 'criar-nova_Etiqueta') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/criar-nova_Etiqueta', 'Etiquetas')?></li>
 
                     </ul>
                   </li>

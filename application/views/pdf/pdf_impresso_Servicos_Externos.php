@@ -1,4 +1,18 @@
 <?php
+ if($pack->row()->id_unidadesolicitante > 1000){
+ 	$unidade = $pack->row()->unidadesaude;
+	$departamento = '';
+ 	$divisao = '';
+ 	$secao = '';
+ 	$setor = '';
+ } else {
+ 	$unidade = "__________________________________________";
+ 	$departamento = 'Departamento: '.$pack->row()->depto;
+ 	$divisao = 'Divisão: '.$pack->row()->divisao;
+ 	$secao = 'Seção: '.$pack->row()->secao;
+ 	$setor = 'Setor: '.$pack->row()->setor;
+ }
+
 $html = '
 <html>
 <meta charset="utf-8"/>
@@ -90,8 +104,8 @@ $html = '
 					}
 					
 					legend.borda {
-					  width:inherit; /* Or auto */
-						padding: 0 0 0 0; /* To give a bit of padding on the left and right */
+					  width:inherit; // Or auto 
+						padding: 0 0 0 0; // To give a bit of padding on the left and right 
 						border-bottom: none;
 						border-top: none;
 						border-radius: none;
@@ -150,7 +164,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="../../style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -159,10 +173,10 @@ $html = '
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
-								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divisão</label><br />
-								<label name="secao">Seção</label><br />
-								<label name="setor">Setor</label>
+								<label name="departamento">'.$departamento.'</label><br />
+								<label name="divisao">'.$divisao.'</label><br />
+								<label name="secao">'.$secao.'</label><br />
+								<label name="setor">'.$setor.'</label>
 							</td>
 						</tr>
 
@@ -175,7 +189,7 @@ $html = '
 							</td>
 							<td align="left" width="100px">
 								<div>
-									<label name="ordemservico">OS Nº</label>
+									<label name="ordemservico">OS Nº '.$pack->row()->id_ordemservico.'</label>
 								</div>
 							</td>
 						</tr>
@@ -187,28 +201,28 @@ $html = '
 							<table border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top" width="250px" id="negrito">
-										<label>Modelo</label>
+										<label>Modelo: '.$pack->row()->modelo.'</label>
 									</td>
 										
 									<td valign="top" width="150px">
 										<label id="negrito">Prefixo</label>
 										<br />
-										<label name="dt">DT- </label>
+										<label name="dt">DT- '.$pack->row()->prefixo.' </label>
 									</td>
 										
 									<td valign="top"  width="150px" id="negrito">
-										<label>KM</label>
+										<label> KM:'.$pack->row()->km.'</label>
 									</td>
 										
 									<td valign="top" width="100px" id="negrito">
-										<label>Data</label>
+										<label>Data '.$pack->row()->hoje.' </label>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="4"  height="50px">
-										<label  id="negrito">Unidade</label> _______________________________________________________________________
-																				
-									</td>
+										<label  id="negrito">Unidade</label>'
+										.$unidade.
+									'</td>
 								</tr>
 							</table>
 					</fieldset>
@@ -283,7 +297,7 @@ $html = '
 									</td>
 										
 									<td rowspan="3" colspan="3" valign="top" align="center">
-										<img id="img" height="410" width="450" src="../../style/img/lataria.png" />
+										<img id="img" height="410" width="450" src="'.base_url().'style/img/lataria.png" />
 										<br />&nbsp;
 									</td>
 								</tr>
@@ -303,7 +317,7 @@ $html = '
 									
 								<tr>
 									<td rowspan="2" valign="top" align="center">
-										<img id="img" width="140" src="../../style/img/medidorcombustivel.png" />
+										<img id="img" width="140" src="'.base_url().'style/img/medidorcombustivel.png" />
 									</td>
 								</tr>
 									
@@ -336,7 +350,7 @@ $html = '
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td height="80px">
-										<
+										'.$pack->row()->defeitoapresentado.'
 									</td>
 								</tr>
 							</table>
@@ -347,7 +361,36 @@ $html = '
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td height="80px">
-										
+										'.$pack->row()->observacoes.'
+									</td>
+								</tr>
+							</table>
+					</fieldset>
+
+					<fieldset class="borda">
+						<legend class="borda">Recibo de Entrega do Veículo para Reparos</legend>
+							<table width="100%" border="0">
+								<tr>
+									<td colspan="4" height="26px">
+										<span id="negrito">Nome do prestador dos serviços </span>___________________________________________________
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="4" height="26px">
+										<span id="negrito">Endereço </span>_____________________________________________________________________
+									</td>
+								</tr>
+									
+								<tr>
+									<td width="200px" height="26px">
+										<span id="negrito">CGC </span>__________________________
+									</td>
+									<td>
+										<span id="negrito">Data </span>____/____/______
+									</td>
+									<td colspan="2" align="right">
+										<span id="negrito">Assinatura </span>_____________________________________
 									</td>
 								</tr>
 							</table>
@@ -358,13 +401,13 @@ $html = '
 	</body>
 </html>
 ';
-require_once('../dompdf_config.inc.php');
+require_once('dompdf_config.inc.php');
 $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper('A4','portrait');
 $dompdf->render();
 
-$dompdf->stream('vistoria.pdf',array('Attachment'=>0));
+$dompdf->stream('servicos_externos.pdf',array('Attachment'=>0));
 
 /*array('Attachment'=>0) esse array e para abrir o pdf no navegador */
 ?>
