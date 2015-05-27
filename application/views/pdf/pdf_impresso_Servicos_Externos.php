@@ -201,26 +201,26 @@ $html = '
 							<table border="0" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top" width="250px" id="negrito">
-										<label>Modelo: '.$pack->row()->modelo.'</label>
+										<label>Modelo: <br />'.$pack->row()->modelo.'</label>
 									</td>
 										
 									<td valign="top" width="150px">
-										<label id="negrito">Prefixo</label>
+										<label id="negrito">Prefixo:</label>
 										<br />
 										<label name="dt">DT- '.$pack->row()->prefixo.' </label>
 									</td>
 										
 									<td valign="top"  width="150px" id="negrito">
-										<label> KM:'.$pack->row()->km.'</label>
+										<label> KM:<br />'.$pack->row()->km.'</label>
 									</td>
 										
 									<td valign="top" width="100px" id="negrito">
-										<label>Data '.$pack->row()->hoje.' </label>
+										<label>Data: <br />'.$pack->row()->hoje.' </label>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="4"  height="50px">
-										<label  id="negrito">Unidade</label>'
+										<label  id="negrito">Unidade: </label><br />'
 										.$unidade.
 									'</td>
 								</tr>

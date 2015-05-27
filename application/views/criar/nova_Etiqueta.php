@@ -19,7 +19,7 @@
 					<tbody>
 
 						<?php 
-							foreach ($pack as $itens) {
+							foreach ($pack['itens'] as $itens) {
 	
 								echo '<tr align="center">';
 								echo '<td> <label style="min-width:500px">Código: '.$itens->id_itens.' - '.$itens->descricao.'</label> </td>';

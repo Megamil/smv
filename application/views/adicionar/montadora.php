@@ -14,7 +14,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $montadora) {
+					foreach ($pack['montadora'] as $montadora) {
 						 echo "<tr>";
 						     echo "<td>$montadora->id_montadora</td>";
 						     echo "<td>$montadora->montadora</td>";

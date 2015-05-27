@@ -33,13 +33,13 @@ class pdf_controller extends CI_Controller {
 	public function pdf_Retirada_Estoque(){
 
 
-		/*$dados = array (
+		$dados = array (
 
 			'pack' => $this->pdf->pdf_impresso_Retirada_Estoque($this->input->post("ordemservico")),
 
-		);*/
+		);
 
-		$this->load->view('pdf/pdf_impresso_Retirada_Estoque.php');
+		$this->load->view('pdf/pdf_impresso_Retirada_Estoque.php',$dados);
 
 
 	}
@@ -56,20 +56,6 @@ class pdf_controller extends CI_Controller {
 		$this->load->view('pdf/pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag1.php');
 
 
-	}
-
-	public function autorizacao_Fornec_Exec_Servicos_pag2(){
-
-
-		/*$dados = array (
-
-			'pack' => $this->pdf->pdf_impresso_Retirada_Estoque($this->input->post("ordemservico")),
-
-		);*/
-
-		$this->load->view('pdf/pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag2.php');
-
-		
 	}
 
 

@@ -15,7 +15,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $objeto) {
+					foreach ($pack['objeto'] as $objeto) {
 						 echo "<tr>";
 						     echo "<td>$objeto->id_objeto</td>";
 						     echo "<td>$objeto->objetotitulo</td>";

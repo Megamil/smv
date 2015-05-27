@@ -19,7 +19,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $fornecedorprestador) {
+					foreach ($pack['fornecedorprestador'] as $fornecedorprestador) {
 
 						echo "<tr>";
 						echo "<td>$fornecedorprestador->id_fornecedorprestador</td>";

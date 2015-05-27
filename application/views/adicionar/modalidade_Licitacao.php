@@ -14,7 +14,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $modalidade) {
+					foreach ($pack['modalidade'] as $modalidade) {
 						 echo "<tr>";
 						     echo "<td>$modalidade->id_modalidadedelicitacao</td>";
 						     echo "<td>$modalidade->modalidadedelicitacao</td>";

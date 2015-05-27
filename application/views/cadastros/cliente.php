@@ -18,7 +18,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $cliente) {
+					foreach ($pack['cliente'] as $cliente) {
 
 						echo "<tr>";
 						echo "<td>$cliente->id_cliente</td>";

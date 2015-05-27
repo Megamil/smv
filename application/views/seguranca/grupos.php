@@ -15,7 +15,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $group) {
+					foreach ($pack['grupo'] as $group) {
 					     $group_id = $group->id_grupo;
 						 $group_nome = $group->nome_grupo;
 						 $group_email = $group->descricao_grupo;

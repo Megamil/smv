@@ -6,7 +6,6 @@
 		<thead> 
 			<tr>
 				<th class="span3">Número da Solicitação</th>
-				<th class="span2">Unidade Solicitante</th>
 				<th class="span2">Veículo</th>
 				<th class="span2">Status Solicitação</th>
 				<th class="span2">Alterar</th>
@@ -19,14 +18,6 @@
 					foreach ($pack['solicitaordemservico'] as $solicitaordemservico) {
 						echo "<tr>";
 						    echo "<td>$solicitaordemservico->id_solicitaordemservico</td>";
-
-						    foreach ($pack['unidadesaude'] as $unidadesaude) {
-
-								if($solicitaordemservico->id_unidadesolicitante == $unidadesaude->cnes) {
-									echo "<td>$unidadesaude->unidadesaude</td>";
-									break;
-								}
-							}
 
 							foreach ($pack['veiculo'] as $veiculo) {
 

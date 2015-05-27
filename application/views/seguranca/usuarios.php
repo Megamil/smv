@@ -19,7 +19,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $user) {
+					foreach ($pack['usuario'] as $user) {
 					     $user_id = $user->id_usuario;
 					     $user_usuario = $user->usuario;
 						 $user_nome = $user->nome;

@@ -15,7 +15,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $secao) {
+					foreach ($pack['secao'] as $secao) {
 						 echo "<tr>";
 						     echo "<td>$secao->id_secao</td>";
 						     echo "<td>$secao->codsecao</td>";

@@ -14,7 +14,7 @@
 		<tbody>
 				<?php
 
-					foreach ($pack as $marcaitens) {
+					foreach ($pack['marcaitens'] as $marcaitens) {
 						 echo "<tr>";
 						     echo "<td>$marcaitens->id_marcaitens</td>";
 						     echo "<td>$marcaitens->marcaitens</td>";

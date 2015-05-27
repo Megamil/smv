@@ -1,4 +1,19 @@
 <?php
+
+ if($pack["pack"]->row()->id_unidadesolicitante > 1000){
+ 	$unidade = $pack["pack"]->row()->unidadesaude;
+	$departamento = '';
+ 	$divisao = '';
+ 	$secao = '';
+ 	$setor = '';
+ } else {
+ 	$unidade = "__________________________________________";
+ 	$departamento = 'Departamento: '.$pack["pack"]->row()->depto;
+ 	$divisao = 'Divisão: '.$pack["pack"]->row()->divisao;
+ 	$secao = 'Seção: '.$pack["pack"]->row()->secao;
+ 	$setor = 'Setor: '.$pack["pack"]->row()->setor;
+ }
+
 $html = '
 <html>
 <meta charset="utf-8"/>
@@ -170,10 +185,10 @@ $html = '
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
-								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divisão</label><br />
-								<label name="secao">Seção</label><br />
-								<label name="setor">Setor</label>
+								<label name="departamento">'.$departamento.'</label><br />
+								<label name="divisao">'.$divisao.'</label><br />
+								<label name="secao">'.$secao.'</label><br />
+								<label name="setor">'.$setor.'</label>
 							</td>
 						</tr>
 
@@ -186,7 +201,7 @@ $html = '
 							</td>
 							<td align="left" width="100px">
 								<div>
-									<label name="ordemservico">OS Nº</label>
+									<label name="ordemservico">'.$pack["pack"]->row()->id_ordemservico.'</label>
 								</div>
 							</td>
 						</tr>
@@ -198,17 +213,17 @@ $html = '
 								<table border="0" width="100%">
 									<tr>
 										<td valign="top" colspan="2">
-											<label name="modelo" id="negrito">Código&nbsp;</label>________________________________________
+											<label name="modelo" id="negrito">Código do cliente: <br>'.$pack["codigo"]->row()->codigo.'</label>
 										</td>
 															
 										<td valign="top" colspan="2">
-											<label name="data" id="negrito">Data&nbsp;</label>____/____/_____
+											<label name="data" id="negrito">Data: </label> <br>'.date("d/m/Y").'
 										</td>
 									</tr>
 
 									<tr>
 										<td colspan="4" height="40px">
-											<label name="unidade" id="negrito">Unidade&nbsp;</label>__________________________________________________________________
+											<label name="unidade" id="negrito">Unidade: '.$unidade.'&nbsp;</label>
 										</td>
 									</tr>
 								</table>
@@ -228,120 +243,19 @@ $html = '
 													<td width="35px" align="center" id="negrito">Quant</td>
 													<td align="center" id="negrito">Unidade</td>
 													<td width="470px" align="center" id="negrito">Descrição</td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-											</table>
+												</tr>';
+												
+												foreach ($pack['itens'] as $itens) {
+													$html = $html."<tr>";
+													    $html = $html."<td>$itens->id_saidaitens</td>";
+														$html = $html."<td>$itens->codigomontadora</td>";
+														$html = $html."<td>$itens->quantidade</td>";
+														$html = $html."<td>$itens->unidademedida</td>";
+														$html = $html."<td>$itens->descricao</td>";
+													$html = $html."</tr>";
+												} 
+
+												$html = $html.'</table>
 											<br />
 										</td>
 									</tr>
@@ -353,7 +267,7 @@ $html = '
 								<table>
 									<tr>
 										<td height="80px">
-											&nbsp;
+											'.$pack["pack"]->row()->observacoes.'
 										</td>
 									</tr>
 								</table>

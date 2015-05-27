@@ -5,17 +5,19 @@ class dados_iniciais_model extends CI_Model {
 
 	public function usuarios(){ /*Carrega a lista com todos os usuários*/
 
-		$pack = $this->db->get('usuarios');
+		$pack = array ($this->db->order_by('id_usuario','asc'),
+		'usuario' => $this->db->get('usuarios')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
 	public function grupos(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('grupos');
+		$pack = array ($this->db->order_by('id_grupo','asc'),
+		'grupo' => $this->db->get('grupos')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
@@ -63,45 +65,50 @@ class dados_iniciais_model extends CI_Model {
 	/*Montadora*/
 	public function montadora(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('tbl_montadora');
+		$pack = array ($this->db->order_by('id_montadora','asc'),
+		'montadora' => $this->db->get('tbl_montadora')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
 	/*Seção*/
 	public function secao(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('tbl_secao');
+		$pack = array ($this->db->order_by('id_secao','asc'),
+		'secao'	=> $this->db->get('tbl_secao')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
 	/*Divisão*/
 	public function divisao(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('tbl_divisao');
+		$pack = array ($this->db->order_by('id_divisao','asc'),
+		'divisao' => $this->db->get('tbl_divisao')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
 	/*Departamento*/
 	public function departamento(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('tbl_depto');
+		$pack = array ($this->db->order_by('id_depto','asc'),
+		'departamento' => $this->db->get('tbl_depto')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
 	/*Modalidade de licitação*/
 	public function modalidade_Licitacao(){ /*Carrega a lista com todos os grupos*/
 
-		$pack = $this->db->get('tbl_modalidadedelicitacao');
+		$pack = array ($this->db->order_by('id_modalidadedelicitacao','asc'),
+		'modalidade' => $this->db->get('tbl_modalidadedelicitacao')->result());
 
-		return $pack->result();
+		return $pack;
 
 	}
 
@@ -141,8 +148,8 @@ class dados_iniciais_model extends CI_Model {
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*Inicio das codificações referente as telas de Dotação*/
 	public function nova_Dotacao(){
-		$pack = $this->db->get('tbl_segmento');
-		return $pack->result();
+		$pack = $this->db->get('tbl_segmento')->result();
+		return $pack;
 	}
 
 	public function editar_Dotacao(){
@@ -155,7 +162,7 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function dotacao(){ /*Carrega a lista com todos as dotações*/
-		$pack = array (
+		$pack = array ($this->db->order_by('id_dotacao','asc'),
 
 			'dotacao' => $this->db->get('tbl_dotacao')->result(),
 			'segmento' => $this->db->get('tbl_segmento')->result()
@@ -182,8 +189,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function grupo_itens(){ /*Carrega a lista com todos os grupos de itens*/
-		$pack = $this->db->get('tbl_grupoitens');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_grupoitens','asc'),
+		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
+		return $pack;
 
 	}
 	/*Fim das codificações das telas de Grupo de Itens*/
@@ -204,8 +212,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function objeto(){ /*Carrega a lista com todos os objetos*/
-		$pack = $this->db->get('tbl_objeto');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_objeto','asc'),
+		'objeto' => $this->db->get('tbl_objeto')->result());
+		return $pack;
 
 	}
 	/*Fim das codificações das telas de Objeto*/
@@ -226,8 +235,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function setor(){ /*Carrega a lista com todos os setores*/
-		$pack = $this->db->get('tbl_setor');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_setor','asc'),
+		'setor' => $this->db->get('tbl_setor')->result());
+		return $pack;
 
 	}
 	/*Fim das codificações das telas de Setor*/
@@ -248,8 +258,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function marca_Itens(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = $this->db->get('tbl_marcaitens');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_marcaitens','asc'),
+		'marcaitens' => $this->db->get('tbl_marcaitens')->result());
+		return $pack;
 
 	}
 	/*Fim das codificações das telas de Marcas de Itens*/
@@ -275,7 +286,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function servicos(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = array ('servicos' => $this->db->get('tbl_servicos')->result(),
+		$pack = array ($this->db->order_by('id_servicos','asc'),
+			'servicos' => $this->db->get('tbl_servicos')->result(),
 			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 			'unidademedida' => $this->db->get('tbl_unidademedida')->result());
 		return $pack;
@@ -303,8 +315,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function fornecedor_Prestador(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = $this->db->get('tbl_fornecedorprestador');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_fornecedorprestador','asc'),
+		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		return $pack;
 		
 	}
 	/*Fim das codificações das telas de Fornecedor/Prestador*/
@@ -329,8 +342,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function cliente(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = $this->db->get('tbl_clientes');
-		return $pack->result();
+		$pack = array ($this->db->order_by('id_cliente','asc'),
+		'cliente' => $this->db->get('tbl_clientes')->result());
+		return $pack;
 		
 	}
 	/*Fim das codificações das telas de Clientes*/
@@ -353,7 +367,9 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function colaborador(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = array ('colaborador' => $this->db->get('tbl_colaboradores')->result(), 'setor' => $this->db->get('tbl_setor')->result());
+		$pack = array ($this->db->order_by('id_colaborador','asc'),
+			'colaborador' => $this->db->get('tbl_colaboradores')->result(), 
+			'setor' => $this->db->get('tbl_setor')->result());
 		return $pack;
 		
 	}
@@ -380,7 +396,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function veiculo(){ /*Carrega a lista com todos as marcas dos itens*/
-		$pack = array ('veiculo' => $this->db->get('tbl_veiculo')->result(), 
+		$pack = array ($this->db->order_by('id_veiculo','asc'),
+			'veiculo' => $this->db->get('tbl_veiculo')->result(), 
 			'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 			'estadoveiculo' => $this->db->get('tbl_estadoveiculo')->result());
 		return $pack;
@@ -414,7 +431,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function unidade_Utilizadora(){ /*Carrega a lista com todos as unidades utilizadoras*/
-		$pack = array ('unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(), 
+		$pack = array ($this->db->order_by('id_unidadeutilizadora','asc'),
+		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(), 
 		  'depto' => $this->db->get('tbl_depto')->result(),
 		  'divisao' => $this->db->get('tbl_divisao')->result(),
 		  'setor' => $this->db->get('tbl_setor')->result(),
@@ -446,7 +464,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function Contrato_Ata(){ 
-		$pack = array ('contratoata' => $this->db->get('tbl_contratoata')->result(), 
+		$pack = array ($this->db->order_by('numerocontratoata','asc'),
+		  'contratoata' => $this->db->get('tbl_contratoata')->result(), 
 		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
 		  'objeto' => $this->db->get('tbl_objeto')->result());
@@ -478,7 +497,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function itens(){ 
-		$pack = array ('itens' => $this->db->get('tbl_itens')->result(), 
+		$pack = array ($this->db->order_by('id_itens','asc'),
+		  'itens' => $this->db->get('tbl_itens')->result(), 
 		  'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
 		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
 		  'montadora' => $this->db->get('tbl_montadora')->result(),
@@ -506,7 +526,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function entrada_Itens(){ 
-		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
+		$pack = array ($this->db->order_by('codigointerno','asc'),
+		'entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
 		return $pack;
@@ -531,7 +552,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function saida_Itens(){ 
-		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
+		$pack = array ($this->db->order_by('codigointerno','asc'),
+		'saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
 		'cliente' => $this->db->get('tbl_clientes')->result());
 		return $pack;
@@ -578,7 +600,8 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function empenho(){ 
-		$pack = array ('empenho' => $this->db->get('tbl_empenho')->result(), 
+		$pack = array ($this->db->order_by('numeroempenho','asc'),
+		'empenho' => $this->db->get('tbl_empenho')->result(), 
 		'segmento' => $this->db->get('tbl_segmento')->result(),
 		'contratoata' => $this->db->get('tbl_contratoata')->result(),
 		'objeto' => $this->db->get('tbl_objeto')->result(),
@@ -625,7 +648,8 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	}
 
 	public function solicita_Ordem_Servico(){ /*Carrega a lista com todos as ordens de serviço*/
-		$pack = array ('solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
+		$pack = array ($this->db->order_by('id_solicitaordemservico','asc'),
+		  'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
 		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
 		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
@@ -667,8 +691,9 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	}
 	
 	public function ordem_Servico(){ 
-		$pack = array ('ordemservico' => $this->db->query('select os.*, prefixo from tbl_ordemservico os left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-		left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo;')->result(),
+		$pack = array (
+		'ordemservico' => $this->db->query('select os.*, prefixo from tbl_ordemservico os left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
+		left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by os.id_ordemservico;')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
@@ -738,7 +763,7 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
 left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
 left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
+left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afpecas')->result();
 
 		return $pack;
 
@@ -801,7 +826,7 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
 left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
 left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
+left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afservicos')->result();
 		
 		return $pack;
 	}
@@ -812,7 +837,8 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	/*===========================================================================================================*/
 
 	public function relatorio_Entrada_Itens(){ 
-		$pack = array ('entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
+		$pack = array ($this->db->order_by('codigointerno','asc'),
+		'entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		'afpecas' => $this->db->get('tbl_afpecas_x_itens')->result(),
@@ -821,7 +847,8 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	}
 	
 	public function relatorio_Saida_Itens(){ 
-		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
+		$pack = array ($this->db->order_by('codigointerno','asc'),
+		'saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
 		'itens' => $this->db->get('tbl_itens')->result(), 
 		'cliente' => $this->db->get('tbl_clientes')->result(),
 		'solicitacao' => $this->db->get('tbl_solicitaordemservico')->result(),
@@ -832,7 +859,8 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	}
 
 	public function relatorio_Ordem_Servico(){ 
-		$pack = array ('ordemservico' => $this->db->get('tbl_ordemservico')->result(),
+		$pack = array ($this->db->order_by('id_ordemservico','asc'),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
@@ -854,7 +882,8 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 	}
 
 	public function relatorio_Saldo_Estoque(){
-		$pack = array ('itens' => $this->db->get('tbl_itens')->result(),
+		$pack = array ($this->db->order_by('id_itens','asc'),
+			'itens' => $this->db->get('tbl_itens')->result(),
 			'entradas' => $this->db->query('select ti.descricao, te.codigointerno, sum(te.quantidade) quantidade from tbl_entradaitens te
 			left join tbl_itens ti on ti.id_itens = te.codigointerno group by ti.descricao, te.codigointerno;')->result(),
 			'saidas' => $this->db->query('select ti.descricao, te.codigointerno, sum(te.quantidade) quantidade from tbl_saidaitens te
@@ -963,8 +992,9 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 
 	public function nova_Etiqueta(){ 
 
-			$pack = $this->db->get('tbl_itens');
-			return $pack->result();
+			$pack = array ($this->db->order_by('id_itens','asc'),
+			'itens' => $this->db->get('tbl_itens')->result());
+			return $pack;
 	}
 
 	public function filtro_Pdf_Vistoria(){
@@ -1010,11 +1040,6 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo')->result();
 			);
 		return $pack;
 	}
-
-
-
-
-
 
 
 }//Não apagar essa chave, todos os demais itens devem ser incluídos antes dela

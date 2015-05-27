@@ -5,7 +5,7 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-				<th class="span3">Código Interno</th>
+				<th class="span2">Código Interno</th>
 				<th class="span2">Código Montadora</th>
 				<th class="span2">Descrição</th>
 				<th class="span2">Unidade de Medida</th>
@@ -19,8 +19,8 @@
 
 					foreach ($pack['itens'] as $itens) {
 						echo "<tr>";
-						    echo "<td>$itens->id_itens</td>";
-						    echo "<td>$itens->codigomontadora</td>";
+						    echo "<td align='center'>$itens->id_itens</td>";
+						    echo "<td align='center'>$itens->codigomontadora</td>";
 							echo "<td>$itens->descricao</td>";
 
 							foreach ($pack['unidademedida'] as $unidademedida) {
