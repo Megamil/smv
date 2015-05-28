@@ -188,6 +188,13 @@ class novo extends CI_Model {
 
 	}
 
+		public function etiqueta_Nova($dados = null)
+	{
+
+		return $this->db->insert('tbl_etiquetas',$dados);
+
+	}
+
 
 	public function af_Pecas_Nova($dados = null)
 	{

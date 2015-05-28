@@ -992,8 +992,14 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afservicos
 
 	public function nova_Etiqueta(){ 
 
-			$pack = array ($this->db->order_by('id_itens','asc'),
-			'itens' => $this->db->get('tbl_itens')->result());
+			$pack = array (
+
+				$this->db->order_by('id_itens','asc'),
+				'itens' => $this->db->get('tbl_itens')->result(),
+				'etiquetas' => $this->db->get('tbl_etiquetas')->result()
+
+			);
+			
 			return $pack;
 	}
 

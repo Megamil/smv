@@ -70,9 +70,10 @@
 							}
 
 							echo '<td>'.($ent - $sai).'</td>';
-							echo '<input class="atual" type="hidden" value="'.($ent - $sai).'">';
 
 							echo "<td align='center'><input class=\"form-control real\" type='text' name='qtdapurada' class='form-control' style='max-width:80px' /></td>";
+
+							echo '<input class="atual" type="hidden" value="'.($ent - $sai).'">';
 							
 							echo "<td align='center'><label class=\"diferenca\"></label></td>";
 

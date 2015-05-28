@@ -1,56 +1,39 @@
 <!--Usado para preencher a lista de itens selecionados-->
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/etiquetas.js"></script>
+<form action="/smv/etiquetas/configurar_etiqueta" method="post" accept-charset="utf-8" target="_blank">
+<fieldset class="borda">
+	<legend class="borda">Inclusão dos Itens na Etiqueta</legend>
 
-<table border="0" class="page">
-	<tr>
-		<td colspan="4">
-			<fieldset class="borda">
-				<legend class="borda">Inclusão dos Itens na Etiqueta</legend>
+	<table class="table table-striped table-hover table-condensed">
+		<thead> 
+			<tr>
+				<th class="span2">DESCRIÇÃO</th>
+				<th class="span2">QUANTIDADE</th>
+				<th class="span2">IMPRIMIR</th>
+			</tr>
+		</thead>
 
-				<table class="table table-striped table-hover table-condensed" id="tabela">
-					<thead> 
-						<tr>
-							<th class="span2">DESCRIÇÃO</th>
-							<th class="span2">QUANTIDADE</th>
-							<th class="span2">IMPRIMIR</th>
-						</tr>
-					</thead>
+		<tbody>
 
-					<tbody>
+			<?php 
+				foreach ($pack['itens'] as $itens) {
 
-						<?php 
-							foreach ($pack['itens'] as $itens) {
+					echo '<tr align="center">';
+					echo '<td> <label style="min-width:500px">Código: '.$itens->id_itens.' - '.$itens->descricao.'</label> </td>';
+					echo '<td> <input class="form-control" name="qts" id="qts" placeholder="Quantidade" value="1" style="max-width:50px"> </td>';
+					echo '<td> <input type="checkbox" name="imprimir[]" id="etiqueta'.$itens->id_itens.'" value="'.$itens->id_itens.'"></td>';
+					echo '</tr>';
+
+				}
+			?>
+		
+		</tbody>
+		<hr>
+		<div class="btn btn-info pull-center" data-toggle="modal" data-target="#modelConfigurarEtiqueta">Configurar Etiquetas</div>
+	</table>
 	
-								echo '<tr align="center">';
-								echo '<td> <label style="min-width:500px">Código: '.$itens->id_itens.' - '.$itens->descricao.'</label> </td>';
-								echo '<td> <input class="form-control" name="qts" id="qts" placeholder="Quantidade" value="1" style="max-width:50px"> </td>';
-								echo '<td> <input type="checkbox" name="imprimir" value="'.$itens->id_itens.'"></td>';
-								echo '</tr>';
 
-							}
-						?>
-
-					</tbody>
-				</table>
-
-				<br><hr>
-
-					<table border="0" width="100%" cellspacing="0" cellpadding="0">
-						<tr>				
-							<td colspan="12" align="center">
-								<div class="btn btn-info pull-center" data-toggle="modal" data-target="#modelConfigurarEtiqueta">Configurar Etiquetas</div>
-							</td>
-						</tr>
-					</table>
-
-			</fieldset>
-		</td>
-		<td>
-
-		</td>
-	</tr>
-</table>
-
+</fieldset>
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 /////////////////////////////////// MODAL PARA AS CONFIGURAÇÕES DAS ETIQUETAS /////////////////////////////////////////////////////////////
 	 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +48,6 @@
 		</div>
 		<div class="errorModalItem" ></div>
 		<div class="modal-body">
-      		<form action="/smv/etiquetas/configurar_etiqueta" method="post" accept-charset="utf-8" target="_blank">
 				<div class="erro_Campo_Vazio" ></div>
 				<table>
 					<tr>
@@ -76,42 +58,37 @@
 										<tr>
 											<td colspan="2" align="center">
 												<label>Nome</label><br />
-												<div class="input-group">
-													<input type="text" class="form-control" name="titulo" placeholder="Título" style="max-width:250px" />
-													<span class="input-group-btn">
-														<button type="button" class="btn" data-dismiss="modal">Salvar</button>
-													</span>
-    											</div><!-- /input-group -->
+													<input type="text" class="form-control" name="titulo" placeholder="Título" id="nomeEtiqueta" style="max-width:250px" />
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
 												<label>Margem Superior(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="margemsuperior" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="margemsuperior" id="margemsuperior" placeholder="mm" style="max-width:70px" />
 											</td>
 											<td align="center">
 												<label>Margem Direita(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="margemdireita" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="margemdireita" id="margemdireita" placeholder="mm" style="max-width:70px" />
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
 												<label>Margem Esquerda(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="margemesquerda" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="margemesquerda" id="margemesquerda" placeholder="mm" style="max-width:70px" />
 											</td>
 											<td align="center">
 												<label>Espaço das Etiquetas(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="espacoetiqueta" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="espacoetiqueta" id="espacoetiqueta" placeholder="mm" style="max-width:70px" />
 											</td>
 										</tr>
 										<tr>
 											<td align="center">
 												<label>Largura(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="largura" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="largura" id="largura" placeholder="mm" style="max-width:70px" />
 											</td>
 											<td align="center">
 												<label>Altura(mm)</label><br />
-												<input type="text" class="form-control input_Vazio" name="altura" placeholder="mm" style="max-width:70px" />
+												<input type="text" class="form-control input_Vazio" name="altura" id="altura" placeholder="mm" style="max-width:70px" />
 											</td>
 										</tr>
 										<tr>
@@ -122,7 +99,6 @@
 													<option value="courier">Courier</option>
 													<option value="helvetica">Helvetica</option>
 													<option value="times">Times New Roman</option>
-													<option value="zapfdingbats">Zapfdingbats</option>
 												</select>
 											</td>
 											<td align="center">
@@ -149,14 +125,14 @@
 
 											<td align="center">
 												<label>Etiquetas salvas</label><br />
-												<select name="papel" id="papel" class="form-control" placeholder="Etiquetas" style="max-width:200px">
+												<select name="etiqueta" id="etiqueta" class="form-control" placeholder="Etiquetas" style="max-width:200px">
 												<option value="" selected>Selecione...</option>
 													<?php
-														// foreach ($etiquetas as $eti) {
+														 foreach ($pack['etiquetas'] as $eti) {
 
-														//	 echo "<option value='$eti->id_etiqueta'>$eti->nome</option>";
+														 	echo "<option value='$eti->id_etiqueta'>$eti->nomeetiqueta</option>";
 
-														// }
+														 }
 													?>
 												</select>
 											</td>
@@ -168,11 +144,10 @@
 						</td>
 					</tr>
 				</table>
-				<?php echo form_close(); ?>
-
 		<div class="modal-footer">
 			<button type="submit" class="btn btn-info" id="validar_Enviar">Imprimir</button>
 		</div>
+		</form>
 		</div>
 		</div>
 	</div>

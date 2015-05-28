@@ -147,7 +147,36 @@ class pdf extends CI_Model {
 
 	public function impresso_Autorizacao_Fornec_Exec_Servicos_pag1($os = null){
 
+		$pack = array(  
 
+			// 'contratante' => $this->db->query('select tf.id_fornecedorprestador,te.numprocadmempenho,tc.numerocontratoata,tc.dtinivigencia,tc.dtfimvigencia,te.numprocregpreco from tbl_empenho te
+			// left join tbl_contratoata tc on te.numcontratoata = tc.id_contratoata
+			// left join tbl_fornecedorprestador tf on tf.id_fornecedorprestador = te.id_fornecedorprestador
+			// left join tbl_ordemservico tos on tos.id_fornecedorprestador = tf.id_fornecedorprestador
+			// where id_ordemservico = '.$os.';'),
+
+			'fornecedor' => $this->db->query('SELECT nome,codigo,rua,numero,complemento,cidade,uf,tel1,fax,cnpj,email from 
+			tbl_fornecedorprestador tf inner join tbl_ordemservico tos on tf.id_fornecedorprestador = tos.id_fornecedorprestador
+			where id_ordemservico ='.$os.';'),
+
+			//'requisitante' => $this->db->query(''.$os.';'),
+
+			//'pagamento' => $this->db->query(''.$os.';'),
+
+			'pecas' => $this->db->query('SELECT id_itens,codigomontadora,descricao,unidademedida,quantidade,precobruto,desconto, ((precobruto -((precobruto*desconto)/100))*quantidade) valorTotal
+			from tbl_ordemservico_x_item 
+			left join tbl_itens ti on id_itens = id_item
+			left join tbl_unidademedida tu on tu.id_unidademedida = ti.id_unidademedida
+			where id_ordemservico = '.$os.';')->result(),
+
+			'servicos' => $this->db->query('SELECT servico,quantidade,valorunitario, (quantidade*valorunitario) valorTotal from tbl_servicos
+			left join tbl_ordemservico_x_servico on id_servico = id_servicos
+			where id_ordemservico ='.$os.';')->result()
+
+
+		);
+
+		return $pack;
 
 
 	}

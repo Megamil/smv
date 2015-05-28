@@ -17,6 +17,7 @@ $html = '
 <html>
 <meta charset="utf-8"/>
 	<head>
+	<link rel="shortcut icon" href="pdf.png" type="image/x-icon">
 		<title></title>
 			<style>
 					thead {

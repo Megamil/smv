@@ -47,13 +47,13 @@ class pdf_controller extends CI_Controller {
 	public function autorizacao_Fornec_Exec_Servicos_pag1(){
 
 
-		/*$dados = array (
+		$dados = array (
 
-			'pack' => $this->pdf->pdf_impresso_Retirada_Estoque($this->input->post("ordemservico")),
+			'pack' => $this->pdf->impresso_Autorizacao_Fornec_Exec_Servicos_pag1($this->input->post("ordemservico")),
 
-		);*/
+		);
 		
-		$this->load->view('pdf/pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag1.php');
+		$this->load->view('pdf/pdf_impresso_Autorizacao_Fornec_Exec_Servicos_pag1.php',$dados);
 
 
 	}

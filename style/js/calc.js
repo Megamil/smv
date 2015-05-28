@@ -33,9 +33,11 @@ $(document).ready(function(){
 	/*Usado na tela de ajustes de estoque*/
 	$('.real').change(function(){
 
-		var resultado = parseInt($(this).val()) + parseInt($(this).prev().find('.atual').val()); 
+		$('.diferenca').remove();
 
-		alert(resultado);
+		var resultado = parseInt($(this).val()); 
+
+		$('.diferenca').append(resultado);
 
 	});
 

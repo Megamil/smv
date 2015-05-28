@@ -6,6 +6,7 @@ $html = '
 <html>
 <meta charset="utf-8"/>
 	<head>
+	<link rel="shortcut icon" href="pdf.png" type="image/x-icon">
 		<title></title>
 			<style>
 					thead {
@@ -531,118 +532,22 @@ $html = '
 													<td width="60px" align="center" id="negrito">Valor Unitário</td>
 													<td width="50px" align="center" id="negrito">Desc %</td>
 													<td width="50px" align="center" id="negrito">Valor total</td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-											</table>
+												</tr>';
+
+												foreach ($pack['pecas'] as $pecas) {
+													$html = $html."<tr>";
+													    $html = $html."<td>$pecas->id_itens</td>";
+														$html = $html."<td>$pecas->codigomontadora</td>";
+														$html = $html."<td>$pecas->descricao</td>";
+														$html = $html."<td>$pecas->unidademedida</td>";
+														$html = $html."<td>$pecas->quantidade</td>";
+														$html = $html."<td>$pecas->precobruto</td>";
+														$html = $html."<td>$pecas->desconto</td>";
+														$html = $html."<td>$pecas->valortotal</td>";
+													$html = $html."</tr>";
+												} 
+												
+											$html = $html.'</table>
 										</td>
 									</tr>
 									<tr>
@@ -676,45 +581,18 @@ $html = '
 													<td width="60px" align="center" id="negrito">Valor Unitário</td>
 													<td width="50px" align="center" id="negrito">Valor total</td>
 												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td align="right">
-											<table border="0" width="100%">
-												<tr>
-													<td align="right" id="negrito">
-														<label>Total dos serviços:&nbsp;</label>
-													</td>
-													<td width="150px">
-														<span>Total dos serviços</span>
-													</td>
-												</tr>
-											</table>
+												';
+
+												foreach ($pack['servicos'] as $servicos) {
+													$html = $html."<tr>";
+													    $html = $html."<td>$servicos->servico</td>";
+														$html = $html."<td>$servicos->quantidade</td>";
+														$html = $html."<td>$servicos->valorunitario</td>";
+														$html = $html."<td>$servicos->valortotal</td>";
+													$html = $html."</tr>";
+												} 
+												
+											$html = $html.'</table>
 										</td>
 									</tr>
 								</table>
