@@ -4,6 +4,61 @@
 $form = array('name' => 'form'); 
 echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
+<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+
+		$('#AdicionarObjeto').click(function(){
+
+			localStorage.setItem('numerocontratoata', $("#numerocontratoata").val());
+			localStorage.setItem('dtinivigencia', $("#dtinivigencia").val());
+			localStorage.setItem('dtfimvigencia', $("#dtfimvigencia").val());
+			localStorage.setItem('numanoemissorprorrogacao', $("#numanoemissorprorrogacao").val());
+			localStorage.setItem('dtinivigenciaprorrog', $("#dtinivigenciaprorrog").val());
+			localStorage.setItem('dtfimvigenciaprorrog', $("#dtfimvigenciaprorrog").val());
+			localStorage.setItem('id_fornecedorprestador', $("#id_fornecedorprestador").val());
+			localStorage.setItem('cnpjValidar', $("#cnpjValidar").val());
+			localStorage.setItem('procadmin', $("#procadmin").val());
+			localStorage.setItem('id_modalidadelicitacao', $("#id_modalidadelicitacao").val());
+			localStorage.setItem('numerolicitacao', $("#numerolicitacao").val());
+			localStorage.setItem('datahomologacao', $("#datahomologacao").val());
+			localStorage.setItem('prazoentrega', $("#prazoentrega").val());
+			localStorage.setItem('prazopagto', $("#prazopagto").val());
+			localStorage.setItem('orgaosparticipantes', $("#orgaosparticipantes").val());
+
+
+		});
+
+		$('#cancelarNovoObjeto').click(function(){
+
+			$('#nomeobjetotitulo').val('');
+			$('#nomeobjetotexto').val('');
+
+
+		});
+	 
+			if(localStorage.getItem('numerocontratoata')){ $("#numerocontratoata").val(localStorage.getItem('numerocontratoata')); }
+			if(localStorage.getItem('dtinivigencia')){ $("#dtinivigencia").val(localStorage.getItem('dtinivigencia')); }
+			if(localStorage.getItem('dtfimvigencia')){ $("#dtfimvigencia").val(localStorage.getItem('dtfimvigencia')); }
+			if(localStorage.getItem('numanoemissorprorrogacao')){ $("#numanoemissorprorrogacao").val(localStorage.getItem('numanoemissorprorrogacao')); }
+			if(localStorage.getItem('dtinivigenciaprorrog')){ $("#dtinivigenciaprorrog").val(localStorage.getItem('dtinivigenciaprorrog')); }
+			if(localStorage.getItem('dtfimvigenciaprorrog')){ $("#dtfimvigenciaprorrog").val(localStorage.getItem('dtfimvigenciaprorrog')); }
+			if(localStorage.getItem('id_fornecedorprestador')){ $("#id_fornecedorprestador").val(localStorage.getItem('id_fornecedorprestador')); }
+			if(localStorage.getItem('cnpjValidar')){ $("#cnpjValidar").val(localStorage.getItem('cnpjValidar')); }
+			if(localStorage.getItem('procadmin')){ $("#procadmin").val(localStorage.getItem('procadmin')); }
+			if(localStorage.getItem('id_modalidadelicitacao')){ $("#id_modalidadelicitacao").val(localStorage.getItem('id_modalidadelicitacao')); }
+			if(localStorage.getItem('numerolicitacao')){ $("#numerolicitacao").val(localStorage.getItem('numerolicitacao')); }
+			if(localStorage.getItem('datahomologacao')){ $("#datahomologacao").val(localStorage.getItem('datahomologacao')); }
+			if(localStorage.getItem('prazoentrega')){ $("#prazoentrega").val(localStorage.getItem('prazoentrega')); }
+			if(localStorage.getItem('prazopagto')){ $("#prazopagto").val(localStorage.getItem('prazopagto')); }
+			if(localStorage.getItem('orgaosparticipantes')){ $("#orgaosparticipantes").val(localStorage.getItem('orgaosparticipantes')); }
+
+
+			localStorage.clear();
+		
+	});
+</script>
+
 	<div class="erro_Campo_Vazio" ></div>
 	<table border="0">
 		<thead align="left"><span id="basic-addon1"></span></thead>
@@ -18,7 +73,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerocontratoata'); ?>" name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
+						<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerocontratoata'); ?>" id="numerocontratoata"  name="numerocontratoata" aria-describedby="basic-addon1" placeholder="Número/Ano/Emissor" />
 					</div>
 				</div>
 			</td>
@@ -32,7 +87,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtinivigencia'); ?>"  name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
+						<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtinivigencia'); ?>" id="dtinivigencia" name="dtinivigencia" aria-describedby="basic-addon1" placeholder="Data Início" />
 					</div>
 				</div>
 			</td>
@@ -46,7 +101,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtfimvigencia'); ?>"  name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('dtfimvigencia'); ?>" id="dtfimvigencia"  name="dtfimvigencia" aria-describedby="basic-addon1" placeholder="Data Fim" />
 					</div>
 				</div>
 			</td>
@@ -67,7 +122,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control nem" value="<?php echo $this->session->flashdata('numanoemissorprorrogacao'); ?>"  name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
+					<input type="text" class="form-control nem" value="<?php echo $this->session->flashdata('numanoemissorprorrogacao'); ?>" id="numanoemissorprorrogacao"  name="numanoemissorprorrogacao" aria-describedby="basic-addon1" placeholder="Número Prorrogação" maxlength="15" />
 					</div>
 				</div>
 			</td>
@@ -81,7 +136,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtinivigenciaprorrog'); ?>"  name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
+						<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtinivigenciaprorrog'); ?>" id="dtinivigenciaprorrog"  name="dtinivigenciaprorrog" aria-describedby="basic-addon1" placeholder="Data Início"/>
 					</div>
 				</div>
 			</td>
@@ -95,7 +150,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtfimvigenciaprorrog'); ?>"  name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
+					<input type="text" class="form-control dataValidar" value="<?php echo $this->session->flashdata('dtfimvigenciaprorrog'); ?>" id="dtfimvigenciaprorrog" name="dtfimvigenciaprorrog" aria-describedby="basic-addon1"  placeholder="Data Fim"/>
 					</div>
 				</div>
 			</td>
@@ -111,7 +166,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<select class="form-control input_Vazio"  name="id_fornecedorprestador" placeholder="Fornecedor">
+					<select class="form-control input_Vazio" id="id_fornecedorprestador"  name="id_fornecedorprestador" placeholder="Fornecedor">
 
 						<option>Selecione...</option>
 
@@ -162,7 +217,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio processo" value="<?php echo $this->session->flashdata('procadmin'); ?>" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
+					<input type="text" class="form-control input_Vazio processo" value="<?php echo $this->session->flashdata('procadmin'); ?>" id="procadmin" name="procadmin" aria-describedby="basic-addon1" placeholder="Nº Processo" />
 					</div>
 				</div>
 			</td>
@@ -179,7 +234,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 				<div class="control-group">
 					<div class="controls">
 
-					<select class="form-control input_Vazio" name="id_modalidadelicitacao" placeholder="Modalidade">
+					<select class="form-control input_Vazio" id="id_modalidadelicitacao" name="id_modalidadelicitacao" placeholder="Modalidade">
 						<option>Selecione...</option>
 
 						<?php 
@@ -212,7 +267,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerolicitacao'); ?>" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
+					<input type="text" class="form-control input_Vazio nem" value="<?php echo $this->session->flashdata('numerolicitacao'); ?>" id="numerolicitacao" name="numerolicitacao" aria-describedby="basic-addon1" placeholder="Nº Licitação" />
 					</div>
 				</div>
 			</td>
@@ -226,7 +281,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('datahomologacao'); ?>" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
+					<input type="text" class="form-control input_Vazio dataValidar" value="<?php echo $this->session->flashdata('datahomologacao'); ?>" id="datahomologacao" name="datahomologacao" aria-describedby="basic-addon1" placeholder="Data Homologação" />
 					</div>
 				</div>
 			</td>
@@ -261,7 +316,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			<td valign="bottom">
 				<div class="control-group">
 					<div class="controls">
-					<div class="btn btn-success pull-center" data-toggle="modal" data-target="#modelAdicionar">NOVO</div>
+					<div class="btn btn-success pull-center" data-toggle="modal" data-target="#modelAdicionar" id="AdicionarObjeto">NOVO</div>
 					</div>
 				</div>
 			</td>
@@ -293,7 +348,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 			
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazoentrega'); ?>" name="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazoentrega'); ?>" name="prazoentrega" id="prazoentrega" aria-describedby="basic-addon1" placeholder="Prazo de Entrega" />
 					</div>
 				</div>
 			</td>
@@ -306,7 +361,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazopagto'); ?>" name="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
+					<input type="text" class="form-control input_Vazio" value="<?php echo $this->session->flashdata('prazopagto'); ?>" name="prazopagto" id="prazopagto" aria-describedby="basic-addon1" placeholder="Prazo de Pagamento" />
 					</div>
 				</div>
 			</td>
@@ -319,7 +374,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 	
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control" value="<?php echo $this->session->flashdata('orgaosparticipantes'); ?>" name="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
+					<input type="text" class="form-control" value="<?php echo $this->session->flashdata('orgaosparticipantes'); ?>" name="orgaosparticipantes" id="orgaosparticipantes" aria-describedby="basic-addon1" placeholder="Orgãos participantes" />
 					</div>
 				</div>
 			</td>
@@ -358,7 +413,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Título</span>
-								<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+								<input type="text" class="form-control input_Vazio" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
 							</div>
 						</td>
 					</tr>
@@ -366,7 +421,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td valign="top">
 							<div class="input-group">
 								<span class="input-group-addon">Texto</span>
-								<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+								<textarea name="nomeobjetotexto" id="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -413,7 +468,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" id="cancelarNovoObjeto">Cancelar</button>
         <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Incluir Anexo </div>')?>
        </div>
     </div>

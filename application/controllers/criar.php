@@ -301,6 +301,91 @@ class criar extends CI_Controller {
 		}
 
 
+	}
+
+	public function nova_Dotacao_Interno(){
+
+		$this->form_validation->set_rules('nomedotacao','Nome da Dotação','required');
+		$this->form_validation->set_rules('segmento','Segmento','required');
+		$this->form_validation->set_rules('estadodotacao','Segmento','required');
+		$this->form_validation->set_rules('tipodotacao','Tipo dotação','required');
+
+		if($this->input->post('segmento') == 'Selecione...') {
+
+			$this->session->set_userdata('aviso','Campo de segmento é obrigatório');
+			$this->session->set_userdata('tipo','danger');
+
+			$this->session->set_flashdata('nomedotacao', $this->input->post('nomedotacao'));
+			$this->session->set_flashdata('segmento', $this->input->post('segmento'));
+			$this->session->set_flashdata('estadodotacao', $this->input->post('estadodotacao'));
+			$this->session->set_flashdata('tipodotacao', $this->input->post('tipodotacao'));
+
+			redirect('main/redirecionar/criar-novo_Empenho');
+		}
+
+		if($this->form_validation->run()) {
+
+			$dados = array (
+
+				'codigonumero' => $this->input->post('nomedotacao'),
+				'id_segmento' => $this->input->post('segmento'),
+				'idtipodotacao' => $this->input->post('tipodotacao'),
+				'statusdotacao' => $this->input->post('estadodotacao')
+
+			);
+
+			$this->novo->dotacao_Nova($dados);
+
+			$this->session->set_userdata('aviso','Dotação : '.$this->input->post('nomedotacao').' Adicionada com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+			redirect('main/redirecionar/criar-novo_Empenho');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			$this->session->set_flashdata('nomedotacao', $this->input->post('nomedotacao'));
+			$this->session->set_flashdata('segmento', $this->input->post('segmento'));
+			$this->session->set_flashdata('estadodotacao', $this->input->post('estadodotacao'));
+			$this->session->set_flashdata('tipodotacao', $this->input->post('tipodotacao'));
+
+			redirect('main/redirecionar/criar-novo_Empenho');
+
+		}
+
+	}
+
+	public function novo_Grupo_Itens_Interno(){
+
+		$this->form_validation->set_rules('nomegrupoitens','Nome do Grupo de itens','is_unique[tbl_grupoitens.grupoitens]');
+
+		if($this->form_validation->run()) {
+
+			if($this->input->post('nomegrupoitens') != ''){
+
+				$dados = array ('grupoitens' => $this->input->post('nomegrupoitens'));
+
+				$this->novo->grupo_Itens_Novo($dados);
+
+				$this->session->set_userdata('aviso','Grupo: '.$this->input->post('nomegrupoitens').' Adicionado com sucesso.');
+				$this->session->set_userdata('tipo','success');
+				
+			}
+
+			redirect('main/redirecionar/criar-novo_Item');
+
+
+		} else {
+
+			$this->session->set_userdata('aviso',validation_errors());
+			$this->session->set_userdata('tipo','danger');
+
+			redirect('main/redirecionar/criar-novo_Item');
+
+		}
 
 	}
 
@@ -1269,55 +1354,7 @@ public function nova_Entrada_Itens() {
 			
 		}
 
-	}
-
-/*
-	public function EXEMPLO() {
-
-		$this->form_validation->set_rules('','','');
-		$this->form_validation->set_rules('','','');
-		$this->form_validation->set_rules('','','');
-		$this->form_validation->set_rules('','','');
-		$this->form_validation->set_rules('','','');
-
-		if($this->form_validation->run()){
-
-			$dados = array (
-
-				'' => $this->input->post(''),
-				'' => $this->input->post(''),
-				'' => $this->input->post(''),
-				'' => $this->input->post(''),
-				'' => $this->input->post('')
-
-			);
-
-			$id_retorno = $this->novo->solicita_Ordem_Servico_Nova($dados);
-
-			$this->session->set_userdata('aviso','');
-			$this->session->set_userdata('tipo','success');
-
-			redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico'.$id_retorno);
-
-		}
-
-
-
-		$this->session->set_flashdata('', $this->input->post(''));
-		$this->session->set_flashdata('', $this->input->post(''));
-		$this->session->set_flashdata('', $this->input->post(''));
-		$this->session->set_flashdata('', $this->input->post(''));
-		$this->session->set_flashdata('', $this->input->post(''));
-
-		$this->session->set_userdata('aviso',validation_errors());
-		$this->session->set_userdata('tipo','danger');
-
-		redirect('main/redirecionar/edicoes-editar_Solicitacao_Ordem_Servico');
-		
-	}
-*/
-
-//}
+}
 
 /* End of file main.php */
 /* Location: ./application/controllers/main.php */

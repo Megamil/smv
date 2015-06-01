@@ -4,7 +4,9 @@ class Etiquetas extends CI_Controller {
 
 	public function configurar_etiqueta(){
 
-		if($this->input->post('titulo') != '') { // quando for para memorizar a etiqueta
+		$this->form_validation->set_rules('titulo','titulo','is_unique[tbl_etiquetas.nomeetiqueta]');
+
+		if($this->input->post('titulo') != '' && $this->form_validation->run()) { // quando for para memorizar a etiqueta
 
 			$dados = array(
 

@@ -1,6 +1,45 @@
 //Usado para trazer dados dos itens
 $(document).ready(function(){
 
+	if(parseInt($('#margemsuperior').val()) > 1){
+		alert('s');
+	}
+
+  $('#config').click(function(){
+
+  	var validar = false;
+
+	//Percorre todos inputs com essa classe
+	$(".imprimircb").each(function(){
+
+		if($(this).is(':checked')){
+
+			validar = true;
+
+		}
+		
+	}); //Fecha o percorre input
+
+	if(!validar){
+		$('#error').remove();
+		$('.erro_Campo_Vazio').addClass("alert alert-danger")
+			.append('<p id="error">Você não selecionou nenhuma etiqueta.</p>');
+		$('#validar_Enviar').hide();
+		
+		var $intervalo = setTimeout(function() {
+		        $('#fecharmodal').click();
+		      }, 1000);
+			
+	} else {
+
+		$('#error').remove();
+		$('.erro_Campo_Vazio').removeClass('alert alert-danger');
+		$('#validar_Enviar').show();
+	}
+
+
+  });
+
   $('#nomeEtiqueta').change(function(){
 
   	if($(this).val() != '') {

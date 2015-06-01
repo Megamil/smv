@@ -4,7 +4,7 @@
 <fieldset class="borda">
 	<legend class="borda">Inclusão dos Itens na Etiqueta</legend>
 
-	<table class="table table-striped table-hover table-condensed">
+	<table class="table table-striped table-hover table-condensed" id="tabelaDESATIVADO">
 		<thead> 
 			<tr>
 				<th class="span2">DESCRIÇÃO</th>
@@ -21,7 +21,7 @@
 					echo '<tr align="center">';
 					echo '<td> <label style="min-width:500px">Código: '.$itens->id_itens.' - '.$itens->descricao.'</label> </td>';
 					echo '<td> <input class="form-control" name="qts" id="qts" placeholder="Quantidade" value="1" style="max-width:50px"> </td>';
-					echo '<td> <input type="checkbox" name="imprimir[]" id="etiqueta'.$itens->id_itens.'" value="'.$itens->id_itens.'"></td>';
+					echo '<td> <input class="imprimircb" type="checkbox" name="imprimir[]" id="etiqueta'.$itens->id_itens.'" value="'.$itens->id_itens.'"></td>';
 					echo '</tr>';
 
 				}
@@ -29,7 +29,7 @@
 		
 		</tbody>
 		<hr>
-		<div class="btn btn-info pull-center" data-toggle="modal" data-target="#modelConfigurarEtiqueta">Configurar Etiquetas</div>
+		<div class="btn btn-info pull-center" data-toggle="modal" data-target="#modelConfigurarEtiqueta" id="config">Configurar Etiquetas</div>
 	</table>
 	
 
@@ -43,7 +43,7 @@
 		<div class="modal-content">
       
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+			<button type="button" class="close" data-dismiss="modal" id="fecharmodal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
 			<h4 class="modal-title" id="modelDeletar">Configuração das Etiquetas para impressão</h>
 		</div>
 		<div class="errorModalItem" ></div>
@@ -58,7 +58,7 @@
 										<tr>
 											<td colspan="2" align="center">
 												<label>Nome</label><br />
-													<input type="text" class="form-control" name="titulo" placeholder="Título" id="nomeEtiqueta" style="max-width:250px" />
+													<input type="text" class="form-control" name="titulo" placeholder="(Opcional, irá gravar no banco)" id="nomeEtiqueta" style="max-width:250px" />
 											</td>
 										</tr>
 										<tr>
@@ -95,18 +95,16 @@
 											<td align="center">
 												<label>Fonte</label><br />
 												<select name="fonte" id="fonte" class="form-control input_Vazio" placeholder="Fonte" style="max-width:200px">
-													<option value="" selected>Selecione...</option>
 													<option value="courier">Courier</option>
 													<option value="helvetica">Helvetica</option>
-													<option value="times">Times New Roman</option>
+													<option value="times" selected>Times New Roman</option>
 												</select>
 											</td>
 											<td align="center">
 												<label>Tamanho Fonte</label><br />
 												<select name="tamanhofonte" id="tamanhofonte" class="form-control input_Vazio" placeholder="Tamanho Fonte" style="max-width:200px">
-													<option value="" selected>Selecione...</option>
 													<option value="7">7</option>
-													<option value="8">8</option>
+													<option value="8" selected>8</option>
 													<option value="9">9</option>
 													<option value="10">10</option>
 												</select>
@@ -115,9 +113,8 @@
 										<tr>
 											<td align="center">
 												<label>Tamanho Papel</label><br />
-												<select name="papel" id="papel" class="form-control input_Vazio" placeholder="Tamanho Papel" style="max-width:200px">
-													<option value="" selected>Selecione...</option>
-													<option value="A4">A4</option>
+												<select name="papel" id="papel" class="form-control" placeholder="Tamanho Papel" style="max-width:200px">
+													<option value="A4" selected>A4</option>
 													<option value="A5">A5</option>
 													<option value="Letter">Letter</option>
 												</select>
