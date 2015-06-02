@@ -652,7 +652,11 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		  'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(), 
 		  'estadoordemservico' => $this->db->get('tbl_estadosolicitacao')->result(),
 		  'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		  'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
+		  'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU
+left join tbl_setor TS on TS.id_setor = TU.id_setor
+left join tbl_secao TC on TC.id_secao = TU.id_secao
+left join tbl_depto TD on TD.id_depto = TU.id_depto
+left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		  'veiculo' => $this->db->get('tbl_veiculo')->result());
 		return $pack;
 		

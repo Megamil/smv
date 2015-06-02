@@ -4,6 +4,22 @@
 $form = array('name' => 'form'); 
 echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 
+<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+
+		$('#cancelarNovoObjeto').click(function(){
+
+			$('#objetotitulo').val('');
+			$('#objetotexto').val('');
+
+
+		});
+	 
+		
+	});
+</script>
+
 	<div class="erro_Campo_Vazio" ></div>
 
 	<?php echo form_hidden('id_contratoata',$pack['contratoata']->row()->id_contratoata); ?>
@@ -357,7 +373,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 <div class="modal fade" id="modelAdicionar" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
+      <div class="errorModalObj"></div>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Obejto?</h4>
@@ -371,7 +387,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Título</span>
-								<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+								<input type="text" class="form-control" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
 							</div>
 						</td>
 					</tr>
@@ -379,7 +395,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 						<td valign="top">
 							<div class="input-group">
 								<span class="input-group-addon">Texto</span>
-								<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+								<textarea name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -388,9 +404,9 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Criar Objeto </div>')?>
-       </div>
+        <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovoObjeto">Cancelar</button>
+        <button type="button" class="btn btn-success" id="novoObjeto">Criar Objeto</button>
+        </div>
     </div>
   </div>
 </div>
@@ -416,7 +432,7 @@ echo form_open("edicoes/editando_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Nome do Anexo</span>
-								<input type="text" class="form-control input_Vazio" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
+								<input type="text" class="form-control" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
 							</div>
 						</td>
 						<td><input type="button" class="btn" value="Procurar..." name="procuraranexo" /></td>

@@ -443,5 +443,96 @@ $("#validar_Enviar_Servicoas").click(function(){
         }
 
      });
+  
+    //Adicionar novo Objeto, usado na tela (novo_Contrato_Ata).
+    $("#novoObjeto").click(function(){
+
+        if($("#nomeobjetotitulo").val() != '' && $("#nomeobjetotexto").val() != '') {
+
+         var json = 'http://172.16.177.73/smv/style/json/adicionarObjeto.php?objetotitulo='+$("#nomeobjetotitulo").val()+'&objetotexto='+$("#nomeobjetotexto").val();
+
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          $('.errorModalObj').removeClass('alert alert-danger');
+          $('#errorObj').remove();
+
+          location.reload(true);
+
+        } else {
+          $('.errorModalObj').removeClass('alert alert-danger');
+            $('#errorObj').remove();
+
+            $('.errorModalObj').addClass("alert alert-danger")
+            .append('<p id="errorObj">Preencha ambos os campos antes de enviar.</p>');
+
+        }
+
+     });
+  
+      $("#novoGrupo").click(function(){
+
+        if($("#nomegrupoitens").val() != '') {
+
+         var json = 'http://172.16.177.73/smv/style/json/adicionarGrupoItens.php?nomegrupoitens='+$("#nomegrupoitens").val();
+
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          $('.errorModalGrupo').removeClass('alert alert-danger');
+          $('#errorGrupo').remove();
+
+          location.reload(true);
+
+        } else {
+          $('.errorModalGrupo').removeClass('alert alert-danger');
+            $('#errorGrupo').remove();
+
+            $('.errorModalGrupo').addClass("alert alert-danger")
+            .append('<p id="errorGrupo">Preencha o campo antes de enviar.</p>');
+
+        }
+
+     });
+
+       $("#AdicionarDotacao").click(function(){
+
+        if($("#nomedotacao").val() != '' && $("#segmento").val() != 'Selecione...') {
+
+         var json = 'http://172.16.177.73/smv/style/json/adicionarDotacao.php?codigonumero='+$("#nomedotacao").val()+'&id_segmento='+$("#segmento").val()+'&idtipodotacao='+$("input[name='tipodotacao']:checked").val()+'&statusdotacao='+$("input[name='estadodotacao']:checked").val();
+          $.ajax({        
+
+            type: "POST",
+            dataType: "json",
+            url: json,
+
+          });
+
+          $('.errorModalDotacao').removeClass('alert alert-danger');
+          $('#errorDotacao').remove();
+
+          location.reload(true);
+
+        } else {
+          $('.errorModalDotacao').removeClass('alert alert-danger');
+            $('#errorDotacao').remove();
+
+            $('.errorModalDotacao').addClass("alert alert-danger")
+            .append('<p id="errorDotacao">Preencha todos os campos antes de enviar.</p>');
+
+        }
+
+     });
+
 
 });

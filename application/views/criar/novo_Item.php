@@ -1,4 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/calc.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 
 <?php echo form_fieldset("Novo Item"); ?>
 <form action="/smv/criar/novo_Item" method="post" accept-charset="utf-8" name="form">
@@ -330,10 +331,10 @@
 <div class="modal fade" id="modelAdicionarGrupo" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="/smv/criar/novo_Grupo_Itens_Interno" method="post" accept-charset="utf-8"> 
       <div class="modal-header">
+      <div class="errorModalGrupo"></div>
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar inclusão do Grupo de Itens?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Inclusão do Grupo de Itens</h4>
       </div>
 
       <div class="modal-body">
@@ -358,7 +359,7 @@
         <button type="reset" class="btn btn-info" data-dismiss="modal" id="cancelarNovoGrupo">Cancelar</button>
         <button type="submit" class="btn btn-success" id="novoGrupo">Incluir Grupo</button>
       </div>
-    	</form>
+     </div>
     </div>
   </div>
 </div>

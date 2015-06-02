@@ -7,7 +7,7 @@
 
 	jQuery(document).ready(function(){
 
-		$('#AdicionarServico').click(function(){
+		$('#AdicionarDotacao').click(function(){
 
 			localStorage.setItem('id_segmento', $("#id_segmento").val());
 			localStorage.setItem('id_fornecedorprestador', $("#id_fornecedorprestador").val());
@@ -164,36 +164,6 @@
 						<input type="text" value="<?php echo $this->session->flashdata('valorempenho'); ?>" class="form-control input_Vazio preco" onkeypress='return SomenteNumero(event)' id="valorempenho" name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
 						</div>
 					</div>
-			</td>
-
-			<td>	
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Valor utilizado</span>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-					<input type="text" value="<?php echo $this->session->flashdata('valorutilizado'); ?>" class="form-control" name="valorutilizado" id="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
-					</div>
-				</div>
-			</td>
-			
-			<td valign="bottom">
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Saldo</span>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-						<input type="text" value="<?php echo $this->session->flashdata('saldo'); ?>" class="form-control" name="saldo" id="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
-					</div>
-				</div>
 			</td>
 		</tr>
 <!-- final da segunda linha -->
@@ -401,12 +371,11 @@
 <div class="modal fade" id="modelAdicionarDotacao" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="post" accept-charset="utf-8" name="form2">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar">Adição da Dotação</h4>
       </div>
-	<div class="errorModalServico"></div>
+	<div class="errorModalDotacao"></div>
       <div class="modal-body">
       	
 			<table border="0">
@@ -541,8 +510,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovaDotacao">Cancelar</button>
-        <button type="submit" name="cadastrarNovaDotacao"  class="btn btn-success" id="AdicionarServico" formaction="/smv/criar/nova_Dotacao_Interno">Incluir Dotação</button>
-        </form>
+        <button type="button" name="cadastrarNovaDotacao"  class="btn btn-success" id="AdicionarDotacao">Incluir Dotação</button>
        </div>
     </div>
   </div>

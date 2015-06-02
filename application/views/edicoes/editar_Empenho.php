@@ -1,8 +1,28 @@
 <!--Usado para preencher alguns campos-->
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
-<?php echo form_fieldset("Editar Empenho"); 
-$form = array('name' => 'form'); 
-echo form_open("edicoes/editando_Empenho",$form); ?>
+<?php echo form_fieldset("Editar Empenho"); ?>
+
+<form action="/smv/edicoes/editando_Empenho" method="post" accept-charset="utf-8" name="form">
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+
+		$('#cancelarNovaDotacao').click(function(){
+
+			$('#segmento').val('Selecione...');
+			$('#nomedotacao').val('');
+
+			$('#estadodotacao').attr('checked', false);
+			$('#tipodotacao').attr('checked', false);
+			$('#estadodotacao2').attr('checked', false);
+			$('#tipodotacao2').attr('checked', false);
+
+		});
+
+	});
+
+	</script>
 
 <?php echo form_hidden('numeroempenhoOriginal', $pack['empenho']->row()->numeroempenho); ?>
 <?php echo form_hidden('id_empenho', $pack['empenho']->row()->id_empenho); ?>
@@ -110,36 +130,6 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						<input type="text" value="<?php echo $pack['empenho']->row()->valorempenho; ?>" class="form-control input_Vazio preco" onkeypress='return SomenteNumero(event)' name="valorempenho" aria-describedby="basic-addon1" placeholder="Valor empenho" />
 						</div>
 					</div>
-			</td>
-
-			<td>	
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Valor utilizado</span>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-					<input type="text" class="form-control" name="valorutilizado" aria-describedby="basic-addon1" placeholder="Valor Utilizado" disabled/>
-					</div>
-				</div>
-			</td>
-			
-			<td valign="bottom">
-				<div class="control-group">
-					<div class="controls">
-						<span class="help-inline">Saldo</span>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<div class="controls input-group">
-						<span class="input-group-addon" id="basic-addon1">R$</span>
-						<input type="text"  class="form-control" name="saldo" aria-describedby="basic-addon1" placeholder="Saldo" disabled/>
-					</div>
-				</div>
 			</td>
 		</tr>
 <!-- final da segunda linha -->
@@ -338,6 +328,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 	<?php echo anchor('main/redirecionar/empenho-empenho', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
+</form>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- ///////////////////////////////////////// MODAL PARA ADICIONAR SERVIÇOS NA ORDEM ///////////////////////////////////////////// -->
@@ -346,12 +337,11 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 <div class="modal fade" id="modelAdicionarDotacao" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição da Dotação?</h4>
+        <h4 class="modal-title" id="modelDeletar">Adição da Dotação</h4>
       </div>
-	<div class="errorModalServico"></div>
+	<div class="errorModalDotacao"></div>
       <div class="modal-body">
       	
 			<table border="0">
@@ -368,7 +358,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						}
 							
 						?>
-						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" id="tipodotacao" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
 						<span class="help-inline"> Serviços</span>
 					</div>
 				</div>
@@ -387,7 +377,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 							
 						?>			
 
-						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" name="estadodotacao" id="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
 						<span class="help-inline"> Ativo</span>
 					</div>
 				</div>
@@ -406,7 +396,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						}
 							
 						?>
-						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="2" <?php echo $check; ?> />
+						<input type="radio" id="tipodotacao2" name="tipodotacao" aria-describedby="basic-addon1" value="2" <?php echo $check; ?> />
 						<span class="help-inline"> Peças</span>
 					</div>
 				</div>
@@ -424,7 +414,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 						}
 							
 						?>	
-						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="0" <?php echo $check; ?> />
+						<input type="radio" name="estadodotacao" id="estadodotacao2" aria-describedby="basic-addon1" value="0" <?php echo $check; ?> />
 						<span class="help-inline"> Inativo</span>
 					</div>
 				</div>
@@ -441,7 +431,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 					
 					
 					<span class="input-group-addon" id="basic-addon1">Número / código da dotação</span>
-					<input type="text" class="form-control input_Vazio" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
+					<input type="text" class="form-control" id="nomedotacao" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
 				</div>
 			</td>
 		</tr>
@@ -451,7 +441,7 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 				<div class="input-group"  width="200px">
 					<span class="input-group-addon" id="basic-addon1">Segmento</span>
 
-					<select class="form-control input_Vazio" name="segmento" placeholder="Segmento">
+					<select class="form-control" name="segmento" id="segmento" placeholder="Segmento">
 
 						<option>Selecione...</option>
 
@@ -481,13 +471,12 @@ echo form_open("edicoes/editando_Empenho",$form); ?>
 		</tbody>
 	</table>
 
-
-
       </div>
+     
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="AdicionarServico">Incluir Dotação</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovaDotacao">Cancelar</button>
+        <button type="button" name="cadastrarNovaDotacao"  class="btn btn-success" id="AdicionarDotacao">Incluir Dotação</button>
        </div>
     </div>
   </div>

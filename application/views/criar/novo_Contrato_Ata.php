@@ -1,9 +1,8 @@
 <!--Usado para preencher alguns campos-->
-<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <?php echo form_fieldset("Novo Contrato/Ata"); 
 $form = array('name' => 'form'); 
 echo form_open("criar/novo_Contrato_Ata",$form); ?>
-
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <script type="text/javascript">
 
 	jQuery(document).ready(function(){
@@ -31,8 +30,8 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
 		$('#cancelarNovoObjeto').click(function(){
 
-			$('#nomeobjetotitulo').val('');
-			$('#nomeobjetotexto').val('');
+			$('#objetotitulo').val('');
+			$('#objetotexto').val('');
 
 
 		});
@@ -399,7 +398,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 <div class="modal fade" id="modelAdicionar" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
+      <div class="errorModalObj"></div>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Obejto?</h4>
@@ -413,7 +412,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Título</span>
-								<input type="text" class="form-control input_Vazio" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+								<input type="text" class="form-control" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
 							</div>
 						</td>
 					</tr>
@@ -421,7 +420,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td valign="top">
 							<div class="input-group">
 								<span class="input-group-addon">Texto</span>
-								<textarea name="nomeobjetotexto" id="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+								<textarea name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -430,9 +429,9 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Criar Objeto </div>')?>
-       </div>
+        <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovoObjeto">Cancelar</button>
+        <button type="button" class="btn btn-success" id="novoObjeto">Criar Objeto</button>
+        </div>
     </div>
   </div>
 </div>
@@ -458,7 +457,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Nome do Anexo</span>
-								<input type="text" class="form-control input_Vazio" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
+								<input type="text" class="form-control" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
 							</div>
 						</td>
 						<td><input type="button" class="btn" value="Procurar..." name="procuraranexo" /></td>
@@ -468,7 +467,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" id="cancelarNovoObjeto">Cancelar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
         <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Incluir Anexo </div>')?>
        </div>
     </div>

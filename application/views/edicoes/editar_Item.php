@@ -1,7 +1,21 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/calc.js"></script>
-<?php echo form_fieldset("Editar Item"); 
-$form = array('name' => 'form'); 
-echo form_open("edicoes/editando_Item",$form); ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
+<?php echo form_fieldset("Editar Item");  ?>
+
+<form action="/smv/edicoes/editando_Item" method="post" accept-charset="utf-8" name="form">
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+
+		$('#cancelarNovoGrupo').click(function(){
+
+			$('#nomegrupoitens').val('');
+
+		});
+	 	
+	});
+</script>
 
 	<?php echo form_hidden('id_itens',$pack['itens']->row()->id_itens); ?>
 	<?php echo form_hidden('codigomontadoraOriginal',$pack['itens']->row()->codigomontadora); ?>
@@ -254,6 +268,7 @@ echo form_open("edicoes/editando_Item",$form); ?>
 	<?php echo anchor('main/redirecionar/estoque-itens', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
+</form>
 
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////// MODAL PARA INCLUIR GRUPO /////////////////////////////////////////
@@ -262,10 +277,10 @@ echo form_open("edicoes/editando_Item",$form); ?>
 <div class="modal fade" id="modelAdicionarGrupo" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
       <div class="modal-header">
+      <div class="errorModalGrupo"></div>
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar inclusão do Grupo de Itens?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Inclusão do Grupo de Itens</h4>
       </div>
 
       <div class="modal-body">
@@ -277,7 +292,7 @@ echo form_open("edicoes/editando_Item",$form); ?>
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">Grupo de Itens</span>
-							<input class="form-control input_Vazio" type="text" name="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
+							<input class="form-control" type="text" name="nomegrupoitens" id="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
 						</div>
 					</td>
 				</tr>
@@ -287,9 +302,10 @@ echo form_open("edicoes/editando_Item",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Incluir Grupo </div>')?>
-       </div>
+        <button type="reset" class="btn btn-info" data-dismiss="modal" id="cancelarNovoGrupo">Cancelar</button>
+        <button type="submit" class="btn btn-success" id="novoGrupo">Incluir Grupo</button>
+      </div>
+     </div>
     </div>
   </div>
 </div>
