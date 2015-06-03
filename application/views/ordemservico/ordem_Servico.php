@@ -1,11 +1,17 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-				<th class="span3">Número da Ordem</th>
-				<th class="span3">Número da Solicitação</th>
-				<th class="span2">Unidade Cliente</th>
-				<th class="span2">Prefixo</th>
+				<th class="span3">Nº O.S.</th>
+				<th class="span3">Prefixo</th>
+				<th class="span3">Modelo</th>
+				<th class="span2">Unidade</th>
+				<th class="span2">Prestador</th>
 				<th class="span2">Data de Entrada</th>
+				<th class="span2">Data de Saída</th>
+				<th class="span2">Valor Peças</th>
+				<th class="span2">Valor Serviços</th>
+				<th class="span2">Valor Total</th>
+				<th class="span2">Defeito</th>
 				<th class="span2">Alterar</th>
 			</tr>
 		</thead>
@@ -15,7 +21,20 @@
 					foreach ($pack['ordemservico'] as $ordemservico) {
 						echo "<tr>";
 						    echo "<td align='center'>$ordemservico->id_ordemservico</td>";
-							echo "<td align='center'>$ordemservico->id_solicitacao</td>";
+							
+							foreach ($pack['solicitaordemservico'] as $solicitacao) {
+								if($solicitacao->id_solicitaordemservico == $ordemservico->id_solicitacao){
+									$modelocarro = $solicitacao->id_veiculo;
+								}
+							}
+						    
+							foreach($pack['veiculo'] as $veiculo){
+								if ($veiculo->id_veiculo == $modelocarro){
+									echo "<td>$veiculo->prefixo</td>";
+									echo "<td>$veiculo->modelo</td>";		
+								}
+
+							}
 
 						    	foreach ($pack['unidadesaude'] as $unidadesaude) {
 						    		if($ordemservico->id_unidadecliente == $unidadesaude->cnes){
@@ -48,11 +67,34 @@
 				    				break;
 						    		}
 						    	}
-								echo "<td>$ordemservico->prefixo</td>";
+							
+							foreach($pack['fornecedorprestador'] as $prestador){
+								if($prestador->id_fornecedorprestador == $ordemservico->id_fornecedorprestador){
+									echo "<td>$prestador->nome</td>";
+									break;
+								}
+							}
 
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->dataentrada));
 							echo '<td>'.$dataFormatada.'</td>';
+
+							$dataFormatada = date("d-m-Y", strtotime($ordemservico->datasaida));
+							echo '<td>'.$dataFormatada.'</td>';
+
+							echo "<td>".$ordemservico->valortotalitem."</td>";
+							echo "<td>".$ordemservico->valortotalservico."</td>";
+							echo "<td>".$ordemservico->total."</td>";
+
+							foreach($pack['solicitaordemservico'] as $solicitaordemservico){
+								if($solicitaordemservico->id_solicitaordemservico == $ordemservico->id_solicitacao){
+									echo "<td>$solicitaordemservico->defeitoapresentado</td>";
+									break;
+								}
+							}
+
+
+
 							echo '<td>'.anchor('edicoes/editar_Ordem_Servico/'.$ordemservico->id_ordemservico.'','Editar').'</td>';
 						echo "</tr>";
 					}

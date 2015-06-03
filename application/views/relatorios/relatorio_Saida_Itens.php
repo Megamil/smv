@@ -1,14 +1,14 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-			 	<td align="center" colspan="10"><strong>RELATÓRIO DAS SAÍDAS DOS ITENS NO ESTOQUE</strong></td>
+			 	<td align="center" colspan="9"><strong>RELATÓRIO DAS SAÍDAS DOS ITENS NO ESTOQUE</strong></td>
 			</tr>
 
 			<tr>
 				<td colspan="5" align="left">
 					<div><strong>Grupo: </strong>TUDO</div>
 				</td>
-				<td colspan="5" align="left">
+				<td colspan="4" align="left">
 					<div><strong>Data: </strong> <?php $data = date('d/m/Y'); echo $data; ?> </div>
 				</td>
 			</tr> 
@@ -29,9 +29,9 @@
 		<tfoot>
             <tr>
                 <th colspan="4" style="text-align:right">Total:</th>
-                <th colspan="" style="text-align:right; white-space: nowrap;" ></th>
+                <th style="text-align:right; white-space: nowrap;" ></th>
                 <th style="text-align:right">Total:</th>
-                <th colspan="4" ></th>
+                <th colspan="3" ></th>
             </tr>
         </tfoot>
 		<tbody>
@@ -79,25 +79,28 @@
 						    }
 
 							echo "<td>$saidaitens->ordemservico</td>";
-
-							foreach($pack['cliente'] as $cliente){
-
-							 	if($cliente->id_cliente == $saidaitens->id_cliente) {
-							 		echo "<td>$cliente->nome</td>"; 
-							 		break;
-
-							 	}
-
-						    }
+														
+							if(!empty($saidaitens->id_cliente)){
+								foreach($pack['cliente'] as $cliente){
+									if($cliente->id_cliente == $saidaitens->id_cliente){
+									 	echo "<td>$cliente->nome</td>";
+									 	break;
+									}
+								}
+							}else{
+								echo "<td></td>";
+							}
+								
 
 							foreach($pack['prefixo'] as $prefixo){
 
-							 	if($prefixo->id_saidaitens == $saidaitens->id_saidaitens) {
+							 	if($prefixo->id_saidaitens == $saidaitens->id_saidaitens){
+
 							 		echo "<td>$prefixo->prefixo</td>"; 
 							 		break;
 
-							 	}
-
+							 	} 
+							 	
 						    }
 
 

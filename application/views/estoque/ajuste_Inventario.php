@@ -1,4 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/calc.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <table class="table table-striped table-hover table-condensed" id="tabela">
 	<thead> 
 		<tr>
@@ -31,10 +32,12 @@
 				<?php
 
 					foreach ($pack['itens'] as $itens) {
+
+						$id = $itens->id_itens;
 						
 						echo '<tr>';
 
-						    echo "<td align='center'>$itens->id_itens</td>";
+						    echo "<td align='center'>$id</td>";
 						    echo "<td align='center'>$itens->codigomontadora</td>";
 							echo "<td>$itens->descricao</td>";
 
@@ -52,7 +55,7 @@
 
 						    $existe = false; // Varíável para validação
 						    foreach($pack['entradas'] as $entradas){
-							 	if($itens->id_itens == $entradas->codigointerno) {
+							 	if($id == $entradas->codigointerno) {
 							 			$ent = $entradas->quantidade;
 							 			$existe = true; //confirma que existe um valor
 							 			break;
@@ -62,24 +65,23 @@
 
 							$existe2 = false; // Varíável para validação
 						    foreach($pack['saidas'] as $saidas){
-							 	if($itens->id_itens == $saidas->codigointerno) {
+							 	if($id == $saidas->codigointerno) {
 							 			$sai = $saidas->quantidade;
 							 			$existe2 = true; //confirma que existe um valor
 							 			break;
 							 	} 
 							}
 
-							echo '<td>'.($ent - $sai).'</td>';
+							echo '<td><input type="text" value="'.($ent - $sai).'" class=\'form-control\' id=\'atual'.$id.'\' style=\'max-width:80px\' disabled></td>';
 
-							echo "<td align='center'><input class=\"form-control real\" type='text' name='qtdapurada' class='form-control' style='max-width:80px' /></td>";
+							echo "<td align='center'><input class=\"form-control real\" type='text' referencia=\"".$id."\" class='form-control' style='max-width:80px'/></td>";
 
-							echo '<input class="atual" type="hidden" value="'.($ent - $sai).'">';
-							
-							echo "<td align='center'><label class=\"diferenca\"></label></td>";
+							echo "<td align='center'><input class='form-control' style='max-width:80px' id=\"diferenca".$id."\" disabled></td>";
 
-							echo "<td align='center'>Tipo da Diferença</td>";
+							echo "<td align='center'><div id='es".$id."'></div></td>";
 
-							echo '<td align="center">'.anchor('estoque/ajuste_Inventario/'.$itens->id_itens.'','Salvar').'</td>';
+							echo '<td align="center"><button salvar="'.$id.'" class="btn btn-success salvar">Salvar</button></td>';
+
 							echo '</tr>';
 					}
 				?>

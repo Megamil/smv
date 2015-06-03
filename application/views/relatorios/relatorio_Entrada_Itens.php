@@ -1,14 +1,14 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead>
 			<tr>
-			 	<td align="center" colspan="10"><strong>RELATÓRIO DAS ENTRADAS DOS ITENS NO ESTOQUE</strong></td>
+			 	<td align="center" colspan="9"><strong>RELATÓRIO DAS ENTRADAS DOS ITENS NO ESTOQUE</strong></td>
 			</tr> 
 
 			<tr>
 				<td colspan="5" align="left">
 					<div><strong>Grupo: </strong>TUDO</div>
 				</td>
-				<td colspan="5" align="left">
+				<td colspan="4" align="left">
 					<div><strong>Data: </strong> <?php $data = date('d/m/Y'); echo $data; ?> </div>
 				</td>
 			</tr>
@@ -23,7 +23,7 @@
 				<th class="span3">Valor Total</th>
 				<th class="span2">N.F.</th>
 				<th class="span2">Fornecedor</th>
-				<th class="span2">A.F.</th>
+				
 			</tr>
 		</thead>
 		<tfoot>
@@ -31,7 +31,7 @@
                 <th colspan="4" style="text-align:right">Total:</th>
                 <th colspan="" style="text-align:right; white-space: nowrap;" ></th>
                 <th style="text-align:right">Total:</th>
-                <th colspan="4" ></th>
+                <th colspan="3" ></th>
             </tr>
         </tfoot>
 		<tbody>
@@ -76,24 +76,22 @@
 
 						    }
 
-							echo "<td align='center'>$entradaitens->numnotafiscal</td>";
+							if(!empty($entradaitens->numnotafiscal)){
+								echo "<td align='center'>$entradaitens->numnotafiscal</td>";
+							}else{
+								echo "<td align='center'></td>";
+							}
 
 							foreach($pack['fornecedorprestador'] as $fornecedorprestador){
 							 	if($fornecedorprestador->id_fornecedorprestador == $entradaitens->id_fornecedor) {
 							 		echo "<td>$fornecedorprestador->nome</td>"; 
 							 		break;
+							 	}else{
+							 		echo "<td></td>"; 
+							 		break;
 							 	}
 						    }
 
-							foreach($pack['afpecas'] as $afpecas){
-							 	if($afpecas->id_itens == $entradaitens->codigointerno) {
-							 		echo "<td align='center'>$afpecas->id_afpecas</td>"; 
-							 		
-							 	}else{
-							 		echo "<td></td>";
-							 		
-							 	}
-						    }
 							echo "</tr>";
 
 							$qtdtotal = $qtdtotal + $entradaitens->quantidade;

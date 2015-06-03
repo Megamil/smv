@@ -534,5 +534,45 @@ $("#validar_Enviar_Servicoas").click(function(){
 
      });
 
+      $(".salvar").click(function(){
+
+        var referencia = $(this).attr('salvar');
+        var diferenca = parseInt($("#diferenca"+referencia).val());
+
+        var json = '';
+
+        if(diferenca > 0) {
+
+           json = 'http://172.16.177.73/smv/style/json/adicionarAjuste.php?tipo=1&codigointerno='+referencia+'&quantidade='+diferenca;
+            $.ajax({        
+
+              type: "POST",
+              dataType: "json",
+              url: json,
+
+            });
+
+
+            location.reload(true);
+
+        } else {
+
+            diferenca = (diferenca*(-1))
+          
+            json = 'http://172.16.177.73/smv/style/json/adicionarAjuste.php?tipo=2&codigointerno='+referencia+'&quantidade='+diferenca;
+            $.ajax({        
+
+              type: "POST",
+              dataType: "json",
+              url: json,
+
+            });
+
+            location.reload(true);
+
+        }
+
+     });
+
 
 });

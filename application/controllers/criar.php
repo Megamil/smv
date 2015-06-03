@@ -813,7 +813,8 @@ public function novo_Cliente() {
 			'id_veiculo' => $this->input->post('prefixo'),
 			'km' => $this->input->post('km'),
 			'defeitoapresentado' => $this->input->post('defeitoapresentado'),
-			'id_estadosolicitacao' => $this->input->post('id_estadosolicitacao')
+			'id_estadosolicitacao' => $this->input->post('id_estadosolicitacao'),
+			'datasolicitacao' => date("d/m/Y")
 
 		);
 

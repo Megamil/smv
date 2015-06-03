@@ -79,7 +79,7 @@ echo form_open("criar/nova_Entrada_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">	
   						<span id="basic-addon1">Nota Fiscal</span>
- 						<input type="text" class="form-control" placeholder="Nota Fiscal" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
+ 						<input type="text" class="form-control input_Vazio" placeholder="Nota Fiscal" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
  					</div>
 				</div>
 			</td>

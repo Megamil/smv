@@ -24,12 +24,12 @@
 						$contratoata = $contratoata.'-'.substr($afpecas->contratoata, 8);
 
 						echo "<tr>";
-							echo "<td>$afpecas->ordemservico</td>";
-							echo "<td>$afpecas->id_afpecas</td>";
-							echo "<td>$contratoata</td>";
-							echo "<td>$afpecas->prazoentrega</td>";
-							echo "<td>$afpecas->prefixo</td>";
-							echo '<td>'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
+							echo "<td align='center'>$afpecas->ordemservico</td>";
+							echo "<td align='center'>$afpecas->id_afpecas</td>";
+							echo "<td align='center'>$contratoata</td>";
+							echo "<td align='center'>$afpecas->prazoentrega</td>";
+							echo "<td align='center'>$afpecas->prefixo</td>";
+							echo '<td align="center">'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
 						echo "</tr>";
 
 					}

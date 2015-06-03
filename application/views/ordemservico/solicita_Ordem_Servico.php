@@ -5,7 +5,7 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-				<th class="span3">Número da Solicitação</th>
+				<th class="span3" align="center">Número da Solicitação</th>
 				<th class="span2">Prefixo</th>
 				<th class="span2">Modelo</th>
 				<th class="span2">Unidade Solicitante</th>
@@ -19,7 +19,7 @@
 
 					foreach ($pack['solicitaordemservico'] as $solicitaordemservico) {
 						echo "<tr>";
-						    echo "<td>$solicitaordemservico->id_solicitaordemservico</td>";
+						    echo "<td align='center'>$solicitaordemservico->id_solicitaordemservico</td>";
 
 							foreach ($pack['veiculo'] as $veiculo) {
 
@@ -46,22 +46,25 @@
 										break;
 									}
 								}
+
 							}else{
 
-								foreach ($pack['unidadeutilizadora'] as $unidadeutilizadora) {
-
-									switch ($solicitaordemservico->id_unidadesolicitante){
-										case ($unidadeutilizadora->id_depto): echo "<td>$unidadeutilizadora->depto</td>";break;
-										case ($unidadeutilizadora->id_divisao): echo "<td>$unidadeutilizadora->divisao</td>";break;
-										case ($unidadeutilizadora->id_secao): echo "<td>$unidadeutilizadora->secao</td>";break;
-										case ($unidadeutilizadora->id_setor): echo "<td>$unidadeutilizadora->setor</td>";break;
-										default ($unidadeutilizadora->id_setor): echo "<td>$unidadeutilizadora->depto,divisao,secao,setor</td>";break;
+								foreach($pack['unidadeutilizadora'] as $unidadeutilizadora){
+									if ($unidadeutilizadora->id_unidadeutilizadora == $solicitaordemservico->id_unidadesolicitante){
+										$departamento = $unidadeutilizadora->id_depto;
 									}
 								}
 
+								foreach($pack['depto'] as $depto){
+									if($depto->id_depto == $departamento){
+										echo "<td>$depto->depto</td>";
+									}
+								}
+							
 							}
 
-							echo "<td>$solicitaordemservico->datasolicitacao</td>";
+							$dataFormatada = date("d-m-Y", strtotime($solicitaordemservico->datasolicitacao));
+							echo '<td>'.$dataFormatada.'</td>';
 
 
 						echo '<td>'.anchor('edicoes/editar_Solicitacao_Ordem_Servico/'.$solicitaordemservico->id_solicitaordemservico.'','Editar').'</td>';

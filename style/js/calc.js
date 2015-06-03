@@ -33,11 +33,33 @@ $(document).ready(function(){
 	/*Usado na tela de ajustes de estoque*/
 	$('.real').change(function(){
 
-		$('.diferenca').remove();
+		var referencia = $(this).attr('referencia');
 
-		var resultado = parseInt($(this).val()); 
+		var diferenca = (parseInt($(this).val()) - parseInt($('#atual'+referencia).val()));
 
-		$('.diferenca').append(resultado);
+		$('#diferenca'+referencia).val(diferenca);
+
+		if(diferenca > 0) {
+
+			$('#dif'+referencia).remove();
+			$('#salvar'+referencia).removeAttr('disabled');
+			$('#es'+referencia).append('<div id="dif'+referencia+'">Adicionar<div>');
+
+		} else if(diferenca == 0) {
+
+			$('#dif'+referencia).remove();
+			$('#salvar'+referencia).attr('disabled', 'disabled');
+			$('#es'+referencia).append('<div id="dif'+referencia+'">OK<div>');
+
+		} else {
+			
+			$('#dif'+referencia).remove();
+			$('#salvar'+referencia).removeAttr('disabled');
+			$('#es'+referencia).append('<div id="dif'+referencia+'">Remover<div>');
+
+
+		}
+
 
 	});
 

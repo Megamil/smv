@@ -25,7 +25,7 @@
 		<thead align="left"><span id="basic-addon1"></span></thead>
 		<tbody>
 		<tr>
-			<td colspan="4">
+			<td colspan="2">
 				<div class="control-group">
 					<div class="controls">
 						<span class="help-inline">Código Montadora</span>
@@ -34,7 +34,31 @@
 			
 				<div class="control-group">
 					<div class="controls">
-						<input type="text" class="form-control input_Vazio" onkeypress='return Numero(event)' value="<?php echo $pack['itens']->row()->codigomontadora; ?>" name="codigomontadora" aria-describedby="basic-addon1" placeholder="Código Montadora" style="max-width:160px"/>
+						<input type="text" class="form-control input_Vazio" id="codigomontadora" onkeypress='return Numero(event)' value="<?php echo $this->session->flashdata('codigomontadora'); ?>" name="codigomontadora" aria-describedby="basic-addon1" placeholder="Código Montadora" style="max-width:160px"/>
+					</div>
+				</div>
+			</td>
+			<td colspan="2">
+				<div class="control-group">
+					<div class="controls">
+						<span class="help-inline">Marca Item</span>
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<div class="controls">
+						<select class="form-control input_Vazio" name="id_marcaitens" id="id_marcaitens" placeholder="Marca Item" >
+							<option>Selecione...</option>
+							<?php 
+								foreach ($pack['marcaitens'] as $marcaitens) {
+									if($this->session->flashdata('id_marcaitens') == $marcaitens->id_marcaitens){
+										echo '<option selected value="'.$marcaitens->id_marcaitens.'">'.$marcaitens->marcaitens.'</option>';
+									} else {
+										echo '<option value="'.$marcaitens->id_marcaitens.'">'.$marcaitens->marcaitens.'</option>';
+									}
+								}
+							?>
+						</select>
 					</div>
 				</div>
 			</td>

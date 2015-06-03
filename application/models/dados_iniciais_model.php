@@ -482,7 +482,8 @@ class dados_iniciais_model extends CI_Model {
 		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
 		  'montadora' => $this->db->get('tbl_montadora')->result(),
 		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
-		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'marcaitens' => $this->db->get('tbl_marcaitens')->result());
 		return $pack;
 	}
 
@@ -492,7 +493,8 @@ class dados_iniciais_model extends CI_Model {
 		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
 		  'montadora' => $this->db->get('tbl_montadora')->result(),
 		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
-		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'marcaitens' => $this->db->get('tbl_marcaitens')->result());
 		return $pack;
 	}
 
@@ -503,7 +505,8 @@ class dados_iniciais_model extends CI_Model {
 		  'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
 		  'montadora' => $this->db->get('tbl_montadora')->result(),
 		  'estadoitem' => $this->db->get('tbl_estadoitem')->result(),
-		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
+		  'marcaitens' => $this->db->get('tbl_marcaitens')->result());
 		return $pack;
 	}
 	/*Fim das codificações das telas de  de Ordem de Serviço*/
@@ -657,7 +660,9 @@ left join tbl_setor TS on TS.id_setor = TU.id_setor
 left join tbl_secao TC on TC.id_secao = TU.id_secao
 left join tbl_depto TD on TD.id_depto = TU.id_depto
 left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
-		  'veiculo' => $this->db->get('tbl_veiculo')->result());
+		  'veiculo' => $this->db->get('tbl_veiculo')->result(),
+
+			'depto' => $this->db->get('tbl_depto')->result());
 		return $pack;
 		
 	}
@@ -696,8 +701,12 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	
 	public function ordem_Servico(){ 
 		$pack = array (
-		'ordemservico' => $this->db->query('select os.*, prefixo from tbl_ordemservico os left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-		left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by os.id_ordemservico;')->result(),
+		'ordemservico' => $this->db->query('SELECT  valortotalitem,  valortotalservico,  prefixo,  id_solicitacao, laudotecnicoocorrencia,  id_materiaisutilizados,  id_servico, 
+  id_estadoordemservico,  id_colaborador,  observacoes,  datasaida,  dataentrada,  id_unidadecliente,  id_fornecedorprestador, id_ordemservico, (custo_solicitacao.valortotalitem + 
+  custo_solicitacao.valortotalservico) total
+FROM 
+  public.custo_solicitacao;
+')->result(),
 		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
 		'unidadeutilizadora' => $this->db->query('select TU.*,setor,divisao,depto,secao from tbl_unidadeutilizadora TU

@@ -24,12 +24,12 @@
 						$contratoata = $contratoata.'-'.substr($id_afservicos->contratoata, 8);
 
 						echo "<tr>";
-							echo "<td>$id_afservicos->ordemservico</td>";
-							echo "<td>$id_afservicos->id_afservicos</td>";
-							echo "<td>$contratoata</td>";
-							echo "<td>$id_afservicos->prazoentrega</td>";
-							echo "<td>$id_afservicos->prefixo</td>";
-							echo '<td>'.anchor('edicoes/editar_Af_Servicos/'.$id_afservicos->id_afservicos.'','Editar').'</td>';
+							echo "<td align='center'>$id_afservicos->ordemservico</td>";
+							echo "<td align='center'>$id_afservicos->id_afservicos</td>";
+							echo "<td align='center'>$contratoata</td>";
+							echo "<td align='center'>$id_afservicos->prazoentrega</td>";
+							echo "<td align='center'>$id_afservicos->prefixo</td>";
+							echo '<td align="center">'.anchor('edicoes/editar_Af_Servicos/'.$id_afservicos->id_afservicos.'','Editar').'</td>';
 						echo "</tr>";
 
 					}
