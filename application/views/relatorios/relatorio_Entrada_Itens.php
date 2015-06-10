@@ -36,66 +36,23 @@
         </tfoot>
 		<tbody>
 				<?php
-					$qtdtotal = 0;
-					$totalvalores = 0;
 					foreach ($pack['entradaitens'] as $entradaitens) {
 						
 						echo '<tr>';
+							echo "<td>$entradaitens->codigointerno</td>";
+							echo "<td>$entradaitens->codigomontadora</td>";
+							echo "<td>$entradaitens->descricao</td>";
 
-						    echo "<td align='center'>$entradaitens->codigointerno</td>";
-
-						    foreach($pack['itens'] as $itens){
-							 	if($itens->id_itens == $entradaitens->codigointerno) {
-							 		echo "<td align='center'>$itens->codigomontadora</td>"; 
-							 		break;
-							 	}
-						    }
-
-						    foreach($pack['itens'] as $itens){
-							 	if($itens->id_itens == $entradaitens->codigointerno) {
-							 		echo "<td>$itens->descricao</td>"; 
-							 		break;
-							 	}
-						    }
 							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
-							$dataFormatada = date("d-m-Y", strtotime($entradaitens->dataentrada));
-							echo '<td>'.$dataFormatada.'</td>';
-							echo "<td align='center'>$entradaitens->quantidade</td>";
-						    
-						    foreach($pack['itens'] as $itens){
-
-							 	if($itens->id_itens == $entradaitens->codigointerno) {
-							 		$valor = $itens->precobruto;
-							 		$desconto = $itens->desconto;
-							 		$valorunitario = $valor - (($valor * $desconto)/100);
-							 		echo "<td align='center'>$valorunitario</td>"; 
-
-							 		echo "<td align='center'>".$entradaitens->quantidade * $valorunitario."</td>";
-							 		break;
-							 	}
-
-						    }
-
-							if(!empty($entradaitens->numnotafiscal)){
-								echo "<td align='center'>$entradaitens->numnotafiscal</td>";
-							}else{
-								echo "<td align='center'></td>";
-							}
-
-							foreach($pack['fornecedorprestador'] as $fornecedorprestador){
-							 	if($fornecedorprestador->id_fornecedorprestador == $entradaitens->id_fornecedor) {
-							 		echo "<td>$fornecedorprestador->nome</td>"; 
-							 		break;
-							 	}else{
-							 		echo "<td></td>"; 
-							 		break;
-							 	}
-						    }
-
-							echo "</tr>";
-
-							$qtdtotal = $qtdtotal + $entradaitens->quantidade;
-							$totalvalores = $totalvalores + ($entradaitens->quantidade * $valorunitario);
+							$dataFormatada = date("d/m/Y", strtotime($entradaitens->dataentrada));
+							echo '<td>'.$dataFormatada.'</td>';	
+							
+							echo "<td>$entradaitens->quantidade</td>";
+							echo "<td>".round($entradaitens->valorunit,2)."</td>";
+							echo "<td>".round($entradaitens->vtotal,2)."</td>";
+							echo "<td>$entradaitens->numnotafiscal</td>";
+						    echo "<td>$entradaitens->nome</td>";
+						echo "</tr>";
 					}
 				?>
 		</tbody>

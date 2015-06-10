@@ -464,11 +464,10 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function Contrato_Ata(){ 
-		$pack = array ($this->db->order_by('numerocontratoata','asc'),
-		  'contratoata' => $this->db->get('tbl_contratoata')->result(), 
-		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
-		  'objeto' => $this->db->get('tbl_objeto')->result());
+		$pack = array ('contratoata' => $this->db->query('select id_contratoata, numerocontratoata, dtinivigencia, dtfimvigencia, numanoemissorprorrogacao, nome, objetotitulo from tbl_contratoata ca 
+left join tbl_fornecedorprestador f on ca.id_fornecedorprestador = f.id_fornecedorprestador
+left join tbl_objeto o on ca.id_objetotitulo = o.id_objeto
+order by numerocontratoata')->result());
 		return $pack;
 	}
 	/*Fim das codificações das telas de  de Ordem de Serviço*/
@@ -603,13 +602,13 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	public function empenho(){ 
-		$pack = array ($this->db->order_by('numeroempenho','asc'),
-		'empenho' => $this->db->get('tbl_empenho')->result(), 
-		'segmento' => $this->db->get('tbl_segmento')->result(),
-		'contratoata' => $this->db->get('tbl_contratoata')->result(),
-		'objeto' => $this->db->get('tbl_objeto')->result(),
-		'dotacao' => $this->db->get('tbl_dotacao')->result(),
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result());
+		$pack = array (
+		'empenho' => $this->db->query('select id_empenho, numeroempenho, valorempenho, nome, segmento, objetotitulo from tbl_empenho e
+left join tbl_fornecedorprestador f on e.id_fornecedorprestador = f.id_fornecedorprestador
+left join tbl_segmento s on e.id_segmento = s.id_segmento
+left join tbl_contratoata ca on e.numcontratoata = ca.id_contratoata
+left join tbl_objeto o on ca.id_objetotitulo = o.id_objeto
+order by id_empenho')->result());
 		return $pack;
 	}
 	/*Fim das codificações das telas de empenho*/
@@ -772,11 +771,20 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 	public function af_Pecas() {
 
 
-		$pack = $this->db->query('select taf.id_ordemservico ordemservico, id_afpecas,tc.numerocontratoata contratoata,prazoentrega,prefixo from tbl_autofornecpecas taf
-left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
-left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
-left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afpecas')->result();
+		$pack = $this->db->query('select af.id_afpecas, dataafpecas, prefixo, nome, round(cast(sum((precobruto-(precobruto*desconto)/100)*quantidade) as numeric),2) valoritens,
+ (select round(cast(sum(cast(valorempenho as double precision))as numeric),2) from tbl_empenho e 
+	left join tbl_afpecas_x_empenho afpe on e.id_empenho = afpe.id_empenho 
+	left join tbl_autofornecpecas afp on afpe.id_afpecas = afp.id_afpecas
+	where afp.id_afpecas = af.id_afpecas) valorempenho
+from tbl_autofornecpecas af
+left join tbl_fornecedorprestador f on af.id_fornecedorprestador = f.id_fornecedorprestador 
+left join tbl_ordemservico os on af.id_ordemservico = os.id_ordemservico 
+left join tbl_solicitaordemservico so on os.id_solicitacao = so.id_solicitaordemservico 
+left join tbl_veiculo v on so.id_veiculo = v.id_veiculo 
+left join tbl_afpecas_x_itens afi on af.id_afpecas = afi.id_afpecas
+left join tbl_itens i on afi.id_itens = i.id_itens
+group by af.id_afpecas, dataafpecas, prefixo, nome
+order by af.id_afpecas')->result();
 
 		return $pack;
 
@@ -835,11 +843,26 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 	
 	public function af_Servicos(){ 
 
-		$pack = $this->db->query('select taf.id_ordemservico ordemservico, id_afservicos,tc.numerocontratoata contratoata,prazoentrega,prefixo from tbl_autofornecservicos taf
-left join tbl_contratoata tc on tc.id_contratoata = taf.id_contratoata
-left join tbl_ordemservico tos on tos.id_ordemservico = taf.id_ordemservico
-left join tbl_solicitaordemservico ts on id_solicitaordemservico = id_solicitacao
-left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afservicos')->result();
+		$pack = $this->db->query('select af.id_afservicos, nome, prefixo, dataafservicos, round(cast(sum((precobruto-(precobruto*desconto)/100)*quantidade) as numeric),2) valoritens,
+(select round(cast(valorunitario*quantidade as numeric),2) from tbl_servicos s
+	left join tbl_afservicos_x_servicos afss on afss.id_servicos = s.id_servicos 
+	left join tbl_autofornecservicos afs on afss.id_afservicos = afs.id_afservicos
+	where afs.id_afservicos = af.id_afservicos) valorservicos,
+
+ (select round(cast(sum(cast(valorempenho as double precision))as numeric),2) from tbl_empenho e 
+	left join tbl_afservicos_x_empenho afpe on e.id_empenho = afpe.id_empenho 
+	left join tbl_autofornecservicos afs on afpe.id_afservicos = afs.id_afservicos
+	where afs.id_afservicos = af.id_afservicos) valorempenho
+from tbl_autofornecservicos af
+left join tbl_contratoata ca on ca.id_contratoata = af.id_contratoata
+left join tbl_ordemservico os on os.id_ordemservico = af.id_ordemservico
+left join tbl_solicitaordemservico so on so.id_solicitaordemservico = os.id_solicitacao
+left join tbl_veiculo v on v.id_veiculo = so.id_veiculo
+left join tbl_fornecedorprestador f on af.id_fornecedor = f.id_fornecedorprestador
+left join tbl_afservicos_x_itens afi on afi.id_afservicos = af.id_afservicos
+left join tbl_itens i on i.id_itens = afi.id_itens
+group by af.id_afservicos, dataafservicos, prefixo, nome
+order by af.id_afservicos')->result();
 		
 		return $pack;
 	}
@@ -850,23 +873,28 @@ left join tbl_veiculo tv on tv.id_veiculo = ts.id_veiculo order by id_afservicos
 	/*===========================================================================================================*/
 
 	public function relatorio_Entrada_Itens(){ 
-		$pack = array ($this->db->order_by('codigointerno','asc'),
-		'entradaitens' => $this->db->get('tbl_entradaitens')->result(), 
-		'itens' => $this->db->get('tbl_itens')->result(), 
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'afpecas' => $this->db->get('tbl_afpecas_x_itens')->result(),
+		$pack = array ('entradaitens' => $this->db->query('select id_entradaitens, codigointerno, codigomontadora, descricao, dataentrada, quantidade,
+(precobruto-(precobruto*desconto)/100) valorunit, ((precobruto-(precobruto*desconto)/100)*quantidade) vtotal,
+ numnotafiscal, nome from tbl_entradaitens e
+left join tbl_fornecedorprestador f on e.id_fornecedor = f.id_fornecedorprestador
+left join tbl_itens i on e.codigointerno = i.id_itens
+order by codigointerno, id_entradaitens')->result(),
 		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
 		return $pack;
 	}
 	
 	public function relatorio_Saida_Itens(){ 
-		$pack = array ($this->db->order_by('codigointerno','asc'),
-		'saidaitens' => $this->db->get('tbl_saidaitens')->result(), 
-		'itens' => $this->db->get('tbl_itens')->result(), 
-		'cliente' => $this->db->get('tbl_clientes')->result(),
-		'solicitacao' => $this->db->get('tbl_solicitaordemservico')->result(),
-		'prefixo' => $this->db->query('select id_saidaitens, prefixo from tbl_veiculo v, tbl_ordemservico os, tbl_saidaitens si, tbl_solicitaordemservico so where
-		si.ordemservico = os.id_ordemservico and os.id_solicitacao = so.id_solicitaordemservico and so.id_veiculo = v.id_veiculo')->result(),
+		$pack = array ('saidaitens' => $this->db->query('select id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida, quantidade, 
+(precobruto-(precobruto*desconto)/100) valorunit, ((precobruto-(precobruto*desconto)/100) * quantidade) vtotal, 
+ordemservico, nome, prefixo 
+from tbl_saidaitens si left join tbl_itens i on si.codigointerno = i.id_itens 
+left join tbl_clientes c on si.id_cliente = c.id_cliente
+left join tbl_ordemservico os on si.ordemservico = os.id_ordemservico 
+left join tbl_solicitaordemservico so on os.id_solicitacao = so.id_solicitaordemservico 
+left join tbl_veiculo v on so.id_veiculo = v.id_veiculo
+group by id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida, quantidade, 
+(precobruto-(precobruto*desconto)/100), ordemservico, nome, prefixo 
+order by si.codigointerno, id_saidaitens')->result(),
 		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
 		return $pack;
 	}

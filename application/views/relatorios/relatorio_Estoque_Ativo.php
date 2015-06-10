@@ -58,23 +58,32 @@
 							 $valor = $itens->precobruto;
 							 $desconto = $itens->desconto;
 							 $valorunitario = $valor - (($valor * $desconto)/100);
-							 echo "<td align='center'>$valorunitario</td>"; 
+							 echo "<td align='center'>".round($valorunitario,2)."</td>"; 
 
-
-							 echo "<td align='center'>".$itens->estoquedisponivel * $valorunitario."</td>";
-
+							if (!empty($itens->estoquedisponivel)){
+							 	echo "<td align='center'>".round($itens->estoquedisponivel * $valorunitario,2)."</td>";
+							}else{
+								echo "<td></td>";
+							}
 
 							foreach($pack['fornecedorprestador'] as $fornecedorprestador){
-							 	if($fornecedorprestador->id_fornecedorprestador == $itens->id_itens) {
-							 		echo "<td>$fornecedorprestador->nome</td>"; 
-							 		break;
-							 	}
+
+								if (!empty($fornecedorprestador->id_fornecedorprestador)){
+
+								 	if($fornecedorprestador->id_fornecedorprestador == $itens->id_itens) {
+								 		echo "<td>$fornecedorprestador->nome</td>"; 
+								 		break;
+								 	}
+
+								}else{
+
+									echo "<td></td>"; 
+									break;	
+
+								}
 						    }
 
 							echo "</tr>";
-
-							$qtdtotal = $qtdtotal + $itens->estoquedisponivel;
-							$totalvalores = $totalvalores + ($itens->estoquedisponivel * $valorunitario);
 					}
 				?>
 		</tbody>

@@ -67,7 +67,7 @@
 
 						echo '<td>'.$setorS.'</td>';
 
-						echo "<td>$unidadeutilizadora->telefone</td>";
+						echo '<td><input class="telefoneValidar" value="'.$unidadeutilizadora->telefone.'" disabled ></td>';
 						echo '<td>'.anchor('edicoes/editar_Unidade_Utilizadora/'.$unidadeutilizadora->id_unidadeutilizadora.'','Editar').'</td>';
 						echo "</tr>";
 					}

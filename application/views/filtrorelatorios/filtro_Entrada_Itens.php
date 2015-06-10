@@ -102,7 +102,6 @@
 		<tr>
 			<td>
 				<div>
-					<input type="radio" name="filtro" />
 					<span>Ordem:</span>
 				</div>
 			</td>

@@ -5,11 +5,12 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-				<th class="span2">Ordem de Serviço</th>
-				<th class="span3">Número Autorização</th>
-				<th class="span2">Contrato / Ata</th>
-				<th class="span2">Veículo Prefixo</th>
-				<th class="span2">Prazo de Entrega</th>
+				<th class="span1">Número Autorização</th>
+				<th class="span5">Fornecedor</th>
+				<th class="span2">Prefixo</th>
+				<th class="span2">Data</th>
+				<th class="span2">Valor Peças</th>
+				<th class="span2">Valor Empenhos</th>
 				<th class="span2">Alterar</th>
 			</tr>
 		</thead>
@@ -19,16 +20,17 @@
 
 					foreach ($pack as $afpecas) {
 
-						$contratoata = substr($afpecas->contratoata, 0,4);
-						$contratoata = $contratoata.'/'.substr($afpecas->contratoata, 4,4);
-						$contratoata = $contratoata.'-'.substr($afpecas->contratoata, 8);
-
 						echo "<tr>";
-							echo "<td align='center'>$afpecas->ordemservico</td>";
 							echo "<td align='center'>$afpecas->id_afpecas</td>";
-							echo "<td align='center'>$contratoata</td>";
-							echo "<td align='center'>$afpecas->prazoentrega</td>";
+							echo "<td>$afpecas->nome</td>";
 							echo "<td align='center'>$afpecas->prefixo</td>";
+
+							//Formata a data para Dia-Mês-Ano, visto que de padrão a data vem em norte americano.
+							$dataFormatada = date("d-m-Y", strtotime($afpecas->dataafpecas));
+							echo '<td align="center">'.$dataFormatada.'</td>';
+
+							echo "<td align='center'>$afpecas->valoritens</td>";
+							echo "<td align='center'>$afpecas->valorempenho</td>";							
 							echo '<td align="center">'.anchor('edicoes/editar_Af_Pecas/'.$afpecas->id_afpecas.'','Editar').'</td>';
 						echo "</tr>";
 

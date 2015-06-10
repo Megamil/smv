@@ -175,7 +175,7 @@ class edicoes extends CI_Controller {
 
 			);
 
-			$this->edicao->cliente($dados);
+			$this->edicao->cliente_Editar($dados);
 
 			$this->session->set_userdata('aviso','Cliente: '.$this->input->post('nomecliente').' Editado com sucesso!');
 			$this->session->set_userdata('tipo','success');
@@ -640,7 +640,7 @@ class edicoes extends CI_Controller {
 
 				);
 
-			$this->edicao->servicos($dados);
+			$this->edicao->servicos_Editar($dados);
 
 			$this->session->set_userdata('aviso','Serviço: '.$this->input->post('nomeservico').' Alterado com sucesso.');
 			$this->session->set_userdata('tipo','success');
@@ -689,7 +689,7 @@ class edicoes extends CI_Controller {
 
 			}
 
-			$dados = array(
+			$dados = array (
 				'id_colaborador' => $this->input->post('id_colaborador'),
 				'codigofuncional' => $this->input->post('codigocolaborador'),
 				'nome' => $this->input->post('nomecolaborador'),
@@ -701,7 +701,7 @@ class edicoes extends CI_Controller {
 				'id_setor' => $this->input->post('setor')
 				);
 
-			$this->edicao->colaborador($dados);
+			$this->edicao->colaborador_Editar($dados);
 
 			$this->session->set_userdata('aviso','Colaborador: '.$this->input->post('nomecolaborador').' Alterado com sucesso!');
 			$this->session->set_userdata('tipo','success');
@@ -785,7 +785,7 @@ class edicoes extends CI_Controller {
 
 		);
 
-			$this->edicao->veiculo($dados);
+			$this->edicao->veiculo_Editar($dados);
 
 			$this->session->set_userdata('aviso','Veículo: '.$this->input->post('prefixo').' Alterado com sucesso');
 			$this->session->set_userdata('tipo','success');
@@ -1049,7 +1049,8 @@ class edicoes extends CI_Controller {
 				'id_estadoitem' => $id_estadoitem,
 				'precobruto' => $precobruto,
 				'gaveta' => $gaveta,
-				'desconto' => $desconto
+				'desconto' => $desconto,
+				'id_marcaitens' => $this->input->post('id_marcaitens')
 
 			);
 
@@ -1314,6 +1315,7 @@ class edicoes extends CI_Controller {
 			'id_colaborador' => $this->input->post('id_colaborador'),
 			'id_colaborador2' => $this->input->post('id_colaborador2'),
 			'observacoes' => $this->input->post('observacoes')
+			
 
 		);
 

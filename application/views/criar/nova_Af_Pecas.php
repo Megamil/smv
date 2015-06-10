@@ -221,7 +221,7 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 				</div>
 			</td>
 
-			<td valign="top" colspan="2">
+			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
 						<span class="help-inline">Veículo Prefixo</span>
@@ -231,9 +231,17 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 				<div class="control-group">
 					<div class="controls input-group">
 					<span class="help-inline input-group-addon">DT-</span>
-					<input type="text" class="form-control input_Vazio" name="id_veiculoprefixo" id="id_veiculoprefixo" aria-describedby="basic-addon1" placeholder="Prefixo" style="max-width:100px" disabled/>
+					<input type="text" class="form-control input_Vazio" name="id_veiculoprefixo" id="id_veiculoprefixo" aria-describedby="basic-addon1" placeholder="Prefixo" style="max-width:100px" disabled/> 
 					</div>
 				</div>
+			</td>
+			<td>
+				<div class="control-group">	
+					<div class="controls">
+					<span class="help-inline">Data A.F.</span>
+					<input type="text" class="form-control" name="dataafpecas" value="<?php echo date('d/m/Y'); ?>" placeholder="Data AF Pecas" disabled/>
+					</div>
+				</div>	
 			</td>
 		</tr>
 		<!-- ***************************** FINAL DA NONA LINHA *********************************** -->
@@ -299,7 +307,7 @@ echo form_open("criar/nova_Af_Pecas",$form); ?>
 
 				<div class="control-group">
 					<div class="controls">
-						<textarea name="observacoes" class="form-control input_Vazio" cols="140" rows="1" placeholder="Observações"> <?php echo $this->session->flashdata('observacoes'); ?></textarea>
+						<textarea name="observacoes" class="form-control textarea_Vazio" cols="140" rows="1" placeholder="Observacoes"> <?php echo $this->session->flashdata('observacoes'); ?></textarea>
 					</div>
 				</div>
 			</td>

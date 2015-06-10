@@ -83,7 +83,7 @@
 				<div class="control-group">
 					<div class="controls">	
   						<span id="basic-addon1">Nota Fiscal</span>
- 						<input type="text" class="form-control" placeholder="Nota Fiscal" value="<?php echo $pack['entradaitens']->row()->numnotafiscal; ?>" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
+ 						<input type="text" class="form-control input_Vazio" placeholder="Nota Fiscal" value="<?php echo $pack['entradaitens']->row()->numnotafiscal; ?>" name="numnotafiscal" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
  					</div>
 				</div>
 			</td>
@@ -139,7 +139,7 @@
 		</tbody>
 	</table>
 
-	<button type="submit" class="btn btn-success pull-center"> ALTERAR </button>
+	<button type="submit" class="btn btn-success pull-center" id="validar_Enviar"> ALTERAR </button>
 
 	<?php 
 	 	echo anchor('main/redirecionar/estoque-entrada_Itens', '<div class="btn btn-info pull-center"> CANCELAR </div>');

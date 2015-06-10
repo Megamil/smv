@@ -59,7 +59,7 @@
 							 $desconto = $itens->desconto;
 							 $liquido = $bruto - (($bruto * $desconto)/100);
 
-							 echo "<td align='center'>$liquido</td>";
+							 echo "<td align='center'>".round($liquido,2)."</td>";
 
 
 							 echo "<td align='center'>$itens->localizacao</td>";

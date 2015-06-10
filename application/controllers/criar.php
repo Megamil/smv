@@ -953,7 +953,8 @@ public function novo_Item() {
 				'id_estadoitem' => $id_estadoitem,
 				'precobruto' => $precobruto,
 				'gaveta' => $gaveta,
-				'desconto' => $desconto
+				'desconto' => $desconto,
+				'id_marcaitens' => $this->input->post('id_marcaitens')
 
 			);
 
@@ -1163,6 +1164,7 @@ public function nova_Entrada_Itens() {
 		$this->form_validation->set_rules('id_colaborador','Colaborador','Required');
 		$this->form_validation->set_rules('id_colaborador2','Colaborador 2','Required');
 		$this->form_validation->set_rules('observacoes','Observação','Required');
+		
 
 		if($this->form_validation->run()){
 
@@ -1175,7 +1177,8 @@ public function nova_Entrada_Itens() {
 				'contato' => $this->input->post('contato'),
 				'id_colaborador' => $this->input->post('id_colaborador'),
 				'id_colaborador2' => $this->input->post('id_colaborador2'),
-				'observacoes' => $this->input->post('observacoes')
+				'observacoes' => $this->input->post('observacoes'),
+				'dataafpecas' => date("Y-m-d")
 
 			);
 
@@ -1199,6 +1202,7 @@ public function nova_Entrada_Itens() {
 		$this->session->set_flashdata('id_colaborador', $this->input->post('id_colaborador'));
 		$this->session->set_flashdata('id_colaborador2', $this->input->post('id_colaborador2'));
 		$this->session->set_flashdata('observacoes', $this->input->post('observacoes'));
+		$this->session->set_flashdata('dataafpecas', $this->input->post('dataafpecas'));
 
 		$this->session->set_userdata('aviso',validation_errors());
 		$this->session->set_userdata('tipo','danger');
@@ -1234,7 +1238,8 @@ public function nova_Entrada_Itens() {
 				'orcamento' => $this->input->post('orcamento'),
 				'id_colaborador' => $this->input->post('id_colaborador'),
 				'id_colaborador2' => $this->input->post('id_colaborador2'),
-				'observacoes' => $this->input->post('observacoes')
+				'observacoes' => $this->input->post('observacoes'),
+				'dataafservicos' => date('Y-m-d')
 
 			);
 

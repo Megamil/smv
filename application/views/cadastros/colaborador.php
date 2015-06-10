@@ -16,20 +16,22 @@
 		</thead>
 
 		<tbody>
-				<?php
+			<?php
 
-					foreach ($pack['colaborador'] as $colaborador) {
+				foreach ($pack['colaborador'] as $colaborador) {
 
-						echo "<tr>";
+					echo "<tr>";
+
 						echo "<td>$colaborador->id_colaborador</td>";
 						echo "<td>$colaborador->codigofuncional</td>";
 						echo "<td>$colaborador->nome</td>";
-						echo '<td><input class="telefoneValidar" value="'.$colaborador->telefone.'" disabled></td>';
-						echo '<td><input class="telefoneValidar" value="'.$colaborador->celular.'" disabled></td>';
-						echo "<td>$colaborador->cpf</td>";
+						echo '<td><input type="text" class="telefoneValidar" value="'.$colaborador->telefone.'" disabled></td>';
+						echo '<td><input type="text" class="telefoneValidar" value="'.$colaborador->celular.'" disabled></td>';
+						echo '<td><input type="text" class="cpfValidar" value="'.$colaborador->cpf.'" disabled></td>';
 						echo '<td>'.anchor('edicoes/editar_colaborador/'.$colaborador->id_colaborador.'','Editar').'</td>';
-						echo "</tr>";
-					}
-				?>
+
+					echo "</tr>";
+				}
+			?>
 		</tbody>
 	</table>

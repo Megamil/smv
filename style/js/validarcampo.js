@@ -67,6 +67,7 @@ $(document).ready(function(){
 	$('#cnpjValidar').mask("99.999.999/9999-99");
 	$('.cnpjValidar').mask("99.999.999/9999-99");
 	$('#cpfValidar').mask("999.999.999-99");
+	$('.cpfValidar').mask("999.999.999-99"); //inclui essa linha
 	$('#cepValidar').mask("?99999-999");
 	$('.cepValidar').mask("?99999-999");
 	$('#placaValidar').mask("?aaa-9999");
@@ -85,6 +86,7 @@ $(document).ready(function(){
 			$('#cepValidar').mask("?99999999");
 			$('.cepValidar').mask("?99999999");
 			$('#cpfValidar').mask("99999999999");
+			$('.cpfValidar').mask("999.999.999-99"); //inclui essa linha
 			$('#placaValidar').mask("?aaa9999");
 			$('.placaValidar').mask("?aaa9999");
 			$('.processo').mask("?99999999");
@@ -107,6 +109,7 @@ $(document).ready(function(){
 			$('#cnpjValidar').mask("99.999.999/9999-99");
 			$('.cnpjValidar').mask("99.999.999/9999-99");
 			$('#cpfValidar').mask("999.999.999-99");
+			$('.cpfValidar').mask("999.999.999-99"); //inclui essa linha
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");
@@ -128,6 +131,7 @@ $(document).ready(function(){
 			$('#cnpjValidar').mask("99.999.999/9999-99");
 			$('.cnpjValidar').mask("99.999.999/9999-99");
 			$('#cpfValidar').mask("999.999.999-99");
+			$('.cpfValidar').mask("999.999.999-99"); //inclui essa linha
 			$('#cepValidar').mask("?99999-999");
 			$('.cepValidar').mask("?99999-999");
 			$('#placaValidar').mask("?aaa-9999");

@@ -5,11 +5,14 @@
 	<table class="table table-striped table-hover table-condensed" id="tabela">
 		<thead> 
 			<tr>
-				<th class="span2">Ordem de Serviço</th>
-				<th class="span3">Número Autorização</th>
-				<th class="span2">Contrato / Ata</th>
-				<th class="span2">Veículo Prefixo</th>
-				<th class="span2">Prazo de Entrega</th>
+				<th class="span2">Número Autorização</th>
+				<th class="span3">Fornecedor</th>
+				<th class="span2">Prefixo</th>
+				<th class="span2">Data</th>
+				<th class="span2">Valor Peças</th>
+				<th class="span2">Valor Serviços</th>
+				<th class="span2">Valor Empenhos</th>
+				<th class="span2">Valor Total</th>
 				<th class="span2">Alterar</th>
 			</tr>
 		</thead>
@@ -19,16 +22,21 @@
 
 					foreach ($pack as $id_afservicos) {
 
-						$contratoata = substr($id_afservicos->contratoata, 0,4);
-						$contratoata = $contratoata.'/'.substr($id_afservicos->contratoata, 4,4);
-						$contratoata = $contratoata.'-'.substr($id_afservicos->contratoata, 8);
-
 						echo "<tr>";
-							echo "<td align='center'>$id_afservicos->ordemservico</td>";
 							echo "<td align='center'>$id_afservicos->id_afservicos</td>";
-							echo "<td align='center'>$contratoata</td>";
-							echo "<td align='center'>$id_afservicos->prazoentrega</td>";
+							echo "<td align='center'>$id_afservicos->nome</td>";
 							echo "<td align='center'>$id_afservicos->prefixo</td>";
+
+							$dataFormatada = date("d-m-Y", strtotime($id_afservicos->dataafservicos));
+							echo '<td align="center">'.$dataFormatada.'</td>';
+	
+							echo "<td align='center'>$id_afservicos->valoritens</td>";
+							echo "<td align='center'>$id_afservicos->valorservicos</td>";
+							echo "<td align='center'>$id_afservicos->valorempenho</td>";
+
+							$vtotal = $id_afservicos->valoritens + $id_afservicos->valorservicos;
+							echo "<td align='center'>".$vtotal."</td>";
+
 							echo '<td align="center">'.anchor('edicoes/editar_Af_Servicos/'.$id_afservicos->id_afservicos.'','Editar').'</td>';
 						echo "</tr>";
 

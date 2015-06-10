@@ -82,9 +82,9 @@
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->datasaida));
 							echo '<td>'.$dataFormatada.'</td>';
 
-							echo "<td>".$ordemservico->valortotalitem."</td>";
-							echo "<td>".$ordemservico->valortotalservico."</td>";
-							echo "<td>".$ordemservico->total."</td>";
+							echo "<td>".round($ordemservico->valortotalitem,2)."</td>";
+							echo "<td>".round($ordemservico->valortotalservico,2)."</td>";
+							echo "<td>".round($ordemservico->total,2)."</td>";
 
 							foreach($pack['solicitaordemservico'] as $solicitaordemservico){
 								if($solicitaordemservico->id_solicitaordemservico == $ordemservico->id_solicitacao){
