@@ -12,7 +12,7 @@ echo form_open("edicoes/editando_Objeto",$form); ?>
 			<td>
 				<div class="input-group">
 					<span class="input-group-addon">Título</span>
-					<input type="text" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" value="<?php echo $pack->row()->objetotitulo; ?>" maxlength="100"/>
+					<input class="form-control" type="text" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" value="<?php echo $pack->row()->objetotitulo; ?>" maxlength="100" style="max-width:393px; min-width:393px;" />
 				</div>
 			</td>
 		</tr>
@@ -20,7 +20,7 @@ echo form_open("edicoes/editando_Objeto",$form); ?>
 			<td valign="top">
 				<div class="input-group">
 					<span class="input-group-addon">Texto</span>
-					<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="50" rows="10" placeholder="Texto do Objeto" maxlength="700"><?php echo $pack->row()->objetotexto; ?></textarea>
+					<textarea name="nomeobjetotexto" type="text" class="form-control textarea_Vazio" cols="50" rows="10" placeholder="Texto do Objeto" maxlength="700"><?php echo $pack->row()->objetotexto; ?></textarea>
 				</div>
 			</td>
 		</tr>

@@ -465,7 +465,7 @@
 					
 					
 					<span class="input-group-addon" id="basic-addon1">Número / código da dotação</span>
-					<input type="text" class="form-control" id="nomedotacao" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
+					<input type="text" class="form-control input_Vazio" id="nomedotacao" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
 				</div>
 			</td>
 		</tr>
@@ -475,7 +475,7 @@
 				<div class="input-group"  width="200px">
 					<span class="input-group-addon" id="basic-addon1">Segmento</span>
 
-					<select class="form-control" name="segmento" id="segmento" placeholder="Segmento">
+					<select class="form-control input_Vazio" name="segmento" id="segmento" placeholder="Segmento">
 
 						<option>Selecione...</option>
 
@@ -510,7 +510,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovaDotacao">Cancelar</button>
-        <button type="button" name="cadastrarNovaDotacao"  class="btn btn-success" id="AdicionarDotacao">Incluir Dotação</button>
+        <button type="button" name="cadastrarNovaDotacao"  class="btn btn-success validar_Enviar" id="AdicionarDotacao">Incluir Dotação</button>
        </div>
     </div>
   </div>

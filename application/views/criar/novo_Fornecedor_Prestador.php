@@ -57,7 +57,7 @@ echo form_open("criar/novo_Fornecedor_Prestador",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Rua</span>
+						<span class="help-inline">Endereço</span>
 					</div>
 				</div>
 			</td>
@@ -98,7 +98,7 @@ echo form_open("criar/novo_Fornecedor_Prestador",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="complementofornecedorprestador" value="<?php echo $this->session->flashdata('complementofornecedorprestador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
+					<input type="text" class="form-control" name="complementofornecedorprestador" value="<?php echo $this->session->flashdata('complementofornecedorprestador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Complemento" maxlength="30" />
 					</div>
 				</div>
 			</td>

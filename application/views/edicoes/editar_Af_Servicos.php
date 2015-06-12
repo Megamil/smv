@@ -583,7 +583,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control" name="empenho_id_empenho" id="empenho_id_empenho" placeholder="Empenho" style="max-width:600px">
+							<select class="form-control input-Vazio" name="empenho_id_empenho" id="empenho_id_empenho" placeholder="Empenho" style="max-width:600px">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['empenho'] as $empenho) {
@@ -610,7 +610,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="validar_Enviar_Empenhoas">Incluir Empenho</button>
+        <button type="button" class="btn btn-success" id="validar_Enviar_Empenho">Incluir Empenho</button>
       </div>
     </div>
   </div>
@@ -641,7 +641,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control vazio" name="item_id_servico" id="item_id_servico" placeholder="Servico" >
+							<select class="form-control vazio" name="item_id_servico" id="item_id_servico" placeholder="Item" >
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['itens'] as $itens) {
@@ -682,7 +682,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="validar_Enviar_Itemas">Incluir Material</button>
+        <button type="button" class="btn btn-success" id="validar_Enviar_Item">Incluir Material</button>
        </div>
     </div>
   </div>
@@ -700,7 +700,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
         <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Serviço?</h4>
       </div>
-	<div class="errorModalItem" ></div>
+	<div class="errorModalServico" ></div>
       <div class="modal-body">
       		<table border="0">
       		<tr>
@@ -751,7 +751,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="validar_Enviar_Servicoas">Incluir Serviço</button>
+        <button type="button" class="btn btn-success" id="validar_Enviar_Servico">Incluir Serviço</button>
        </div>
     </div>
   </div>

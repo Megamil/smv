@@ -558,7 +558,7 @@ echo form_open("edicoes/editando_Af_Pecas",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control vazio" name="item_id_servico" id="item_id_servico" placeholder="Servico" >
+							<select class="form-control vazio" name="item_id_servico" id="item_id_servico" placeholder="Item">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['itens'] as $itens) {
@@ -598,7 +598,7 @@ echo form_open("edicoes/editando_Af_Pecas",$form); ?>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" id="validar_Enviar_Item">Incluir Material</button>
        </div>
     </div>

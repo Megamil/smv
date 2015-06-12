@@ -63,6 +63,7 @@ $(document).ready(function(){
 	});
 
 	//Cria as mascaras para os campos logo de inicio
+	$('#telefoneValidar').mask("(?99)?99999-9999");
 	$('.telefoneValidar').mask("(?99)?99999-9999");
 	$('#cnpjValidar').mask("99.999.999/9999-99");
 	$('.cnpjValidar').mask("99.999.999/9999-99");
@@ -80,6 +81,7 @@ $(document).ready(function(){
 	$('.input_Vazio').focusout(function(){
 
 			//Antes de validar retira as mascaras dos campos
+			$('#telefoneValidar').mask("(?99)?99999-9999");
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("99999999999999");
 			$('.cnpjValidar').mask("99999999999999");
@@ -105,6 +107,7 @@ $(document).ready(function(){
 			.append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 
 			//Retorna as mascaras.
+			$('#telefoneValidar').mask("(?99)?99999-9999");
 			$('.telefoneValidar').mask("(?99)?99999-9999");
 			$('#cnpjValidar').mask("99.999.999/9999-99");
 			$('.cnpjValidar').mask("99.999.999/9999-99");
@@ -127,6 +130,7 @@ $(document).ready(function(){
 			$('#error').remove();
 
 			//Retorna as mascaras.
+			$('#telefoneValidar').mask("(?99)?99999-9999");
 			$('.telefoneValidar').mask("(?99)?99999-9999");
 			$('#cnpjValidar').mask("99.999.999/9999-99");
 			$('.cnpjValidar').mask("99.999.999/9999-99");
@@ -174,6 +178,7 @@ $(document).ready(function(){
 			var erros = 0;
 			
 			//Antes de validar retira as mascaras dos campos
+			$('#telefoneValidar').mask("(?99)?99999-9999");
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("99999999999999");
 			$('.cnpjValidar').mask("99999999999999");
@@ -201,6 +206,7 @@ $(document).ready(function(){
 					$(this).css('background','rgba(100,0,0,0.1)');
 
 					//Volta as mascaras aos campo
+					$('#telefoneValidar').mask("(?99)?99999-9999");
 					$('.telefoneValidar').mask("(?99)?99999-9999");
 					$('#cnpjValidar').mask("99.999.999/9999-99");
 					$('.cnpjValidar').mask("99.999.999/9999-99");

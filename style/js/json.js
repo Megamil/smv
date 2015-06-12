@@ -284,19 +284,19 @@ $(document).ready(function(){
 
             erro = true;
 
-             $('#error').remove();
-              $(this).css('border','1px solid red');
-              $(this).css('background','rgba(100,0,0,0.1)');
-              var ph = $(this).attr('placeholder');  
+            $('#error').remove();
+            $(this).css('border','1px solid red');
+            $(this).css('background','rgba(100,0,0,0.1)');
+            var ph = $(this).attr('placeholder');  
 
-              $('.errorModalItem').addClass("alert alert-danger")
-              .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
+            $('.errorModalItem').addClass("alert alert-danger")
+            .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 
           }
 
         });
 
-        if(erro == false) {
+        if(!erro) {
 
           var json = 'http://172.16.177.73/smv/style/json/adicionarItemAf.php?id_afpecas='+$("#id_afpecas").val()+'&id_itens='+$("#item_id_servico").val()+'&quantidade='+$("#modal_quantidade").val();
 
@@ -316,7 +316,7 @@ $(document).ready(function(){
 
 // Usado em af_servicos
 
-     $("#validar_Enviar_Empenhoas").click(function(){
+     $("#validar_Enviar_Empenho").click(function(){
 
         if($("#empenho_id_empenho").val() != 'Selecione...') {
 
@@ -351,20 +351,18 @@ $(document).ready(function(){
 
      });
 
-     $("#validar_Enviar_Itemas").click(function(){
+     $("#validar_Enviar_Item").click(function(){
 
       var erro = false;
 
         $(".vazio").each(function(){
 
-          if($(this).val() != 'Selecione...' && $(this).val() != '') {
+          if($(this).val() == 'Selecione...' || $(this).val() == '') {
 
             $(this).css('border','1px solid green');
             $(this).css('background','rgba(0,100,0,0.1)');
             $('.errorModalItem').removeClass('alert alert-danger');
             $('#error').remove();
-
-          } else {
 
             erro = true;
 
@@ -376,11 +374,16 @@ $(document).ready(function(){
               $('.errorModalItem').addClass("alert alert-danger")
               .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 
-          }
+          } 
 
         });
 
-        if(erro == false) {
+        if(!erro) {
+
+          $(this).css('border','1px solid green');
+            $(this).css('background','rgba(0,100,0,0.1)');
+            $('.errorModalItem').removeClass('alert alert-danger');
+            $('#error').remove();
 
           var json = 'http://172.16.177.73/smv/style/json/adicionarItemAfs.php?id_afservicos='+$("#id_afservicos").val()+'&id_itens='+$("#item_id_servico").val()+'&quantidade='+$("#modal_quantidade").val();
           $.ajax({        
@@ -397,20 +400,18 @@ $(document).ready(function(){
 
      });
 
-$("#validar_Enviar_Servicoas").click(function(){
+$("#validar_Enviar_Servico").click(function(){
 
       var erro = false;
 
         $(".vazios").each(function(){
 
-          if($(this).val() != 'Selecione...' && $(this).val() != '') {
+          if($(this).val() == 'Selecione...' || $(this).val() == '') {
 
             $(this).css('border','1px solid green');
             $(this).css('background','rgba(0,100,0,0.1)');
-            $('.errorModalItem').removeClass('alert alert-danger');
+            $('.errorModalServico').removeClass('alert alert-danger');
             $('#error').remove();
-
-          } else {
 
             erro = true;
 
@@ -419,17 +420,24 @@ $("#validar_Enviar_Servicoas").click(function(){
               $(this).css('background','rgba(100,0,0,0.1)');
               var ph = $(this).attr('placeholder');  
 
-              $('.errorModalItem').addClass("alert alert-danger")
+              $('.errorModalServico').addClass("alert alert-danger")
               .append('<p id="error">Você deixou o campo: '+ ph +' em branco.</p>');
 
           }
 
         });
 
-        if(erro == false) {
+        if(!erro) {
+
+           $(".vazios").each(function(){
+            $(this).css('border','1px solid green');
+            $(this).css('background','rgba(0,100,0,0.1)');
+            $('.errorModaServico').removeClass('alert alert-danger');
+            $('#error').remove();
+            });
 
           var json = 'http://172.16.177.73/smv/style/json/adicionarServicoAfs.php?id_servicos='+$("#id_servicos").val()+'&quantidade='+$("#quantidade").val()+'&id_afservicos='+$("#id_afservicos").val();
-          alert(json);
+          
           $.ajax({        
 
             type: "POST",

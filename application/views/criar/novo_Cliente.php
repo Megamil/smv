@@ -57,7 +57,7 @@ echo form_open("criar/novo_Cliente",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Rua</span>
+						<span class="help-inline">Endereço</span>
 					</div>
 				</div>
 			</td>

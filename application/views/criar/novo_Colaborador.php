@@ -114,7 +114,7 @@ echo form_open("criar/novo_Colaborador",$form); ?>
 			<td>
 				<div class="control-group">
 					<div class="controls">
-					<input type="text" class="form-control input_Vazio" name="funcaocolaborador" value="<?php echo $this->session->flashdata('funcaocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Cidade" maxlength="30" />
+					<input type="text" class="form-control input_Vazio" name="funcaocolaborador" value="<?php echo $this->session->flashdata('funcaocolaborador'); ?>" aria-describedby="basic-addon1" size="52" placeholder="Função" maxlength="30" />
 					</div>
 				</div>
 			</td>

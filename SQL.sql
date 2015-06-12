@@ -522,20 +522,139 @@ Insert into tbl_uf (uf) values ('SP');
 Insert into tbl_uf (uf) values ('TO');
   
 /*Tabela tbl_unidademedida dados */
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (1,'mg');
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (2,'g');
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (3,'kg');
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (4,'ml');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (1,'MG');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (2,'G');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (3,'KG');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (4,'ML');
 Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (5,'L');
 Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (6,'PÇ');
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (7,'cm');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (7,'CM');
 Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (8,'M');
-Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (9,'km');
+Insert into tbl_unidademedida (id_unidademedida, unidademedida) values (9,'KM');
 
 /*Tabela tbl_estadoordemservico dados retirados da PG 33*/
 Insert into tbl_estadoordemservico (id_estadoordemservico, estadoordemservico) values (1,'Em Aberto');
 Insert into tbl_estadoordemservico (id_estadoordemservico, estadoordemservico) values (2,'Fechada');
 
+/*Tabela tbl_segmento dados retirados da PG 74 */
+Insert into tbl_segmento (id_segmento, segmento) values (1,'Atenção Básica');
+Insert into tbl_segmento (id_segmento, segmento) values (2,'Média / Alta');
+Insert into tbl_segmento (id_segmento, segmento) values (3,'Vigilância em Saúde');
+
+/*Tabela tbl_unidade de saude */
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (1,2054515,'CAPS AD II');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (2,3376826,'UBS SANTA LIDIA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (3,2074648,'UBS UIRAPURU');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (4,3338509,'CAPS TEAR');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (5,2064391,'UBS JANDAIA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (6,2062100,'UBS MARCOS FREIRE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (7,5275814,'UBS NOVA CIDADE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (8,3338525,'UBS BANANAL');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (9,2065444,'UBS DONA LUIZA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (10,2718863,'U.N.A.O. MARCOS FREIRE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (11,2072327,'UBS TRANQUILIDADE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (12,6305660,'UBS DINAMARCA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (13,4048326,'UBS PRESIDENTE DUTRA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (14,2090570,'UBS BAMBI');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (15,1630854,'CAPS ARCO IRIS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (16,2036002,'UBS FLOR DA MONTANHA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (17,3188965,'UBS PRIMAVERA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (18,2035987,'CEO MACEDO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (19,2055171,'UBS NOVO RECREIO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (20,3296350,'CEREST');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (21,2044218,'UBS JD. MUNHOZ');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (22,2049570,'UBS NOVA CUMBICA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (23,2052296,'UBS CIDADE MARTINS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (24,2718065,'CAPD');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (25,3179613,'UBS CONTINENTAL');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (26,2030276,'UBS PARAVENTI');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (27,2084597,'UBS CAVADAS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (28,3130711,'UBS PIRATININGA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (29,3323005,'UBS PONTE ALTA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (30,2089793,'CEP');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (31,2040077,'UBS CUMMINS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (32,7064383,'UBS INOCOOP');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (33,2062070,'UBS SOIMCO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (34,5259991,'UBS SANTOS DUMONT');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (35,6626645,'SAE CARLOS CRUZ');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (36,2483635,'UBS MARIO MACCA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (37,2080554,'UBS HAROLDO VELOSO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (38,2036010,'UBS JUREMA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (39,2040093,'UBS JD. JACY');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (40,2035995,'UBS ROSA DE FRANCA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (41,2062062,'UBS VILA GALVAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (42,2044951,'CEO VILA GALVAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (43,2062089,'UBS TABOAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (44,2061090,'UBS JD. VILA GALVAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (45,2054507,'CEO - ANGELICA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (46,5997399,'UBS MARINOPOLIS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (47,2065444,'POLICLINICA DONA LUIZA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (48,2072130,'POLICLINICA BONSUCESSO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (49,2084620,'CEO - SAO JOAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (50,3011542,'UBS SOBERANA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (51,2064405,'UBS VILA CARMELA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (52,3491137,'UBS JD. CUMBICA I');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (53,6443281,'CAPS ALVORECER');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (54,6821238,'CAPS BOM CLIMA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (55,6811221,'CTA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (56,2069822,'PA ALVORADA / UBS ALVORADA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (57,5275806,'UBS JD. CUMBICA II');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (58,2080427,'HOSP MUNICIPAL DA CRIANCA E ADOLESC');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (59,5466512,'CAPS RECRIAR');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (60,2040085,'UBS CECAP');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (61,5595746,'POLI PARAVENTI');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (62,2084619,'UBS PONTE GRANDE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (63,2064405,'UBS CARMELA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (64,2062119,'UBS PIMENTAS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (65,3004031,'UBS ALLAN KARDEC');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (66,2055198,'UBS VILA BARROS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (67,2061082,'UBS JOVAIA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (68,2052318,'UBS MORROS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (69,2074257,'CAPS SAUDE MENTAL');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (70,3338509,'CAPS TEAR');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (71,2074257,'CEMEG');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (72,2066939,'UBS BELVEDERE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (73,2062097,'UBS PALMIRA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (74,2049961,'UBS VILA RIO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (75,2054515,'CAPS AD III');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (76,0,'REGIONAL IV PIMENTAS CUMBICA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (77,2044188,'UBS FORTALEZA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (78,2718804,'UBS LAVRAS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (79,0,'REGIAO I CENTRO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (80,2044196,'UBS SANTO AFONSO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (81,3449947,'UBS ITAPEGICA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (82,0,'CENTRO DE CONTROLE DE ZOONOSES');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (83,0,'SVO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (84,2054531,'UBS VILA FATIMA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (85,2073552,'POLICLINICA PARAISO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (86,2090589,'PA JARDIM MARIA DIRCE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (87,3843076,'SECRETARIA DE SAUDE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (88,2084627,'UBS SAO RICARDO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (89,3452662,'UBS AGUA AZUL');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (90,5275792,'UBS ACACIO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (91,2073994,'UBS CABUCU');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (92,3413403,'UBS SAO RAFAEL');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (93,2069768,'AMBULATORIO DA CRIANCA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (94,3338533,'UBS NORMANDIA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (95,2054493,'UBS SERODIO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (96,2053241,'CEMEG SAO JOAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (97,2082861,'HMU HOSPITAL MUNICIPAL DE URGENCIA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (98,0,'DIVISAO DE PATRIMONIO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (99,6916074,'UPA SAO JOAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (100,0,'GESTAO DA EDUCACAO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (101,0,'ALMOXARIFADO DE MEDICAMENTOS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (102,4048296,'UBS JARDIM PAULISTA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (103,6811221,'CTA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (104,0,'REGIAO III SAO JOAO / BONSUCESSO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (105,0,'REGIONAL II CANTAREIRA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (106,7086903,'BANCO DE LEITE HUMANO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (107,6956785,'CEOGS');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (108,5784115,'FARMACIA POPULAR');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (109,6945112,'SAMU');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (110,5501083,'UBS CAMBARA');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (111,3226921,'UBS ALAMO');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (112,3413411,'UBS RECREIO SAO JORGE');
+insert into tbl_unidadesaude (id_unidadesaude, cnes,unidadesaude) values (113,2054523,'UBS ARACILIA');
 
 /*Inserts SMV Fim*/
 
@@ -904,3 +1023,13 @@ Insert into grupo_aplicacoes (fk_grupo, fk_aplicacao) values (1,111);
 /*Adicionando o usuário ao grupo:*/
 Insert into grupo_usuarios(fk_grupo, fk_usuario) values (1,1);
 /*FIM DOS SQL de segurança*/
+
+/* ===================================================================================================================== */
+/* =======COMANDO PARA LIMPAR A BASE DE DADOS DO SISTEMA, ALTERAR O MESMO PARA INCLUIR NOVAS TABELAS SE NECESSÁRIO=======*/
+
+TRUNCATE tbl_afpecas_x_empenho, tbl_afpecas_x_itens, tbl_afservicos_x_empenho, tbl_afservicos_x_itens, tbl_afservicos_x_servicos, tbl_autofornecpecas, tbl_autofornecservicos,
+tbl_clientes, tbl_colaboradores, tbl_combustivel, tbl_contratoata, tbl_depto, tbl_divisao, tbl_dotacao, tbl_empenho, tbl_entradaitens, tbl_etiquetas, tbl_fornecedorprestador,
+tbl_grupoitens, tbl_itens, tbl_marcaitens, tbl_modalidadedelicitacao, tbl_montadora, tbl_objeto, tbl_ordemservico, tbl_ordemservico_x_item, tbl_ordemservico_x_servico, tbl_saidaitens, 
+tbl_secao, tbl_segmento, tbl_servicos, tbl_setor, tbl_solicitaordemservico, tbl_unidadeutilizadora, tbl_veiculo CASCADE 
+
+/* ===================================================================================================================== */

@@ -10,7 +10,7 @@ echo form_open("criar/novo_Objeto",$form); ?>
 			<td>
 				<div class="input-group">
 					<span class="input-group-addon">Título</span>
-					<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+					<input type="text" class="form-control input_Vazio" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" style="max-width:413px"/>
 				</div>
 			</td>
 		</tr>
@@ -18,7 +18,7 @@ echo form_open("criar/novo_Objeto",$form); ?>
 			<td valign="top">
 				<div class="input-group">
 					<span class="input-group-addon">Texto</span>
-					<textarea name="nomeobjetotexto" type="text" class="textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+					<textarea name="nomeobjetotexto" type="text" class="form-control textarea_Vazio" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 				</div>
 			</td>
 		</tr>

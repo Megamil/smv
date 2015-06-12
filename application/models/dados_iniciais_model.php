@@ -844,7 +844,7 @@ left join tbl_dotacao td on td.id_dotacao = te.id_dotacao')->result());
 	public function af_Servicos(){ 
 
 		$pack = $this->db->query('select af.id_afservicos, nome, prefixo, dataafservicos, round(cast(sum((precobruto-(precobruto*desconto)/100)*quantidade) as numeric),2) valoritens,
-(select round(cast(valorunitario*quantidade as numeric),2) from tbl_servicos s
+(select round(sum(cast(valorunitario*quantidade as numeric)),2) from tbl_servicos s
 	left join tbl_afservicos_x_servicos afss on afss.id_servicos = s.id_servicos 
 	left join tbl_autofornecservicos afs on afss.id_afservicos = afs.id_afservicos
 	where afs.id_afservicos = af.id_afservicos) valorservicos,

@@ -370,7 +370,7 @@
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">Grupo de Itens</span>
-							<input class="form-control" type="text" name="nomegrupoitens" id="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
+							<input class="form-control input_Vazio" type="text" name="nomegrupoitens" id="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
 						</div>
 					</td>
 				</tr>
@@ -381,7 +381,7 @@
 
       <div class="modal-footer">
         <button type="reset" class="btn btn-info" data-dismiss="modal" id="cancelarNovoGrupo">Cancelar</button>
-        <button type="submit" class="btn btn-success" id="novoGrupo">Incluir Grupo</button>
+        <button type="submit" class="btn btn-success validar_Enviar" id="novoGrupo">Incluir Grupo</button>
       </div>
      </div>
     </div>

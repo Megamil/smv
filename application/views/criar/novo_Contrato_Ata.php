@@ -412,7 +412,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Título</span>
-								<input type="text" class="form-control" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" />
+								<input type="text" class="form-control input_Vazio" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" style="max-width:413px"/>
 							</div>
 						</td>
 					</tr>
@@ -420,7 +420,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td valign="top">
 							<div class="input-group">
 								<span class="input-group-addon">Texto</span>
-								<textarea name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+								<textarea class="textarea_Vazio form-control" name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -430,7 +430,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal" id="cancelarNovoObjeto">Cancelar</button>
-        <button type="button" class="btn btn-success" id="novoObjeto">Criar Objeto</button>
+        <button type="button" class="btn btn-success validar_Enviar" id="novoObjeto">Criar Objeto</button>
         </div>
     </div>
   </div>
