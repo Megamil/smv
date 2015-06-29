@@ -71,13 +71,13 @@
                 <?php echo anchor('main/redirecionar/cadastros-servicos', 'Serviços')?></li>
 
                 <li <?php if($ativo == 'cadastros-cliente') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/cadastros-cliente', 'Cliente')?></li>
+                <?php echo anchor('main/redirecionar/cadastros-cliente', 'Clientes')?></li>
 
                 <li <?php if($ativo == 'cadastros-colaborador') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-colaborador', 'Colaboradores')?></li>
 
                 <li <?php if($ativo == 'cadastros-dotacao') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/cadastros-dotacao', 'Dotacao')?></li>
+                <?php echo anchor('main/redirecionar/cadastros-dotacao', 'Dotação')?></li>
 
                 <li <?php if($ativo == 'cadastros-grupo_Itens') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-grupo_Itens', 'Grupo dos Itens')?></li>
@@ -86,7 +86,7 @@
                 <?php echo anchor('main/redirecionar/cadastros-objeto', 'Objetos')?></li>
 
                 <li <?php if($ativo == 'cadastros-veiculo') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/cadastros-veiculo', 'Veículo')?></li>
+                <?php echo anchor('main/redirecionar/cadastros-veiculo', 'Veículos')?></li>
 
                 <li <?php if($ativo == 'cadastros-unidade_Utilizadora') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/cadastros-unidade_Utilizadora', 'Unidade Utilizadora')?></li>
@@ -106,13 +106,13 @@
               <ul class="dropdown-menu">
               <!--O MENU SERÁ ATIVO QUANDO O NOME DA APLICAÇÃO FOR IGUAL O NOME DO TÍTULO DA TELA ATIVA-->
                 <li <?php if($ativo == 'ordemservico-solicita_Ordem_Servico') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', 'Solicitar')?></li>
+                <?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', 'Solicitação de O.S.')?></li>
 
                 <li <?php if($ativo == 'ordemservico-ordem_Servico') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', 'Ordens')?></li>
+                <?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', 'Ordens de Serviço')?></li>
 
                 <li <?php if($ativo == 'relatorios-relatorio_Ordem_Servico') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/relatorios-relatorio_Ordem_Servico', 'Relatório')?></li>
+                <?php echo anchor('main/redirecionar/relatorios-relatorio_Ordem_Servico', 'Relatório das O.S.')?></li>
                     <li class="dropdown-submenu">
                         <a tabindex="-1" href="#">Impressões</a>
                         <ul class="dropdown-menu">
@@ -122,12 +122,6 @@
 
                             <li <?php if($ativo == 'filtropdf-filtro_Pdf_Servicos_Externos') {echo 'class="active"';}?>>
                             <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Servicos_Externos', 'Formulário Serviços Externos')?></li>
-
-                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Retirada_Estoque') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
-                                                                                    
-                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Autorizacao_Fornecimento') {echo 'class="active"';}?>>
-                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Autorizacao_Fornecimento', 'Autorização de Fornecimento/Execução')?></li>                                                                                  
                         </ul>
                     </li>
               </ul>
@@ -149,16 +143,17 @@
                 <?php echo anchor('main/redirecionar/estoque-itens', 'Cadastro de Itens')?></li>
                     <li class="dropdown-submenu">
                      <a tabindex="-1" href="#">Movimentação</a>
-                    <ul class="dropdown-menu">
-                        <li <?php if($ativo == 'estoque-entradaitens') {echo 'class="active"';}?>>
-                        <?php echo anchor('main/redirecionar/estoque-entrada_Itens', 'Entrada de Itens')?></li>
-                        
-                        <li <?php if($ativo == 'estoque-saidaitens') {echo 'class="active"';}?>>
-                        <?php echo anchor('main/redirecionar/estoque-saida_Itens', 'Saída de Itens')?></li>
-                    </ul></li>
+                        <ul class="dropdown-menu">
+                            <li <?php if($ativo == 'estoque-entradaitens') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/estoque-entrada_Itens', 'Entrada de Itens')?></li>
+                            
+                            <li <?php if($ativo == 'estoque-saidaitens') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/estoque-saida_Itens', 'Saída de Itens')?></li>
+                        </ul>
+                    </li>
 
                 <li <?php if($ativo == 'relatorios-relatorio_Saldo_Estoque') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/relatorios-relatorio_Saldo_Estoque', 'Saldo Estoque')?>
+                <?php echo anchor('main/redirecionar/relatorios-relatorio_Saldo_Estoque', 'Saldo do Estoque')?>
                 </li>
 
                   <li class="dropdown-submenu">
@@ -166,23 +161,30 @@
                     <ul class="dropdown-menu">
 
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Entrada_Itens') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Entrada_Itens', 'Entrada de itens')?></li>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Entrada_Itens', 'Entrada de Itens')?></li>
 
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Saida_Itens') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Saida_Itens', 'Saída de itens')?></li>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Saida_Itens', 'Saída de Itens')?></li>
 
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Inventario') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Inventario', 'Inventario')?></li>
+                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Inventario', 'Inventário')?></li>
 
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Estoque_Ativo') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Estoque_Ativo', 'Estoque Ativo')?></li>
 
                       <li <?php if($ativo == 'relatorios-relatorio_Estoque_Limite') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Limite', 'Itens com estoque limite')?></li>
+                      <?php echo anchor('main/redirecionar/relatorios-relatorio_Estoque_Limite', 'Estoque Limite')?></li>
 
-                      <li <?php if($ativo == 'criar-nova_Etiqueta') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/criar-nova_Etiqueta', 'Etiquetas')?></li>
-
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">Impressões</a>
+                        <ul class="dropdown-menu">
+                            <li <?php if($ativo == 'filtropdf-filtro_Pdf_Retirada_Estoque') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Retirada_Estoque', 'Formulário Retirada Estoque')?></li>
+                                  
+                            <li <?php if($ativo == 'criar-nova_Etiqueta') {echo 'class="active"';}?>>
+                            <?php echo anchor('main/redirecionar/criar-nova_Etiqueta', 'Etiquetas')?></li>
+                        </ul>
+                    </li>
                     </ul>
                   </li>
 
@@ -214,8 +216,17 @@
 
                 <li <?php if($ativo == 'autorizacoes-Af_Servicos') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/autorizacoes-af_Servicos', 'Fornecimento Serviços')?></li>
+                  
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Impressões</a>
+                      <ul class="dropdown-menu">
+                        <li <?php if($ativo == 'filtropdf-filtro_Pdf_Autorizacao_Fornecimento') {echo 'class="active"';}?>>
+                         <?php echo anchor('main/redirecionar/filtropdf-filtro_Pdf_Autorizacao_Fornecimento', 'Autorização de Fornecimento/Execução')?></li>                                                                                  
+                      </ul>
+                  </li>
               </ul>
             </li>
+
             <!--GUIA Autorização de fornecimento FIM-->
 
             <!--GUIA CADASTROS INICIO-->

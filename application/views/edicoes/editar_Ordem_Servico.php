@@ -101,8 +101,8 @@
 					</div>
 
 					<div class="control-group">
-						<div class="controls input-group">
-							<select class="form-control input_Vazio" name="unidadesolicitante" id="unidadesolicitante" placeholder="Unidade Solicitante" disabled>
+						<div class="controls">
+							<select class="form-control input_Vazio" name="unidadesolicitante" id="unidadesolicitante" placeholder="Unidade Solicitante" style="max-width:400px" disabled>
 									<?php 
 										foreach ($pack['unidadesaude'] as $unidadesaude) {
 

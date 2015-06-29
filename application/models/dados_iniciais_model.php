@@ -542,14 +542,16 @@ order by numerocontratoata')->result());
 	public function nova_Saida_Itens(){
 		$pack = array ('saidaitens' => $this->db->get('tbl_saidaitens')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(), 
-		'cliente' => $this->db->get('tbl_clientes')->result());
+		'cliente' => $this->db->get('tbl_clientes')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result());
 		return $pack;
 	}
 
 	public function editar_Saida_Itens(){
 		$pack = array ('saidaitens' => $this->db->query('select * from tbl_saidaitens where id_saidaitens = '.$this->session->userdata('idEditar').';'),
 		'itens' => $this->db->get('tbl_itens')->result(), 
-		'cliente' => $this->db->get('tbl_clientes')->result());
+		'cliente' => $this->db->get('tbl_clientes')->result(),
+		'ordemservico' => $this->db->get('tbl_ordemservico')->result());
 		return $pack;
 	}
 
@@ -694,6 +696,10 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 		left join tbl_servicos on id_servicos = tos.id_servico where id_ordemservico = '.$this->session->userdata('idEditar').';')->result(),
 		'itens' => $this->db->get('tbl_itens')->result(),
 		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
+		
+		'id_unidadecliente' => $this->db->query('select id_unidadesolicitante from tbl_solicitaordemservico so 
+			left join tbl_ordemservico os on so.id_solicitaordemservico=os.id_solicitacao where id_ordemservico = id_ordemservico'),
+		
 		'servico' => $this->db->get('tbl_servicos')->result());
 		return $pack;
 	}

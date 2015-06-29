@@ -154,7 +154,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
+								<img src="./style/img/brasaopmg.jpg" id="img" width="120px" height="70px" >
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -484,7 +484,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="./style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>

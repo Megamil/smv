@@ -268,7 +268,7 @@ echo form_open("criar/novo_Fornecedor_Prestador",$form); ?>
 
 				} else {
 
-					echo '<input type="radio" name="checkpecas" aria-describedby="basic-addon1" value="'.$tiposervico->id_tiposervico.'"/> '.$tiposervico->tiposervico.' ';
+					echo '<input type="radio" name="checkpecas" aria-describedby="basic-addon1" value="'.$tiposervico->id_tiposervico.'" checked /> '.$tiposervico->tiposervico.' ';
 
 				}
 

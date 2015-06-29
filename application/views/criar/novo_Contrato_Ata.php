@@ -1,7 +1,7 @@
 <!--Usado para preencher alguns campos-->
 <?php echo form_fieldset("Novo Contrato/Ata"); 
 $form = array('name' => 'form'); 
-echo form_open("criar/novo_Contrato_Ata",$form); ?>
+echo form_open_multipart("criar/novo_Contrato_Ata",$form); ?>
 <script type="text/javascript" src="<?php echo base_url(); ?>style/js/json.js"></script>
 <script type="text/javascript">
 
@@ -380,7 +380,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 		</tr>
 		<!-- final da oitava linha da tela -->
 		<tr>
-			<td><div class="btn btn-warning pull-center" data-toggle="modal" data-target="#modelAdicionarAnexo">Inserir Anexo</div></td>
+			<td><input type="file" class="form-control" name="userfile" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" /></td>
 			<td><?php echo anchor('main/redirecionar/', '<div class="btn btn-warning pull-center"> Excluir Anexo </div>')?></td>
 		</tr>
 		</tbody>
@@ -412,7 +412,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td>
 							<div class="input-group">
 								<span class="input-group-addon">Título</span>
-								<input type="text" class="form-control input_Vazio" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" style="max-width:413px"/>
+								<input type="text" class="form-control" id="nomeobjetotitulo" name="nomeobjetotitulo" aria-describedby="basic-addon1" size="52" placeholder="Título do Objeto" maxlength="100" style="max-width:413px"/>
 							</div>
 						</td>
 					</tr>
@@ -420,7 +420,7 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 						<td valign="top">
 							<div class="input-group">
 								<span class="input-group-addon">Texto</span>
-								<textarea class="textarea_Vazio form-control" name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
+								<textarea class="form-control" name="nomeobjetotexto" id="nomeobjetotexto" type="text" cols="53" rows="10" placeholder="Texto do Objeto" maxlength="700"></textarea>
 							</div>
 						</td>
 					</tr>
@@ -439,37 +439,36 @@ echo form_open("criar/novo_Contrato_Ata",$form); ?>
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////// MODAL PARA INCLUIR ANEXO /////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////-->
-	
+
 <div class="modal fade" id="modelAdicionarAnexo" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar inclusão do anexo?</h4>
-      </div>
+		<form method="post" action="uploadanexo.php" enctype="multipart/form-data">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+	        <h4 class="modal-title" id="modelDeletar">Cancelar inclusão do anexo?</h4>
+	      </div>
 
-      <div class="modal-body">
-      	<table border="0">
-			<thead align="left"><span id="basic-addon1"></span></thead>
-				<tbody>
-					<tr>
-						<td>
-							<div class="input-group">
-								<span class="input-group-addon">Nome do Anexo</span>
-								<input type="text" class="form-control" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
-							</div>
-						</td>
-						<td><input type="button" class="btn" value="Procurar..." name="procuraranexo" /></td>
-					</tr>
-				</tbody>
-		</table>
-      </div>
+	      <div class="modal-body">
+	      	<table border="0">
+				<thead align="left"><span id="basic-addon1"></span></thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="input-group">
+									<input type="file" class="form-control" name="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" />
+								</div>
+							</td>
+						</tr>
+					</tbody>
+			</table>
+	      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <?php echo anchor('criar/novo_Objeto/','<div class="btn btn-warning pull-center"> Incluir Anexo </div>')?>
-       </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+	        <input type="submit" class="btn btn-warning" name="enviar" value="Enviar">
+	       </div>
+    	</form>
     </div>
   </div>
 </div>

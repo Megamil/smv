@@ -31,6 +31,9 @@ switch($papel){
 	case 'Letter': $largurapapel = 216;
 			   	   $alturapapel = 279;
 			       break;
+	default: $largurapapel = 210;
+	         $alturapapel = 297;
+	         break;
 }
 
 $qtdcolunas = $largurapapel / ($larguraetiqueta + $espacohorizontaletiqueta);

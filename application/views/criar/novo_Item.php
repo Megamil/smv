@@ -284,9 +284,9 @@
 				<?php 
 					foreach ($pack['estadoitem'] as $estadoitem) {
 						if($estadoitem->id_estadoitem == $this->session->flashdata('id_estadoitem')) {
-							echo '<input type="radio" name="id_estadoitem" class="id_estadoitem" aria-describedby="basic-addon1" value="'.$estadoitem->id_estadoitem.'" checked /> '.$estadoitem->estadoitem.' ';
+							echo '<input type="radio" name="id_estadoitem" class="id_estadoitem input_Vazio" aria-describedby="basic-addon1" value="'.$estadoitem->id_estadoitem.'" /> '.$estadoitem->estadoitem.' checked ';
 						} else {
-							echo '<input type="radio" name="id_estadoitem" class="id_estadoitem" aria-describedby="basic-addon1" value="'.$estadoitem->id_estadoitem.'"/> '.$estadoitem->estadoitem.' ';
+							echo '<input type="radio" name="id_estadoitem" class="id_estadoitem" aria-describedby="basic-addon1" value="'.$estadoitem->id_estadoitem.'" checked/> '.$estadoitem->estadoitem.' ';
 						}
 					}
 				 ?>
@@ -370,7 +370,7 @@
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">Grupo de Itens</span>
-							<input class="form-control input_Vazio" type="text" name="nomegrupoitens" id="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
+							<input class="form-control" type="text" name="nomegrupoitens" id="nomegrupoitens" aria-describedby="basic-addon1" size="80" maxlength="30" placeholder="Nome do Grupo dos Itens"/>
 						</div>
 					</td>
 				</tr>

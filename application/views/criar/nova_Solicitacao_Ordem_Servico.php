@@ -15,7 +15,7 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 
 					<table border="0">	
 						<tr>					
-							<td colspan="3">
+							<td colspan="2">
 								<div class="control-group">
 									<div class="controls">
 									<span class="help-inline">Unidade</span>
@@ -23,8 +23,8 @@ echo form_open("criar/nova_Solicitacao_Ordem_Servico",$form); ?>
 								</div>
 			
 								<div class="control-group">
-									<div class="controls input-group">
-										<select class="form-control input_Vazio" name="unidadesolicitante" placeholder="Unidade Solicitante">
+									<div class="controls">
+										<select class="form-control input_Vazio" name="unidadesolicitante" placeholder="Unidade Solicitante"  style="max-width:400px">
 											<option>Selecione...</option>
 												<?php 
 													foreach ($pack['unidadesaude'] as $unidadesaude) {

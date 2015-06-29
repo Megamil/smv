@@ -17,7 +17,7 @@ echo form_open("criar/nova_Dotacao",$form); ?>
 						}
 							
 						?>
-						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" name="tipodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?> checked/>
 						<span class="help-inline"> Serviços</span>
 					</div>
 				</div>
@@ -36,7 +36,7 @@ echo form_open("criar/nova_Dotacao",$form); ?>
 							
 						?>			
 
-						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?>/>
+						<input type="radio" name="estadodotacao" aria-describedby="basic-addon1" value="1" <?php echo $check; ?> checked/>
 						<span class="help-inline"> Ativo</span>
 					</div>
 				</div>

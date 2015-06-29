@@ -261,7 +261,7 @@ class edicao extends CI_Model {
 
 	//Em caso de entrada de itens soma na tabela de itens.
 	public function entrada_Itens_Novo($somaTotal){
-
+		
 		return $this->db->query('update tbl_itens set estoquedisponivel = estoquedisponivel + '.$somaTotal["quantidade"].' where id_itens = '.$somaTotal["id_itens"].';');
 
 	}

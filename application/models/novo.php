@@ -171,7 +171,7 @@ class novo extends CI_Model {
 	{
 
 		return $this->db->insert('tbl_entradaitens',$dados);
-
+		
 	}
 
 	public function saida_Itens_Novo($dados = null)

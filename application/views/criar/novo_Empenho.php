@@ -365,7 +365,7 @@
 
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////////////////// MODAL PARA ADICIONAR SERVIÇOS NA ORDEM ///////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////// MODAL PARA ADICIONAR DOTACAO ///////////////////////////////////////////// -->
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <div class="modal fade" id="modelAdicionarDotacao" tabindex="-1" role="dialog" aria-labelledby="modelAdicionar" aria-hidden="true">
@@ -465,7 +465,7 @@
 					
 					
 					<span class="input-group-addon" id="basic-addon1">Número / código da dotação</span>
-					<input type="text" class="form-control input_Vazio" id="nomedotacao" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
+					<input type="text" class="form-control" id="nomedotacao" name="nomedotacao" aria-describedby="basic-addon1" size="42" maxlength="40" placeholder="Número da Dotação" value="<?php echo $this->session->flashdata('nomedotacao'); ?>">
 				</div>
 			</td>
 		</tr>
@@ -475,7 +475,7 @@
 				<div class="input-group"  width="200px">
 					<span class="input-group-addon" id="basic-addon1">Segmento</span>
 
-					<select class="form-control input_Vazio" name="segmento" id="segmento" placeholder="Segmento">
+					<select class="form-control" name="segmento" id="segmento" placeholder="Segmento">
 
 						<option>Selecione...</option>
 

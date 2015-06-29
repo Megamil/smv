@@ -4,3 +4,4 @@
 		<img src="<?php echo base_url(); ?>/style/img/imagem-principal.png">
 
 	</figure>
+<?php print_r ($error); ?>

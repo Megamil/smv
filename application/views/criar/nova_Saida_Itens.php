@@ -81,7 +81,26 @@ echo form_open("criar/nova_Saida_Itens"); ?>
 				<div class="control-group">
 					<div class="controls">	
   						<span id="basic-addon1">Ordem de Serviço</span>
- 						<input type="text" class="form-control" placeholder="Ordem Serviço" name="ordemservico" aria-describedby="basic-addon1" style="max-width:110px" maxlength="11"/>
+ 						
+ 						<select class="form-control input_Vazio" name="id_cliente" placeholder="Ordem de Serviço">
+							<option>Selecione...</option>
+							<?php 
+
+							foreach ($pack['ordemservico'] as $ordemservico) {
+								
+								if($this->session->flashdata('ordemservico') == $ordemservico->id_ordemservico){
+
+									echo '<option selected value="'.$ordemservico->id_ordemservico.'">'.$ordemservico->id_ordemservico.'</option>';
+								
+								} else {
+								
+									echo '<option value="'.$ordemservico->id_ordemservico.'">'.$ordemservico->id_ordemservico.'</option>';
+								}
+							
+							}
+
+						?>
+						</select>
  					</div>
 				</div>
 			</td>

@@ -165,7 +165,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="./style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -298,7 +298,7 @@ $html = '
 									</td>
 										
 									<td rowspan="3" colspan="3" valign="top" align="center">
-										<img id="img" height="410" width="450" src="'.base_url().'style/img/lataria.png" />
+										<img id="img" height="410" width="450" src="./style/img/lataria.png" />
 										<br />&nbsp;
 									</td>
 								</tr>
@@ -318,7 +318,7 @@ $html = '
 									
 								<tr>
 									<td rowspan="2" valign="top" align="center">
-										<img id="img" width="140" src="'.base_url().'style/img/medidorcombustivel.png" />
+										<img id="img" width="140" src="./style/img/medidorcombustivel.png" />
 									</td>
 								</tr>
 									

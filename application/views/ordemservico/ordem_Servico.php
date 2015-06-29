@@ -94,7 +94,6 @@
 							}
 
 
-
 							echo '<td>'.anchor('edicoes/editar_Ordem_Servico/'.$ordemservico->id_ordemservico.'','Editar').'</td>';
 						echo "</tr>";
 					}

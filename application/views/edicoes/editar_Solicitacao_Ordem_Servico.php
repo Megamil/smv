@@ -24,8 +24,8 @@ echo form_open("edicoes/editando_Solicitacao_Ordem_Servico",$form); ?>
 								</div>
 			
 								<div class="control-group">
-									<div class="controls input-group">
-										<select class="form-control input_Vazio" name="unidadesolicitante" placeholder="Unidade Solicitante">
+									<div class="controls">
+										<select class="form-control input_Vazio" name="unidadesolicitante" placeholder="Unidade Solicitante" style="max-width:400px">
 											<option>Selecione...</option>
 												<?php 
 

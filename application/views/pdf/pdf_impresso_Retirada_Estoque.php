@@ -1,19 +1,17 @@
 <?php
-
- if($pack["pack"]->row()->id_unidadesolicitante > 1000){
- 	$unidade = $pack["pack"]->row()->unidadesaude;
+ if($pack['pack']->row()->id_unidadesolicitante > 1000){
+ 	$unidade = $pack['pack']->row()->unidadesaude;
 	$departamento = '';
  	$divisao = '';
  	$secao = '';
  	$setor = '';
  } else {
  	$unidade = "__________________________________________";
- 	$departamento = 'Departamento: '.$pack["pack"]->row()->depto;
- 	$divisao = 'Divisão: '.$pack["pack"]->row()->divisao;
- 	$secao = 'Seção: '.$pack["pack"]->row()->secao;
- 	$setor = 'Setor: '.$pack["pack"]->row()->setor;
+ 	$departamento = 'Departamento: '.$pack['pack']->row()->depto;
+ 	$divisao = 'Divisão: '.$pack['pack']->row()->divisao;
+ 	$secao = 'Seção: '.$pack['pack']->row()->secao;
+ 	$setor = 'Setor: '.$pack['pack']->row()->setor;
  }
-
 $html = '
 <html>
 <meta charset="utf-8"/>
@@ -177,7 +175,7 @@ $html = '
 					<table border="0" cellspacing="0" cellpadding="0" width="740px">
 						<tr>
 							<td rowspan="2"  align="center"  valign="middle"  width="140">
-								<img id="img" width="120px" height="70px" src="'.base_url().'style/img/brasaopmg.jpg" />
+								<img id="img" width="120px" height="70px" src="./style/img/brasaopmg.jpg" />
 							</td>
 							<td colspan="3" align="center" id="negrito">
 								<label>PREFEITURA MUNICIPAL DE GUARULHOS<br>SECRETARIA DA SAÚDE</label>
@@ -202,7 +200,7 @@ $html = '
 							</td>
 							<td align="left" width="100px">
 								<div>
-									<label name="ordemservico">'.$pack["pack"]->row()->id_ordemservico.'</label>
+									<label name="ordemservico">'.$pack['pack']->row()->id_ordemservico.'</label>
 								</div>
 							</td>
 						</tr>
@@ -214,7 +212,7 @@ $html = '
 								<table border="0" width="100%">
 									<tr>
 										<td valign="top" colspan="2">
-											<label name="modelo" id="negrito">Código do cliente: <br>'.$pack["codigo"]->row()->codigo.'</label>
+											<label name="modelo" id="negrito">Código do cliente: </label> <br> '.$pack['codigo']->row()->id_cliente.'
 										</td>
 															
 										<td valign="top" colspan="2">
@@ -224,7 +222,7 @@ $html = '
 
 									<tr>
 										<td colspan="4" height="40px">
-											<label name="unidade" id="negrito">Unidade: '.$unidade.'&nbsp;</label>
+											<label name="unidade" id="negrito">Unidade: </label> <br>'.$unidade.'
 										</td>
 									</tr>
 								</table>
@@ -268,7 +266,7 @@ $html = '
 								<table>
 									<tr>
 										<td height="80px">
-											'.$pack["pack"]->row()->observacoes.'
+											'.$pack['pack']->row()->observacoes.'
 										</td>
 									</tr>
 								</table>

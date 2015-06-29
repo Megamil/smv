@@ -127,7 +127,7 @@ class pdf extends CI_Model {
 				left join tbl_unidadesaude on cnes = id_unidadesolicitante
 				where id_ordemservico ='.$os.';'),
 
-				'codigo' => $this->db->query('SELECT codigo from tbl_saidaitens ts
+				'codigo' => $this->db->query('SELECT ts.id_cliente from tbl_saidaitens ts
 				left join tbl_clientes tc on tc.id_cliente = ts.id_cliente
 				where ordemservico = '.$os.' limit 1;'),
 

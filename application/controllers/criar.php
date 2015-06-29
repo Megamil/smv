@@ -861,6 +861,38 @@ public function novo_Cliente() {
 
 
 		if($this->form_validation->run()){
+			/*//////////////////////////////////////////////////////////////
+			/////////////////UPLOAD DE ANEXOS///////////////////////////////
+			////////////////////////////////////////////////////////////////*/
+
+				
+					$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/uploadanexos/';
+					$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
+					/*$config['max_size'] = '100';
+					$config['max_width'] = '1024';
+					$config['max_height'] = '768';*/
+
+					$this->load->library('upload',$config);
+
+					if(! $this->upload->do_upload()){
+
+						$error = array ('error' => $this->upload->display_errors());
+						$data = array ('error' => $error);
+						$this->load->view('erro',$data);
+
+					}else{
+
+						$data = $this->upload->data();
+						$anexo = $data['full_path'];
+						
+
+					}
+				
+					
+			/*//////////////////////////////////////////////////////////////
+			/////////////////UPLOAD DE ANEXOS///////////////////////////////
+			////////////////////////////////////////////////////////////////*/
+
 
 			if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
 			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
@@ -884,7 +916,8 @@ public function novo_Cliente() {
 				'id_objetotitulo' => $this->input->post('id_objetotitulo'),
 				'prazoentrega' => $this->input->post('prazoentrega'),
 				'prazopagto' => $this->input->post('prazopagto'),
-				'orgaosparticipantes' => $orgaosparticipantes
+				'orgaosparticipantes' => $orgaosparticipantes,
+				'caminhoanexo' => $anexo
 
 			);
 
@@ -954,6 +987,7 @@ public function novo_Item() {
 				'precobruto' => $precobruto,
 				'gaveta' => $gaveta,
 				'desconto' => $desconto,
+				'estoquedisponivel' => 0,
 				'id_marcaitens' => $this->input->post('id_marcaitens')
 
 			);

@@ -583,7 +583,7 @@ echo form_open("edicoes/editando_Af_Servicos",$form); ?>
 				
 					<div class="control-group">
 						<div class="controls">
-							<select class="form-control input-Vazio" name="empenho_id_empenho" id="empenho_id_empenho" placeholder="Empenho" style="max-width:600px">
+							<select class="form-control" name="empenho_id_empenho" id="empenho_id_empenho" placeholder="Empenho" style="max-width:600px">
 							<option>Selecione...</option>
 							<?php 
 								foreach ($pack['empenho'] as $empenho) {

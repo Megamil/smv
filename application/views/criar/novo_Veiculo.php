@@ -151,7 +151,7 @@ echo form_open("criar/novo_Veiculo",$form); ?>
 			
 								<div class="control-group">
 									<div class="controls">
-									<input type="text" class="form-control" name="detalhemotor" value="<?php echo $this->session->flashdata('detalhemotorveiculo'); ?>" aria-describedby="basic-addon1" size="25" placeholder="Detalhe Motor" maxlength="50" />
+									<input type="text" class="form-control input_Vazio" name="detalhemotor" value="<?php echo $this->session->flashdata('detalhemotorveiculo'); ?>" aria-describedby="basic-addon1" size="25" placeholder="Detalhe Motor" maxlength="50" />
 										</div>
 									</div>
 								</td>
@@ -248,7 +248,7 @@ echo form_open("criar/novo_Veiculo",$form); ?>
 											if($estadoveiculo->id_estadoveiculo == $this->session->flashdata('estadoveiculo')) {
 												echo '<input type="radio" name="id_estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'" checked /> '.$estadoveiculo->estadoveiculo.' ';
 											} else {
-												echo '<input type="radio" name="id_estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'"/> '.$estadoveiculo->estadoveiculo.' ';
+												echo '<input type="radio" name="id_estadoveiculo" aria-describedby="basic-addon1" value="'.$estadoveiculo->id_estadoveiculo.'" checked /> '.$estadoveiculo->estadoveiculo.' ';
 											}						
 										}
 
@@ -277,9 +277,6 @@ echo form_open("criar/novo_Veiculo",$form); ?>
 			</tbody>
 	</table>
 
-
-
-	
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Criar Veiculo', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-veiculo', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

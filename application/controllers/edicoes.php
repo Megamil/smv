@@ -898,10 +898,44 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()){
 
+			/*//////////////////////////////////////////////////////////////
+			/////////////////UPLOAD DE ANEXOS///////////////////////////////
+			////////////////////////////////////////////////////////////////*/
+
+				
+					$config['upload_path'] = 'smv/uploadanexos/';
+					$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
+					/*$config['max_size'] = '100';
+					$config['max_width'] = '1024';
+					$config['max_height'] = '768';*/
+
+					$this->load->library('upload',$config);
+
+					if(! $this->upload->do_upload()){
+
+						$error = array ('error' => $this->upload->display_errors());
+						$data = array ('error' => $error);
+						$this->load->view('erro',$data);
+						echo ($data['full_path']);
+
+					}else{
+
+						$data = $this->upload->data();
+						$anexo = $data['full_path'];
+						echo ($data['full_path']);
+
+					}
+				
+					
+			/*//////////////////////////////////////////////////////////////
+			/////////////////UPLOAD DE ANEXOS///////////////////////////////
+			////////////////////////////////////////////////////////////////*/
+
 			if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
 			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
 			if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
 			if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
+			if($this->input->post('userfile') == '') {$caminhoanexo = null;} else {$caminhoanexo = $this->input->post($anexo);}
 
 			$dados = array (
 
@@ -921,7 +955,8 @@ class edicoes extends CI_Controller {
 				'id_objetotitulo' => $this->input->post('id_objetotitulo'),
 				'prazoentrega' => $this->input->post('prazoentrega'),
 				'prazopagto' => $this->input->post('prazopagto'),
-				'orgaosparticipantes' => $orgaosparticipantes
+				'orgaosparticipantes' => $orgaosparticipantes,
+				'caminhoanexo' => $caminhoanexo
 
 			);
 
@@ -1207,7 +1242,9 @@ class edicoes extends CI_Controller {
 			'datasaida' => $this->input->post('datasaida'),
 			'observacoes' => $this->input->post('observacoes'),
 			'id_colaborador' => $this->input->post('id_colaborador'),
-			'laudotecnicoocorrencia' => $this->input->post('laudotecnicoocorrencia')
+			'laudotecnicoocorrencia' => $this->input->post('laudotecnicoocorrencia'),
+			'id_unidadecliente' => $this->input->post('id_unidadecliente')
+
 
 		);
 
