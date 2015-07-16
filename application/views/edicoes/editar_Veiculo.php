@@ -282,7 +282,7 @@ echo form_open("edicoes/editando_Veiculo  ",$form); ?>
 			</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Veiculo', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-veiculo', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

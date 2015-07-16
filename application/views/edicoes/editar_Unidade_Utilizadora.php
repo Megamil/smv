@@ -449,7 +449,7 @@ echo form_open("edicoes/editando_Unidade_Utilizadora",$form); ?>
 </tbody>
 </table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Unidade Utilizadora', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-unidade_Utilizadora', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

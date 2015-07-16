@@ -726,7 +726,8 @@ class edicoes extends CI_Controller {
 
 	}
 
-	public function editando_Veiculo(){
+	public function editando_Veiculo()
+	{
 
 	if($this->input->post('preOriginal') != $this->input->post('prefixo')) {
 		$this->form_validation->set_rules('prefixo','Prefixo','is_unique[tbl_veiculo.prefixo]');
@@ -898,86 +899,66 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()){
 
-			/*//////////////////////////////////////////////////////////////
+			/*
+			//////////////////////////////////////////////////////////////
 			/////////////////UPLOAD DE ANEXOS///////////////////////////////
-			////////////////////////////////////////////////////////////////*/
+			////////////////////////////////////////////////////////////////
+			*/
+			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/smv/uploadanexos/';
+			$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
+			$config['max_size'] = '10000';
+			$config['max_width'] = '1024';
+			$config['max_height'] = '768';
 
-				
-					$config['upload_path'] = 'smv/uploadanexos/';
-					$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
-					/*$config['max_size'] = '100';
-					$config['max_width'] = '1024';
-					$config['max_height'] = '768';*/
+			$this->load->library('upload',$config);
 
-					$this->load->library('upload',$config);
+			if(! $this->upload->do_upload()){
 
-					if(! $this->upload->do_upload()){
+				$error = array ('error' => $this->upload->display_errors());
+				$data = array ('error' => $error);
+				$this->load->view('erro',$data);
 
-						$error = array ('error' => $this->upload->display_errors());
-						$data = array ('error' => $error);
-						$this->load->view('erro',$data);
-						echo ($data['full_path']);
-
-					}else{
-
-						$data = $this->upload->data();
-						$anexo = $data['full_path'];
-						echo ($data['full_path']);
-
-					}
-				
-					
-			/*//////////////////////////////////////////////////////////////
-			/////////////////UPLOAD DE ANEXOS///////////////////////////////
-			////////////////////////////////////////////////////////////////*/
-
-			if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
-			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
-			if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
-			if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
-			if($this->input->post('userfile') == '') {$caminhoanexo = null;} else {$caminhoanexo = $this->input->post($anexo);}
-
-			$dados = array (
-
-				'id_contratoata' => $this->input->post('id_contratoata'),
-				'numerocontratoata' => $this->input->post('numerocontratoata'),
-				'dtinivigencia' => $this->input->post('dtinivigencia'),
-				'dtfimvigencia' => $this->input->post('dtfimvigencia'),
-				'numanoemissorprorrogacao' => $numanoemissorprorrogacao,
-				'dtinivigenciaprorrog' => $dtinivigenciaprorrog,
-				'dtfimvigenciaprorrog' => $dtfimvigenciaprorrog,
-				'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
-				'cnpj' => $this->input->post('cnpj'),
-				'procadmin' => $this->input->post('procadmin'),
-				'id_modalidadelicitacao' => $this->input->post('id_modalidadelicitacao'),
-				'numerolicitacao' => $this->input->post('numerolicitacao'),
-				'datahomologacao' => $this->input->post('datahomologacao'),
-				'id_objetotitulo' => $this->input->post('id_objetotitulo'),
-				'prazoentrega' => $this->input->post('prazoentrega'),
-				'prazopagto' => $this->input->post('prazopagto'),
-				'orgaosparticipantes' => $orgaosparticipantes,
-				'caminhoanexo' => $caminhoanexo
-
-			);
-
-			$this->edicao->Contrato_Ata_Editar($dados);
-
-			$this->session->set_userdata('aviso','Contrato/ATA Criado com sucesso.');
-			$this->session->set_userdata('tipo','success');
-
-			redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
-
+			}
+			else
+			{
+				$data = $this->upload->data();
+				$anexo = $data['full_path'];
+				if($this->input->post('numanoemissorprorrogacao') == '') {$numanoemissorprorrogacao = null;} else {$numanoemissorprorrogacao = $this->input->post('numanoemissorprorrogacao');}
+				if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
+				if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
+				if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
+				if($this->input->post('userfile') == '') {$caminhoanexo = null;} else {$caminhoanexo = $this->input->post($anexo);}
+					$dados = array (
+						'id_contratoata' => $this->input->post('id_contratoata'),
+						'numerocontratoata' => $this->input->post('numerocontratoata'),
+						'dtinivigencia' => $this->input->post('dtinivigencia'),
+						'dtfimvigencia' => $this->input->post('dtfimvigencia'),
+						'numanoemissorprorrogacao' => $numanoemissorprorrogacao,
+						'dtinivigenciaprorrog' => $dtinivigenciaprorrog,
+						'dtfimvigenciaprorrog' => $dtfimvigenciaprorrog,
+						'id_fornecedorprestador' => $this->input->post('id_fornecedorprestador'),
+						'cnpj' => $this->input->post('cnpj'),
+						'procadmin' => $this->input->post('procadmin'),
+						'id_modalidadelicitacao' => $this->input->post('id_modalidadelicitacao'),
+						'numerolicitacao' => $this->input->post('numerolicitacao'),
+						'datahomologacao' => $this->input->post('datahomologacao'),
+						'id_objetotitulo' => $this->input->post('id_objetotitulo'),
+						'prazoentrega' => $this->input->post('prazoentrega'),
+						'prazopagto' => $this->input->post('prazopagto'),
+						'orgaosparticipantes' => $orgaosparticipantes,
+						'caminhoanexo' => $anexo
+					);
+					$this->edicao->Contrato_Ata_Editar($dados);
+					$this->session->set_userdata('aviso','Contrato/ATA Criado com sucesso.');
+					$this->session->set_userdata('tipo','success');
+					redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
+			}
 		} else {
-
 			$this->session->set_userdata('aviso',validation_errors());
 			$this->session->set_userdata('tipo','danger');
-
 			redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
-
 		}
-		
 	}
-
 	public function editar_Unidade_Utilizadora(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/

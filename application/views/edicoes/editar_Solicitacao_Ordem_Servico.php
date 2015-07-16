@@ -238,7 +238,7 @@ echo form_open("edicoes/editando_Solicitacao_Ordem_Servico",$form); ?>
 			</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Solicitação de Ordem de Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/ordemservico-solicita_Ordem_Servico', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 	<?php echo anchor('criar/gerar_Ordem_Servico/'. $pack['solicitaordemservico']->row()->id_solicitaordemservico, '<div class="btn btn-info pull-center"> Gerar Ordem de Serviço </div>')?>
 

@@ -28,7 +28,7 @@ echo form_open("edicoes/editando_Servico",$form); ?>
 			<td valign="top">
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Unidade</span>
+						<span class="help-inline">Unidade de Medida</span>
 					</div>
 				</div>
 			</td>
@@ -118,7 +118,7 @@ echo form_open("edicoes/editando_Servico",$form); ?>
 		</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-servicos', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

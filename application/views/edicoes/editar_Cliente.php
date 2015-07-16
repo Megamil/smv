@@ -246,7 +246,7 @@ echo form_open("edicoes/editando_Cliente",$form); ?>
 		</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Editar Cliente', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-cliente', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

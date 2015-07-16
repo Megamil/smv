@@ -324,7 +324,7 @@
 </table>
 
 
-	<?php echo form_submit(array('name'=>'cadastrarNovoEmpenho'),'Editar Empenho', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovoEmpenho'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/empenho-empenho', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

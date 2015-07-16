@@ -864,13 +864,12 @@ public function novo_Cliente() {
 			/*//////////////////////////////////////////////////////////////
 			/////////////////UPLOAD DE ANEXOS///////////////////////////////
 			////////////////////////////////////////////////////////////////*/
-
 				
 					$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/uploadanexos/';
 					$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
-					/*$config['max_size'] = '100';
+					$config['max_size'] = '100';
 					$config['max_width'] = '1024';
-					$config['max_height'] = '768';*/
+					$config['max_height'] = '768';
 
 					$this->load->library('upload',$config);
 
@@ -884,11 +883,10 @@ public function novo_Cliente() {
 
 						$data = $this->upload->data();
 						$anexo = $data['full_path'];
-						
+						echo ($anexo);
 
 					}
-				
-					
+
 			/*//////////////////////////////////////////////////////////////
 			/////////////////UPLOAD DE ANEXOS///////////////////////////////
 			////////////////////////////////////////////////////////////////*/
@@ -898,6 +896,7 @@ public function novo_Cliente() {
 			if($this->input->post('dtinivigenciaprorrog') == '') {$dtinivigenciaprorrog = null;} else {$dtinivigenciaprorrog = $this->input->post('dtinivigenciaprorrog');}
 			if($this->input->post('dtfimvigenciaprorrog') == '') {$dtfimvigenciaprorrog = null;} else {$dtfimvigenciaprorrog = $this->input->post('dtfimvigenciaprorrog');}
 			if($this->input->post('orgaosparticipantes') == '') {$orgaosparticipantes = null;} else {$orgaosparticipantes = $this->input->post('orgaosparticipantes');}
+			if($this->input->post('userfile') == '') {$caminhoanexo = null;} else {$caminhoanexo = $this->input->post($anexo);}
 
 			$dados = array (
 
@@ -917,7 +916,7 @@ public function novo_Cliente() {
 				'prazoentrega' => $this->input->post('prazoentrega'),
 				'prazopagto' => $this->input->post('prazopagto'),
 				'orgaosparticipantes' => $orgaosparticipantes,
-				'caminhoanexo' => $anexo
+				'caminhoanexo' => $caminhoanexo
 
 			);
 

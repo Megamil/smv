@@ -10,7 +10,7 @@
 				<th class="span2">Ordem de Serviço</th>
 				<th class="span2">Data da Saída</th>
 				<th class="span2">Quantidade</th>
-				<th class="span2">Alterar</th>
+				<th class="span2">Estornar</th>
 			</tr>
 		</thead>
 
@@ -24,7 +24,7 @@
 							$texto = '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','VER ESTORNO').'</td>';
 						} else {
 							echo '<tr class="warning">';
-							$texto = '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','EDITAR').'</td>';
+							$texto = '<td>'.anchor('edicoes/editar_Saida_Itens/'.$saidaitens->id_saidaitens.'','ESTORNAR').'</td>';
 						}
 
 						    echo "<td>$saidaitens->codigointerno</td>";

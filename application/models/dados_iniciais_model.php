@@ -936,17 +936,19 @@ order by si.codigointerno, id_saidaitens')->result(),
 			'saidas' => $this->db->query('select ti.descricao, te.codigointerno, sum(te.quantidade) quantidade from tbl_saidaitens te
 			left join tbl_itens ti on ti.id_itens = te.codigointerno group by ti.descricao, te.codigointerno;')->result(),
 			'unidademedida' => $this->db->get('tbl_unidademedida')->result(),
-			
 			);
 		return $pack;
 	}
 
 	public function relatorio_Estoque_Ativo(){ 
-		$pack = array ($this->db->order_by('id_itens','asc'),
-		'itens' => $this->db->get('tbl_itens')->result(), 
-		'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
-		'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
+		$pack = array (
+			'itens' => $this->db->query('select i.id_itens, i.codigomontadora, i.descricao, u.unidademedida, 
+			sum(estoquedisponivel) estoque, (precobruto - (precobruto * desconto)/100) valorunitario, 
+			((precobruto - (precobruto * desconto)/100) * sum(estoquedisponivel)) valortotal
+			from tbl_itens i left join tbl_unidademedida u on i.id_unidademedida = u.id_unidademedida
+			left join tbl_entradaitens e on i.id_itens = e.codigointerno
+			group by i.id_itens, i.precobruto, i.desconto, i.codigomontadora, i.descricao, u.unidademedida, i.estoquedisponivel
+			order by i.id_itens')->result());
 		return $pack;
 	}
 

@@ -139,7 +139,7 @@
 		</tbody>
 	</table>
 
-	<button type="submit" class="btn btn-success pull-center" id="validar_Enviar"> ALTERAR </button>
+	<button type="submit" class="btn btn-success pull-center" id="validar_Enviar"> Salvar Edição </button>
 
 	<?php 
 	 	echo anchor('main/redirecionar/estoque-entrada_Itens', '<div class="btn btn-info pull-center"> CANCELAR </div>');

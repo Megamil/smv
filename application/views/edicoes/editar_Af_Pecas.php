@@ -467,7 +467,7 @@ echo form_open("edicoes/editando_Af_Pecas",$form); ?>
 		</tbody>
 </table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovaAutorizacaoPecas'),'Editar Autorização de Fornecimento de Peças', 'class="btn btn-success no-print" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovaAutorizacaoPecas'),'Salvar Edição', 'class="btn btn-success no-print" id="validar_Enviar"'); ?>
 	<input type="button" class="btn btn-info no-print" name="imprimir" id="imprimir" value="Imprimir">
 	<?php echo anchor('main/redirecionar/autorizacoes-af_Pecas', '<div class="btn btn-danger pull-center no-print"> Cancelar </div>')?>
 

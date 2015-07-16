@@ -16,7 +16,7 @@
 			<td>
 				<div class="control-group">
 					<div class="controls">
-						<span class="help-inline">Número Order de serviço</span>
+						<span class="help-inline">Nº Ordem de Serviço</span>
 					</div>
 				</div>
 			
@@ -514,7 +514,7 @@
 		</tbody>
 </table>
 
-	<?php echo form_submit(array('name'=>'form'),'Editar Ordem Serviço', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'form'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/ordemservico-ordem_Servico', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 </form>
 

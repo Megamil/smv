@@ -29,7 +29,7 @@ echo form_open("edicoes/editando_Divisao",$form); ?>
 		</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovo'),'Editar Divisão', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovo'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/adicionar-divisao', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

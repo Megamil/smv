@@ -11,7 +11,7 @@ echo form_open("edicoes/editando_Marca_Itens",$form); ?>
  		<input type="text" class="form-control input_Vazio" value="<?php echo $pack->row()->marcaitens ?>" name="nome" aria-describedby="basic-addon1" maxlength="20" placeholder="Marca Item">
 	</div>
 
-	<?php echo form_submit(array('name'=>'cadastrarNovo'),'Editar Marca de Itens', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'cadastrarNovo'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/adicionar-marca_Itens', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

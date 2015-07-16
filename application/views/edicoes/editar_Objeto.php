@@ -27,7 +27,7 @@ echo form_open("edicoes/editando_Objeto",$form); ?>
 		</tbody>
 	</table>
 
-	<?php echo form_submit(array('name'=>'editarObjeto'),'Editar Objeto', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'editarObjeto'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-objeto', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>

@@ -131,7 +131,7 @@ echo form_open("edicoes/editando_Dotacao",$form); ?>
 
 	
 
-	<?php echo form_submit(array('name'=>'editarDotacao'),'Editar Dotação', 'class="btn btn-success" id="validar_Enviar"'); ?>
+	<?php echo form_submit(array('name'=>'editarDotacao'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/cadastros-dotacao', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>
 
 <?php echo form_fieldset_close(); ?>
