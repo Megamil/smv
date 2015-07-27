@@ -873,6 +873,26 @@ class edicoes extends CI_Controller {
 
 	}
 
+	public function excluir_anexo(){
+
+		if(unlink('uploadanexos/'.$this->uri->segment(3))) {
+
+			$this->edicao->anexo_Excluir($this->uri->segment(5));
+
+			$this->session->set_userdata('aviso','Anexo: '.$this->uri->segment(3).' Deletado com sucesso!');
+			$this->session->set_userdata('tipo','success');
+
+		} else {
+
+			$this->session->set_userdata('aviso','Erro ao excluir anexo. '.base_url().'uploadanexos/'.$this->uri->segment(3));
+			$this->session->set_userdata('tipo','danger');
+
+		}
+
+		redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->uri->segment(4));
+
+	}
+
 	public function editar_Contrato_Ata(){
 
 		$this->session->set_userdata('idEditar',$this->uri->segment(3)); /*Saber ID que está sendo editado*/
@@ -907,8 +927,8 @@ class edicoes extends CI_Controller {
 			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/smv/uploadanexos/';
 			$config['allowed_types'] = 'jpg|png|pdf|docx|xlsx|doc|xls|txt';
 			$config['max_size'] = '10000';
-			$config['max_width'] = '1024';
-			$config['max_height'] = '768';
+			$config['max_width'] = '10240';
+			$config['max_height'] = '7680';
 
 			$this->load->library('upload',$config);
 
@@ -946,11 +966,27 @@ class edicoes extends CI_Controller {
 						'prazoentrega' => $this->input->post('prazoentrega'),
 						'prazopagto' => $this->input->post('prazopagto'),
 						'orgaosparticipantes' => $orgaosparticipantes,
-						'caminhoanexo' => $anexo
 					);
+
 					$this->edicao->Contrato_Ata_Editar($dados);
-					$this->session->set_userdata('aviso','Contrato/ATA Criado com sucesso.');
+
+					$data = $this->upload->data();
+					$anexo = $data['full_path'];
+
+					$anexoEditado = explode("/",$anexo);
+					
+					$anexar = array (
+
+						'id_contratoata' => $this->input->post('id_contratoata'),
+						'caminhoanexo' => ''.$anexoEditado[count($anexoEditado)-1].'' //Extrair somente o nome e extensão.
+
+					);
+
+					$this->novo->anexar($anexar);
+
+					$this->session->set_userdata('aviso','Contrato/ATA Alterado com sucesso.');
 					$this->session->set_userdata('tipo','success');
+
 					redirect('main/redirecionar/edicoes-editar_Contrato_Ata/'.$this->input->post('id_contratoata'));
 			}
 		} else {

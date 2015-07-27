@@ -54,6 +54,12 @@ echo form_open_multipart("criar/novo_Contrato_Ata",$form); ?>
 
 
 			localStorage.clear();
+
+			$("#limparAnexo").click(function(){
+
+				$("#anexo").val('');
+
+			});
 		
 	});
 </script>
@@ -380,8 +386,8 @@ echo form_open_multipart("criar/novo_Contrato_Ata",$form); ?>
 		</tr>
 		<!-- final da oitava linha da tela -->
 		<tr>
-			<td><input type="file" class="form-control" name="userfile" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" /></td>
-			<td><?php echo anchor('main/redirecionar/', '<div class="btn btn-warning pull-center"> Excluir Anexo </div>')?></td>
+			<td><input type="file" class="form-control" name="userfile" id="anexo" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" /></td>
+			<td><input type="button" class="btn btn-danger" id="limparAnexo" value="Cancelar Anexo"></td>
 		</tr>
 		</tbody>
 </table>
@@ -401,7 +407,7 @@ echo form_open_multipart("criar/novo_Contrato_Ata",$form); ?>
       <div class="errorModalObj"></div>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
-        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Obejto?</h4>
+        <h4 class="modal-title" id="modelDeletar"> Cancelar a adição do Objeto?</h4>
       </div>
 
       <div class="modal-body">

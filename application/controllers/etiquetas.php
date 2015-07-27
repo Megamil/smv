@@ -29,11 +29,16 @@ class Etiquetas extends CI_Controller {
 
 		$config = array(
 
-			'me'=>$this->input->post('margemesquerda'),'md'=>$this->input->post('margemdireita'),
-			'ms'=>$this->input->post('margemsuperior'),'le'=>$this->input->post('largura'),
-			'ae'=>$this->input->post('altura'),'ee'=>$this->input->post('espacoetiqueta'),
-			'fonte'=>$this->input->post('fonte'),'tamanhofonte'=>$this->input->post('tamanhofonte'),
+			'me'=>$this->input->post('margemesquerda'),
+			'md'=>$this->input->post('margemdireita'),
+			'ms'=>$this->input->post('margemsuperior'),
+			'le'=>$this->input->post('largura'),
+			'ae'=>$this->input->post('altura'),
+			'ee'=>$this->input->post('espacoetiqueta'),
+			'fonte'=>$this->input->post('fonte'),
+			'tamanhofonte'=>$this->input->post('tamanhofonte'),
 			'papel'=>$this->input->post('papel'),
+			'qts' => $this->input->post('qts'),
 			'selecionados' => $this->input->post('imprimir'),
 			'sql' => $this->dados_iniciais_model->nova_Etiqueta() 
 
@@ -41,8 +46,6 @@ class Etiquetas extends CI_Controller {
 
 
 		$this->load->view('../../fpdf/etiquetas/pdf_impresso_Etiqueta',$config);
-
-
-
 	}
+	
 }

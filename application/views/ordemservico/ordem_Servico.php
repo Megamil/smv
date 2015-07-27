@@ -37,14 +37,14 @@
 							}
 
 						    	foreach ($pack['unidadesaude'] as $unidadesaude) {
-						    		if($ordemservico->id_unidadecliente == $unidadesaude->cnes){
+						    		if($ordemservico->id_unidadesolicitante == $unidadesaude->cnes){
 						    			echo "<td>$unidadesaude->unidadesaude</td>";
 						    			break;
 						    		} 
 						    	}
 
 				    			foreach ($pack['unidadeutilizadora'] as $unidadeutilizadora) {
-						    		if($ordemservico->id_unidadecliente == $unidadeutilizadora->id_unidadeutilizadora){
+						    		if($ordemservico->id_unidadesolicitante == $unidadeutilizadora->id_unidadeutilizadora){
 
 									if(count($unidadeutilizadora->depto) > 0) {$departamento = 'Depto: '.$unidadeutilizadora->depto.' / ';} else {$departamento = '';}
 									if(count($unidadeutilizadora->divisao) > 0) {$divisao = 'Divisão: '.$unidadeutilizadora->divisao.' / ';} else {$divisao = '';}
@@ -81,10 +81,9 @@
 
 							$dataFormatada = date("d-m-Y", strtotime($ordemservico->datasaida));
 							echo '<td>'.$dataFormatada.'</td>';
-
-							echo "<td>".round($ordemservico->valortotalitem,2)."</td>";
-							echo "<td>".round($ordemservico->valortotalservico,2)."</td>";
-							echo "<td>".round($ordemservico->total,2)."</td>";
+							echo "<td>R$ ".number_format($ordemservico->valortotalitem, 2, ',', '.')."</td>";
+							echo "<td>R$ ".number_format($ordemservico->valortotalservico, 2, ',', '.')."</td>";
+							echo "<td>R$ ".number_format($ordemservico->total, 2, ',', '.')."</td>";
 
 							foreach($pack['solicitaordemservico'] as $solicitaordemservico){
 								if($solicitaordemservico->id_solicitaordemservico == $ordemservico->id_solicitacao){

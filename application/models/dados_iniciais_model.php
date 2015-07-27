@@ -458,6 +458,7 @@ class dados_iniciais_model extends CI_Model {
 		$pack = array ('contratoata' => $this->db->query('select * from tbl_contratoata where id_contratoata = '.$this->session->userdata('idEditar').';'),
 		  'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result(),
 		  'modalidadedelicitacao' => $this->db->get('tbl_modalidadedelicitacao')->result(),
+		  'anexos' => $this->db->query('select caminhoanexo, id_anexos from tbl_anexos where id_contratoata = '.$this->session->userdata('idEditar').';')->result(),
 		  'objeto' => $this->db->get('tbl_objeto')->result());
 		return $pack;
 
@@ -706,8 +707,8 @@ left join tbl_divisao TV on TV.id_divisao = TU.id_divisao;')->result(),
 	
 	public function ordem_Servico(){ 
 		$pack = array (
-		'ordemservico' => $this->db->query('SELECT  valortotalitem,  valortotalservico,  prefixo,  id_solicitacao, laudotecnicoocorrencia,  id_materiaisutilizados,  id_servico, 
-  id_estadoordemservico,  id_colaborador,  observacoes,  datasaida,  dataentrada,  id_unidadecliente,  id_fornecedorprestador, id_ordemservico, (custo_solicitacao.valortotalitem + 
+		'ordemservico' => $this->db->query('SELECT  custo_solicitacao.valortotalitem,  valortotalservico,  prefixo,  id_solicitacao, laudotecnicoocorrencia, 
+  id_estadosolicitacao,  id_colaborador,  observacoes,  datasaida,  dataentrada,  id_unidadesolicitante,  id_fornecedorprestador, id_ordemservico, (custo_solicitacao.valortotalitem + 
   custo_solicitacao.valortotalservico) total
 FROM 
   public.custo_solicitacao;

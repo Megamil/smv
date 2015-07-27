@@ -12,7 +12,7 @@ $(document).ready(function(){
 	//Percorre todos inputs com essa classe
 	$(".imprimircb").each(function(){
 
-		if($(this).is(':checked')){
+		if($(this).val() != 0){
 
 			validar = true;
 

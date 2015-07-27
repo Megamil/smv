@@ -40,20 +40,21 @@
 
 	}
 
-	$qtdcolunas = $largurapapel / ($larguraetiqueta + $espacohorizontaletiqueta);
-	$qtdlinhas = $alturapapel / $alturaetiqueta;
+	$qtdcolunas = $largurapapel / ($larguraetiqueta + $espacohorizontaletiqueta +  $margemesquerda);
+	$qtdlinhas = $alturapapel / ($alturaetiqueta + $margemsuperior);
 
 
 	//MONTA A ARRAY PARA ETIQUETAS
 	foreach($sql['itens'] as $dados) {
 
-		foreach ($selecionados as $i) {
+		for ($i=0; $i < count($selecionados); $i++) { 
 
-			if($i != '' && $dados->id_itens == $i) {
+			if($selecionados[$i] != 0 && $dados->id_itens == $selecionados[$i]) {
 
-				for ($i=0; $i < $qtdcolunas; $i++) { 
+
+				for ($j=0; $j < $qts[$i]; $j++) { 
 						
-					$codigo = $dados->id_itens;
+					$codigo = $selecionados[$i];
 					$descricao = utf8_decode($dados->descricao);
 					$codigomontadora = $dados->codigomontadora;
 
@@ -62,18 +63,18 @@
 						$linha = 0;
 					}
 
-					if($coluna == $qtdcolunas) { // Se for a terceira coluna
+					if($coluna >= $qtdcolunas) { // Se for a ultima coluna
 						$coluna = 0; // $coluna volta para o valor inicial
 						$linha = $linha +1; // $linha é igual ela mesma +1
 					}
 
-					if($linha == $qtdlinhas) { // Se for a última linha da página
+					if($linha >= $qtdlinhas) { // Se for a última linha da página
 						$pdf->AddPage(); // Adiciona uma nova página
 						$linha = 0; // $linha volta ao seu valor inicial
 					}
 
 					$posicaoV = $linha*$alturaetiqueta;
-					$posicaoH = $coluna*$larguraetiqueta;
+					$posicaoH = $coluna*($larguraetiqueta+$espacohorizontaletiqueta);
 
 					if($coluna == "0") { // Se a coluna for 0
 						$somaH = $margemesquerda; // Soma Horizontal é apenas a margem da esquerda inicial

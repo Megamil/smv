@@ -156,8 +156,16 @@ class novo extends CI_Model {
 	public function Contrato_Ata_Novo($dados = null)
 	{
 
-		return $this->db->insert('tbl_contratoata',$dados);
+		
+		$this->db->insert('tbl_contratoata',$dados);
+		return $this->db->insert_id();
 
+	}
+
+	public function anexar($anexo = null) {
+
+		return $this->db->insert('tbl_anexos',$anexo);
+		
 	}
 
 	public function item_Novo($dados = null)

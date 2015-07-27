@@ -15,6 +15,12 @@ echo form_open_multipart("edicoes/editando_Contrato_Ata",$form); ?>
 
 
 		});
+
+		$("#limparAnexo").click(function(){
+
+				$("#anexo").val('');
+
+		});
 	 
 		
 	});
@@ -355,11 +361,38 @@ echo form_open_multipart("edicoes/editando_Contrato_Ata",$form); ?>
 		</tr>
 		<!-- final da oitava linha da tela -->
 		<tr>
-			<td><input type="file" class="form-control" name="userfile" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" /></td>
-			<td><?php echo anchor('main/redirecionar/', '<div class="btn btn-warning pull-center"> Excluir Anexo </div>')?></td>
+			<td><input type="file" class="form-control" id="anexo" name="userfile" aria-describedby="basic-addon1" size="52" placeholder="Nome do Anexo" maxlength="100" /></td>
+			<td><input type="button" class="btn btn-danger" id="limparAnexo" value="Cancelar Anexo"></td>
 		</tr>
 		</tbody>
+
 </table>
+<br>
+		<?php echo form_fieldset("Exibindo Anexos"); ?>
+		<table class="table table-striped table-hover table-condensed">
+			<thead> 
+				<tr>
+					<th class="span3">Arquivo</th>
+					<th class="span3">Download</th>
+					<th class="span3">Excluir</th>
+				</tr>
+			</thead>
+
+			<tbody>
+					<?php
+
+						foreach ($pack['anexos'] as $anexos) {
+
+							echo "<tr>";
+							echo "<td>$anexos->caminhoanexo</td>";
+							echo '<td>'.anchor('uploadanexos/'.$anexos->caminhoanexo,'Download',['target' => '_blank']).'</td>';
+							echo '<td>'.anchor('edicoes/excluir_anexo/'.$anexos->caminhoanexo.'/'.$pack['contratoata']->row()->id_contratoata.'/'.$anexos->id_anexos.'','Excluir').'</td>';
+							echo "</tr>";
+						}
+					?>
+			</tbody>
+		</table>
+		<?php echo form_fieldset_close(); ?>
 
 	<?php echo form_submit(array('name'=>'cadastrarNovoContratoAta'),'Salvar Edição', 'class="btn btn-success" id="validar_Enviar"'); ?>
 	<?php echo anchor('main/redirecionar/contratoata-Contrato_Ata', '<div class="btn btn-danger pull-center"> Cancelar </div>')?>

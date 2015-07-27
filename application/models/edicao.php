@@ -141,6 +141,12 @@ class edicao extends CI_Model {
 		return $this->db->update('tbl_contratoata',$dados);
 	}
 
+	public function anexo_Excluir($id = null){
+
+		return $this->db->delete("tbl_anexos",array('id_anexos' => $id));
+
+	}
+
 	public function item_Editar($dados = null)
 	{
 

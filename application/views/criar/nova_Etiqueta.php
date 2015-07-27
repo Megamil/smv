@@ -20,8 +20,15 @@
 
 					echo '<tr align="center">';
 					echo '<td> <label style="min-width:500px">Código: '.$itens->id_itens.' - '.$itens->descricao.'</label> </td>';
-					echo '<td> <input class="form-control" name="qts" id="qts" placeholder="Quantidade" value="1" style="max-width:50px"> </td>';
-					echo '<td> <input class="imprimircb" type="checkbox" name="imprimir[]" id="etiqueta'.$itens->id_itens.'" value="'.$itens->id_itens.'"></td>';
+					echo '<td> <input class="form-control" name="qts[]" id="qts" placeholder="Quantidade" value="1" style="max-width:50px"> </td>';
+					//echo '<td> <input class="imprimircb" type="checkbox" name="imprimir[]" id="etiqueta'.$itens->id_itens.'" value="'.$itens->id_itens.'"></td>';
+					echo '<td>
+						<select name="imprimir[]" class="form-control imprimircb" placeholder="Etiquetas" style="max-width:200px">
+						<option value="0" selected>Não Imprimir</option>
+						<option value="'.$itens->id_itens.'">Imprimir</option>
+						</select>
+					</td>';
+												
 					echo '</tr>';
 
 				}
