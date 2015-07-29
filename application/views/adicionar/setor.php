@@ -6,6 +6,9 @@
 		<thead> 
 			<tr>
 				<th class="span3">ID</th>
+				<th class="span2">Departamento</th>
+				<th class="span2">Divisão</th>
+				<th class="span2">Seção</th>
 				<th class="span2">Código Setor</th>
 				<th class="span2">Setor</th>
 				<th class="span2">Alterar</th>
@@ -13,16 +16,19 @@
 		</thead>
 
 		<tbody>
-				<?php
+			<?php
 
-					foreach ($pack['setor'] as $setor) {
-						 echo "<tr>";
-						     echo "<td>$setor->id_setor</td>";
-						     echo "<td>$setor->codsetor</td>";
-						     echo "<td>$setor->setor</td>";
-						     echo '<td>'.anchor('edicoes/editar_Setor/'.$setor->id_setor.'','Editar').'</td>';
-						 echo "</tr>";
-					}
-				?>
+				foreach ($pack['setor'] as $setor) {
+					echo "<tr>";
+					 	echo "<td>$setor->id_setor</td>";
+						echo "<td>$setor->coddepto</td>";
+						echo "<td>$setor->coddivisao</td>";
+						echo "<td>$setor->codsecao</td>";
+					    echo "<td>$setor->codsetor</td>";
+					    echo "<td>$setor->setor</td>";
+				    	echo '<td>'.anchor('edicoes/editar_Setor/'.$setor->id_setor.'','Editar').'</td>';
+					echo "</tr>";
+				}
+			?>
 		</tbody>
 	</table>

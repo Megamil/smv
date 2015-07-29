@@ -166,8 +166,8 @@
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Saida_Itens') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Saida_Itens', 'Saída de Itens')?></li>
 
-                      <li <?php if($ativo == 'filtrorelatorios-filtro_Inventario') {echo 'class="active"';}?>>
-                      <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Inventario', 'Inventário')?></li>
+                      <li <?php if($ativo == 'estoque-ajuste_Inventario') {echo 'class="active"';}?>>
+                      <?php echo anchor('main/redirecionar/estoque-ajuste_Inventario', 'Inventário')?></li>
 
                       <li <?php if($ativo == 'filtrorelatorios-filtro_Estoque_Ativo') {echo 'class="active"';}?>>
                       <?php echo anchor('main/redirecionar/filtrorelatorios-filtro_Estoque_Ativo', 'Estoque Ativo')?></li>

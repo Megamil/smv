@@ -1,17 +1,44 @@
 <?php
  if($pack['pack']->row()->id_unidadesolicitante > 1000){
+
  	$unidade = $pack['pack']->row()->unidadesaude;
-	$departamento = '';
- 	$divisao = '';
- 	$secao = '';
- 	$setor = '';
+
  } else {
- 	$unidade = "__________________________________________";
- 	$departamento = 'Departamento: '.$pack['pack']->row()->depto;
- 	$divisao = 'Divisão: '.$pack['pack']->row()->divisao;
- 	$secao = 'Seção: '.$pack['pack']->row()->secao;
- 	$setor = 'Setor: '.$pack['pack']->row()->setor;
+
+ 	$departamento = $pack['pack']->row()->depto;
+ 	$divisao = $pack['pack']->row()->divisao;
+ 	$secao = $pack['pack']->row()->secao;
+ 	$setor = $pack['pack']->row()->setor;
+
+
+ 	$unidade = '';
+
+ 	if($departamento != ''){
+	
+ 		$unidade = "Departamento: ".$departamento;
+
+ 	}
+
+ 	if ($divisao != ''){
+
+ 		$unidade .= " Divisão: ".$divisao;
+
+ 	} 
+
+ 	if ($secao != ''){
+
+ 		$unidade .= " Seção: ".$secao;
+ 		
+ 	} 
+
+ 	if ($setor != ''){
+
+ 		$unidade .= " Setor: ".$setor;
+ 		
+ 	}
+
  }
+
 $html = '
 <html>
 <meta charset="utf-8"/>
@@ -184,10 +211,9 @@ $html = '
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
-								<label name="departamento">'.$departamento.'</label><br />
-								<label name="divisao">'.$divisao.'</label><br />
-								<label name="secao">'.$secao.'</label><br />
-								<label name="setor">'.$setor.'</label>
+								<label name="departamento">Departamento Administrativo e Financeiro da Saúde</label><br />
+								<label name="divisao">Divisão Técnica de Gestão da Frota</label><br />
+								<label name="secao">Seção Técnica de Manutenção de Veículos</label><br />
 							</td>
 						</tr>
 
@@ -212,7 +238,7 @@ $html = '
 								<table border="0" width="100%">
 									<tr>
 										<td valign="top" colspan="2">
-											<label name="modelo" id="negrito">Código do cliente: </label> <br> '.$pack['codigo']->row()->id_cliente.'
+											<label name="modelo" id="negrito">Código do cliente: </label> <br> '.$pack['codigo']->row()->codigo.'
 										</td>
 															
 										<td valign="top" colspan="2">
@@ -304,7 +330,7 @@ $dompdf->load_html($html);
 $dompdf->set_paper('A4','portrait');
 $dompdf->render();
 
-$dompdf->stream('retirada_estoque.pdf',array('Attachment'=>0));
+$dompdf->stream('retirada_estoque_OS'.$pack['pack']->row()->id_ordemservico.'.pdf',array('Attachment'=>0));
 
 /*array('Attachment'=>0) esse array e para abrir o pdf no navegador */
 ?>

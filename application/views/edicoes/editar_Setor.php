@@ -3,28 +3,84 @@ $form = array('name' => 'form');
 echo form_open("edicoes/editando_Setor",$form); ?>
 
 <!-- Previne que o usuário altere o nome ou o código para um já existente -->
-<?php echo form_hidden('codOriginal',$pack->row()->codsetor); ?>
-<?php echo form_hidden('nomeOriginal',$pack->row()->setor); ?>
+<?php echo form_hidden('codOriginal',$pack['setor']->row()->codsetor); ?>
+<?php echo form_hidden('nomeOriginal',$pack['setor']->row()->setor); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
 
-	<?php echo form_hidden('id_setor', $pack->row()->id_setor); ?>
+	<?php echo form_hidden('id_setor', $pack['setor']->row()->id_setor); ?>
 
 	<table border="0">
 		<thead></thead>
 		<tbody>
 		<tr>
+		<tr>
+			<td>
+				<div class="input-group">
+  				<span class="input-group-addon" id="basic-addon1">Departamento: </span>
+	  				<select class="form-control input_Vazio" name="depto" placeholder="Departamento">
+						<option>Selecione...</option>
+							<?php 
+								foreach ($pack['depto'] as $depto) {
+									if($pack['setor']->row()->coddepto == $depto->coddepto){
+										echo '<option selected value="'.$depto->coddepto.'">'.$depto->coddepto.'</option>';
+									} else {
+										echo '<option value="'.$depto->coddepto.'">'.$depto->coddepto.'</option>';
+									}
+								}
+							?>
+					</select>
+ 				</div>
+  			</td>
+  			<td width="30"></td>
+  			<td>
+				<div class="input-group">
+  				<span class="input-group-addon" id="basic-addon1">Divisão: </span>
+	  				<select class="form-control input_Vazio" name="divisao" placeholder="Divisão">
+						<option>Selecione...</option>
+							<?php 
+								foreach ($pack['divisao'] as $divisao) {
+									if($pack['setor']->row()->coddivisao == $divisao->coddivisao){
+										echo '<option selected value="'.$divisao->coddivisao.'">'.$divisao->coddivisao.'</option>';
+									} else {
+										echo '<option value="'.$divisao->coddivisao.'">'.$divisao->coddivisao.'</option>';
+									}
+								}
+							?>
+					</select>
+ 				</div>
+  			</td>
+  			<td width="30"></td>
+  			  	<td>
+				<div class="input-group">
+  				<span class="input-group-addon" id="basic-addon1">Seção: </span>
+	  				<select class="form-control input_Vazio" name="secao" placeholder="Seção">
+						<option>Selecione...</option>
+							<?php 
+								foreach ($pack['secao'] as $secao) {
+									if($pack['setor']->row()->codsecao == $secao->codsecao){
+										echo '<option selected value="'.$secao->codsecao.'">'.$secao->codsecao.'</option>';
+									} else {
+										echo '<option value="'.$secao->codsecao.'">'.$secao->codsecao.'</option>';
+									}
+								}
+							?>
+					</select>
+ 				</div>
+  			</td>
+		</tr>
+		<tr>	
 			<td>	
 				<div class="input-group">
 						<span class="input-group-addon">Código:</span>
-						<input type="text" class="form-control input_Vazio" value="<?php echo $pack->row()->codsetor ?>" name="codsetor" size="15" aria-describedby="basic-addon1" maxlength="15" />
+						<input type="text" class="form-control input_Vazio" value="<?php echo $pack['setor']->row()->codsetor ?>" name="codsetor" size="15" aria-describedby="basic-addon1" maxlength="15" />
 				</div>
 			</td>
 			<td width="30"></td>	
 			<td>
 				<div class="input-group">
-  				<span class="input-group-addon" id="basic-addon1">ID <?php echo $pack->row()->id_setor;?> Nome: </span>
- 				<input type="text" class="form-control input_Vazio" value="<?php echo $pack->row()->setor ?>" name="nome" aria-describedby="basic-addon1" maxlength="30">
+  				<span class="input-group-addon" id="basic-addon1">ID <?php echo $pack['setor']->row()->id_setor;?> Nome: </span>
+ 				<input type="text" class="form-control input_Vazio" value="<?php echo $pack['setor']->row()->setor ?>" name="nome" aria-describedby="basic-addon1" maxlength="30">
 				</div>
 			</td>
 		</tr>

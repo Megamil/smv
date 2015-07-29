@@ -1,17 +1,50 @@
-<form action="estoque-ajuste_Inventario" method="post" accept-charset="utf-8" target="_self">
+<script>
+	
+$(document).ready(function(){
+
+	$("#enviarFiltro").click(function(){
+
+		var inicio = new Date($("#dtinicioper").val());
+		var fim = new Date($("#dtfimper").val());
+
+		if(inicio > fim) {
+
+			alert("A data de fim não pode ser menor que a de inicio.")
+			return false;
+
+		}
+
+		if($("#dtfimcod").val() != '' && $("#dtiniciocod").val() > $("#dtfimcod").val()) {
+
+			alert("O código de fim não pode ser menor que o de inicio.")
+			return false;
+
+		}
+		
+
+	});
+
+});
+
+
+</script>
+
+<?php echo form_open("filtros/realizar_filtro_inventario"); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
+
+	<input type="hidden" value="estoque-ajuste_Inventario" name="caminho">
+	
 	<table border="0">
 		<tr>
 			<td>
 				<div>
-					<input type="radio" name="filtro" style="white-space: nowrap;" />
 					<span>Período de</span>
 				</div>
 			</td>
 			<td>
 				<div>
-					<input type="text" class="form-control" name="dtinicio" aria-describedby="basic-addon1" placeholder="Data Inicio" />
+					<input type="date" class="form-control" name="dtinicioper" id="dtinicioper" aria-describedby="basic-addon1" placeholder="Data Inicio" />
 				</div>
 			</td>	
 			<td>
@@ -21,7 +54,7 @@
 			</td>
 			<td>
 				<div>
-					<input type="text" class="form-control" name="dtfim" aria-describedby="basic-addon1" placeholder="Data Fim" />
+					<input type="date" class="form-control" name="dtfimper" id="dtfimper" aria-describedby="basic-addon1" placeholder="Data Fim" />
 				</div>
 			</td>
 		</tr>
@@ -29,13 +62,12 @@
 		<tr>
 			<td>
 				<div>
-					<input type="radio" name="filtro" />
 					<span>Código de</span>
 				</div>
 			</td>
 			<td>
 				<div>
-					<input type="text" class="form-control" name="dtinicio" aria-describedby="basic-addon1" placeholder="Data Inicio" />
+					<input type="text" class="form-control" name="dtiniciocod" id="dtiniciocod" aria-describedby="basic-addon1" placeholder="Inicio" />
 				</div>
 			</td>	
 			<td>
@@ -45,7 +77,7 @@
 			</td>
 			<td>
 				<div>
-					<input type="text" name="dtfim" class="form-control" aria-describedby="basic-addon1" placeholder="Data Fim" />
+					<input type="text" name="dtfimcod" id="dtfimcod" class="form-control" aria-describedby="basic-addon1" placeholder="Fim" />
 				</div>
 			</td>
 		</tr>
@@ -53,14 +85,12 @@
 		<tr>
 			<td>
 				<div>
-					<input type="radio" name="filtro" />
 					<span>Grupo</span>
 				</div>
 			</td>
 			<td colspan="3">
 				<div>
-
-					<select name="grupoitens" placeholder="Grupo Itens" class="form-control" value="<?php echo $this->session->flashdata('grupoitens'); ?>">
+					<select name="grupoitens" id="grupoitens" placeholder="Grupo Itens" class="form-control" value="<?php echo $this->session->flashdata('grupoitens'); ?>">
 						<option>Selecione...</option>
 						<?php 
 							foreach ($pack['grupoitens'] as $grupoitens) {
@@ -78,14 +108,12 @@
 		<tr>
 			<td>
 				<div>
-					<input type="radio" name="filtro" />
 					<span>Fornecedor</span>
 				</div>
 			</td>
 			<td colspan="3">
 				<div>
-
-					<select name="fornecedorprestador" class="form-control" placeholder="Grupo Itens" value="<?php echo $this->session->flashdata('fornecedorprestador'); ?>">
+					<select name="fornecedorprestador" id="fornecedorprestador" class="form-control" placeholder="Grupo Itens" value="<?php echo $this->session->flashdata('fornecedorprestador'); ?>">
 						<option>Selecione...</option>
 						<?php 
 							foreach ($pack['fornecedorprestador'] as $fornecedorprestador) {
@@ -98,32 +126,11 @@
 						?>
 				</div>
 			</td>
-		</tr>
-
-		<tr>
-			<td>
-				<div>
-					<span>Ordem:</span>
-				</div>
-			</td>
-			<td colspan="3">
-				<div>
-					<span>
-						<input type="radio" name="ordem" />
-						<span>Código Interno</span><br />
-						<input type="radio" name="ordem" />
-						<span>Código Montadora</span><br />
-						<input type="radio" name="ordem" />
-						<span>Descrição</span><br />
-						<input type="radio" name="ordem" />
-						<span>Data Inicial</span>
-					</span>
-				</div>
-			</td>
-		</tr>
+		</tr> 
 	
 	</table>
+	
+	<button type="submit" class="btn btn-success" id="enviarFiltro">Exibir Relatório</button>
 
-	<button type="submit" class="btn btn-success" id="validar_Enviar">Exibir Relatório</button>
-
-<?php echo form_fieldset_close(); ?>
+	<?php echo form_fieldset_close(); ?>
+<?php echo form_close() ?>

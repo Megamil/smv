@@ -102,8 +102,8 @@ class pdf extends CI_Model {
 				left join tbl_setor iset on iset.id_setor = tuu.id_setor
 				where id_ordemservico = '.$os.';'),
 
-				'codigo' => $this->db->query('SELECT codigo from tbl_saidaitens ts
-				left join tbl_clientes tc on tc.id_cliente = ts.id_cliente
+				'codigo' => $this->db->query('SELECT tc.codigo from tbl_saidaitens ts
+				left join tbl_clientes tc on tc.id_cliente = tc.id_cliente
 				where ordemservico = '.$os.' limit 1;'),
 
 				'itens' => $this->db->query('SELECT id_saidaitens,codigomontadora,quantidade,unidademedida,descricao from tbl_itens ti
@@ -127,8 +127,8 @@ class pdf extends CI_Model {
 				left join tbl_unidadesaude on cnes = id_unidadesolicitante
 				where id_ordemservico ='.$os.';'),
 
-				'codigo' => $this->db->query('SELECT ts.id_cliente from tbl_saidaitens ts
-				left join tbl_clientes tc on tc.id_cliente = ts.id_cliente
+				'codigo' => $this->db->query('SELECT tc.codigo from tbl_saidaitens ts
+				left join tbl_clientes tc on tc.id_cliente = tc.id_cliente
 				where ordemservico = '.$os.' limit 1;'),
 
 				'itens' => $this->db->query('SELECT id_saidaitens,codigomontadora,quantidade,unidademedida,descricao from tbl_itens ti

@@ -16,13 +16,13 @@
 
 							foreach ($pack as $ordemservico) {
 								
-								if($this->session->flashdata('ordemservico') == $ordemservico->id_ordemservico){
+								if($this->session->flashdata('ordemservico') == $ordemservico->ordemservico){
 
-									echo '<option selected value="'.$ordemservico->id_ordemservico.'">'.$ordemservico->id_ordemservico.'</option>';
+									echo '<option selected value="'.$ordemservico->ordemservico.'">'.$ordemservico->ordemservico.'</option>';
 								
 								} else {
 								
-									echo '<option value="'.$ordemservico->id_ordemservico.'">'.$ordemservico->id_ordemservico.'</option>';
+									echo '<option value="'.$ordemservico->ordemservico.'">'.$ordemservico->ordemservico.'</option>';
 								}
 							
 							}

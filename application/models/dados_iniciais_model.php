@@ -73,16 +73,42 @@ class dados_iniciais_model extends CI_Model {
 	}
 
 	/*Seção*/
+	public function nova_Secao(){
+		$pack = array (
+					'secao' => $this->db->get('tbl_secao')->result(),
+					'divisao' => $this->db->get('tbl_divisao')->result(),
+					'depto' => $this->db->get('tbl_depto')->result()
+				);
+		return $pack;
+	}
+
 	public function secao(){ /*Carrega a lista com todos os grupos*/
 
 		$pack = array ($this->db->order_by('id_secao','asc'),
 		'secao'	=> $this->db->get('tbl_secao')->result());
+		return $pack;
 
+	}
+
+	/*Seção*/
+	public function editar_Secao(){
+
+		$pack = array (
+			'secao' => $this->db->query('select * from tbl_secao where id_secao = '.$this->session->userdata('idEditar').';'),
+			'divisao' => $this->db->get('tbl_divisao')->result(),
+			'depto' => $this->db->get('tbl_depto')->result());
 		return $pack;
 
 	}
 
 	/*Divisão*/
+	public function nova_Divisao(){
+		$pack = array (
+			'divisao' => $this->db->get('tbl_divisao')->result(),
+			'depto' => $this->db->get('tbl_depto')->result());
+		return $pack;
+	}
+
 	public function divisao(){ /*Carrega a lista com todos os grupos*/
 
 		$pack = array ($this->db->order_by('id_divisao','asc'),
@@ -91,8 +117,22 @@ class dados_iniciais_model extends CI_Model {
 		return $pack;
 
 	}
+	public function editar_Divisao(){
+
+		$pack = array (
+			'divisao' => $this->db->query('select * from tbl_divisao where id_divisao = '.$this->session->userdata('idEditar').';'),
+			'depto' => $this->db->get('tbl_depto')->result());
+		return $pack;
+
+	}
 
 	/*Departamento*/
+
+	public function novo_Departamento(){
+		$pack = $this->db->get('tbl_depto')->result();
+		return $pack;
+	}
+
 	public function departamento(){ /*Carrega a lista com todos os grupos*/
 
 		$pack = array ($this->db->order_by('id_depto','asc'),
@@ -102,6 +142,44 @@ class dados_iniciais_model extends CI_Model {
 
 	}
 
+	public function editar_Departamento(){
+
+		$pack = $this->db->query('select * from tbl_depto where id_depto = '.$this->session->userdata('idEditar').';');
+		return $pack;
+
+	}
+
+	/*Inicio das codificações referente as telas de Setor*/
+	public function novo_Setor(){
+		$pack = array (
+					'setor' => $this->db->get('tbl_setor')->result(),
+					'secao'	=> $this->db->get('tbl_secao')->result(),
+					'divisao' => $this->db->get('tbl_divisao')->result(),
+					'depto' => $this->db->get('tbl_depto')->result()
+				);
+		return $pack;
+	}
+
+	public function editar_Setor(){
+
+		$pack = array (
+					'setor' => $this->db->query('select * from tbl_setor where id_setor = '.$this->session->userdata('idEditar').';'),
+					'secao'	=> $this->db->get('tbl_secao')->result(),
+					'divisao' => $this->db->get('tbl_divisao')->result(),
+					'depto' => $this->db->get('tbl_depto')->result());
+		return $pack;
+
+	}
+
+	public function setor(){ /*Carrega a lista com todos os setores*/
+		$pack = array ($this->db->order_by('id_setor','asc'),
+		'setor' => $this->db->get('tbl_setor')->result());
+		return $pack;
+
+	}
+	/*Fim das codificações das telas de Setor*/
+
+	/* ======================================================================================================================= */
 	/*Modalidade de licitação*/
 	public function modalidade_Licitacao(){ /*Carrega a lista com todos os grupos*/
 
@@ -115,27 +193,6 @@ class dados_iniciais_model extends CI_Model {
 	public function editar_Montadora(){
 
 		$pack = $this->db->query('select * from tbl_montadora where id_montadora = '.$this->session->userdata('idEditar').';');
-		return $pack;
-
-	}
-
-	public function editar_Secao(){
-
-		$pack = $this->db->query('select * from tbl_secao where id_secao = '.$this->session->userdata('idEditar').';');
-		return $pack;
-
-	}
-
-	public function editar_Divisao(){
-
-		$pack = $this->db->query('select * from tbl_divisao where id_divisao = '.$this->session->userdata('idEditar').';');
-		return $pack;
-
-	}
-
-	public function editar_Departamento(){
-
-		$pack = $this->db->query('select * from tbl_depto where id_depto = '.$this->session->userdata('idEditar').';');
 		return $pack;
 
 	}
@@ -218,31 +275,6 @@ class dados_iniciais_model extends CI_Model {
 
 	}
 	/*Fim das codificações das telas de Objeto*/
-
-	/*----------------------------------------------------------------------------------------------------------*/
-
-	/*Inicio das codificações referente as telas de Setor*/
-	public function novo_Setor(){
-		$pack = $this->db->get('tbl_setor');
-		return $pack->result();
-	}
-
-	public function editar_Setor(){
-
-		$pack = $this->db->query('select * from tbl_setor where id_setor = '.$this->session->userdata('idEditar').';');
-		return $pack;
-
-	}
-
-	public function setor(){ /*Carrega a lista com todos os setores*/
-		$pack = array ($this->db->order_by('id_setor','asc'),
-		'setor' => $this->db->get('tbl_setor')->result());
-		return $pack;
-
-	}
-	/*Fim das codificações das telas de Setor*/
-	
-	/*----------------------------------------------------------------------------------------------------------*/
 
 	/*Inicio das codificações referente as telas de Marcas de Itens*/
 	public function novo_Marca_Itens(){
@@ -882,27 +914,26 @@ order by af.id_afservicos')->result();
 	public function relatorio_Entrada_Itens(){ 
 		$pack = array ('entradaitens' => $this->db->query('select id_entradaitens, codigointerno, codigomontadora, descricao, dataentrada, quantidade,
 (precobruto-(precobruto*desconto)/100) valorunit, ((precobruto-(precobruto*desconto)/100)*quantidade) vtotal,
- numnotafiscal, nome from tbl_entradaitens e
+ numnotafiscal, nome, id_fornecedorprestador, id_grupoitens from tbl_entradaitens e
 left join tbl_fornecedorprestador f on e.id_fornecedor = f.id_fornecedorprestador
 left join tbl_itens i on e.codigointerno = i.id_itens
-order by codigointerno, id_entradaitens')->result(),
-		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
+'.$this->session->userdata('where'))->result(),
+		'grupoitens' => $this->db->query('select * from tbl_grupoitens '.$this->session->userdata('grupoFiltro')));
 		return $pack;
 	}
 	
 	public function relatorio_Saida_Itens(){ 
 		$pack = array ('saidaitens' => $this->db->query('select id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida, quantidade, 
 (precobruto-(precobruto*desconto)/100) valorunit, ((precobruto-(precobruto*desconto)/100) * quantidade) vtotal, 
-ordemservico, nome, prefixo 
+ordemservico, nome,id_grupoitens,id_fornecedorprestador, prefixo 
 from tbl_saidaitens si left join tbl_itens i on si.codigointerno = i.id_itens 
 left join tbl_clientes c on si.id_cliente = c.id_cliente
 left join tbl_ordemservico os on si.ordemservico = os.id_ordemservico 
 left join tbl_solicitaordemservico so on os.id_solicitacao = so.id_solicitaordemservico 
-left join tbl_veiculo v on so.id_veiculo = v.id_veiculo
-group by id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida, quantidade, 
-(precobruto-(precobruto*desconto)/100), ordemservico, nome, prefixo 
-order by si.codigointerno, id_saidaitens')->result(),
-		'grupoitens' => $this->db->get('tbl_grupoitens')->result());
+left join tbl_veiculo v on so.id_veiculo = v.id_veiculo '.$this->session->userdata('where').'
+group by id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida, quantidade, id_grupoitens,id_fornecedorprestador,
+(precobruto-(precobruto*desconto)/100), ordemservico, nome, prefixo')->result(),
+		'grupoitens' => $this->db->query('select * from tbl_grupoitens '.$this->session->userdata('grupoFiltro')));
 		return $pack;
 	}
 
@@ -943,102 +974,19 @@ order by si.codigointerno, id_saidaitens')->result(),
 
 	public function relatorio_Estoque_Ativo(){ 
 		$pack = array (
-			'itens' => $this->db->query('select i.id_itens, i.codigomontadora, i.descricao, u.unidademedida, 
+			'itens' => $this->db->query('select i.id_itens, i.codigomontadora,e.codigointerno,id_grupoitens,id_fornecedor, i.descricao, u.unidademedida, 
 			sum(estoquedisponivel) estoque, (precobruto - (precobruto * desconto)/100) valorunitario, 
 			((precobruto - (precobruto * desconto)/100) * sum(estoquedisponivel)) valortotal
 			from tbl_itens i left join tbl_unidademedida u on i.id_unidademedida = u.id_unidademedida
-			left join tbl_entradaitens e on i.id_itens = e.codigointerno
-			group by i.id_itens, i.precobruto, i.desconto, i.codigomontadora, i.descricao, u.unidademedida, i.estoquedisponivel
-			order by i.id_itens')->result());
+			left join tbl_entradaitens e on i.id_itens = e.codigointerno 
+			'.$this->session->userdata('where').' group by i.id_itens, i.precobruto, i.desconto, i.codigomontadora,e.codigointerno,id_grupoitens,id_fornecedor, i.descricao, u.unidademedida, i.estoquedisponivel')->result(),
+			'grupoitens' => $this->db->query('select * from tbl_grupoitens '.$this->session->userdata('grupoFiltro')));
 		return $pack;
 	}
 
 	/*===========================================================================================================*/
 	/*                            FINAL DAS FUNÇÕES DOS RELATÓRIOS DO SISTEMA                                    */
 	/*===========================================================================================================*/
-
-	/*===========================================================================================================*/
-	/*                            INICIO DAS FUNÇÕES DOS IMPRESSOS DO SISTEMA                                    */
-	/*===========================================================================================================*/	
-
-	public function impresso_Vistoria(){ 
-		$pack = array (
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		'depto' => $this->db->get('tbl_depto')->result(),
-		'veiculo' => $this->db->get('tbl_veiculo')->result(),
-		'divisao' => $this->db->get('tbl_divisao')->result(),
-		'setor' => $this->db->get('tbl_setor')->result(),
-		'secao' => $this->db->get('tbl_secao')->result(),
-		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result());
-		return $pack;
-	}
-
-	public function impresso_Servicos_Externos(){ 
-		$pack = array (
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		'depto' => $this->db->get('tbl_depto')->result(),
-		'veiculo' => $this->db->get('tbl_veiculo')->result(),
-		'divisao' => $this->db->get('tbl_divisao')->result(),
-		'setor' => $this->db->get('tbl_setor')->result(),
-		'secao' => $this->db->get('tbl_secao')->result(),
-		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result());
-		return $pack;
-	}
-
-	public function impresso_Retirada_Estoque(){ 
-		$pack = array (
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		'depto' => $this->db->get('tbl_depto')->result(),
-		'veiculo' => $this->db->get('tbl_veiculo')->result(),
-		'divisao' => $this->db->get('tbl_divisao')->result(),
-		'setor' => $this->db->get('tbl_setor')->result(),
-		'secao' => $this->db->get('tbl_secao')->result(),
-		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
-		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
-		return $pack;
-	}
-
-	public function pdf_impresso_Vistoria(){ 
-		$pack = array (
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		'depto' => $this->db->get('tbl_depto')->result(),
-		'veiculo' => $this->db->get('tbl_veiculo')->result(),
-		'divisao' => $this->db->get('tbl_divisao')->result(),
-		'setor' => $this->db->get('tbl_setor')->result(),
-		'secao' => $this->db->get('tbl_secao')->result(),
-		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
-		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
-		return $pack;
-	}	
-
-	public function pdf_impresso_Servicos_Externos(){ 
-		$pack = array (
-		'ordemservico' => $this->db->get('tbl_ordemservico')->result(),
-		'unidadesaude' => $this->db->get('tbl_unidadesaude')->result(),
-		'unidadeutilizadora' => $this->db->get('tbl_unidadeutilizadora')->result(),
-		'depto' => $this->db->get('tbl_depto')->result(),
-		'veiculo' => $this->db->get('tbl_veiculo')->result(),
-		'divisao' => $this->db->get('tbl_divisao')->result(),
-		'setor' => $this->db->get('tbl_setor')->result(),
-		'secao' => $this->db->get('tbl_secao')->result(),
-		'solicitaordemservico' => $this->db->get('tbl_solicitaordemservico')->result(),
-		'itens' => $this->db->get('tbl_itens')->result(),
-		'saidaitens' => $this->db->get('tbl_saidaitens')->result(),
-		'unidademedida' => $this->db->get('tbl_unidademedida')->result());
-		return $pack;
-	}
 
 	public function nova_Etiqueta(){ 
 
@@ -1064,7 +1012,8 @@ order by si.codigointerno, id_saidaitens')->result(),
 	}
 
 	public function filtro_Pdf_Retirada_Estoque(){
-		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
+		$pack = $this->db->query('select si.ordemservico from tbl_saidaitens si left join tbl_ordemservico os on
+		si.ordemservico = os.id_ordemservico order by si.ordemservico');
 		return $pack->result();
 	}
 
@@ -1090,6 +1039,14 @@ order by si.codigointerno, id_saidaitens')->result(),
 	}
 
 	public function filtro_Saida_Itens(){
+		$pack = array (
+			'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
+			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result()
+			);
+		return $pack;
+	}
+
+	public function filtro_Estoque_Ativo(){
 		$pack = array (
 			'grupoitens' => $this->db->get('tbl_grupoitens')->result(),
 			'fornecedorprestador' => $this->db->get('tbl_fornecedorprestador')->result()

@@ -163,10 +163,9 @@ $html = '
 							
 						<tr>
 							<td colspan="3"  align="center"  valign="top" id="negrito">
-								<label name="departamento">Departamento</label><br />
-								<label name="divisao">Divisão</label><br />
-								<label name="secao">Seção</label><br />
-								<label name="setor">Setor</label>
+								<label name="departamento">Departamento Administrativo e Financeiro da Saúde</label><br />
+								<label name="divisao">Divisão Técnica de Gestão da Frota</label><br />
+								<label name="secao">Seção Técnica de Manutenção de Veículos</label><br />
 							</td>
 						</tr>
 

@@ -59,13 +59,6 @@ class novo extends CI_Model {
 
 	}
 
-	public function setor_Nova($dados = null)
-	{
-
-		return $this->db->insert('tbl_setor',$dados);
-
-	}
-
 	public function grupo_Itens_Novo($dados = null)
 	{
 

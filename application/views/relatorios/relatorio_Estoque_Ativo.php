@@ -5,8 +5,19 @@
 			</tr> 
 
 			<tr>
-				<td colspan="4" align="left">
-					<div><strong>Grupo: </strong>TUDO</div>
+				<td colspan="5" align="left">
+					<div><strong>Grupo: </strong> <?php 
+
+					if($this->session->userdata('grupoFiltro') == "") {
+					
+						echo "TODOS"; 
+
+					} else {
+
+						echo $pack['grupoitens']->row()->grupoitens; 
+
+					}
+						?> </div>
 				</td>
 				<td colspan="4" align="left">
 					<div><strong>Data: </strong> <?php $data = date('d/m/Y'); echo $data; ?> </div>
