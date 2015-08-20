@@ -147,21 +147,46 @@ class pdf extends CI_Model {
 
 	public function impresso_Autorizacao_Fornec_Exec_Servicos_pag1($os = null){
 
+			$idunidade = $this->db->query('select id_unidadesolicitante from tbl_solicitaordemservico so 
+				left join tbl_ordemservico os on so.id_solicitaordemservico=os.id_solicitacao where os.id_ordemservico = '.$os.';');
+
+				if ($idunidade->row()->id_unidadesolicitante>1000000){
+
+					$tipounidade = $this->db->query('select os.id_ordemservico, so.id_unidadesolicitante, 
+						us.cnes, us.unidadesaude, e.enderecounidade, e.contato, e.telunidade, e.telunidade2,
+						afp.id_afpecas 
+						from tbl_ordemservico os 
+						inner join tbl_solicitaordemservico so on os.id_solicitacao = so.id_solicitaordemservico
+						left join tbl_unidadesaude us on us.cnes = so.id_unidadesolicitante
+						left join enderecounidade e on us.cnes = e.cnes
+						right join tbl_autofornecpecas afp on afp.id_ordemservico = os.id_ordemservico
+						where os.id_ordemservico ='.$os.';');
+
+				}else{
+
+					$tipounidade = $this->db->query('select os.id_ordemservico, v.prefixo, v.placa, v.tipo, so.id_unidadesolicitante,
+						uu.rua, uu.numero, uu.complemento, uu.cidade, uu.uf, uu.cep, uu.telefone, uu.ramal, uu.fax, uu.email, 
+						sc.codsecao, sc.secao, st.codsetor, st.setor, dt.coddepto, dt.depto, dv.coddivisao, 
+						dv.divisao, afp.id_afpecas
+						from tbl_ordemservico os left join tbl_solicitaordemservico so on os.id_solicitacao = so.id_solicitaordemservico
+						left join tbl_unidadeutilizadora uu on so.id_unidadesolicitante = uu.id_unidadeutilizadora
+						left join tbl_depto dt on uu.id_depto = dt.id_depto
+						left join tbl_divisao dv on dt.coddepto = dv.coddepto
+						left join tbl_secao sc on dv.coddivisao = sc.coddivisao
+						left join tbl_setor st on sc.codsecao = st.coddivisao
+						right join tbl_veiculo v on so.id_veiculo = v.id_veiculo
+						right join tbl_autofornecpecas afp on os.id_ordemservico = afp.id_ordemservico
+						where os.id_ordemservico ='.$os.';');
+
+				}
+
 		$pack = array(  
 
-			// 'contratante' => $this->db->query('select tf.id_fornecedorprestador,te.numprocadmempenho,tc.numerocontratoata,tc.dtinivigencia,tc.dtfimvigencia,te.numprocregpreco from tbl_empenho te
-			// left join tbl_contratoata tc on te.numcontratoata = tc.id_contratoata
-			// left join tbl_fornecedorprestador tf on tf.id_fornecedorprestador = te.id_fornecedorprestador
-			// left join tbl_ordemservico tos on tos.id_fornecedorprestador = tf.id_fornecedorprestador
-			// where id_ordemservico = '.$os.';'),
+			'tipounidade' => $tipounidade,
 
 			'fornecedor' => $this->db->query('SELECT nome,codigo,rua,numero,complemento,cidade,uf,tel1,fax,cnpj,email from 
 			tbl_fornecedorprestador tf inner join tbl_ordemservico tos on tf.id_fornecedorprestador = tos.id_fornecedorprestador
 			where id_ordemservico ='.$os.';'),
-
-			//'requisitante' => $this->db->query(''.$os.';'),
-
-			//'pagamento' => $this->db->query(''.$os.';'),
 
 			'pecas' => $this->db->query('SELECT id_itens,codigomontadora,descricao,unidademedida,quantidade,precobruto,desconto, ((precobruto -((precobruto*desconto)/100))*quantidade) valorTotal
 			from tbl_ordemservico_x_item 
@@ -171,13 +196,27 @@ class pdf extends CI_Model {
 
 			'servicos' => $this->db->query('SELECT servico,quantidade,valorunitario, (quantidade*valorunitario) valorTotal from tbl_servicos
 			left join tbl_ordemservico_x_servico on id_servico = id_servicos
-			where id_ordemservico ='.$os.';')->result()
+			where id_ordemservico ='.$os.';')->result(),
 
+			'contrato' => $this->db->query('select os.id_ordemservico os, afp.numero numero, o.objetotexto,
+f.nome fnome, f.tel1 ftel, f.fax ffax, f.cnpj fcnpj, f.email femail, f.codigo fcodigo, f.rua frua, f.bairro fbairro,f.numero fnumero,f.complemento fcomplemento,f.cidade fcidade,
+tu.uf fuf,
+c.numerocontratoata cnumerocontratoata,	c.dtinivigencia cdtinivigencia, c.dtfimvigencia cdtfimvigencia,
+e.numprocadmempenho cnumprocadmempenho, e.numprocregpreco cnumprocregpreco, 
+c.prazoentrega cprazoentrega
+from tbl_ordemservico os left join tbl_autofornecpecas afp on os.id_ordemservico = afp.id_ordemservico
+left join tbl_contratoata c on c.id_contratoata = afp.id_contratoata 
+left join tbl_empenho e on e.numcontratoata = c.id_contratoata 
+left join tbl_dotacao d on d.id_dotacao = e.id_dotacao 
+left join tbl_segmento s on s.id_segmento = d.id_segmento 
+left join tbl_objeto o on o.id_objeto = c.id_objetotitulo 
+left join tbl_fornecedorprestador f on f.id_fornecedorprestador = e.id_fornecedorprestador 
+left join tbl_uf tu on tu.id_uf = f.uf
+where os.id_ordemservico in (select id_ordemservico from tbl_autofornecpecas) and os.id_ordemservico = '.$os.';')
 
 		);
 
 		return $pack;
-
 
 	}
 

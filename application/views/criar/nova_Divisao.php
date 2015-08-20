@@ -11,7 +11,7 @@ echo form_open("criar/nova_Divisao",$form); ?>
 			<td>
 				<div class="input-group">
   				<span class="input-group-addon" id="basic-addon1">Departamento: </span>
-	  				<select class="form-control input_Vazio" name="depto" placeholder="Departamento">
+	  				<select class="form-control input_Vazio" name="coddepto" placeholder="Departamento">
 						<option>Selecione...</option>
 							<?php 
 								foreach ($pack['depto'] as $depto) {

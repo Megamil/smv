@@ -174,7 +174,7 @@ $html = '
 					
 							<td align="center">
 								<div>
-									<label name="ordemservico">9999/9999 - Código Divisão SS</label>
+									<label name="ordemservico">'.$pack['contrato']->row()->numero.' - Código Divisão SS</label>
 								</div>
 							</td>
 							<td align="center">
@@ -207,25 +207,25 @@ $html = '
 										<td valign="top" align="center" height="40px">
 											<label id="negrito">Contrato/Ata</label>
 											<br />
-											<span name="km">9999/9999-AAAA</span>
+											<span name="km">'.$pack['contrato']->row()->cnumerocontratoata.'</span>
 										</td>
 														
 										<td valign="top" align="center">
 											<label id="negrito">Vigência</label>
 											<br />
-											<span name="data">de 99/99/9999 a 99/99/9999</span>
+											<span name="data">de '.$pack['contrato']->row()->cdtinivigencia.' a '.$pack['contrato']->row()->cdtfimvigencia.'</span>
 										</td>
 												
 										<td valign="top" align="center">
 											<label id="negrito">P.A - Reg. Preços</label>
 											<br />
-											<span name="data">9999/9999</span>
+											<span name="data">'.$pack['contrato']->row()->cnumprocregpreco.'</span>
 										</td>
 
 										<td valign="top" align="center">
 											<label id="negrito">P.A - Empenho</label>
 											<br />
-											<span name="data">9999/9999</span>
+											<span name="data">'.$pack['contrato']->row()->cnumprocadmempenho.'</span>
 										</td>
 									</tr>
 								</table>
@@ -240,13 +240,13 @@ $html = '
 										<td colspan="3" height="40px">
 											<label id="negrito">A - Nome</label>
 											<br />
-											<span>Nome do Fornecedor</span>
+											<span>'.$pack['contrato']->row()->fnome.'</span>
 										</td>
 
 										<td>
 											<label id="negrito">Código</label>
 											<br />
-											<span>Código</span>
+											<span>'.$pack['contrato']->row()->fcodigo.'</span>
 										</td>
 									</tr>
 
@@ -254,7 +254,7 @@ $html = '
 										<td colspan="4" height="40px">
 											<label id="negrito">B - Endereço</label>
 											<br />
-											<span>(rua, número, complemento, bairro, cidade, estado)</span>
+											<span>'.$pack['contrato']->row()->frua.', Número: '.$pack['contrato']->row()->fnumero.', Bairro: '.$pack['contrato']->row()->fbairro.', Cidade '.$pack['contrato']->row()->fcidade.' Estado: '.$pack['contrato']->row()->fuf.' Complemento: '.$pack['contrato']->row()->fcomplemento.' </span>
 										</td>
 									</tr>
 
@@ -262,19 +262,19 @@ $html = '
 										<td height="40px">
 											<label id="negrito">C - Telefone</label>
 											<br />
-											<span>Telefone do Fornecedor</span>
+											<span>'.$pack['contrato']->row()->ftel.'</span>
 										</td>
 
 										<td>
 											<label id="negrito">Fax</label>
 											<br />
-											<span>Fax do Fornecedor</span>
+											<span>'.$pack['contrato']->row()->ffax.'</span>
 										</td>
 										
 										<td  colspan="2">
 											<label id="negrito">CNPJ</label>
 											<br />
-											<span>CNPJ do Fornecedor</span>
+											<span>'.$pack['contrato']->row()->fcnpj.'</span>
 										</td>
 									</tr>
 									
@@ -282,7 +282,7 @@ $html = '
 										<td colspan="4" height="40px">
 											<label id="negrito">D - E-mail</label>
 											<br />
-											<span>E-mail do Fornecedor</span>
+											<span>'.$pack['contrato']->row()->femail.'</span>
 										</td>
 									</tr>
 								</table>
@@ -315,7 +315,7 @@ $html = '
 										<td>
 											<label id="negrito">C - Prazo de Entrega</label>
 											<br />
-											<span>Prazo de Entrega</span>
+											<span>'.$pack['contrato']->row()->cprazoentrega.'</span>
 										</td>
 										<td >
 											<label id="negrito">Contato</label>

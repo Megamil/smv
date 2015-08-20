@@ -149,7 +149,7 @@ echo form_open("edicoes/editando_Unidade_Utilizadora",$form); ?>
 						<td>							
 							<div class="control-group">
 								<div class="controls">
-									<span class="help-inline">Rua</span>
+									<span class="help-inline">Endereço</span>
 								</div>
 							</div>
 						</td>
@@ -357,7 +357,7 @@ echo form_open("edicoes/editando_Unidade_Utilizadora",$form); ?>
 							<td>
 								<div class="control-group">
 									<div class="controls">
-										<span class="help-inline">Rua</span>
+										<span class="help-inline">Endereço</span>
 									</div>
 								</div>
 							</td>

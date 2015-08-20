@@ -10,7 +10,7 @@ echo form_open("criar/novo_Setor",$form); ?>
 			<td>
 				<div class="input-group">
   				<span class="input-group-addon" id="basic-addon1">Departamento: </span>
-	  				<select class="form-control input_Vazio" name="depto" placeholder="Departamento">
+	  				<select class="form-control input_Vazio" name="coddepto" placeholder="Departamento">
 						<option>Selecione...</option>
 							<?php 
 								foreach ($pack['depto'] as $depto) {
@@ -28,7 +28,7 @@ echo form_open("criar/novo_Setor",$form); ?>
   			<td>
 				<div class="input-group">
   				<span class="input-group-addon" id="basic-addon1">Divisão: </span>
-	  				<select class="form-control input_Vazio" name="divisao" placeholder="Divisao">
+	  				<select class="form-control input_Vazio" name="coddivisao" placeholder="Divisao">
 						<option>Selecione...</option>
 							<?php 
 								foreach ($pack['divisao'] as $divisao) {
@@ -46,7 +46,7 @@ echo form_open("criar/novo_Setor",$form); ?>
   			<td>
 				<div class="input-group">
   				<span class="input-group-addon" id="basic-addon1">Seção: </span>
-	  				<select class="form-control input_Vazio" name="secao" placeholder="Seção">
+	  				<select class="form-control input_Vazio" name="codsecao" placeholder="Seção">
 						<option>Selecione...</option>
 							<?php 
 								foreach ($pack['secao'] as $secao) {

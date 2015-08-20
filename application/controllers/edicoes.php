@@ -17,7 +17,7 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array  (
 				'id_montadora' => $this->input->post('id_montadora'),
 				'montadora' => $this->input->post('nome')
 				);
@@ -66,13 +66,22 @@ class edicoes extends CI_Controller {
 			$this->form_validation->set_rules('codsecao','Código','is_unique[tbl_secao.codsecao]');
 		}
 
+		if($this->input->post('divisao') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('coddivisao','Código','varchar[tbl_secao.coddivisao]');
+		}
+
+		if($this->input->post('depto') != $this->input->post('coddepto')) {
+			$this->form_validation->set_rules('coddepto','coddepto','varchar[tbl_secao.coddepto]');
+		}
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_secao' => $this->input->post('id_secao'),
 				'secao' => $this->input->post('nome'),
-				'codsecao' => $this->input->post('codsecao')
+				'codsecao' => $this->input->post('codsecao'),
+				'coddepto' => $this->input->post('coddepto'),
+				'coddivisao' => $this->input->post('coddivisao')
 				);
 
 			if($this->edicao->secao_Editar($dados)) {
@@ -211,12 +220,18 @@ class edicoes extends CI_Controller {
 			$this->form_validation->set_rules('coddivisao','Código','is_unique[tbl_divisao.coddivisao]');
 		}
 
+		if($this->input->post('depto') != $this->input->post('coddepto')) {
+			$this->form_validation->set_rules('coddepto','coddepto','varchar[tbl_divisao.coddepto]');
+		}
+
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_divisao' => $this->input->post('id_divisao'),
 				'divisao' => $this->input->post('nome'),
-				'coddivisao' => $this->input->post('coddivisao')
+				'coddivisao' => $this->input->post('coddivisao'),
+				'coddepto' => $this->input->post('coddepto')
+				
 				);
 
 			if($this->edicao->divisao_Editar($dados)) {
@@ -264,7 +279,7 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_depto' => $this->input->post('id_departamento'),
 				'depto' => $this->input->post('nome'),
 				'coddepto' => $this->input->post('coddepto')
@@ -414,12 +429,27 @@ class edicoes extends CI_Controller {
 			$this->form_validation->set_rules('codsetor','Código','is_unique[tbl_setor.codsetor]');
 		}
 
+		if($this->input->post('secao') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('codsecao','Código','varchar[tbl_secao.codsecao]');
+		}
+
+		if($this->input->post('divisao') != $this->input->post('codOriginal')) {
+			$this->form_validation->set_rules('coddivisao','Código','varchar[tbl_secao.coddivisao]');
+		}
+
+		if($this->input->post('depto') != $this->input->post('coddepto')) {
+			$this->form_validation->set_rules('coddepto','coddepto','varchar[tbl_secao.coddepto]');
+		}
+
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_setor' => $this->input->post('id_setor'),
 				'setor' => $this->input->post('nome'),
-				'codsetor' => $this->input->post('codsetor')
+				'codsetor' => $this->input->post('codsetor'),
+				'coddepto' => $this->input->post('coddepto'),
+				'coddivisao' => $this->input->post('coddivisao'),
+				'codsecao' => $this->input->post('codsecao')
 				);
 
 			$this->edicao->setor_Editar($dados);
@@ -454,7 +484,7 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_marcaitens' => $this->input->post('id_marcaitens'),
 				'marcaitens' => $this->input->post('nome')
 				);
@@ -483,7 +513,7 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_modalidadedelicitacao' => $this->input->post('id_modalidade'),
 				'modalidadedelicitacao' => $this->input->post('nome')
 				);
@@ -820,7 +850,7 @@ class edicoes extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$dados = array(
+			$dados = array (
 				'id_objeto' => $this->input->post('id_objeto'),
 				'objetotitulo' => $this->input->post('nomeobjetotitulo'),
 				'objetotexto' => $this->input->post('nomeobjetotexto')

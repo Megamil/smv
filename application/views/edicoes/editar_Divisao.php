@@ -7,14 +7,15 @@ echo form_open("edicoes/editando_Divisao",$form); ?>
 <?php echo form_hidden('nomeOriginal',$pack['divisao']->row()->divisao); ?>
 
 	<div class="erro_Campo_Vazio" ></div>
-		<table border="0">
+
+	<table border="0">
 		<thead></thead>
 		<tbody>
 		<tr>
 			<td>
 				<div class="input-group">
   				<span class="input-group-addon" id="basic-addon1">Departamento: </span>
-	  				<select class="form-control input_Vazio" name="depto" placeholder="Departamento">
+	  				<select class="form-control input_Vazio" name="coddepto" placeholder="Departamento">
 						<option>Selecione...</option>
 							<?php 
 								foreach ($pack['depto'] as $depto) {

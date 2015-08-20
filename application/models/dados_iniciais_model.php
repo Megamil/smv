@@ -1018,7 +1018,9 @@ group by id_saidaitens, codigointerno, codigomontadora, descricao, si.datasaida,
 	}
 
 	public function filtro_Pdf_Autorizacao_Fornecimento(){
-		$pack = $this->db->query('select id_ordemservico from tbl_ordemservico order by id_ordemservico');
+		$pack = $this->db->query('select os.id_ordemservico from tbl_ordemservico os inner join tbl_autofornecpecas afp 
+on os.id_ordemservico = afp.id_ordemservico
+order by os.id_ordemservico');
 		return $pack->result();
 	}
 

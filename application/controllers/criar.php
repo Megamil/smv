@@ -10,7 +10,7 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('montadora' => $this->input->post('nome'));
+			$nome = array ('montadora' => $this->input->post('nome'));
 
 			if($this->novo->montadora_Nova($nome)) {
 
@@ -68,7 +68,7 @@ class criar extends CI_Controller {
 
 			}
 
-			$dados = array(
+			$dados = array (
 				'codigofuncional' => $this->input->post('codigocolaborador'),
 				'nome' => $this->input->post('nomecolaborador'),
 				'cpf' => $this->input->post('cpfcolaborador'),
@@ -112,8 +112,9 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('divisao' => $this->input->post('nome'), 
-				'coddivisao' => $this->input->post('coddivisao'));
+			$nome = array ('divisao' => $this->input->post('nome'), 
+				'coddivisao' => $this->input->post('coddivisao'),
+				'coddepto' => $this->input->post('coddepto'));
 
 			if($this->novo->divisao_Nova($nome)) {
 
@@ -146,11 +147,11 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array(
-
+			$nome = array (
 					'secao' => $this->input->post('nome'),
-					'codsecao' => $this->input->post('codsecao')
-
+					'codsecao' => $this->input->post('codsecao'),
+					'coddepto' => $this->input->post('coddepto'),
+					'coddivisao' => $this->input->post('coddivisao')
 				);
 
 			if($this->novo->secao_Nova($nome)) {
@@ -185,7 +186,7 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('depto' => $this->input->post('nome'), 
+			$nome = array ('depto' => $this->input->post('nome'), 
 				'coddepto' => $this->input->post('coddepto'));
 
 			if($this->novo->departamento_Novo($nome)) {
@@ -219,7 +220,7 @@ class criar extends CI_Controller {
 
 		if($this->form_validation->run()) {
 
-			$nome = array('modalidadedelicitacao' => $this->input->post('nome'));
+			$nome = array ('modalidadedelicitacao' => $this->input->post('nome'));
 
 			if($this->novo->modalidade_Licitatoria_Nova($nome)) {
 
@@ -338,10 +339,11 @@ class criar extends CI_Controller {
 		if($this->form_validation->run()) {
 
 			$dados = array (
-
 				'setor' => $this->input->post('nome'), 
-				'codsetor' => $this->input->post('codsetor')
-
+				'codsetor' => $this->input->post('codsetor'),
+				'coddepto' => $this->input->post('coddepto'),
+				'coddivisao' => $this->input->post('coddivisao'),
+				'codsecao' => $this->input->post('codsecao')
 				);
 
 			$this->novo->setor_Novo($dados);

@@ -245,17 +245,17 @@
                 <li <?php if($ativo == 'adicionar-montadora') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-montadora', 'Montadora')?></li>
 
+                <li <?php if($ativo == 'adicionar-departamento') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-departamento', 'Departamento')?></li>
+
+                <li <?php if($ativo == 'adicionar-divisao') {echo 'class="active"';}?>>
+                <?php echo anchor('main/redirecionar/adicionar-divisao', 'Divisão')?></li>
+
                 <li <?php if($ativo == 'adicionar-secao') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-secao', 'Seção')?></li>
 
                 <li <?php if($ativo == 'adicionar-setor') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-setor', 'Setor')?></li>
-
-                <li <?php if($ativo == 'adicionar-divisao') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/adicionar-divisao', 'Divisão')?></li>
-
-                <li <?php if($ativo == 'adicionar-departamento') {echo 'class="active"';}?>>
-                <?php echo anchor('main/redirecionar/adicionar-departamento', 'Departamento')?></li>
 
                 <li <?php if($ativo == 'adicionar-modalidade_Licitacao') {echo 'class="active"';}?>>
                 <?php echo anchor('main/redirecionar/adicionar-modalidade_Licitacao', 'Modalidade de Licitação')?></li>
