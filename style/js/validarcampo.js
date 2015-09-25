@@ -178,7 +178,7 @@ $(document).ready(function(){
 			var erros = 0;
 			
 			//Antes de validar retira as mascaras dos campos
-			$('#telefoneValidar').mask("(?99)?99999-9999");
+			$('#telefoneValidar').mask("?999999999999");
 			$('.telefoneValidar').mask("?999999999999");
 			$('#cnpjValidar').mask("99999999999999");
 			$('.cnpjValidar').mask("99999999999999");

@@ -29,7 +29,7 @@
   
   <!--Indicação do css e JS estilizado e imagem do favicon-->
   <link rel="stylesheet" href="<?php echo base_url(); ?>style/css/estilo.css" class="stylesheet">
-  <link rel="shortcut icon" href="<?php echo base_url(); ?>style/img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>style/img/smv.png" type="image/x-icon">
   <script type="text/javascript" src="<?php echo base_url(); ?>style/js/validarcampo.js"></script>
   <!--Indicação do css e JS estilizado e imagem do favicon FIM-->
   

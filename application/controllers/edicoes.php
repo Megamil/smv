@@ -123,8 +123,11 @@ class edicoes extends CI_Controller {
 		if($this->input->post('nomecliente') != $this->input->post('nomeOriginal')) {
 
 			$this->form_validation->set_rules('nomecliente','Nome','is_unique[tbl_clientes.nome]');
+
 		}else {
+
 			$this->form_validation->set_rules('nomecliente','Nome','required');
+			
 		}
 
 		if($this->input->post('codigocliente') != $this->input->post('codOriginal')) {
